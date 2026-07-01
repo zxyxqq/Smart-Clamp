@@ -1,0 +1,67 @@
+#include "TIMER.h"
+
+
+/*----------------------------------------------------
+ *	函数名：TIMER0_INITIAL
+ *	功能：  初始化设置定时器
+ *	设置TMR0定时时长=(1/16000000)*2*32*250=1ms	                      
+ ----------------------------------------------------*/
+void Timer0_Init(void)
+{	  
+	OPTION = 0B00000100;	//Bit3=0 Timer0，Bit[2:0]=111=Timer0 RATE 1:128
+	T0IF = 0;				//清空Timer0软件中断
+    TMR0 = 6;
+}
+/*----------------------------------------------------
+ *	函数名：Timer0_Task
+ *	功能：  处理有关时间标志位
+ ----------------------------------------------------*/
+
+void Timer0_Task(void)
+{
+	static uint8_t Long_Ready_Time = 0;
+	static uint8_t Short_Ready_Time = 0;
+	static uint8_t Ready_Delay_Time = 0;
+    
+	if(SYS.Standby_Work_State == 1)//工作状态下开始计时
+    {
+        Long_Ready_Time++;//
+        
+        if(SYS.READY_Value == 1)//在继电器打开的时候每隔2s检查一次电压
+        {
+			SYS.Delay_2s_Flag = 1;
+            
+			if(SYS.Delay_2s_Flag == 1)
+            {
+				if(Ready_Delay_Time<4)
+				{
+					Ready_Delay_Time++;
+				}
+				else
+				{
+					Ready_Delay_Time = 0;
+					SYS.Delay_2s_Flag = 0;
+					SYS.Cadc_Ready_Flag = 1;
+				}
+            }
+        }
+        else
+        {
+			SYS.Delay_2s_Flag = 0;
+        }
+        
+        if(Long_Ready_Time>=80)//80*500 = 40000 = 40s,跳转到待机状态
+        {
+			Long_Ready_Time = 0;
+			SYS.Long_Time_Change = 1;//表示退出工作状态,只有按键导通和松脱才能清零
+        }
+        
+    }
+    else
+    {
+//		SYS.Long_Time_Change = 0;//可以进入待机状态的标志位之一
+//		SYS.Long_Ready_Time_Flag = 0;//关闭长时间计时
+		Long_Ready_Time = 0;
+    }
+
+}
