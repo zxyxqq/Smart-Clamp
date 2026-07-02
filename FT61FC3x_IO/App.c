@@ -19,8 +19,12 @@ void Initial(void)
 //	ADC_INITIAL();
 //	Ready_Init();
     Int_Initial();
-    RC_INITIAL();
+//    RC_INITIAL();
 //	BUZZTT_Init();
+
+//	BUTTON_Init();
+BUZZER_Init();
+    
 //	BUZZTT_Flag = 1;//蜂鸣器
 //    
 //	BUZZTT_Control();      
@@ -31,7 +35,8 @@ void Initial(void)
 
 /**/
 
-
+//	LB_Close();
+//	RC_Control(0);
     
     T0IE = 1;				//开定时器/计数器0中断
     

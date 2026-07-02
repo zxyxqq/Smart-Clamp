@@ -458,9 +458,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S152 `S153 1 `S154 1 ]
 [n S152 . . . ]
-[v F1937 `(v ~T0 @X0 0 tf ]
+[v F1941 `(v ~T0 @X0 0 tf ]
 "13 Task.h
-[s S156 `uc 1 `ui 1 `ui 1 `*F1937 1 ]
+[s S156 `uc 1 `ui 1 `ui 1 `*F1941 1 ]
 [n S156 . Run Timer IvtTime TaskHook ]
 "30
 [v _Task_0 `(v ~T0 @X0 0 ef ]
@@ -470,16 +470,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _Task_2 `(v ~T0 @X0 0 ef ]
 "33
 [v _Task_3 `(v ~T0 @X0 0 ef ]
-"14 Int.h
-[v _Int_Task `(v ~T0 @X0 0 ef ]
-"20 app.h
-[s S155 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S155 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value Buzzer_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"62
-[v _SYS `S155 ~T0 @X0 0 e ]
-"91 Task.c
-[c E1940 0 1 2 3 4 .. ]
-[n E1940 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
+"15 Int.h
+[v _LB_Close `(v ~T0 @X0 0 ef ]
+"12
+[v _HT_Detect `(v ~T0 @X0 0 ef ]
+"121 Task.c
+[c E1944 0 1 2 3 4 .. ]
+[n E1944 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -3124,6 +3121,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 9: void BUZZTT_Control(void);
 [; ;BUZZTT.h: 10: void Key_Dected(void);
 [; ;BUZZTT.h: 11: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 12: void BUTTON_Init(void);
+[; ;BUZZTT.h: 13: void BUZZER_Init(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3214,162 +3213,162 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 19: {
 [e :U _Task_0 ]
 [f ]
-[; ;Task.c: 22: Int_Task();
-"22
-[e ( _Int_Task ..  ]
-[; ;Task.c: 36: SYS.RC_Value = 0;
-"36
-[e = . _SYS 3 -> -> 0 `i `uc ]
-[; ;Task.c: 37: }
-"37
+[; ;Task.c: 39: LB_Close();
+"39
+[e ( _LB_Close ..  ]
+[; ;Task.c: 64: }
+"64
 [e :UE 157 ]
 }
-"45
+"72
 [v _Task_1 `(v ~T0 @X0 1 ef ]
-"46
+"73
 {
-[; ;Task.c: 45: void Task_1(void)
-[; ;Task.c: 46: {
+[; ;Task.c: 72: void Task_1(void)
+[; ;Task.c: 73: {
 [e :U _Task_1 ]
 [f ]
-[; ;Task.c: 48: }
-"48
+[; ;Task.c: 76: HT_Detect();
+"76
+[e ( _HT_Detect ..  ]
+[; ;Task.c: 78: }
+"78
 [e :UE 158 ]
 }
-"55
+"85
 [v _Task_2 `(v ~T0 @X0 1 ef ]
-"56
+"86
 {
-[; ;Task.c: 55: void Task_2(void)
-[; ;Task.c: 56: {
+[; ;Task.c: 85: void Task_2(void)
+[; ;Task.c: 86: {
 [e :U _Task_2 ]
 [f ]
-[; ;Task.c: 58: }
-"58
+[; ;Task.c: 88: }
+"88
 [e :UE 159 ]
 }
-"65
+"95
 [v _Task_3 `(v ~T0 @X0 1 ef ]
-"66
+"96
 {
-[; ;Task.c: 65: void Task_3(void)
-[; ;Task.c: 66: {
+[; ;Task.c: 95: void Task_3(void)
+[; ;Task.c: 96: {
 [e :U _Task_3 ]
 [f ]
-[; ;Task.c: 80: }
-"80
+[; ;Task.c: 110: }
+"110
 [e :UE 160 ]
 }
-"88
+"118
 [v _Task_Process `(v ~T0 @X0 1 ef ]
-"89
+"119
 {
-[; ;Task.c: 88: void Task_Process(void)
-[; ;Task.c: 89: {
+[; ;Task.c: 118: void Task_Process(void)
+[; ;Task.c: 119: {
 [e :U _Task_Process ]
 [f ]
-"90
+"120
 [v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 90: unsigned char i;
-[; ;Task.c: 91: for(i = 0;i<TASK_MAX;i++)
-"91
+[; ;Task.c: 120: unsigned char i;
+[; ;Task.c: 121: for(i = 0;i<TASK_MAX;i++)
+"121
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1940 4 `i 162  ]
+[e $ < -> _i `i -> . `E1944 4 `i 162  ]
 [e $U 163  ]
-"92
+"122
 [e :U 162 ]
-[; ;Task.c: 92: {
+[; ;Task.c: 122: {
 {
-[; ;Task.c: 93: if(TaskCompany[i].Run == 1)
-"93
+[; ;Task.c: 123: if(TaskCompany[i].Run == 1)
+"123
 [e $ ! == -> . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 `i -> 1 `i 165  ]
-[; ;Task.c: 94: {
-"94
+[; ;Task.c: 124: {
+"124
 {
-[; ;Task.c: 95: TaskCompany[i].Run = 0;
-"95
+[; ;Task.c: 125: TaskCompany[i].Run = 0;
+"125
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 0 `i `uc ]
-[; ;Task.c: 96: TaskCompany[i].TaskHook();
-"96
+[; ;Task.c: 126: TaskCompany[i].TaskHook();
+"126
 [e ( *U . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 3 ..  ]
-"97
+"127
 }
 [e :U 165 ]
-"98
+"128
 }
-"91
+"121
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1940 4 `i 162  ]
+[e $ < -> _i `i -> . `E1944 4 `i 162  ]
 [e :U 163 ]
-"98
+"128
 }
-[; ;Task.c: 97: }
-[; ;Task.c: 98: }
-[; ;Task.c: 99: }
-"99
+[; ;Task.c: 127: }
+[; ;Task.c: 128: }
+[; ;Task.c: 129: }
+"129
 [e :UE 161 ]
 }
-"105
+"135
 [v _Task_Count `(v ~T0 @X0 1 ef ]
-"106
+"136
 {
-[; ;Task.c: 105: void Task_Count(void)
-[; ;Task.c: 106: {
+[; ;Task.c: 135: void Task_Count(void)
+[; ;Task.c: 136: {
 [e :U _Task_Count ]
 [f ]
-"107
+"137
 [v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 107: uint8_t i;
-[; ;Task.c: 108: for(i = 0;i<TASK_MAX;i++)
-"108
+[; ;Task.c: 137: uint8_t i;
+[; ;Task.c: 138: for(i = 0;i<TASK_MAX;i++)
+"138
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1940 4 `i 167  ]
+[e $ < -> _i `i -> . `E1944 4 `i 167  ]
 [e $U 168  ]
-"109
+"139
 [e :U 167 ]
-[; ;Task.c: 109: {
+[; ;Task.c: 139: {
 {
-[; ;Task.c: 110: if(TaskCompany[i].Timer)
-"110
+[; ;Task.c: 140: if(TaskCompany[i].Timer)
+"140
 [e $ ! != . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 170  ]
-[; ;Task.c: 111: {
-"111
+[; ;Task.c: 141: {
+"141
 {
-[; ;Task.c: 112: TaskCompany[i].Timer--;
-"112
+[; ;Task.c: 142: TaskCompany[i].Timer--;
+"142
 [e -- . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 1 `i `ui ]
-[; ;Task.c: 113: if(TaskCompany[i].Timer <= 0)
-"113
+[; ;Task.c: 143: if(TaskCompany[i].Timer <= 0)
+"143
 [e $ ! <= . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 171  ]
-[; ;Task.c: 114: {
-"114
+[; ;Task.c: 144: {
+"144
 {
-[; ;Task.c: 115: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
-"115
+[; ;Task.c: 145: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+"145
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 2 ]
-[; ;Task.c: 116: TaskCompany[i].Run = 1;
-"116
+[; ;Task.c: 146: TaskCompany[i].Run = 1;
+"146
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 1 `i `uc ]
-"117
+"147
 }
 [e :U 171 ]
-"118
+"148
 }
 [e :U 170 ]
-"119
+"149
 }
-"108
+"138
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1940 4 `i 167  ]
+[e $ < -> _i `i -> . `E1944 4 `i 167  ]
 [e :U 168 ]
-"119
+"149
 }
-[; ;Task.c: 117: }
-[; ;Task.c: 118: }
-[; ;Task.c: 119: }
-[; ;Task.c: 120: }
-"120
+[; ;Task.c: 147: }
+[; ;Task.c: 148: }
+[; ;Task.c: 149: }
+[; ;Task.c: 150: }
+"150
 [e :UE 166 ]
 }

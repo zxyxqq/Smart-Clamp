@@ -1977,6 +1977,8 @@ void BUZZTT_Init(void);
 void BUZZTT_Control(void);
 void Key_Dected(void);
 void BUZZTT_Task(void);
+void BUTTON_Init(void);
+void BUZZER_Init(void);
 
 # 16 "APP.H"
 void Initial(void);
@@ -2051,7 +2053,17 @@ WPDB = 0B00100000;
 SYS.RC_Value = PB5;
 }
 
-# 53
+# 43
+void RC_Control(uint8_t value)
+{
+TRISB &= ~0B00100000;
+
+
+
+PB5 = (value == 1) ? 1 : 0;
+}
+
+
 void RC_Task(void)
 {
 RC_Detect();

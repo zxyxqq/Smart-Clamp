@@ -19,21 +19,48 @@ void Task_0(void)
 {
 //	BUZZTT_Task();
 //    ADC_Task();
-	  Int_Task();
+//	  Int_Task();
 //    RC_Task();
 //    READY_Task();
+
+
+
+/*测试,RC输出正常*/
 //RC_Detect();
+//RC_Control(0);
 
+/*输出1/0正常*/
+/*
+HT亮(低电平),LB亮(高电平),可以检测到HT低电平
+HT不亮(高电平),LB不亮(低电平),检测budaoHT高电平
 
-/**/
-//TRISB  &= ~0B00000001;
-//PB0 = 1;
+*/
+//LB_Open();//LB亮，HT不亮
+LB_Close();//
+
 //HT_Detect();
-//LB_Open();
-//LB_Close();
 
+/*可以先断开R12，检测输入时LB是否还亮,依旧亮*/
+
+//	PC1 = 1;
+
+/*ready正常*/
+//Ready_Control(1);
+
+/*蜂鸣器引脚正常，但是按键输入检测有待改善*/
+
+//	 SYS.Cadc_Ready_Flag = PC1;
+//     if(SYS.Cadc_Ready_Flag == 1)
+//     {
+//		LB_Open();
+//        LB_Close();
+//     }
+//     else
+//     {
+//		LB_Close();
+//     }
 //	SYS.LB_Value = 0;
-	SYS.RC_Value = 0;
+//	SYS.RC_Value = 0;
 }
 
 
@@ -44,6 +71,9 @@ void Task_0(void)
 **************************************************************************************************/
 void Task_1(void)
 {
+//Key_Dected();
+//HT_Detect();
+HT_Detect();
 
 }
 

@@ -3125,6 +3125,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 9: void BUZZTT_Control(void);
 [; ;BUZZTT.h: 10: void Key_Dected(void);
 [; ;BUZZTT.h: 11: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 12: void BUTTON_Init(void);
+[; ;BUZZTT.h: 13: void BUZZER_Init(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3178,18 +3180,18 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :U _Timer0_Task ]
 [f ]
 "22
-[v F1961 `uc ~T0 @X0 1 s Long_Ready_Time ]
-[i F1961
+[v F1965 `uc ~T0 @X0 1 s Long_Ready_Time ]
+[i F1965
 -> -> 0 `i `uc
 ]
 "23
-[v F1962 `uc ~T0 @X0 1 s Short_Ready_Time ]
-[i F1962
+[v F1966 `uc ~T0 @X0 1 s Short_Ready_Time ]
+[i F1966
 -> -> 0 `i `uc
 ]
 "24
-[v F1963 `uc ~T0 @X0 1 s Ready_Delay_Time ]
-[i F1963
+[v F1967 `uc ~T0 @X0 1 s Ready_Delay_Time ]
+[i F1967
 -> -> 0 `i `uc
 ]
 [; ;Timer.c: 22: static uint8_t Long_Ready_Time = 0;
@@ -3203,7 +3205,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 28: Long_Ready_Time++;
 "28
-[e ++ F1961 -> -> 1 `i `uc ]
+[e ++ F1965 -> -> 1 `i `uc ]
 [; ;Timer.c: 30: if(SYS.READY_Value == 1)
 "30
 [e $ ! == -> . _SYS 9 `i -> 1 `i 160  ]
@@ -3221,13 +3223,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 36: if(Ready_Delay_Time<4)
 "36
-[e $ ! < -> F1963 `i -> 4 `i 162  ]
+[e $ ! < -> F1967 `i -> 4 `i 162  ]
 [; ;Timer.c: 37: {
 "37
 {
 [; ;Timer.c: 38: Ready_Delay_Time++;
 "38
-[e ++ F1963 -> -> 1 `i `uc ]
+[e ++ F1967 -> -> 1 `i `uc ]
 "39
 }
 [; ;Timer.c: 39: }
@@ -3240,7 +3242,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 42: Ready_Delay_Time = 0;
 "42
-[e = F1963 -> -> 0 `i `uc ]
+[e = F1967 -> -> 0 `i `uc ]
 [; ;Timer.c: 43: SYS.Delay_2s_Flag = 0;
 "43
 [e = . _SYS 15 -> -> 0 `i `uc ]
@@ -3274,13 +3276,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Timer.c: 51: }
 [; ;Timer.c: 53: if(Long_Ready_Time>=80)
 "53
-[e $ ! >= -> F1961 `i -> 80 `i 165  ]
+[e $ ! >= -> F1965 `i -> 80 `i 165  ]
 [; ;Timer.c: 54: {
 "54
 {
 [; ;Timer.c: 55: Long_Ready_Time = 0;
 "55
-[e = F1961 -> -> 0 `i `uc ]
+[e = F1965 -> -> 0 `i `uc ]
 [; ;Timer.c: 56: SYS.Long_Time_Change = 1;
 "56
 [e = . _SYS 14 -> -> 1 `i `uc ]
@@ -3300,7 +3302,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 64: Long_Ready_Time = 0;
 "64
-[e = F1961 -> -> 0 `i `uc ]
+[e = F1965 -> -> 0 `i `uc ]
 "65
 }
 [e :U 166 ]

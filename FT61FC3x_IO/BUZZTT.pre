@@ -2032,6 +2032,8 @@ void BUZZTT_Init(void);
 void BUZZTT_Control(void);
 void Key_Dected(void);
 void BUZZTT_Task(void);
+void BUTTON_Init(void);
+void BUZZER_Init(void);
 
 # 11 "BUZZTT.c"
 volatile uint8_t BUZZTT_Flag = 0;
@@ -2053,7 +2055,7 @@ void BUTTON_Init(void)
 PORTC = 0B00000000;
 TRISC |= 0B00000010;
 
-WPUB |= 0B00000010;
+WPUC |= 0B00000010;
 }
 
 # 46
@@ -2062,7 +2064,7 @@ void BUZZER_Init(void)
 PORTC = 0B00000000;
 TRISC &= ~0B00000010;
 
-WPUB &= ~0B00000010;
+WPUC &= ~0B00000010;
 }
 
 # 59
@@ -2083,7 +2085,7 @@ void Key_Dected(void)
 {
 static uint8_t num = 0;
 static uint8_t long_num = 0;
-if(!BUZZTT_Flag)
+if(BUZZTT_Flag == 0)
 {
 BUTTON_Init();
 if(!PC1)
@@ -2105,6 +2107,7 @@ long_num = 0;
 }
 }
 
+# 106
 if(KEY_Press)
 {
 if(long_num<300)
@@ -2113,14 +2116,15 @@ long_num++;
 }
 else
 {
+
 KEY_Long_Press = 1;
 SYS.Long_Time_Change = 0;
-
+SYS.KEY_Value = 1;
 }
 }
 }
 
-# 123
+# 128
 void BUZZER_Dected(void)
 {
 if(BUZZTT_Flag)
@@ -2131,11 +2135,11 @@ PC1 = 1;
 }
 }
 
-# 141
+# 146
 void BUZZTT_Task(void)
 {
-BUZZTT_Control();
-BUZZER_Dected();
-Key_Dected();
+
+
+
 
 }

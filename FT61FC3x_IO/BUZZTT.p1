@@ -3148,6 +3148,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;buzztt.h: 9: void BUZZTT_Control(void);
 [; ;buzztt.h: 10: void Key_Dected(void);
 [; ;buzztt.h: 11: void BUZZTT_Task(void);
+[; ;buzztt.h: 12: void BUTTON_Init(void);
+[; ;buzztt.h: 13: void BUZZER_Init(void);
 "11 BUZZTT.c
 [v _BUZZTT_Flag `Vuc ~T0 @X0 1 e ]
 [i _BUZZTT_Flag
@@ -3201,9 +3203,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.c: 36: TRISC |= 0B00000010;
 "36
 [e =| _TRISC -> -> 2 `i `uc ]
-[; ;BUZZTT.c: 38: WPUB |= 0B00000010;
+[; ;BUZZTT.c: 38: WPUC |= 0B00000010;
 "38
-[e =| _WPUB -> -> 2 `i `uc ]
+[e =| _WPUC -> -> 2 `i `uc ]
 [; ;BUZZTT.c: 39: }
 "39
 [e :UE 158 ]
@@ -3222,9 +3224,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.c: 49: TRISC &= ~0B00000010;
 "49
 [e =& _TRISC -> ~ -> 2 `i `uc ]
-[; ;BUZZTT.c: 51: WPUB &= ~0B00000010;
+[; ;BUZZTT.c: 51: WPUC &= ~0B00000010;
 "51
-[e =& _WPUB -> ~ -> 2 `i `uc ]
+[e =& _WPUC -> ~ -> 2 `i `uc ]
 [; ;BUZZTT.c: 52: }
 "52
 [e :UE 159 ]
@@ -3276,20 +3278,20 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :U _Key_Dected ]
 [f ]
 "78
-[v F1969 `uc ~T0 @X0 1 s num ]
-[i F1969
+[v F1971 `uc ~T0 @X0 1 s num ]
+[i F1971
 -> -> 0 `i `uc
 ]
 "79
-[v F1970 `uc ~T0 @X0 1 s long_num ]
-[i F1970
+[v F1972 `uc ~T0 @X0 1 s long_num ]
+[i F1972
 -> -> 0 `i `uc
 ]
 [; ;BUZZTT.c: 78: static uint8_t num = 0;
 [; ;BUZZTT.c: 79: static uint8_t long_num = 0;
-[; ;BUZZTT.c: 80: if(!BUZZTT_Flag)
+[; ;BUZZTT.c: 80: if(BUZZTT_Flag == 0)
 "80
-[e $ ! ! != -> _BUZZTT_Flag `i -> -> -> 0 `i `Vuc `i 164  ]
+[e $ ! == -> _BUZZTT_Flag `i -> 0 `i 164  ]
 [; ;BUZZTT.c: 81: {
 "81
 {
@@ -3304,13 +3306,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;BUZZTT.c: 85: if(num<2)
 "85
-[e $ ! < -> F1969 `i -> 2 `i 166  ]
+[e $ ! < -> F1971 `i -> 2 `i 166  ]
 [; ;BUZZTT.c: 86: {
 "86
 {
 [; ;BUZZTT.c: 87: num ++;
 "87
-[e ++ F1969 -> -> 1 `i `uc ]
+[e ++ F1971 -> -> 1 `i `uc ]
 "88
 }
 [; ;BUZZTT.c: 88: }
@@ -3340,13 +3342,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;BUZZTT.c: 96: num = 0;
 "96
-[e = F1969 -> -> 0 `i `uc ]
+[e = F1971 -> -> 0 `i `uc ]
 [; ;BUZZTT.c: 97: KEY_Press = 0;
 "97
 [e = _KEY_Press -> -> 0 `i `uc ]
 [; ;BUZZTT.c: 98: long_num = 0;
 "98
-[e = F1970 -> -> 0 `i `uc ]
+[e = F1972 -> -> 0 `i `uc ]
 "99
 }
 [e :U 168 ]
@@ -3355,95 +3357,89 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :U 164 ]
 [; ;BUZZTT.c: 99: }
 [; ;BUZZTT.c: 100: }
-[; ;BUZZTT.c: 102: if(KEY_Press)
-"102
-[e $ ! != -> _KEY_Press `i -> -> -> 0 `i `uc `i 169  ]
-[; ;BUZZTT.c: 103: {
-"103
-{
-[; ;BUZZTT.c: 104: if(long_num<300)
-"104
-[e $ ! < -> F1970 `i -> 300 `i 170  ]
-[; ;BUZZTT.c: 105: {
-"105
-{
-[; ;BUZZTT.c: 106: long_num++;
+[; ;BUZZTT.c: 106: if(KEY_Press)
 "106
-[e ++ F1970 -> -> 1 `i `uc ]
+[e $ ! != -> _KEY_Press `i -> -> -> 0 `i `uc `i 169  ]
+[; ;BUZZTT.c: 107: {
 "107
-}
-[; ;BUZZTT.c: 107: }
-[e $U 171  ]
+{
+[; ;BUZZTT.c: 108: if(long_num<300)
 "108
-[e :U 170 ]
-[; ;BUZZTT.c: 108: else
+[e $ ! < -> F1972 `i -> 300 `i 170  ]
 [; ;BUZZTT.c: 109: {
 "109
 {
-[; ;BUZZTT.c: 110: KEY_Long_Press = 1;
+[; ;BUZZTT.c: 110: long_num++;
 "110
-[e = _KEY_Long_Press -> -> 1 `i `uc ]
-[; ;BUZZTT.c: 111: SYS.Long_Time_Change = 0;
+[e ++ F1972 -> -> 1 `i `uc ]
 "111
-[e = . _SYS 14 -> -> 0 `i `uc ]
+}
+[; ;BUZZTT.c: 111: }
+[e $U 171  ]
+"112
+[e :U 170 ]
+[; ;BUZZTT.c: 112: else
+[; ;BUZZTT.c: 113: {
 "113
+{
+[; ;BUZZTT.c: 115: KEY_Long_Press = 1;
+"115
+[e = _KEY_Long_Press -> -> 1 `i `uc ]
+[; ;BUZZTT.c: 116: SYS.Long_Time_Change = 0;
+"116
+[e = . _SYS 14 -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 117: SYS.KEY_Value = 1;
+"117
+[e = . _SYS 5 -> -> 1 `i `uc ]
+"118
 }
 [e :U 171 ]
-"114
+"119
 }
 [e :U 169 ]
-[; ;BUZZTT.c: 113: }
-[; ;BUZZTT.c: 114: }
-[; ;BUZZTT.c: 115: }
-"115
+[; ;BUZZTT.c: 118: }
+[; ;BUZZTT.c: 119: }
+[; ;BUZZTT.c: 120: }
+"120
 [e :UE 163 ]
 }
-"123
+"128
 [v _BUZZER_Dected `(v ~T0 @X0 1 ef ]
-"124
+"129
 {
-[; ;BUZZTT.c: 123: void BUZZER_Dected(void)
-[; ;BUZZTT.c: 124: {
+[; ;BUZZTT.c: 128: void BUZZER_Dected(void)
+[; ;BUZZTT.c: 129: {
 [e :U _BUZZER_Dected ]
 [f ]
-[; ;BUZZTT.c: 125: if(BUZZTT_Flag)
-"125
-[e $ ! != -> _BUZZTT_Flag `i -> -> -> 0 `i `Vuc `i 173  ]
-[; ;BUZZTT.c: 126: {
-"126
-{
-[; ;BUZZTT.c: 127: BUZZER_Init();
-"127
-[e ( _BUZZER_Init ..  ]
-[; ;BUZZTT.c: 128: PC1 = 1;
-"128
-[e = _PC1 -> -> 1 `i `b ]
+[; ;BUZZTT.c: 130: if(BUZZTT_Flag)
 "130
+[e $ ! != -> _BUZZTT_Flag `i -> -> -> 0 `i `Vuc `i 173  ]
+[; ;BUZZTT.c: 131: {
+"131
+{
+[; ;BUZZTT.c: 132: BUZZER_Init();
+"132
+[e ( _BUZZER_Init ..  ]
+[; ;BUZZTT.c: 133: PC1 = 1;
+"133
+[e = _PC1 -> -> 1 `i `b ]
+"135
 }
 [e :U 173 ]
-[; ;BUZZTT.c: 130: }
-[; ;BUZZTT.c: 131: }
-"131
+[; ;BUZZTT.c: 135: }
+[; ;BUZZTT.c: 136: }
+"136
 [e :UE 172 ]
 }
-"141
+"146
 [v _BUZZTT_Task `(v ~T0 @X0 1 ef ]
-"142
+"147
 {
-[; ;BUZZTT.c: 141: void BUZZTT_Task(void)
-[; ;BUZZTT.c: 142: {
+[; ;BUZZTT.c: 146: void BUZZTT_Task(void)
+[; ;BUZZTT.c: 147: {
 [e :U _BUZZTT_Task ]
 [f ]
-[; ;BUZZTT.c: 143: BUZZTT_Control();
-"143
-[e ( _BUZZTT_Control ..  ]
-[; ;BUZZTT.c: 144: BUZZER_Dected();
-"144
-[e ( _BUZZER_Dected ..  ]
-[; ;BUZZTT.c: 145: Key_Dected();
-"145
-[e ( _Key_Dected ..  ]
-[; ;BUZZTT.c: 147: }
-"147
+[; ;BUZZTT.c: 152: }
+"152
 [e :UE 174 ]
 }

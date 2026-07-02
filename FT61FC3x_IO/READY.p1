@@ -3124,6 +3124,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 9: void BUZZTT_Control(void);
 [; ;BUZZTT.h: 10: void Key_Dected(void);
 [; ;BUZZTT.h: 11: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 12: void BUTTON_Init(void);
+[; ;BUZZTT.h: 13: void BUZZER_Init(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3168,12 +3170,12 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;READY.c: 23: TRISB &= ~0B00001000;
 "23
 [e =& _TRISB -> ~ -> 8 `i `uc ]
-[; ;READY.c: 26: WPUC |= 0B00001000;
+[; ;READY.c: 26: WPUC |= 0B00000001;
 "26
-[e =| _WPUC -> -> 8 `i `uc ]
-[; ;READY.c: 28: WPUB |= 0B00000001;
+[e =| _WPUC -> -> 1 `i `uc ]
+[; ;READY.c: 28: WPUB |= 0B00001000;
 "28
-[e =| _WPUB -> -> 1 `i `uc ]
+[e =| _WPUB -> -> 8 `i `uc ]
 [; ;READY.c: 30: }
 "30
 [e :UE 157 ]

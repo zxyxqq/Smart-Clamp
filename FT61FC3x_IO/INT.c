@@ -24,12 +24,17 @@ void Int_Initial(void)
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-
+/*大部分时间控制LB的前提下再去检测*/
 void HT_Detect(void)
 {
 	TRISB  |= 0B00000001;	//PB输入输出 0-输出 1-输入
+    
+//    WPUB   |= 0B00000001;
 
 	SYS.HT_Value = PB0;//
+    
+    TRISB  &= ~0B00000001;	//PB输入输出 0-输出 1-输入
+
 }
 /*-------------------------------------------------
  *  函数名LB_Open
@@ -40,16 +45,24 @@ void HT_Detect(void)
 
 void LB_Open(void)
 {
+//	TRISB  &= ~0B00000001;	//PB输入输出 0-输出 1-输入
+//	
+//    PB0 = 0;
+
 	TRISB  &= ~0B00000001;	//PB输入输出 0-输出 1-输入
 	
-    PB0 = 0;
+    PB0 = 1;
 }
 
 void LB_Close(void)
 {
-	TRISB  &= ~0B00000001;	//PB输入输出 0-输出 1-输入
+//	TRISB  &= ~0B00000001;	//PB输入输出 0-输出 1-输入
+//	
+//    PB0 = 1;
+    
+    TRISB  &= ~0B00000001;	//PB输入输出 0-输出 1-输入
 	
-    PB0 = 1;
+    PB0 = 0;
 }
 
 void INT_Control(uint8_t value)
@@ -77,14 +90,14 @@ void Int_Task(void)
 
     HT_Detect();
     
-	if(SYS.RC_Value || SYS.HT_Value == 0 || SYS.LB_Value)
-	{
-		SYS.STANDBY_Value = 0;//如果RC,HT,LB发生报警就关闭STANDBY
-	}
-	else
-	{
-		SYS.STANDBY_Value = 1;//如果没有报警打开STANDBY
-	}
-    
-    INT_Control(SYS.STANDBY_Value);
+//	if(SYS.RC_Value || SYS.HT_Value == 0 || SYS.LB_Value)
+//	{
+//		SYS.STANDBY_Value = 0;//如果RC,HT,LB发生报警就关闭STANDBY
+//	}
+//	else
+//	{
+//		SYS.STANDBY_Value = 1;//如果没有报警打开STANDBY
+//	}
+//    
+//    INT_Control(SYS.STANDBY_Value);
 }

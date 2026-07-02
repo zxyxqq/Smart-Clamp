@@ -40,14 +40,14 @@ void RC_Detect(void)
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-// void RC_Control(uint8_t value)
-// {
-//	TRISB  &= ~0B00100000;	//PB输入输出 0-输出 1-输入
-//    
-////    WPDB   = 0B00100000;    //PB端口上拉控制 1-开下拉 0-关下拉
-// 
-//	PB5 = (value == RC_ON)	? 1 : 0;
-// }
+ void RC_Control(uint8_t value)
+ {
+	TRISB  &= ~0B00100000;	//PB输入输出 0-输出 1-输入
+    
+//    WPDB   = 0B00100000;    //PB端口上拉控制 1-开下拉 0-关下拉
+ 
+	PB5 = (value == RC_ON)	? 1 : 0;
+ }
 
 
 void RC_Task(void)

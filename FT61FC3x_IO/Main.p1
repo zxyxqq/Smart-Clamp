@@ -3129,6 +3129,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 9: void BUZZTT_Control(void);
 [; ;BUZZTT.h: 10: void Key_Dected(void);
 [; ;BUZZTT.h: 11: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 12: void BUTTON_Init(void);
+[; ;BUZZTT.h: 13: void BUZZER_Init(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3151,9 +3153,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 60: }sys;
 [; ;app.h: 62: extern sys SYS;
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F1961 `(v ~T0 @X0 1 tf ]
+[v F1965 `(v ~T0 @X0 1 tf ]
 "24 Main.c
-[v _ISR `IF1961 ~T0 @X0 1 e ]
+[v _ISR `IF1965 ~T0 @X0 1 e ]
 "25
 {
 [; ;Main.c: 24: void interrupt ISR(void)

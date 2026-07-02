@@ -35,7 +35,7 @@ void BUTTON_Init(void)
 	PORTC   =  0B00000000; 	
 	TRISC  |=  0B00000010;	//PC输入输出 0-输出 1-输入
     
-    WPUB   |=  0B00000010;	//打开上拉输入
+    WPUC   |=  0B00000010;	//打开上拉输入
 }
 /*-------------------------------------------------
  *  函数名BUZZER_Init
@@ -48,7 +48,7 @@ void BUZZER_Init(void)
 	PORTC   =  0B00000000; 	
 	TRISC  &= ~0B00000010;	//PC输入输出 0-输出 1-输入
     
-    WPUB   &= ~0B00000010;	//关闭上拉输入
+    WPUC   &= ~0B00000010;	//关闭上拉输入
 }
 /*-------------------------------------------------
  *  函数名BUZZ_Control
@@ -77,7 +77,7 @@ void Key_Dected(void)
 {
 	static uint8_t num = 0;
     static uint8_t long_num = 0;//长按时间
-	if(!BUZZTT_Flag)//在按键状态下
+	if(BUZZTT_Flag == 0)//在按键状态下
     {
 		BUTTON_Init();
 		if(!PC1)//按键按下
@@ -98,6 +98,10 @@ void Key_Dected(void)
             long_num = 0;
         }
     }
+//    else
+//    {
+//		SYS.KEY_Value = 0;
+//    }
     
     if(KEY_Press)
     {
@@ -107,9 +111,10 @@ void Key_Dected(void)
         }
         else
         {
+//			long_num = 0;
 			KEY_Long_Press = 1;
 			SYS.Long_Time_Change = 0;//导通超时后，按键导通重新计时
-
+			SYS.KEY_Value = 1;
         }
     }
 }
@@ -140,8 +145,8 @@ void BUZZER_Dected(void)
 
 void BUZZTT_Task(void)
 {
-	BUZZTT_Control();
-    BUZZER_Dected();
-	Key_Dected();
+//	BUZZTT_Control();
+//    BUZZER_Dected();
+//	Key_Dected();
 
 }

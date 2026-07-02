@@ -471,8 +471,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _Timer0_Init `(v ~T0 @X0 0 ef ]
 "11 Int.h
 [v _Int_Initial `(v ~T0 @X0 0 ef ]
-"10 RC.h
-[v _RC_INITIAL `(v ~T0 @X0 0 ef ]
+"13 BUZZTT.h
+[v _BUZZER_Init `(v ~T0 @X0 0 ef ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
 [; ;gcc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3137,6 +3137,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 9: void BUZZTT_Control(void);
 [; ;BUZZTT.h: 10: void Key_Dected(void);
 [; ;BUZZTT.h: 11: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 12: void BUTTON_Init(void);
+[; ;BUZZTT.h: 13: void BUZZER_Init(void);
 [; ;APP.h: 16: void Initial(void);
 [; ;APP.h: 20: typedef struct{
 [; ;APP.h: 22: uint8_t Standby_Work_State;
@@ -3185,16 +3187,16 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;App.c: 21: Int_Initial();
 "21
 [e ( _Int_Initial ..  ]
-[; ;App.c: 22: RC_INITIAL();
-"22
-[e ( _RC_INITIAL ..  ]
-[; ;App.c: 36: T0IE = 1;
-"36
+[; ;App.c: 26: BUZZER_Init();
+"26
+[e ( _BUZZER_Init ..  ]
+[; ;App.c: 41: T0IE = 1;
+"41
 [e = _T0IE -> -> 1 `i `b ]
-[; ;App.c: 38: GIE = 1;
-"38
+[; ;App.c: 43: GIE = 1;
+"43
 [e = _GIE -> -> 1 `i `b ]
-[; ;App.c: 39: }
-"39
+[; ;App.c: 44: }
+"44
 [e :UE 157 ]
 }

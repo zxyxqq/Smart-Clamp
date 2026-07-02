@@ -34,9 +34,6 @@
 //		___bmul@multiplier		EQU		4DH
 //		___bmul@multiplicand		EQU		4BH
 //		___bmul@multiplier		EQU		4DH
-//		INT_Control@value		EQU		4BH
-//		INT_Control@value		EQU		4BH
-//		INT_Control@value		EQU		4BH
 //		DelayMs@Time		EQU		4DH
 //		DelayMs@b		EQU		4FH
 //		DelayMs@a		EQU		4EH
@@ -110,11 +107,11 @@
 		STR 	FSR 			//0036 	0184
 		LDWI 	4BH 			//0037 	2A4B
 		BCR 	PCLATH,3 		//0038 	118A
-		LCALL 	194H 			//0039 	3194
+		LCALL 	16DH 			//0039 	316D
 		CLRR 	79H 			//003A 	0179
 		CLRR 	STATUS 			//003B 	0103
 		BCR 	PCLATH,3 		//003C 	118A
-		LJUMP 	19CH 			//003D 	399C
+		LJUMP 	175H 			//003D 	3975
 		STR 	7FH 			//003E 	01FF
 		LDWI 	0H 			//003F 	2A00
 		STR 	PCLATH 			//0040 	018A
@@ -122,13 +119,13 @@
 		ADDWR 	PCL,1 			//0042 	0B82
 		LJUMP 	43H 			//0043 	3843
 		BCR 	PCLATH,3 		//0044 	118A
-		LJUMP 	1A5H 			//0045 	39A5
+		LJUMP 	183H 			//0045 	3983
 		BCR 	PCLATH,3 		//0046 	118A
-		LJUMP 	160H 			//0047 	3960
+		LJUMP 	17CH 			//0047 	397C
 		BCR 	PCLATH,3 		//0048 	118A
-		LJUMP 	1A4H 			//0049 	39A4
+		LJUMP 	162H 			//0049 	3962
 		BCR 	PCLATH,3 		//004A 	118A
-		LJUMP 	1A3H 			//004B 	39A3
+		LJUMP 	182H 			//004B 	3982
 
 		//;Main.c: 26: if(T0IE && T0IF)
 		BTSC 	INTCON,5 		//004C 	168B
@@ -157,12 +154,12 @@
 		SWAPR 	7EH,0 			//005C 	077E
 		RETI		 			//005D 	0009
 
-		//;Task.c: 107: uint8_t i;
-		//;Task.c: 108: for(i = 0;i<TASK_MAX;i++)
+		//;Task.c: 137: uint8_t i;
+		//;Task.c: 138: for(i = 0;i<TASK_MAX;i++)
 		CLRR 	75H 			//005E 	0175
 
-		//;Task.c: 109: {
-		//;Task.c: 110: if(TaskCompany[i].Timer)
+		//;Task.c: 139: {
+		//;Task.c: 140: if(TaskCompany[i].Timer)
 		LDWI 	6H 			//005F 	2A06
 		STR 	70H 			//0060 	01F0
 		LDR 	75H,0 			//0061 	0875
@@ -175,8 +172,8 @@
 		BTSC 	STATUS,2 		//0068 	1503
 		LJUMP 	A4H 			//0069 	38A4
 
-		//;Task.c: 111: {
-		//;Task.c: 112: TaskCompany[i].Timer--;
+		//;Task.c: 141: {
+		//;Task.c: 142: TaskCompany[i].Timer--;
 		LDWI 	6H 			//006A 	2A06
 		STR 	70H 			//006B 	01F0
 		LDR 	75H,0 			//006C 	0875
@@ -195,7 +192,7 @@
 		LDWI 	6H 			//0079 	2A06
 		DECR 	FSR,1 			//007A 	0D84
 
-		//;Task.c: 113: if(TaskCompany[i].Timer <= 0)
+		//;Task.c: 143: if(TaskCompany[i].Timer <= 0)
 		STR 	70H 			//007B 	01F0
 		LDR 	75H,0 			//007C 	0875
 		LCALL 	AAH 			//007D 	30AA
@@ -207,8 +204,8 @@
 		BTSS 	STATUS,2 		//0083 	1D03
 		LJUMP 	A4H 			//0084 	38A4
 
-		//;Task.c: 114: {
-		//;Task.c: 115: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+		//;Task.c: 144: {
+		//;Task.c: 145: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
 		LDWI 	6H 			//0085 	2A06
 		STR 	70H 			//0086 	01F0
 		LDR 	75H,0 			//0087 	0875
@@ -231,7 +228,7 @@
 		LDR 	74H,0 			//0098 	0874
 		STR 	INDF 			//0099 	0180
 
-		//;Task.c: 116: TaskCompany[i].Run = 1;
+		//;Task.c: 146: TaskCompany[i].Run = 1;
 		LDWI 	6H 			//009A 	2A06
 		STR 	70H 			//009B 	01F0
 		LDR 	75H,0 			//009C 	0875
@@ -292,13 +289,13 @@
 		LCALL 	EBH 			//00C9 	30EB
 		BCR 	PCLATH,3 		//00CA 	118A
 
-		//;App.c: 22: RC_INITIAL();
+		//;App.c: 26: BUZZER_Init();
 		LCALL 	127H 			//00CB 	3127
 
-		//;App.c: 36: T0IE = 1;
+		//;App.c: 41: T0IE = 1;
 		BSR 	INTCON,5 		//00CC 	1A8B
 
-		//;App.c: 38: GIE = 1;
+		//;App.c: 43: GIE = 1;
 		BSR 	INTCON,7 		//00CD 	1B8B
 		RET		 					//00CE 	0004
 		STR 	4DH 			//00CF 	01CD
@@ -465,188 +462,132 @@
 		STR 	1H 			//0125 	0181
 		RET		 					//0126 	0004
 
-		//;RC.c: 17: PORTB |= 0B00000000;
+		//;BUZZTT.c: 48: PORTC = 0B00000000;
 		BCR 	STATUS,5 		//0127 	1283
-		LDR 	6H,0 			//0128 	0806
+		CLRR 	7H 			//0128 	0107
 
-		//;RC.c: 18: TRISB |= 0B00100000;
+		//;BUZZTT.c: 49: TRISC &= ~0B00000010;
 		BSR 	STATUS,5 		//0129 	1A83
-		BSR 	6H,5 			//012A 	1A86
-		RET		 					//012B 	0004
+		BCR 	7H,1 			//012A 	1087
 
-		//;Task.c: 90: unsigned char i;
-		//;Task.c: 91: for(i = 0;i<TASK_MAX;i++)
-		BCR 	STATUS,5 		//012C 	1283
-		CLRR 	4EH 			//012D 	014E
+		//;BUZZTT.c: 51: WPUC &= ~0B00000010;
+		BCR 	13H,1 			//012B 	1093
+		RET		 					//012C 	0004
 
-		//;Task.c: 92: {
-		//;Task.c: 93: if(TaskCompany[i].Run == 1)
-		LDWI 	6H 			//012E 	2A06
-		STR 	4BH 			//012F 	01CB
-		LDR 	4EH,0 			//0130 	084E
-		LCALL 	152H 			//0131 	3152
-		BCR 	PCLATH,3 		//0132 	118A
-		ADDWI 	20H 			//0133 	2720
-		STR 	FSR 			//0134 	0184
-		BCR 	STATUS,7 		//0135 	1383
-		DECRSZ 	INDF,0 		//0136 	0E00
-		LJUMP 	14CH 			//0137 	394C
+		//;Task.c: 120: unsigned char i;
+		//;Task.c: 121: for(i = 0;i<TASK_MAX;i++)
+		BCR 	STATUS,5 		//012D 	1283
+		CLRR 	4EH 			//012E 	014E
 
-		//;Task.c: 94: {
-		//;Task.c: 95: TaskCompany[i].Run = 0;
-		LDWI 	6H 			//0138 	2A06
-		STR 	4BH 			//0139 	01CB
-		LDR 	4EH,0 			//013A 	084E
-		LCALL 	152H 			//013B 	3152
-		BCR 	PCLATH,3 		//013C 	118A
-		ADDWI 	20H 			//013D 	2720
-		STR 	FSR 			//013E 	0184
-		LDWI 	6H 			//013F 	2A06
-		BCR 	STATUS,7 		//0140 	1383
-		CLRR 	INDF 			//0141 	0100
+		//;Task.c: 122: {
+		//;Task.c: 123: if(TaskCompany[i].Run == 1)
+		LDWI 	6H 			//012F 	2A06
+		STR 	4BH 			//0130 	01CB
+		LDR 	4EH,0 			//0131 	084E
+		LCALL 	154H 			//0132 	3154
+		BCR 	PCLATH,3 		//0133 	118A
+		ADDWI 	20H 			//0134 	2720
+		STR 	FSR 			//0135 	0184
+		BCR 	STATUS,7 		//0136 	1383
+		DECRSZ 	INDF,0 		//0137 	0E00
+		LJUMP 	14DH 			//0138 	394D
 
-		//;Task.c: 96: TaskCompany[i].TaskHook();
-		STR 	4BH 			//0142 	01CB
-		LDR 	4EH,0 			//0143 	084E
-		LCALL 	152H 			//0144 	3152
-		ADDWI 	25H 			//0145 	2725
-		STR 	FSR 			//0146 	0184
-		BCR 	STATUS,7 		//0147 	1383
-		LDR 	INDF,0 			//0148 	0800
-		BCR 	PCLATH,3 		//0149 	118A
-		LCALL 	3EH 			//014A 	303E
-		BCR 	PCLATH,3 		//014B 	118A
-		LDWI 	4H 			//014C 	2A04
-		INCR	4EH,1 			//014D 	09CE
-		SUBWR 	4EH,0 			//014E 	0C4E
-		BTSC 	STATUS,0 		//014F 	1403
-		RET		 					//0150 	0004
-		LJUMP 	12EH 			//0151 	392E
-		STR 	4DH 			//0152 	01CD
-		CLRR 	4CH 			//0153 	014C
-		LDR 	4BH,0 			//0154 	084B
-		BTSC 	4DH,0 			//0155 	144D
-		ADDWR 	4CH,1 			//0156 	0BCC
-		BCR 	STATUS,0 		//0157 	1003
-		RLR 	4BH,1 			//0158 	05CB
+		//;Task.c: 124: {
+		//;Task.c: 125: TaskCompany[i].Run = 0;
+		LDWI 	6H 			//0139 	2A06
+		STR 	4BH 			//013A 	01CB
+		LDR 	4EH,0 			//013B 	084E
+		LCALL 	154H 			//013C 	3154
+		BCR 	PCLATH,3 		//013D 	118A
+		ADDWI 	20H 			//013E 	2720
+		STR 	FSR 			//013F 	0184
+		LDWI 	6H 			//0140 	2A06
+		BCR 	STATUS,7 		//0141 	1383
+		CLRR 	INDF 			//0142 	0100
+
+		//;Task.c: 126: TaskCompany[i].TaskHook();
+		STR 	4BH 			//0143 	01CB
+		LDR 	4EH,0 			//0144 	084E
+		LCALL 	154H 			//0145 	3154
+		ADDWI 	25H 			//0146 	2725
+		STR 	FSR 			//0147 	0184
+		BCR 	STATUS,7 		//0148 	1383
+		LDR 	INDF,0 			//0149 	0800
+		BCR 	PCLATH,3 		//014A 	118A
+		LCALL 	3EH 			//014B 	303E
+		BCR 	PCLATH,3 		//014C 	118A
+		BCR 	STATUS,5 		//014D 	1283
+		LDWI 	4H 			//014E 	2A04
+		INCR	4EH,1 			//014F 	09CE
+		SUBWR 	4EH,0 			//0150 	0C4E
+		BTSC 	STATUS,0 		//0151 	1403
+		RET		 					//0152 	0004
+		LJUMP 	12FH 			//0153 	392F
+		STR 	4DH 			//0154 	01CD
+		CLRR 	4CH 			//0155 	014C
+		LDR 	4BH,0 			//0156 	084B
+		BTSC 	4DH,0 			//0157 	144D
+		ADDWR 	4CH,1 			//0158 	0BCC
 		BCR 	STATUS,0 		//0159 	1003
-		RRR	4DH,1 			//015A 	06CD
-		LDR 	4DH,0 			//015B 	084D
-		BTSS 	STATUS,2 		//015C 	1D03
-		LJUMP 	154H 			//015D 	3954
-		LDR 	4CH,0 			//015E 	084C
-		RET		 					//015F 	0004
+		RLR 	4BH,1 			//015A 	05CB
+		BCR 	STATUS,0 		//015B 	1003
+		RRR	4DH,1 			//015C 	06CD
+		LDR 	4DH,0 			//015D 	084D
+		BTSS 	STATUS,2 		//015E 	1D03
+		LJUMP 	156H 			//015F 	3956
+		LDR 	4CH,0 			//0160 	084C
+		RET		 					//0161 	0004
 
-		//;Task.c: 22: Int_Task();
-		LCALL 	163H 			//0160 	3163
-
-		//;Task.c: 36: SYS.RC_Value = 0;
-		CLRR 	3BH 			//0161 	013B
-		RET		 					//0162 	0004
-
-		//;INT.c: 73: if(SYS.LB_Value)
-		LDR 	3AH,0 			//0163 	083A
-		BTSC 	STATUS,2 		//0164 	1503
-		LJUMP 	168H 			//0165 	3968
-
-		//;INT.c: 74: {
-		//;INT.c: 75: LB_Open();
-		LCALL 	181H 			//0166 	3181
-		BCR 	PCLATH,3 		//0167 	118A
-
-		//;INT.c: 76: }
-		//;INT.c: 78: HT_Detect();
-		LCALL 	179H 			//0168 	3179
-		BCR 	PCLATH,3 		//0169 	118A
-
-		//;INT.c: 80: if(SYS.RC_Value || SYS.HT_Value == 0 || SYS.LB_Value)
-		LDR 	3BH,0 			//016A 	083B
-		BTSS 	STATUS,2 		//016B 	1D03
-		LJUMP 	173H 			//016C 	3973
-		LDR 	39H,0 			//016D 	0839
-		BTSC 	STATUS,2 		//016E 	1503
-		LJUMP 	173H 			//016F 	3973
-		LDR 	3AH,0 			//0170 	083A
-		BTSC 	STATUS,2 		//0171 	1503
-		LJUMP 	175H 			//0172 	3975
-
-		//;INT.c: 81: {
-		//;INT.c: 82: SYS.STANDBY_Value = 0;
-		CLRR 	42H 			//0173 	0142
-
-		//;INT.c: 83: }
-		LJUMP 	177H 			//0174 	3977
-
-		//;INT.c: 84: else
-		//;INT.c: 85: {
-		//;INT.c: 86: SYS.STANDBY_Value = 1;
-		CLRR 	42H 			//0175 	0142
-		INCR	42H,1 			//0176 	09C2
-
-		//;INT.c: 87: }
-		//;INT.c: 89: INT_Control(SYS.STANDBY_Value);
-		LDR 	42H,0 			//0177 	0842
-		LJUMP 	186H 			//0178 	3986
+		//;Task.c: 76: HT_Detect();
+		LJUMP 	163H 			//0162 	3963
 
 		//;INT.c: 30: TRISB |= 0B00000001;
-		BSR 	STATUS,5 		//0179 	1A83
-		BSR 	6H,0 			//017A 	1806
+		BSR 	STATUS,5 		//0163 	1A83
+		BSR 	6H,0 			//0164 	1806
 
-		//;INT.c: 32: SYS.HT_Value = PB0;
-		LDWI 	0H 			//017B 	2A00
-		BCR 	STATUS,5 		//017C 	1283
-		BTSC 	6H,0 			//017D 	1406
-		LDWI 	1H 			//017E 	2A01
-		STR 	39H 			//017F 	01B9
-		RET		 					//0180 	0004
+		//;INT.c: 34: SYS.HT_Value = PB0;
+		LDWI 	0H 			//0165 	2A00
+		BCR 	STATUS,5 		//0166 	1283
+		BTSC 	6H,0 			//0167 	1406
+		LDWI 	1H 			//0168 	2A01
+		STR 	39H 			//0169 	01B9
 
-		//;INT.c: 43: TRISB &= ~0B00000001;
-		BSR 	STATUS,5 		//0181 	1A83
-		BCR 	6H,0 			//0182 	1006
-
-		//;INT.c: 45: PB0 = 0;
-		BCR 	STATUS,5 		//0183 	1283
-		BCR 	6H,0 			//0184 	1006
-		RET		 					//0185 	0004
-		STR 	4BH 			//0186 	01CB
-
-		//;INT.c: 57: TRISB &= ~0B00000001;
-		BSR 	STATUS,5 		//0187 	1A83
-		BCR 	6H,0 			//0188 	1006
-
-		//;INT.c: 59: PB0 = (value == 1) ? 1 : 0;
-		BCR 	STATUS,5 		//0189 	1283
-		DECRSZ 	4BH,0 		//018A 	0E4B
-		LJUMP 	190H 			//018B 	3990
-		BCR 	STATUS,5 		//018C 	1283
-		BCR 	STATUS,6 		//018D 	1303
-		BSR 	6H,0 			//018E 	1806
-		RET		 					//018F 	0004
-		BCR 	STATUS,5 		//0190 	1283
-		BCR 	STATUS,6 		//0191 	1303
-		BCR 	6H,0 			//0192 	1006
-		RET		 					//0193 	0004
-		CLRWDT	 			//0194 	0001
-		CLRR 	INDF 			//0195 	0100
-		INCR	FSR,1 			//0196 	0984
-		XORWR 	FSR,0 			//0197 	0404
-		BTSC 	STATUS,2 		//0198 	1503
-		RETW 	0H 			//0199 	2100
-		XORWR 	FSR,0 			//019A 	0404
-		LJUMP 	195H 			//019B 	3995
+		//;INT.c: 36: TRISB &= ~0B00000001;
+		BSR 	STATUS,5 		//016A 	1A83
+		BCR 	6H,0 			//016B 	1006
+		RET		 					//016C 	0004
+		CLRWDT	 			//016D 	0001
+		CLRR 	INDF 			//016E 	0100
+		INCR	FSR,1 			//016F 	0984
+		XORWR 	FSR,0 			//0170 	0404
+		BTSC 	STATUS,2 		//0171 	1503
+		RETW 	0H 			//0172 	2100
+		XORWR 	FSR,0 			//0173 	0404
+		LJUMP 	16EH 			//0174 	396E
 
 		//;Main.c: 42: Initial();
-		BCR 	PCLATH,3 		//019C 	118A
-		LCALL 	C0H 			//019D 	30C0
-		BCR 	PCLATH,3 		//019E 	118A
+		BCR 	PCLATH,3 		//0175 	118A
+		LCALL 	C0H 			//0176 	30C0
+		BCR 	PCLATH,3 		//0177 	118A
 
 		//;Main.c: 44: {
 		//;Main.c: 45: Task_Process();
-		BCR 	PCLATH,3 		//019F 	118A
-		LCALL 	12CH 			//01A0 	312C
-		BCR 	PCLATH,3 		//01A1 	118A
-		LJUMP 	19FH 			//01A2 	399F
-		RET		 					//01A3 	0004
-		RET		 					//01A4 	0004
-		RET		 					//01A5 	0004
+		BCR 	PCLATH,3 		//0178 	118A
+		LCALL 	12DH 			//0179 	312D
+		BCR 	PCLATH,3 		//017A 	118A
+		LJUMP 	178H 			//017B 	3978
+
+		//;Task.c: 39: LB_Close();
+		LJUMP 	17DH 			//017C 	397D
+
+		//;INT.c: 63: TRISB &= ~0B00000001;
+		BSR 	STATUS,5 		//017D 	1A83
+		BCR 	6H,0 			//017E 	1006
+
+		//;INT.c: 65: PB0 = 0;
+		BCR 	STATUS,5 		//017F 	1283
+		BCR 	6H,0 			//0180 	1006
+		RET		 					//0181 	0004
+		RET		 					//0182 	0004
+		RET		 					//0183 	0004
 			END

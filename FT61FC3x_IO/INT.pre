@@ -1976,6 +1976,8 @@ void BUZZTT_Init(void);
 void BUZZTT_Control(void);
 void Key_Dected(void);
 void BUZZTT_Task(void);
+void BUTTON_Init(void);
+void BUZZER_Init(void);
 
 # 16 "app.h"
 void Initial(void);
@@ -2044,22 +2046,35 @@ void HT_Detect(void)
 {
 TRISB |= 0B00000001;
 
-SYS.HT_Value = PB0;
-}
 
-# 41
-void LB_Open(void)
-{
+
+SYS.HT_Value = PB0;
+
 TRISB &= ~0B00000001;
 
-PB0 = 0;
+}
+
+# 46
+void LB_Open(void)
+{
+
+
+
+
+TRISB &= ~0B00000001;
+
+PB0 = 1;
 }
 
 void LB_Close(void)
 {
+
+
+
+
 TRISB &= ~0B00000001;
 
-PB0 = 1;
+PB0 = 0;
 }
 
 void INT_Control(uint8_t value)
@@ -2069,11 +2084,11 @@ TRISB &= ~0B00000001;
 PB0 = (value == 1) ? 1 : 0;
 }
 
-# 67
+# 80
 void Int_Task(void)
 {
 
-# 73
+# 86
 if(SYS.LB_Value)
 {
 LB_Open();
@@ -2081,14 +2096,5 @@ LB_Open();
 
 HT_Detect();
 
-if(SYS.RC_Value || SYS.HT_Value == 0 || SYS.LB_Value)
-{
-SYS.STANDBY_Value = 0;
-}
-else
-{
-SYS.STANDBY_Value = 1;
-}
-
-INT_Control(SYS.STANDBY_Value);
+# 103
 }

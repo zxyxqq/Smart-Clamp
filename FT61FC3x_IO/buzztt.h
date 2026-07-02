@@ -9,6 +9,8 @@ void BUZZTT_Init(void);
 void BUZZTT_Control(void);
 void Key_Dected(void);
 void BUZZTT_Task(void);
+void BUTTON_Init(void);
+void BUZZER_Init(void);
 
 
 #endif

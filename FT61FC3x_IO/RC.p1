@@ -3123,6 +3123,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 9: void BUZZTT_Control(void);
 [; ;BUZZTT.h: 10: void Key_Dected(void);
 [; ;BUZZTT.h: 11: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 12: void BUTTON_Init(void);
+[; ;BUZZTT.h: 13: void BUZZER_Init(void);
 [; ;APP.H: 16: void Initial(void);
 [; ;APP.H: 20: typedef struct{
 [; ;APP.H: 22: uint8_t Standby_Work_State;
@@ -3187,6 +3189,27 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "35
 [e :UE 158 ]
 }
+"43
+[v _RC_Control `(v ~T0 @X0 1 ef1`uc ]
+"44
+{
+[; ;RC.c: 43: void RC_Control(uint8_t value)
+[; ;RC.c: 44: {
+[e :U _RC_Control ]
+"43
+[v _value `uc ~T0 @X0 1 r1 ]
+"44
+[f ]
+[; ;RC.c: 45: TRISB &= ~0B00100000;
+"45
+[e =& _TRISB -> ~ -> 32 `i `uc ]
+[; ;RC.c: 49: PB5 = (value == 1) ? 1 : 0;
+"49
+[e = _PB5 -> ? == -> _value `i -> 1 `i : -> 1 `i -> 0 `i `b ]
+[; ;RC.c: 50: }
+"50
+[e :UE 159 ]
+}
 "53
 [v _RC_Task `(v ~T0 @X0 1 ef ]
 "54
@@ -3200,5 +3223,5 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e ( _RC_Detect ..  ]
 [; ;RC.c: 58: }
 "58
-[e :UE 159 ]
+[e :UE 160 ]
 }

@@ -3122,6 +3122,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 9: void BUZZTT_Control(void);
 [; ;BUZZTT.h: 10: void Key_Dected(void);
 [; ;BUZZTT.h: 11: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 12: void BUTTON_Init(void);
+[; ;BUZZTT.h: 13: void BUZZER_Init(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3174,124 +3176,98 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;INT.c: 30: TRISB |= 0B00000001;
 "30
 [e =| _TRISB -> -> 1 `i `uc ]
-[; ;INT.c: 32: SYS.HT_Value = PB0;
-"32
+[; ;INT.c: 34: SYS.HT_Value = PB0;
+"34
 [e = . _SYS 1 -> -> _PB0 `i `uc ]
-[; ;INT.c: 33: }
-"33
+[; ;INT.c: 36: TRISB &= ~0B00000001;
+"36
+[e =& _TRISB -> ~ -> 1 `i `uc ]
+[; ;INT.c: 38: }
+"38
 [e :UE 158 ]
 }
-"41
+"46
 [v _LB_Open `(v ~T0 @X0 1 ef ]
-"42
+"47
 {
-[; ;INT.c: 41: void LB_Open(void)
-[; ;INT.c: 42: {
+[; ;INT.c: 46: void LB_Open(void)
+[; ;INT.c: 47: {
 [e :U _LB_Open ]
 [f ]
-[; ;INT.c: 43: TRISB &= ~0B00000001;
-"43
+[; ;INT.c: 52: TRISB &= ~0B00000001;
+"52
 [e =& _TRISB -> ~ -> 1 `i `uc ]
-[; ;INT.c: 45: PB0 = 0;
-"45
-[e = _PB0 -> -> 0 `i `b ]
-[; ;INT.c: 46: }
-"46
+[; ;INT.c: 54: PB0 = 1;
+"54
+[e = _PB0 -> -> 1 `i `b ]
+[; ;INT.c: 55: }
+"55
 [e :UE 159 ]
 }
-"48
+"57
 [v _LB_Close `(v ~T0 @X0 1 ef ]
-"49
+"58
 {
-[; ;INT.c: 48: void LB_Close(void)
-[; ;INT.c: 49: {
+[; ;INT.c: 57: void LB_Close(void)
+[; ;INT.c: 58: {
 [e :U _LB_Close ]
 [f ]
-[; ;INT.c: 50: TRISB &= ~0B00000001;
-"50
+[; ;INT.c: 63: TRISB &= ~0B00000001;
+"63
 [e =& _TRISB -> ~ -> 1 `i `uc ]
-[; ;INT.c: 52: PB0 = 1;
-"52
-[e = _PB0 -> -> 1 `i `b ]
-[; ;INT.c: 53: }
-"53
+[; ;INT.c: 65: PB0 = 0;
+"65
+[e = _PB0 -> -> 0 `i `b ]
+[; ;INT.c: 66: }
+"66
 [e :UE 160 ]
 }
-"55
+"68
 [v _INT_Control `(v ~T0 @X0 1 ef1`uc ]
-"56
+"69
 {
-[; ;INT.c: 55: void INT_Control(uint8_t value)
-[; ;INT.c: 56: {
+[; ;INT.c: 68: void INT_Control(uint8_t value)
+[; ;INT.c: 69: {
 [e :U _INT_Control ]
-"55
+"68
 [v _value `uc ~T0 @X0 1 r1 ]
-"56
+"69
 [f ]
-[; ;INT.c: 57: TRISB &= ~0B00000001;
-"57
+[; ;INT.c: 70: TRISB &= ~0B00000001;
+"70
 [e =& _TRISB -> ~ -> 1 `i `uc ]
-[; ;INT.c: 59: PB0 = (value == 1) ? 1 : 0;
-"59
+[; ;INT.c: 72: PB0 = (value == 1) ? 1 : 0;
+"72
 [e = _PB0 -> ? == -> _value `i -> 1 `i : -> 1 `i -> 0 `i `b ]
-[; ;INT.c: 60: }
-"60
+[; ;INT.c: 73: }
+"73
 [e :UE 161 ]
 }
-"67
-[v _Int_Task `(v ~T0 @X0 1 ef ]
-"68
-{
-[; ;INT.c: 67: void Int_Task(void)
-[; ;INT.c: 68: {
-[e :U _Int_Task ]
-[f ]
-[; ;INT.c: 73: if(SYS.LB_Value)
-"73
-[e $ ! != -> . _SYS 2 `i -> -> -> 0 `i `uc `i 163  ]
-[; ;INT.c: 74: {
-"74
-{
-[; ;INT.c: 75: LB_Open();
-"75
-[e ( _LB_Open ..  ]
-"76
-}
-[e :U 163 ]
-[; ;INT.c: 76: }
-[; ;INT.c: 78: HT_Detect();
-"78
-[e ( _HT_Detect ..  ]
-[; ;INT.c: 80: if(SYS.RC_Value || SYS.HT_Value == 0 || SYS.LB_Value)
 "80
-[e $ ! || || != -> . _SYS 3 `i -> -> -> 0 `i `uc `i == -> . _SYS 1 `i -> 0 `i != -> . _SYS 2 `i -> -> -> 0 `i `uc `i 164  ]
-[; ;INT.c: 81: {
+[v _Int_Task `(v ~T0 @X0 1 ef ]
 "81
 {
-[; ;INT.c: 82: SYS.STANDBY_Value = 0;
-"82
-[e = . _SYS 10 -> -> 0 `i `uc ]
-"83
-}
-[; ;INT.c: 83: }
-[e $U 165  ]
-"84
-[e :U 164 ]
-[; ;INT.c: 84: else
-[; ;INT.c: 85: {
-"85
-{
-[; ;INT.c: 86: SYS.STANDBY_Value = 1;
+[; ;INT.c: 80: void Int_Task(void)
+[; ;INT.c: 81: {
+[e :U _Int_Task ]
+[f ]
+[; ;INT.c: 86: if(SYS.LB_Value)
 "86
-[e = . _SYS 10 -> -> 1 `i `uc ]
+[e $ ! != -> . _SYS 2 `i -> -> -> 0 `i `uc `i 163  ]
+[; ;INT.c: 87: {
 "87
-}
-[e :U 165 ]
-[; ;INT.c: 87: }
-[; ;INT.c: 89: INT_Control(SYS.STANDBY_Value);
+{
+[; ;INT.c: 88: LB_Open();
+"88
+[e ( _LB_Open ..  ]
 "89
-[e ( _INT_Control (1 . _SYS 10 ]
-[; ;INT.c: 90: }
-"90
+}
+[e :U 163 ]
+[; ;INT.c: 89: }
+[; ;INT.c: 91: HT_Detect();
+"91
+[e ( _HT_Detect ..  ]
+[; ;INT.c: 103: }
+"103
 [e :UE 162 ]
 }

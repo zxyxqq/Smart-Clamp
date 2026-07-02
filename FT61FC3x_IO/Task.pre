@@ -1957,6 +1957,8 @@ void BUZZTT_Init(void);
 void BUZZTT_Control(void);
 void Key_Dected(void);
 void BUZZTT_Task(void);
+void BUTTON_Init(void);
+void BUZZER_Init(void);
 
 # 16 "app.h"
 void Initial(void);
@@ -2046,33 +2048,35 @@ static TaskComps TaskCompany[] =
 void Task_0(void)
 {
 
+# 39
+LB_Close();
 
-Int_Task();
-
-# 36
-SYS.RC_Value = 0;
+# 64
 }
 
-# 45
+# 72
 void Task_1(void)
 {
 
+
+HT_Detect();
+
 }
 
-# 55
+# 85
 void Task_2(void)
 {
 
 }
 
-# 65
+# 95
 void Task_3(void)
 {
 
-# 80
+# 110
 }
 
-# 88
+# 118
 void Task_Process(void)
 {
 unsigned char i;
@@ -2086,7 +2090,7 @@ TaskCompany[i].TaskHook();
 }
 }
 
-# 105
+# 135
 void Task_Count(void)
 {
 uint8_t i;
