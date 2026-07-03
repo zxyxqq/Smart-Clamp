@@ -1952,13 +1952,15 @@ void RC_Detect(void);
 void RC_Control(uint8_t value);
 void RC_Task(void);
 
-# 8 "BUZZTT.h"
+# 10 "BUZZTT.h"
 void BUZZTT_Init(void);
-void BUZZTT_Control(void);
-void Key_Dected(void);
+void KEY_Init(void);
+void Hummer_Init(void);
+void BUZZHH_Control(void);
+void Key_Detect(void);
+void Hummer_Task(void);
 void BUZZTT_Task(void);
-void BUTTON_Init(void);
-void BUZZER_Init(void);
+void Key_Task(void);
 
 # 16 "app.h"
 void Initial(void);
@@ -1985,7 +1987,7 @@ uint8_t Vadc_Value;
 
 uint8_t Cadc_Value;
 
-uint8_t Buzzer_Value;
+
 
 uint8_t READY_Value;
 
@@ -2004,6 +2006,9 @@ uint8_t Long_Time_Change;
 uint8_t Delay_2s_Flag ;
 
 uint8_t Cadc_Ready_Flag ;
+
+
+
 
 }sys;
 
@@ -2048,9 +2053,6 @@ static TaskComps TaskCompany[] =
 void Task_0(void)
 {
 
-# 39
-LB_Close();
-
 # 64
 }
 
@@ -2059,24 +2061,25 @@ void Task_1(void)
 {
 
 
-HT_Detect();
+
+BUZZTT_Task();
 
 }
 
-# 85
+# 86
 void Task_2(void)
 {
 
 }
 
-# 95
+# 96
 void Task_3(void)
 {
 
-# 110
+# 111
 }
 
-# 118
+# 119
 void Task_Process(void)
 {
 unsigned char i;
@@ -2090,7 +2093,7 @@ TaskCompany[i].TaskHook();
 }
 }
 
-# 135
+# 136
 void Task_Count(void)
 {
 uint8_t i;

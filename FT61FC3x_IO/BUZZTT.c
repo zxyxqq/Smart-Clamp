@@ -1,16 +1,17 @@
 #include "buzztt.h"
 /*按键和蜂鸣器共同使用*/
 /*
-
+	有源蜂鸣器，拉低就叫。
 	
-	4KHZ频率下，2KHZ高（蜂鸣器），2KHZ低（按键输入检测）
+    不断检测是否出现报警，如果出现切换到蜂鸣器模式
+    
+    不报警的前提下：每隔10ms做一次按键检测，如果检测到按键按下进入按键模式，如果突然检测到报警退出按键模式，进入按键模式
+    
+    
+	
 */
 
 
-
-volatile uint8_t BUZZTT_Flag = 0;//按键蜂鸣器切换标志位;0为按键，1为蜂鸣器.
-uint8_t KEY_Press = 0;
-uint8_t KEY_Long_Press = 0;//表示按键长按
 /*-------------------------------------------------
  *  函数名BUZZTT_Init
  *	功能：  初始化按键和蜂鸣器
@@ -22,15 +23,15 @@ void BUZZTT_Init(void)
 	PORTC   =  0B00000000; 	
 	TRISC  &= ~0B00000010;	//PC输入输出 0-输出 1-输入
     
-    PC1 = 0; //先关闭 
+    PC1 = 1; //先关闭蜂鸣器
 }
 /*-------------------------------------------------
- *  函数名BUTTON_Init
+ *  函数名KEY_Init
  *	功能：  初始化按键（输入）
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-void BUTTON_Init(void)
+void KEY_Init(void)
 {
 	PORTC   =  0B00000000; 	
 	TRISC  |=  0B00000010;	//PC输入输出 0-输出 1-输入
@@ -38,12 +39,12 @@ void BUTTON_Init(void)
     WPUC   |=  0B00000010;	//打开上拉输入
 }
 /*-------------------------------------------------
- *  函数名BUZZER_Init
+ *  函数名Hummer_Init
  *	功能：  初始化蜂鸣器（输出）
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-void BUZZER_Init(void)
+void Hummer_Init(void)
 {
 	PORTC   =  0B00000000; 	
 	TRISC  &= ~0B00000010;	//PC输入输出 0-输出 1-输入
@@ -51,91 +52,99 @@ void BUZZER_Init(void)
     WPUC   &= ~0B00000010;	//关闭上拉输入
 }
 /*-------------------------------------------------
- *  函数名BUZZ_Control
- *	功能：  根据标志位切换；1:蜂鸣器；0：按键；
+ *  函数名BUZZHH_Control
+ *	功能：  1:蜂鸣器；0：按键；
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-void BUZZTT_Control(void)
+void BUZZHH_Control(void)
 {
-	if(BUZZTT_Flag)
-    {
-		BUZZER_Init();
-    }
-    else
-    {
-		BUTTON_Init();
-    }
+//	if(SYS.HT_Value || SYS.LB_Value || SYS.RC_Value)//蜂鸣器
+//    {
+//		Hummer_Task();
+//    }
+//    else//按键
+//    {
+		Key_Task();
+//    }
 }
+static uint8_t KEY_Press = 0;
+
 /*-------------------------------------------------
- *  函数名Key_Dected
+ *  函数名Key_Detect
  *	功能：  按键检测(10ms执行一次),3s长按
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-void Key_Dected(void)
+void Key_Detect(void)
 {
-	static uint8_t num = 0;
-    static uint8_t long_num = 0;//长按时间
-	if(BUZZTT_Flag == 0)//在按键状态下
-    {
-		BUTTON_Init();
-		if(!PC1)//按键按下
+	static uint8_t press_cnt  = 0;		// 消抖计数
+    static uint16_t long_cnt  = 0;		// 长按计时
+    static uint8_t  long_trig = 0;      // 新增：长按已触发标志 (0=未触发, 1=已触发)
+
+	if(PC1 == 0)//按键按下
+	{
+		// 1. 消抖
+		if(press_cnt <4)//执行4次
+		{
+			press_cnt  ++;
+		}
+		else
+		{
+			KEY_Press = 1;//表示按键按下
+		}
+        
+		 // 2. 长按计时（仅在“未触发”且“未超时”时累加）
+        if(KEY_Press && long_trig == 0 && long_cnt<LONG_Press_Time)
         {
-			if(num<2)//执行两次
-            {
-				num ++;
-            }
-            else
-            {
-				KEY_Press = 1;//表示按键按下
-            }
+			long_cnt++;
         }
-        else//松开按键
+        
+        
+        // 3. 长按触发（达到3秒 且 尚未触发过）
+        if(KEY_Press && long_cnt >= LONG_Press_Time && long_trig == 0)
         {
-			num = 0;
-			KEY_Press = 0;
-            long_num = 0;
+			//长按动作（只执行一次）
+            SYS.Long_Time_Change = 0;
+            SYS.KEY_Value = 1;
+
+            long_trig = 1;  // 关键：标志置1，以后不再进入本分支
         }
-    }
-//    else
-//    {
-//		SYS.KEY_Value = 0;
-//    }
-    
-    if(KEY_Press)
-    {
-		if(long_num<LONG_Press_Time)
-        {
-			long_num++;
-        }
-        else
-        {
-//			long_num = 0;
-			KEY_Long_Press = 1;
-			SYS.Long_Time_Change = 0;//导通超时后，按键导通重新计时
-			SYS.KEY_Value = 1;
-        }
-    }
+
+	}
+	else//松开按键
+	{
+		// 松手时把所有状态复位，以便下次重新长按
+        press_cnt = 0;
+        KEY_Press = 0;
+        long_cnt = 0;
+        long_trig = 0;  // 复位触发标志
+	}
 }
 /*-------------------------------------------------
- *  函数名BUZZER_Dected
+ *  函数名Key_Task
+ *	功能：  按键任务
+ *  输入：  无
+ *  输出：  无
+ --------------------------------------------------*/	
+
+void Key_Task(void)
+{
+	KEY_Init();
+    Key_Detect();
+}
+/*-------------------------------------------------
+ *  函数名Hummer_Task
  *	功能：  蜂鸣器任务
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
 
-void BUZZER_Dected(void)
+void Hummer_Task(void)
 {
-	if(BUZZTT_Flag)
-    {
-		BUZZER_Init();
-        PC1 = 1;
-
-    }
+	Hummer_Init();
+    PC1 = 0;
 }
-
-
 /*-------------------------------------------------
  *  函数名BUZZTT_Task
  *	功能：  按键和蜂鸣器任务
@@ -145,8 +154,5 @@ void BUZZER_Dected(void)
 
 void BUZZTT_Task(void)
 {
-//	BUZZTT_Control();
-//    BUZZER_Dected();
-//	Key_Dected();
-
+	BUZZHH_Control();//先判断是按键还是蜂鸣器有效,进行初始化
 }

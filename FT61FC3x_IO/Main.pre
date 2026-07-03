@@ -1978,13 +1978,15 @@ void RC_Detect(void);
 void RC_Control(uint8_t value);
 void RC_Task(void);
 
-# 8 "BUZZTT.h"
+# 10 "BUZZTT.h"
 void BUZZTT_Init(void);
-void BUZZTT_Control(void);
-void Key_Dected(void);
+void KEY_Init(void);
+void Hummer_Init(void);
+void BUZZHH_Control(void);
+void Key_Detect(void);
+void Hummer_Task(void);
 void BUZZTT_Task(void);
-void BUTTON_Init(void);
-void BUZZER_Init(void);
+void Key_Task(void);
 
 # 16 "app.h"
 void Initial(void);
@@ -2011,7 +2013,7 @@ uint8_t Vadc_Value;
 
 uint8_t Cadc_Value;
 
-uint8_t Buzzer_Value;
+
 
 uint8_t READY_Value;
 
@@ -2030,6 +2032,9 @@ uint8_t Long_Time_Change;
 uint8_t Delay_2s_Flag ;
 
 uint8_t Cadc_Ready_Flag ;
+
+
+
 
 }sys;
 

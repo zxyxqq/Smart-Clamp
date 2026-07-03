@@ -59,7 +59,7 @@ void SYS_Initial(void)
 
 	SYS.Cadc_Value = 0;		//电瓶端低电压报警标志位
 
-	SYS.Buzzer_Value = 0;	//蜂鸣器鸣叫标志位(待机)
+//	SYS.Hummer_Value = 0;	//蜂鸣器鸣叫标志位(待机)
     
     SYS.READY_Value = 0;	//继电器开关标志位
     

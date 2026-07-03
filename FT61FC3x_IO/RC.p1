@@ -459,9 +459,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
 "20 APP.H
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value Buzzer_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"62
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"65
 [v _SYS `S156 ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3119,12 +3119,14 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Int.h: 13: void LB_Open(void);
 [; ;Int.h: 14: void Int_Task(void);
 [; ;Int.h: 15: void LB_Close(void);
-[; ;BUZZTT.h: 8: void BUZZTT_Init(void);
-[; ;BUZZTT.h: 9: void BUZZTT_Control(void);
-[; ;BUZZTT.h: 10: void Key_Dected(void);
-[; ;BUZZTT.h: 11: void BUZZTT_Task(void);
-[; ;BUZZTT.h: 12: void BUTTON_Init(void);
-[; ;BUZZTT.h: 13: void BUZZER_Init(void);
+[; ;BUZZTT.h: 10: void BUZZTT_Init(void);
+[; ;BUZZTT.h: 11: void KEY_Init(void);
+[; ;BUZZTT.h: 12: void Hummer_Init(void);
+[; ;BUZZTT.h: 13: void BUZZHH_Control(void);
+[; ;BUZZTT.h: 14: void Key_Detect(void);
+[; ;BUZZTT.h: 15: void Hummer_Task(void);
+[; ;BUZZTT.h: 16: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 17: void Key_Task(void);
 [; ;APP.H: 16: void Initial(void);
 [; ;APP.H: 20: typedef struct{
 [; ;APP.H: 22: uint8_t Standby_Work_State;
@@ -3135,7 +3137,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;APP.H: 34: uint8_t KEY_Value;
 [; ;APP.H: 36: uint8_t Vadc_Value;
 [; ;APP.H: 38: uint8_t Cadc_Value;
-[; ;APP.H: 40: uint8_t Buzzer_Value;
 [; ;APP.H: 42: uint8_t READY_Value;
 [; ;APP.H: 44: uint8_t STANDBY_Value;
 [; ;APP.H: 48: uint8_t Short_Ready_Time_Flag;
@@ -3144,8 +3145,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;APP.H: 54: uint8_t Long_Time_Change;
 [; ;APP.H: 56: uint8_t Delay_2s_Flag ;
 [; ;APP.H: 58: uint8_t Cadc_Ready_Flag ;
-[; ;APP.H: 60: }sys;
-[; ;APP.H: 62: extern sys SYS;
+[; ;APP.H: 63: }sys;
+[; ;APP.H: 65: extern sys SYS;
 [; ;RC.h: 10: void RC_INITIAL(void);
 [; ;RC.h: 11: void RC_Detect(void);
 [; ;RC.h: 12: void RC_Control(uint8_t value);

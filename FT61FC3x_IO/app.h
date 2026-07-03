@@ -37,7 +37,7 @@ uint8_t Vadc_Value;		//电池端高低压报警标志位
 
 uint8_t Cadc_Value;		//电瓶端低电压报警标志位
 
-uint8_t Buzzer_Value;	//蜂鸣器鸣叫标志位(待机)
+//uint8_t Hummer_Value;	//蜂鸣器鸣叫标志位(待机),0:关闭蜂鸣器;1:打开蜂鸣器
 
 uint8_t READY_Value;	//继电器开关标志位
 
@@ -56,6 +56,9 @@ uint8_t	 Long_Time_Change;//电瓶长时间连接变更标志位,1：退出工作状态
 uint8_t	 Delay_2s_Flag ;//2S延迟用于检测电池端电压标志位
 
 uint8_t	 Cadc_Ready_Flag ;//在继电器打开2s后检测Cadc的电压
+
+//uint8_t BUZZHH_Change_Flag = 0;//按键蜂鸣器切换标志位;0为按键，1为蜂鸣器.
+
 
 }sys;
 

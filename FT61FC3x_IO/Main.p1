@@ -3125,12 +3125,14 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;RC.h: 11: void RC_Detect(void);
 [; ;RC.h: 12: void RC_Control(uint8_t value);
 [; ;RC.h: 13: void RC_Task(void);
-[; ;BUZZTT.h: 8: void BUZZTT_Init(void);
-[; ;BUZZTT.h: 9: void BUZZTT_Control(void);
-[; ;BUZZTT.h: 10: void Key_Dected(void);
-[; ;BUZZTT.h: 11: void BUZZTT_Task(void);
-[; ;BUZZTT.h: 12: void BUTTON_Init(void);
-[; ;BUZZTT.h: 13: void BUZZER_Init(void);
+[; ;BUZZTT.h: 10: void BUZZTT_Init(void);
+[; ;BUZZTT.h: 11: void KEY_Init(void);
+[; ;BUZZTT.h: 12: void Hummer_Init(void);
+[; ;BUZZTT.h: 13: void BUZZHH_Control(void);
+[; ;BUZZTT.h: 14: void Key_Detect(void);
+[; ;BUZZTT.h: 15: void Hummer_Task(void);
+[; ;BUZZTT.h: 16: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 17: void Key_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3141,7 +3143,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t KEY_Value;
 [; ;app.h: 36: uint8_t Vadc_Value;
 [; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 40: uint8_t Buzzer_Value;
 [; ;app.h: 42: uint8_t READY_Value;
 [; ;app.h: 44: uint8_t STANDBY_Value;
 [; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
@@ -3150,12 +3151,12 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 54: uint8_t Long_Time_Change;
 [; ;app.h: 56: uint8_t Delay_2s_Flag ;
 [; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 60: }sys;
-[; ;app.h: 62: extern sys SYS;
+[; ;app.h: 63: }sys;
+[; ;app.h: 65: extern sys SYS;
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F1965 `(v ~T0 @X0 1 tf ]
+[v F1968 `(v ~T0 @X0 1 tf ]
 "24 Main.c
-[v _ISR `IF1965 ~T0 @X0 1 e ]
+[v _ISR `IF1968 ~T0 @X0 1 e ]
 "25
 {
 [; ;Main.c: 24: void interrupt ISR(void)

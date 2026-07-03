@@ -2,7 +2,6 @@
 
 sys SYS;
 
-extern volatile uint8_t BUZZTT_Flag;
 /*-------------------------------------------------
  *  函数名ADC_INITIAL
  *	功能：  ADC初始化
@@ -18,20 +17,10 @@ void Initial(void)
 
 //	ADC_INITIAL();
 //	Ready_Init();
-    Int_Initial();
+//    Int_Initial();
 //    RC_INITIAL();
-//	BUZZTT_Init();
 
-//	BUTTON_Init();
-BUZZER_Init();
-    
-//	BUZZTT_Flag = 1;//蜂鸣器
-//    
-//	BUZZTT_Control();      
-//    
-//    Int_Control(0);
-////    RC_Control(0);
-//    Ready_Control(0);//关闭继电器
+	BUZZTT_Init();//按键蜂鸣器模块初始化
 
 /**/
 

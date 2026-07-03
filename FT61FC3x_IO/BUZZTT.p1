@@ -458,11 +458,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
+"17 buzztt.h
+[v _Key_Task `(v ~T0 @X0 0 ef ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value Buzzer_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"62
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"65
 [v _SYS `S156 ~T0 @X0 0 e ]
+"12 RC.h
+[v _RC_Control `(v ~T0 @X0 0 ef1`uc ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
 [; ;gcc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3133,7 +3137,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t KEY_Value;
 [; ;app.h: 36: uint8_t Vadc_Value;
 [; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 40: uint8_t Buzzer_Value;
 [; ;app.h: 42: uint8_t READY_Value;
 [; ;app.h: 44: uint8_t STANDBY_Value;
 [; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
@@ -3142,304 +3145,271 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 54: uint8_t Long_Time_Change;
 [; ;app.h: 56: uint8_t Delay_2s_Flag ;
 [; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 60: }sys;
-[; ;app.h: 62: extern sys SYS;
-[; ;buzztt.h: 8: void BUZZTT_Init(void);
-[; ;buzztt.h: 9: void BUZZTT_Control(void);
-[; ;buzztt.h: 10: void Key_Dected(void);
-[; ;buzztt.h: 11: void BUZZTT_Task(void);
-[; ;buzztt.h: 12: void BUTTON_Init(void);
-[; ;buzztt.h: 13: void BUZZER_Init(void);
-"11 BUZZTT.c
-[v _BUZZTT_Flag `Vuc ~T0 @X0 1 e ]
-[i _BUZZTT_Flag
--> -> 0 `i `uc
-]
-[; ;BUZZTT.c: 11: volatile uint8_t BUZZTT_Flag = 0;
-"12
-[v _KEY_Press `uc ~T0 @X0 1 e ]
+[; ;app.h: 63: }sys;
+[; ;app.h: 65: extern sys SYS;
+[; ;buzztt.h: 10: void BUZZTT_Init(void);
+[; ;buzztt.h: 11: void KEY_Init(void);
+[; ;buzztt.h: 12: void Hummer_Init(void);
+[; ;buzztt.h: 13: void BUZZHH_Control(void);
+[; ;buzztt.h: 14: void Key_Detect(void);
+[; ;buzztt.h: 15: void Hummer_Task(void);
+[; ;buzztt.h: 16: void BUZZTT_Task(void);
+[; ;buzztt.h: 17: void Key_Task(void);
+"21 BUZZTT.c
+[v _BUZZTT_Init `(v ~T0 @X0 1 ef ]
+"22
+{
+[; ;BUZZTT.c: 21: void BUZZTT_Init(void)
+[; ;BUZZTT.c: 22: {
+[e :U _BUZZTT_Init ]
+[f ]
+[; ;BUZZTT.c: 23: PORTC = 0B00000000;
+"23
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 24: TRISC &= ~0B00000010;
+"24
+[e =& _TRISC -> ~ -> 2 `i `uc ]
+[; ;BUZZTT.c: 26: PC1 = 1;
+"26
+[e = _PC1 -> -> 1 `i `b ]
+[; ;BUZZTT.c: 27: }
+"27
+[e :UE 157 ]
+}
+"34
+[v _KEY_Init `(v ~T0 @X0 1 ef ]
+"35
+{
+[; ;BUZZTT.c: 34: void KEY_Init(void)
+[; ;BUZZTT.c: 35: {
+[e :U _KEY_Init ]
+[f ]
+[; ;BUZZTT.c: 36: PORTC = 0B00000000;
+"36
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 37: TRISC |= 0B00000010;
+"37
+[e =| _TRISC -> -> 2 `i `uc ]
+[; ;BUZZTT.c: 39: WPUC |= 0B00000010;
+"39
+[e =| _WPUC -> -> 2 `i `uc ]
+[; ;BUZZTT.c: 40: }
+"40
+[e :UE 158 ]
+}
+"47
+[v _Hummer_Init `(v ~T0 @X0 1 ef ]
+"48
+{
+[; ;BUZZTT.c: 47: void Hummer_Init(void)
+[; ;BUZZTT.c: 48: {
+[e :U _Hummer_Init ]
+[f ]
+[; ;BUZZTT.c: 49: PORTC = 0B00000000;
+"49
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 50: TRISC &= ~0B00000010;
+"50
+[e =& _TRISC -> ~ -> 2 `i `uc ]
+[; ;BUZZTT.c: 52: WPUC &= ~0B00000010;
+"52
+[e =& _WPUC -> ~ -> 2 `i `uc ]
+[; ;BUZZTT.c: 53: }
+"53
+[e :UE 159 ]
+}
+"60
+[v _BUZZHH_Control `(v ~T0 @X0 1 ef ]
+"61
+{
+[; ;BUZZTT.c: 60: void BUZZHH_Control(void)
+[; ;BUZZTT.c: 61: {
+[e :U _BUZZHH_Control ]
+[f ]
+[; ;BUZZTT.c: 68: Key_Task();
+"68
+[e ( _Key_Task ..  ]
+[; ;BUZZTT.c: 70: }
+"70
+[e :UE 160 ]
+}
+"71
+[v _KEY_Press `uc ~T0 @X0 1 s ]
 [i _KEY_Press
 -> -> 0 `i `uc
 ]
-[; ;BUZZTT.c: 12: uint8_t KEY_Press = 0;
-"13
-[v _KEY_Long_Press `uc ~T0 @X0 1 e ]
-[i _KEY_Long_Press
--> -> 0 `i `uc
-]
-[; ;BUZZTT.c: 13: uint8_t KEY_Long_Press = 0;
-"20
-[v _BUZZTT_Init `(v ~T0 @X0 1 ef ]
-"21
-{
-[; ;BUZZTT.c: 20: void BUZZTT_Init(void)
-[; ;BUZZTT.c: 21: {
-[e :U _BUZZTT_Init ]
-[f ]
-[; ;BUZZTT.c: 22: PORTC = 0B00000000;
-"22
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;BUZZTT.c: 23: TRISC &= ~0B00000010;
-"23
-[e =& _TRISC -> ~ -> 2 `i `uc ]
-[; ;BUZZTT.c: 25: PC1 = 0;
-"25
-[e = _PC1 -> -> 0 `i `b ]
-[; ;BUZZTT.c: 26: }
-"26
-[e :UE 157 ]
-}
-"33
-[v _BUTTON_Init `(v ~T0 @X0 1 ef ]
-"34
-{
-[; ;BUZZTT.c: 33: void BUTTON_Init(void)
-[; ;BUZZTT.c: 34: {
-[e :U _BUTTON_Init ]
-[f ]
-[; ;BUZZTT.c: 35: PORTC = 0B00000000;
-"35
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;BUZZTT.c: 36: TRISC |= 0B00000010;
-"36
-[e =| _TRISC -> -> 2 `i `uc ]
-[; ;BUZZTT.c: 38: WPUC |= 0B00000010;
-"38
-[e =| _WPUC -> -> 2 `i `uc ]
-[; ;BUZZTT.c: 39: }
-"39
-[e :UE 158 ]
-}
-"46
-[v _BUZZER_Init `(v ~T0 @X0 1 ef ]
-"47
-{
-[; ;BUZZTT.c: 46: void BUZZER_Init(void)
-[; ;BUZZTT.c: 47: {
-[e :U _BUZZER_Init ]
-[f ]
-[; ;BUZZTT.c: 48: PORTC = 0B00000000;
-"48
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;BUZZTT.c: 49: TRISC &= ~0B00000010;
-"49
-[e =& _TRISC -> ~ -> 2 `i `uc ]
-[; ;BUZZTT.c: 51: WPUC &= ~0B00000010;
-"51
-[e =& _WPUC -> ~ -> 2 `i `uc ]
-[; ;BUZZTT.c: 52: }
-"52
-[e :UE 159 ]
-}
-"59
-[v _BUZZTT_Control `(v ~T0 @X0 1 ef ]
-"60
-{
-[; ;BUZZTT.c: 59: void BUZZTT_Control(void)
-[; ;BUZZTT.c: 60: {
-[e :U _BUZZTT_Control ]
-[f ]
-[; ;BUZZTT.c: 61: if(BUZZTT_Flag)
-"61
-[e $ ! != -> _BUZZTT_Flag `i -> -> -> 0 `i `Vuc `i 161  ]
-[; ;BUZZTT.c: 62: {
-"62
-{
-[; ;BUZZTT.c: 63: BUZZER_Init();
-"63
-[e ( _BUZZER_Init ..  ]
-"64
-}
-[; ;BUZZTT.c: 64: }
-[e $U 162  ]
-"65
-[e :U 161 ]
-[; ;BUZZTT.c: 65: else
-[; ;BUZZTT.c: 66: {
-"66
-{
-[; ;BUZZTT.c: 67: BUTTON_Init();
-"67
-[e ( _BUTTON_Init ..  ]
-"68
-}
-[e :U 162 ]
-[; ;BUZZTT.c: 68: }
-[; ;BUZZTT.c: 69: }
-"69
-[e :UE 160 ]
-}
-"76
-[v _Key_Dected `(v ~T0 @X0 1 ef ]
-"77
-{
-[; ;BUZZTT.c: 76: void Key_Dected(void)
-[; ;BUZZTT.c: 77: {
-[e :U _Key_Dected ]
-[f ]
-"78
-[v F1971 `uc ~T0 @X0 1 s num ]
-[i F1971
--> -> 0 `i `uc
-]
+[; ;BUZZTT.c: 71: static uint8_t KEY_Press = 0;
 "79
-[v F1972 `uc ~T0 @X0 1 s long_num ]
+[v _Key_Detect `(v ~T0 @X0 1 ef ]
+"80
+{
+[; ;BUZZTT.c: 79: void Key_Detect(void)
+[; ;BUZZTT.c: 80: {
+[e :U _Key_Detect ]
+[f ]
+"81
+[v F1972 `uc ~T0 @X0 1 s press_cnt ]
 [i F1972
 -> -> 0 `i `uc
 ]
-[; ;BUZZTT.c: 78: static uint8_t num = 0;
-[; ;BUZZTT.c: 79: static uint8_t long_num = 0;
-[; ;BUZZTT.c: 80: if(BUZZTT_Flag == 0)
-"80
-[e $ ! == -> _BUZZTT_Flag `i -> 0 `i 164  ]
-[; ;BUZZTT.c: 81: {
-"81
-{
-[; ;BUZZTT.c: 82: BUTTON_Init();
 "82
-[e ( _BUTTON_Init ..  ]
-[; ;BUZZTT.c: 83: if(!PC1)
+[v F1973 `ui ~T0 @X0 1 s long_cnt ]
+[i F1973
+-> -> 0 `i `ui
+]
 "83
-[e $ ! ! _PC1 165  ]
-[; ;BUZZTT.c: 84: {
-"84
-{
-[; ;BUZZTT.c: 85: if(num<2)
+[v F1974 `uc ~T0 @X0 1 s long_trig ]
+[i F1974
+-> -> 0 `i `uc
+]
+[; ;BUZZTT.c: 81: static uint8_t press_cnt = 0;
+[; ;BUZZTT.c: 82: static uint16_t long_cnt = 0;
+[; ;BUZZTT.c: 83: static uint8_t long_trig = 0;
+[; ;BUZZTT.c: 85: if(PC1 == 0)
 "85
-[e $ ! < -> F1971 `i -> 2 `i 166  ]
+[e $ ! == -> _PC1 `i -> 0 `i 162  ]
 [; ;BUZZTT.c: 86: {
 "86
 {
-[; ;BUZZTT.c: 87: num ++;
-"87
-[e ++ F1971 -> -> 1 `i `uc ]
+[; ;BUZZTT.c: 88: if(press_cnt <4)
 "88
-}
-[; ;BUZZTT.c: 88: }
-[e $U 167  ]
+[e $ ! < -> F1972 `i -> 4 `i 163  ]
+[; ;BUZZTT.c: 89: {
 "89
-[e :U 166 ]
-[; ;BUZZTT.c: 89: else
-[; ;BUZZTT.c: 90: {
+{
+[; ;BUZZTT.c: 90: press_cnt ++;
 "90
-{
-[; ;BUZZTT.c: 91: KEY_Press = 1;
+[e ++ F1972 -> -> 1 `i `uc ]
 "91
-[e = _KEY_Press -> -> 1 `i `uc ]
+}
+[; ;BUZZTT.c: 91: }
+[e $U 164  ]
 "92
-}
-[e :U 167 ]
+[e :U 163 ]
+[; ;BUZZTT.c: 92: else
+[; ;BUZZTT.c: 93: {
 "93
-}
-[; ;BUZZTT.c: 92: }
-[; ;BUZZTT.c: 93: }
-[e $U 168  ]
-"94
-[e :U 165 ]
-[; ;BUZZTT.c: 94: else
-[; ;BUZZTT.c: 95: {
-"95
 {
-[; ;BUZZTT.c: 96: num = 0;
-"96
-[e = F1971 -> -> 0 `i `uc ]
-[; ;BUZZTT.c: 97: KEY_Press = 0;
-"97
-[e = _KEY_Press -> -> 0 `i `uc ]
-[; ;BUZZTT.c: 98: long_num = 0;
-"98
-[e = F1972 -> -> 0 `i `uc ]
-"99
-}
-[e :U 168 ]
-"100
+[; ;BUZZTT.c: 94: KEY_Press = 1;
+"94
+[e = _KEY_Press -> -> 1 `i `uc ]
+"95
 }
 [e :U 164 ]
-[; ;BUZZTT.c: 99: }
-[; ;BUZZTT.c: 100: }
-[; ;BUZZTT.c: 106: if(KEY_Press)
+[; ;BUZZTT.c: 95: }
+[; ;BUZZTT.c: 98: if(KEY_Press && long_trig == 0 && long_cnt<300)
+"98
+[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i == -> F1974 `i -> 0 `i < F1973 -> -> 300 `i `ui 165  ]
+[; ;BUZZTT.c: 99: {
+"99
+{
+[; ;BUZZTT.c: 100: long_cnt++;
+"100
+[e ++ F1973 -> -> 1 `i `ui ]
+"101
+}
+[e :U 165 ]
+[; ;BUZZTT.c: 101: }
+[; ;BUZZTT.c: 105: if(KEY_Press && long_cnt >= 300 && long_trig == 0)
+"105
+[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i >= F1973 -> -> 300 `i `ui == -> F1974 `i -> 0 `i 166  ]
+[; ;BUZZTT.c: 106: {
 "106
-[e $ ! != -> _KEY_Press `i -> -> -> 0 `i `uc `i 169  ]
-[; ;BUZZTT.c: 107: {
-"107
 {
-[; ;BUZZTT.c: 108: if(long_num<300)
+[; ;BUZZTT.c: 108: SYS.Long_Time_Change = 0;
 "108
-[e $ ! < -> F1972 `i -> 300 `i 170  ]
-[; ;BUZZTT.c: 109: {
+[e = . _SYS 13 -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 109: SYS.KEY_Value = 1;
 "109
-{
-[; ;BUZZTT.c: 110: long_num++;
-"110
-[e ++ F1972 -> -> 1 `i `uc ]
-"111
-}
-[; ;BUZZTT.c: 111: }
-[e $U 171  ]
-"112
-[e :U 170 ]
-[; ;BUZZTT.c: 112: else
-[; ;BUZZTT.c: 113: {
-"113
-{
-[; ;BUZZTT.c: 115: KEY_Long_Press = 1;
-"115
-[e = _KEY_Long_Press -> -> 1 `i `uc ]
-[; ;BUZZTT.c: 116: SYS.Long_Time_Change = 0;
-"116
-[e = . _SYS 14 -> -> 0 `i `uc ]
-[; ;BUZZTT.c: 117: SYS.KEY_Value = 1;
-"117
 [e = . _SYS 5 -> -> 1 `i `uc ]
-"118
+[; ;BUZZTT.c: 111: long_trig = 1;
+"111
+[e = F1974 -> -> 1 `i `uc ]
+[; ;BUZZTT.c: 112: RC_Control(0);
+"112
+[e ( _RC_Control (1 -> -> 0 `i `uc ]
+"113
 }
-[e :U 171 ]
+[e :U 166 ]
+"115
+}
+[; ;BUZZTT.c: 113: }
+[; ;BUZZTT.c: 115: }
+[e $U 167  ]
+"116
+[e :U 162 ]
+[; ;BUZZTT.c: 116: else
+[; ;BUZZTT.c: 117: {
+"117
+{
+[; ;BUZZTT.c: 119: press_cnt = 0;
 "119
-}
-[e :U 169 ]
-[; ;BUZZTT.c: 118: }
-[; ;BUZZTT.c: 119: }
-[; ;BUZZTT.c: 120: }
+[e = F1972 -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 120: KEY_Press = 0;
 "120
-[e :UE 163 ]
+[e = _KEY_Press -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 121: long_cnt = 0;
+"121
+[e = F1973 -> -> 0 `i `ui ]
+[; ;BUZZTT.c: 122: long_trig = 0;
+"122
+[e = F1974 -> -> 0 `i `uc ]
+"123
 }
-"128
-[v _BUZZER_Dected `(v ~T0 @X0 1 ef ]
-"129
-{
-[; ;BUZZTT.c: 128: void BUZZER_Dected(void)
-[; ;BUZZTT.c: 129: {
-[e :U _BUZZER_Dected ]
-[f ]
-[; ;BUZZTT.c: 130: if(BUZZTT_Flag)
-"130
-[e $ ! != -> _BUZZTT_Flag `i -> -> -> 0 `i `Vuc `i 173  ]
-[; ;BUZZTT.c: 131: {
-"131
-{
-[; ;BUZZTT.c: 132: BUZZER_Init();
+[e :U 167 ]
+[; ;BUZZTT.c: 123: }
+[; ;BUZZTT.c: 124: }
+"124
+[e :UE 161 ]
+}
 "132
-[e ( _BUZZER_Init ..  ]
-[; ;BUZZTT.c: 133: PC1 = 1;
+[v _Key_Task `(v ~T0 @X0 1 ef ]
 "133
-[e = _PC1 -> -> 1 `i `b ]
+{
+[; ;BUZZTT.c: 132: void Key_Task(void)
+[; ;BUZZTT.c: 133: {
+[e :U _Key_Task ]
+[f ]
+[; ;BUZZTT.c: 134: KEY_Init();
+"134
+[e ( _KEY_Init ..  ]
+[; ;BUZZTT.c: 135: Key_Detect();
 "135
-}
-[e :U 173 ]
-[; ;BUZZTT.c: 135: }
+[e ( _Key_Detect ..  ]
 [; ;BUZZTT.c: 136: }
 "136
-[e :UE 172 ]
+[e :UE 168 ]
 }
-"146
-[v _BUZZTT_Task `(v ~T0 @X0 1 ef ]
-"147
+"144
+[v _Hummer_Task `(v ~T0 @X0 1 ef ]
+"145
 {
-[; ;BUZZTT.c: 146: void BUZZTT_Task(void)
-[; ;BUZZTT.c: 147: {
+[; ;BUZZTT.c: 144: void Hummer_Task(void)
+[; ;BUZZTT.c: 145: {
+[e :U _Hummer_Task ]
+[f ]
+[; ;BUZZTT.c: 146: Hummer_Init();
+"146
+[e ( _Hummer_Init ..  ]
+[; ;BUZZTT.c: 147: PC1 = 0;
+"147
+[e = _PC1 -> -> 0 `i `b ]
+[; ;BUZZTT.c: 148: }
+"148
+[e :UE 169 ]
+}
+"156
+[v _BUZZTT_Task `(v ~T0 @X0 1 ef ]
+"157
+{
+[; ;BUZZTT.c: 156: void BUZZTT_Task(void)
+[; ;BUZZTT.c: 157: {
 [e :U _BUZZTT_Task ]
 [f ]
-[; ;BUZZTT.c: 152: }
-"152
-[e :UE 174 ]
+[; ;BUZZTT.c: 158: BUZZHH_Control();
+"158
+[e ( _BUZZHH_Control ..  ]
+[; ;BUZZTT.c: 159: }
+"159
+[e :UE 170 ]
 }

@@ -458,9 +458,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S152 `S153 1 `S154 1 ]
 [n S152 . . . ]
-[v F1941 `(v ~T0 @X0 0 tf ]
+[v F1944 `(v ~T0 @X0 0 tf ]
 "13 Task.h
-[s S156 `uc 1 `ui 1 `ui 1 `*F1941 1 ]
+[s S156 `uc 1 `ui 1 `ui 1 `*F1944 1 ]
 [n S156 . Run Timer IvtTime TaskHook ]
 "30
 [v _Task_0 `(v ~T0 @X0 0 ef ]
@@ -470,13 +470,11 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _Task_2 `(v ~T0 @X0 0 ef ]
 "33
 [v _Task_3 `(v ~T0 @X0 0 ef ]
-"15 Int.h
-[v _LB_Close `(v ~T0 @X0 0 ef ]
-"12
-[v _HT_Detect `(v ~T0 @X0 0 ef ]
-"121 Task.c
-[c E1944 0 1 2 3 4 .. ]
-[n E1944 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
+"16 BUZZTT.h
+[v _BUZZTT_Task `(v ~T0 @X0 0 ef ]
+"122 Task.c
+[c E1947 0 1 2 3 4 .. ]
+[n E1947 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -3117,12 +3115,14 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;RC.h: 11: void RC_Detect(void);
 [; ;RC.h: 12: void RC_Control(uint8_t value);
 [; ;RC.h: 13: void RC_Task(void);
-[; ;BUZZTT.h: 8: void BUZZTT_Init(void);
-[; ;BUZZTT.h: 9: void BUZZTT_Control(void);
-[; ;BUZZTT.h: 10: void Key_Dected(void);
-[; ;BUZZTT.h: 11: void BUZZTT_Task(void);
-[; ;BUZZTT.h: 12: void BUTTON_Init(void);
-[; ;BUZZTT.h: 13: void BUZZER_Init(void);
+[; ;BUZZTT.h: 10: void BUZZTT_Init(void);
+[; ;BUZZTT.h: 11: void KEY_Init(void);
+[; ;BUZZTT.h: 12: void Hummer_Init(void);
+[; ;BUZZTT.h: 13: void BUZZHH_Control(void);
+[; ;BUZZTT.h: 14: void Key_Detect(void);
+[; ;BUZZTT.h: 15: void Hummer_Task(void);
+[; ;BUZZTT.h: 16: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 17: void Key_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3133,7 +3133,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t KEY_Value;
 [; ;app.h: 36: uint8_t Vadc_Value;
 [; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 40: uint8_t Buzzer_Value;
 [; ;app.h: 42: uint8_t READY_Value;
 [; ;app.h: 44: uint8_t STANDBY_Value;
 [; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
@@ -3142,8 +3141,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 54: uint8_t Long_Time_Change;
 [; ;app.h: 56: uint8_t Delay_2s_Flag ;
 [; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 60: }sys;
-[; ;app.h: 62: extern sys SYS;
+[; ;app.h: 63: }sys;
+[; ;app.h: 65: extern sys SYS;
 [; ;Task.h: 12: typedef struct
 [; ;Task.h: 13: {
 [; ;Task.h: 14: uint8_t Run;
@@ -3213,9 +3212,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 19: {
 [e :U _Task_0 ]
 [f ]
-[; ;Task.c: 39: LB_Close();
-"39
-[e ( _LB_Close ..  ]
 [; ;Task.c: 64: }
 "64
 [e :UE 157 ]
@@ -3228,147 +3224,147 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 73: {
 [e :U _Task_1 ]
 [f ]
-[; ;Task.c: 76: HT_Detect();
-"76
-[e ( _HT_Detect ..  ]
-[; ;Task.c: 78: }
-"78
+[; ;Task.c: 77: BUZZTT_Task();
+"77
+[e ( _BUZZTT_Task ..  ]
+[; ;Task.c: 79: }
+"79
 [e :UE 158 ]
 }
-"85
-[v _Task_2 `(v ~T0 @X0 1 ef ]
 "86
+[v _Task_2 `(v ~T0 @X0 1 ef ]
+"87
 {
-[; ;Task.c: 85: void Task_2(void)
-[; ;Task.c: 86: {
+[; ;Task.c: 86: void Task_2(void)
+[; ;Task.c: 87: {
 [e :U _Task_2 ]
 [f ]
-[; ;Task.c: 88: }
-"88
+[; ;Task.c: 89: }
+"89
 [e :UE 159 ]
 }
-"95
-[v _Task_3 `(v ~T0 @X0 1 ef ]
 "96
+[v _Task_3 `(v ~T0 @X0 1 ef ]
+"97
 {
-[; ;Task.c: 95: void Task_3(void)
-[; ;Task.c: 96: {
+[; ;Task.c: 96: void Task_3(void)
+[; ;Task.c: 97: {
 [e :U _Task_3 ]
 [f ]
-[; ;Task.c: 110: }
-"110
+[; ;Task.c: 111: }
+"111
 [e :UE 160 ]
 }
-"118
-[v _Task_Process `(v ~T0 @X0 1 ef ]
 "119
+[v _Task_Process `(v ~T0 @X0 1 ef ]
+"120
 {
-[; ;Task.c: 118: void Task_Process(void)
-[; ;Task.c: 119: {
+[; ;Task.c: 119: void Task_Process(void)
+[; ;Task.c: 120: {
 [e :U _Task_Process ]
 [f ]
-"120
-[v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 120: unsigned char i;
-[; ;Task.c: 121: for(i = 0;i<TASK_MAX;i++)
 "121
+[v _i `uc ~T0 @X0 1 a ]
+[; ;Task.c: 121: unsigned char i;
+[; ;Task.c: 122: for(i = 0;i<TASK_MAX;i++)
+"122
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1944 4 `i 162  ]
+[e $ < -> _i `i -> . `E1947 4 `i 162  ]
 [e $U 163  ]
-"122
-[e :U 162 ]
-[; ;Task.c: 122: {
-{
-[; ;Task.c: 123: if(TaskCompany[i].Run == 1)
 "123
-[e $ ! == -> . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 `i -> 1 `i 165  ]
-[; ;Task.c: 124: {
-"124
+[e :U 162 ]
+[; ;Task.c: 123: {
 {
-[; ;Task.c: 125: TaskCompany[i].Run = 0;
+[; ;Task.c: 124: if(TaskCompany[i].Run == 1)
+"124
+[e $ ! == -> . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 `i -> 1 `i 165  ]
+[; ;Task.c: 125: {
 "125
-[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 0 `i `uc ]
-[; ;Task.c: 126: TaskCompany[i].TaskHook();
+{
+[; ;Task.c: 126: TaskCompany[i].Run = 0;
 "126
-[e ( *U . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 3 ..  ]
+[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 0 `i `uc ]
+[; ;Task.c: 127: TaskCompany[i].TaskHook();
 "127
+[e ( *U . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 3 ..  ]
+"128
 }
 [e :U 165 ]
-"128
+"129
 }
-"121
+"122
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1944 4 `i 162  ]
+[e $ < -> _i `i -> . `E1947 4 `i 162  ]
 [e :U 163 ]
-"128
+"129
 }
-[; ;Task.c: 127: }
 [; ;Task.c: 128: }
 [; ;Task.c: 129: }
-"129
+[; ;Task.c: 130: }
+"130
 [e :UE 161 ]
 }
-"135
-[v _Task_Count `(v ~T0 @X0 1 ef ]
 "136
+[v _Task_Count `(v ~T0 @X0 1 ef ]
+"137
 {
-[; ;Task.c: 135: void Task_Count(void)
-[; ;Task.c: 136: {
+[; ;Task.c: 136: void Task_Count(void)
+[; ;Task.c: 137: {
 [e :U _Task_Count ]
 [f ]
-"137
-[v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 137: uint8_t i;
-[; ;Task.c: 138: for(i = 0;i<TASK_MAX;i++)
 "138
+[v _i `uc ~T0 @X0 1 a ]
+[; ;Task.c: 138: uint8_t i;
+[; ;Task.c: 139: for(i = 0;i<TASK_MAX;i++)
+"139
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1944 4 `i 167  ]
+[e $ < -> _i `i -> . `E1947 4 `i 167  ]
 [e $U 168  ]
-"139
-[e :U 167 ]
-[; ;Task.c: 139: {
-{
-[; ;Task.c: 140: if(TaskCompany[i].Timer)
 "140
-[e $ ! != . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 170  ]
-[; ;Task.c: 141: {
+[e :U 167 ]
+[; ;Task.c: 140: {
+{
+[; ;Task.c: 141: if(TaskCompany[i].Timer)
 "141
-{
-[; ;Task.c: 142: TaskCompany[i].Timer--;
+[e $ ! != . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 170  ]
+[; ;Task.c: 142: {
 "142
-[e -- . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 1 `i `ui ]
-[; ;Task.c: 143: if(TaskCompany[i].Timer <= 0)
-"143
-[e $ ! <= . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 171  ]
-[; ;Task.c: 144: {
-"144
 {
-[; ;Task.c: 145: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+[; ;Task.c: 143: TaskCompany[i].Timer--;
+"143
+[e -- . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 1 `i `ui ]
+[; ;Task.c: 144: if(TaskCompany[i].Timer <= 0)
+"144
+[e $ ! <= . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 171  ]
+[; ;Task.c: 145: {
 "145
-[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 2 ]
-[; ;Task.c: 146: TaskCompany[i].Run = 1;
+{
+[; ;Task.c: 146: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
 "146
-[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 1 `i `uc ]
+[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 2 ]
+[; ;Task.c: 147: TaskCompany[i].Run = 1;
 "147
-}
-[e :U 171 ]
+[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 1 `i `uc ]
 "148
 }
+[e :U 171 ]
+"149
+}
 [e :U 170 ]
-"149
+"150
 }
-"138
+"139
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1944 4 `i 167  ]
+[e $ < -> _i `i -> . `E1947 4 `i 167  ]
 [e :U 168 ]
-"149
+"150
 }
-[; ;Task.c: 147: }
 [; ;Task.c: 148: }
 [; ;Task.c: 149: }
 [; ;Task.c: 150: }
-"150
+[; ;Task.c: 151: }
+"151
 [e :UE 166 ]
 }

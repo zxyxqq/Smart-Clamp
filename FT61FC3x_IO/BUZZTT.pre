@@ -2003,7 +2003,7 @@ uint8_t Vadc_Value;
 
 uint8_t Cadc_Value;
 
-uint8_t Buzzer_Value;
+
 
 uint8_t READY_Value;
 
@@ -2023,34 +2023,34 @@ uint8_t Delay_2s_Flag ;
 
 uint8_t Cadc_Ready_Flag ;
 
+
+
+
 }sys;
 
 extern sys SYS;
 
-# 8 "buzztt.h"
+# 10 "buzztt.h"
 void BUZZTT_Init(void);
-void BUZZTT_Control(void);
-void Key_Dected(void);
+void KEY_Init(void);
+void Hummer_Init(void);
+void BUZZHH_Control(void);
+void Key_Detect(void);
+void Hummer_Task(void);
 void BUZZTT_Task(void);
-void BUTTON_Init(void);
-void BUZZER_Init(void);
+void Key_Task(void);
 
-# 11 "BUZZTT.c"
-volatile uint8_t BUZZTT_Flag = 0;
-uint8_t KEY_Press = 0;
-uint8_t KEY_Long_Press = 0;
-
-# 20
+# 21 "BUZZTT.c"
 void BUZZTT_Init(void)
 {
 PORTC = 0B00000000;
 TRISC &= ~0B00000010;
 
-PC1 = 0;
+PC1 = 1;
 }
 
-# 33
-void BUTTON_Init(void)
+# 34
+void KEY_Init(void)
 {
 PORTC = 0B00000000;
 TRISC |= 0B00000010;
@@ -2058,8 +2058,8 @@ TRISC |= 0B00000010;
 WPUC |= 0B00000010;
 }
 
-# 46
-void BUZZER_Init(void)
+# 47
+void Hummer_Init(void)
 {
 PORTC = 0B00000000;
 TRISC &= ~0B00000010;
@@ -2067,79 +2067,80 @@ TRISC &= ~0B00000010;
 WPUC &= ~0B00000010;
 }
 
-# 59
-void BUZZTT_Control(void)
+# 60
+void BUZZHH_Control(void)
 {
-if(BUZZTT_Flag)
-{
-BUZZER_Init();
-}
-else
-{
-BUTTON_Init();
-}
-}
 
-# 76
-void Key_Dected(void)
+# 68
+Key_Task();
+
+}
+static uint8_t KEY_Press = 0;
+
+# 79
+void Key_Detect(void)
 {
-static uint8_t num = 0;
-static uint8_t long_num = 0;
-if(BUZZTT_Flag == 0)
+static uint8_t press_cnt = 0;
+static uint16_t long_cnt = 0;
+static uint8_t long_trig = 0;
+
+if(PC1 == 0)
 {
-BUTTON_Init();
-if(!PC1)
+
+if(press_cnt <4)
 {
-if(num<2)
-{
-num ++;
+press_cnt ++;
 }
 else
 {
 KEY_Press = 1;
 }
-}
-else
+
+
+if(KEY_Press && long_trig == 0 && long_cnt<300)
 {
-num = 0;
-KEY_Press = 0;
-long_num = 0;
-}
+long_cnt++;
 }
 
-# 106
-if(KEY_Press)
-{
-if(long_num<300)
-{
-long_num++;
-}
-else
+
+
+if(KEY_Press && long_cnt >= 300 && long_trig == 0)
 {
 
-KEY_Long_Press = 1;
 SYS.Long_Time_Change = 0;
 SYS.KEY_Value = 1;
-}
-}
+
+long_trig = 1;
+RC_Control(0);
 }
 
-# 128
-void BUZZER_Dected(void)
+}
+else
 {
-if(BUZZTT_Flag)
+
+press_cnt = 0;
+KEY_Press = 0;
+long_cnt = 0;
+long_trig = 0;
+}
+}
+
+# 132
+void Key_Task(void)
 {
-BUZZER_Init();
-PC1 = 1;
-
-}
+KEY_Init();
+Key_Detect();
 }
 
-# 146
+# 144
+void Hummer_Task(void)
+{
+Hummer_Init();
+PC1 = 0;
+}
+
+# 156
 void BUZZTT_Task(void)
 {
-
-
-
-
+BUZZHH_Control();
 }

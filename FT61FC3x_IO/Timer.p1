@@ -459,9 +459,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value Buzzer_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"62
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"65
 [v _SYS `S156 ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3121,12 +3121,14 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;RC.h: 11: void RC_Detect(void);
 [; ;RC.h: 12: void RC_Control(uint8_t value);
 [; ;RC.h: 13: void RC_Task(void);
-[; ;BUZZTT.h: 8: void BUZZTT_Init(void);
-[; ;BUZZTT.h: 9: void BUZZTT_Control(void);
-[; ;BUZZTT.h: 10: void Key_Dected(void);
-[; ;BUZZTT.h: 11: void BUZZTT_Task(void);
-[; ;BUZZTT.h: 12: void BUTTON_Init(void);
-[; ;BUZZTT.h: 13: void BUZZER_Init(void);
+[; ;BUZZTT.h: 10: void BUZZTT_Init(void);
+[; ;BUZZTT.h: 11: void KEY_Init(void);
+[; ;BUZZTT.h: 12: void Hummer_Init(void);
+[; ;BUZZTT.h: 13: void BUZZHH_Control(void);
+[; ;BUZZTT.h: 14: void Key_Detect(void);
+[; ;BUZZTT.h: 15: void Hummer_Task(void);
+[; ;BUZZTT.h: 16: void BUZZTT_Task(void);
+[; ;BUZZTT.h: 17: void Key_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3137,7 +3139,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t KEY_Value;
 [; ;app.h: 36: uint8_t Vadc_Value;
 [; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 40: uint8_t Buzzer_Value;
 [; ;app.h: 42: uint8_t READY_Value;
 [; ;app.h: 44: uint8_t STANDBY_Value;
 [; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
@@ -3146,8 +3147,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 54: uint8_t Long_Time_Change;
 [; ;app.h: 56: uint8_t Delay_2s_Flag ;
 [; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 60: }sys;
-[; ;app.h: 62: extern sys SYS;
+[; ;app.h: 63: }sys;
+[; ;app.h: 65: extern sys SYS;
 [; ;TIMER.h: 6: void Timer0_Init(void);
 [; ;TIMER.h: 7: void Timer0_Task(void);
 "9 Timer.c
@@ -3180,18 +3181,18 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :U _Timer0_Task ]
 [f ]
 "22
-[v F1965 `uc ~T0 @X0 1 s Long_Ready_Time ]
-[i F1965
+[v F1968 `uc ~T0 @X0 1 s Long_Ready_Time ]
+[i F1968
 -> -> 0 `i `uc
 ]
 "23
-[v F1966 `uc ~T0 @X0 1 s Short_Ready_Time ]
-[i F1966
+[v F1969 `uc ~T0 @X0 1 s Short_Ready_Time ]
+[i F1969
 -> -> 0 `i `uc
 ]
 "24
-[v F1967 `uc ~T0 @X0 1 s Ready_Delay_Time ]
-[i F1967
+[v F1970 `uc ~T0 @X0 1 s Ready_Delay_Time ]
+[i F1970
 -> -> 0 `i `uc
 ]
 [; ;Timer.c: 22: static uint8_t Long_Ready_Time = 0;
@@ -3205,31 +3206,31 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 28: Long_Ready_Time++;
 "28
-[e ++ F1965 -> -> 1 `i `uc ]
+[e ++ F1968 -> -> 1 `i `uc ]
 [; ;Timer.c: 30: if(SYS.READY_Value == 1)
 "30
-[e $ ! == -> . _SYS 9 `i -> 1 `i 160  ]
+[e $ ! == -> . _SYS 8 `i -> 1 `i 160  ]
 [; ;Timer.c: 31: {
 "31
 {
 [; ;Timer.c: 32: SYS.Delay_2s_Flag = 1;
 "32
-[e = . _SYS 15 -> -> 1 `i `uc ]
+[e = . _SYS 14 -> -> 1 `i `uc ]
 [; ;Timer.c: 34: if(SYS.Delay_2s_Flag == 1)
 "34
-[e $ ! == -> . _SYS 15 `i -> 1 `i 161  ]
+[e $ ! == -> . _SYS 14 `i -> 1 `i 161  ]
 [; ;Timer.c: 35: {
 "35
 {
 [; ;Timer.c: 36: if(Ready_Delay_Time<4)
 "36
-[e $ ! < -> F1967 `i -> 4 `i 162  ]
+[e $ ! < -> F1970 `i -> 4 `i 162  ]
 [; ;Timer.c: 37: {
 "37
 {
 [; ;Timer.c: 38: Ready_Delay_Time++;
 "38
-[e ++ F1967 -> -> 1 `i `uc ]
+[e ++ F1970 -> -> 1 `i `uc ]
 "39
 }
 [; ;Timer.c: 39: }
@@ -3242,13 +3243,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 42: Ready_Delay_Time = 0;
 "42
-[e = F1967 -> -> 0 `i `uc ]
+[e = F1970 -> -> 0 `i `uc ]
 [; ;Timer.c: 43: SYS.Delay_2s_Flag = 0;
 "43
-[e = . _SYS 15 -> -> 0 `i `uc ]
+[e = . _SYS 14 -> -> 0 `i `uc ]
 [; ;Timer.c: 44: SYS.Cadc_Ready_Flag = 1;
 "44
-[e = . _SYS 16 -> -> 1 `i `uc ]
+[e = . _SYS 15 -> -> 1 `i `uc ]
 "45
 }
 [e :U 163 ]
@@ -3269,23 +3270,23 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 50: SYS.Delay_2s_Flag = 0;
 "50
-[e = . _SYS 15 -> -> 0 `i `uc ]
+[e = . _SYS 14 -> -> 0 `i `uc ]
 "51
 }
 [e :U 164 ]
 [; ;Timer.c: 51: }
 [; ;Timer.c: 53: if(Long_Ready_Time>=80)
 "53
-[e $ ! >= -> F1965 `i -> 80 `i 165  ]
+[e $ ! >= -> F1968 `i -> 80 `i 165  ]
 [; ;Timer.c: 54: {
 "54
 {
 [; ;Timer.c: 55: Long_Ready_Time = 0;
 "55
-[e = F1965 -> -> 0 `i `uc ]
+[e = F1968 -> -> 0 `i `uc ]
 [; ;Timer.c: 56: SYS.Long_Time_Change = 1;
 "56
-[e = . _SYS 14 -> -> 1 `i `uc ]
+[e = . _SYS 13 -> -> 1 `i `uc ]
 "57
 }
 [e :U 165 ]
@@ -3302,7 +3303,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 64: Long_Ready_Time = 0;
 "64
-[e = F1965 -> -> 0 `i `uc ]
+[e = F1968 -> -> 0 `i `uc ]
 "65
 }
 [e :U 166 ]
