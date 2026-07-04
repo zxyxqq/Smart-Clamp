@@ -458,9 +458,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S152 `S153 1 `S154 1 ]
 [n S152 . . . ]
-[v F1944 `(v ~T0 @X0 0 tf ]
+[v F1949 `(v ~T0 @X0 0 tf ]
 "13 Task.h
-[s S156 `uc 1 `ui 1 `ui 1 `*F1944 1 ]
+[s S156 `uc 1 `ui 1 `ui 1 `*F1949 1 ]
 [n S156 . Run Timer IvtTime TaskHook ]
 "30
 [v _Task_0 `(v ~T0 @X0 0 ef ]
@@ -470,11 +470,11 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _Task_2 `(v ~T0 @X0 0 ef ]
 "33
 [v _Task_3 `(v ~T0 @X0 0 ef ]
-"16 BUZZTT.h
-[v _BUZZTT_Task `(v ~T0 @X0 0 ef ]
-"122 Task.c
-[c E1947 0 1 2 3 4 .. ]
-[n E1947 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
+"30 ready.h
+[v _READY_Task `(v ~T0 @X0 0 ef ]
+"78 Task.c
+[c E1952 0 1 2 3 4 .. ]
+[n E1952 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -3085,27 +3085,33 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;syscfg.h: 159: extern __bit __timeout;
 [; ;POWER.h: 8: void POWER_INITIAL(void);
 [; ;POWER.h: 9: void SYS_Initial(void);
-[; ;adc.h: 27: typedef enum {
-[; ;adc.h: 28: STATE_NORMAL = 0,
-[; ;adc.h: 29: STATE_UNDER_VOLTAGE,
-[; ;adc.h: 30: STATE_OVER_VOLTAGE
-[; ;adc.h: 31: } Battery_State;
-[; ;adc.h: 44: void Get_Vbattery_Data(void);
-[; ;adc.h: 45: void Get_Cbattery_Data(void);
-[; ;adc.h: 46: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
-[; ;adc.h: 47: void ADC_INITIAL(void);
-[; ;adc.h: 48: void ADC_Task(void);
-[; ;adc.h: 49: void Relay_Release_Detect(void);
-[; ;adc.h: 50: void Relay_sticking_Dected(void);
-[; ;adc.h: 52: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 28: typedef enum {
+[; ;adc.h: 29: STATE_NORMAL = 0,
+[; ;adc.h: 30: STATE_UNDER_VOLTAGE,
+[; ;adc.h: 31: STATE_OVER_VOLTAGE
+[; ;adc.h: 32: } Battery_State;
+[; ;adc.h: 45: void Get_Vbattery_Data(void);
+[; ;adc.h: 46: void Get_Cbattery_Data(void);
+[; ;adc.h: 47: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
+[; ;adc.h: 48: void ADC_INITIAL(void);
+[; ;adc.h: 49: void ADC_Task(void);
+[; ;adc.h: 50: void Relay_Release_Detect(void);
+[; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
 [; ;delay.h: 9: void DelayS(unsigned char Time);
 [; ;Timer.h: 6: void Timer0_Init(void);
 [; ;Timer.h: 7: void Timer0_Task(void);
-[; ;ready.h: 14: void Ready_Init(void);
-[; ;ready.h: 15: void Ready_Control(uint8_t num);
-[; ;ready.h: 16: void READY_Task(void);
+[; ;ready.h: 18: typedef enum {
+[; ;ready.h: 19: ST_PRE_ON,
+[; ;ready.h: 20: ST_OFF,
+[; ;ready.h: 21: ST_FINAL_ON,
+[; ;ready.h: 22: ST_DETECT
+[; ;ready.h: 23: } TaskState_t;
+[; ;ready.h: 28: void Ready_Init(void);
+[; ;ready.h: 29: void Ready_Control(uint8_t num);
+[; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
 [; ;Int.h: 12: void HT_Detect(void);
 [; ;Int.h: 13: void LB_Open(void);
@@ -3129,20 +3135,19 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 24: uint8_t HT_Value;
 [; ;app.h: 26: uint8_t LB_Value;
 [; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 32: uint8_t Relay_Release;
-[; ;app.h: 34: uint8_t KEY_Value;
-[; ;app.h: 36: uint8_t Vadc_Value;
-[; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 42: uint8_t READY_Value;
-[; ;app.h: 44: uint8_t STANDBY_Value;
-[; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
-[; ;app.h: 50: uint16_t Vbattery_Adc;
-[; ;app.h: 52: uint16_t Cbattery_Adc;
-[; ;app.h: 54: uint8_t Long_Time_Change;
-[; ;app.h: 56: uint8_t Delay_2s_Flag ;
-[; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 63: }sys;
-[; ;app.h: 65: extern sys SYS;
+[; ;app.h: 30: uint8_t Relay_Release;
+[; ;app.h: 32: uint8_t KEY_Value;
+[; ;app.h: 34: uint8_t Vadc_Value;
+[; ;app.h: 36: uint8_t Cadc_Value;
+[; ;app.h: 38: uint8_t READY_Value;
+[; ;app.h: 40: uint8_t STANDBY_Value;
+[; ;app.h: 44: uint16_t Vbattery_Adc;
+[; ;app.h: 46: uint16_t Cbattery_Adc;
+[; ;app.h: 48: uint8_t Long_Time_Change;
+[; ;app.h: 50: uint8_t Delay_2s_Flag ;
+[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 54: }sys;
+[; ;app.h: 56: extern sys SYS;
 [; ;Task.h: 12: typedef struct
 [; ;Task.h: 13: {
 [; ;Task.h: 14: uint8_t Run;
@@ -3191,7 +3196,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 :U ..
 "10
 -> -> 0 `i `uc
--> -> 4 `i `ui
+-> -> 4000 `i `ui
 -> -> 4000 `i `ui
 &U _Task_3
 ..
@@ -3202,7 +3207,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 7: { 0,1,5,Task_0 },
 [; ;Task.c: 8: { 0,2,10,Task_1 },
 [; ;Task.c: 9: { 0,3,20,Task_2 },
-[; ;Task.c: 10: { 0,4,4000,Task_3 },
+[; ;Task.c: 10: { 0,4000,4000,Task_3 },
 [; ;Task.c: 11: };
 "18
 [v _Task_0 `(v ~T0 @X0 1 ef ]
@@ -3212,159 +3217,159 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 19: {
 [e :U _Task_0 ]
 [f ]
-[; ;Task.c: 64: }
-"64
+[; ;Task.c: 25: READY_Task();
+"25
+[e ( _READY_Task ..  ]
+[; ;Task.c: 30: }
+"30
 [e :UE 157 ]
 }
-"72
+"38
 [v _Task_1 `(v ~T0 @X0 1 ef ]
-"73
+"39
 {
-[; ;Task.c: 72: void Task_1(void)
-[; ;Task.c: 73: {
+[; ;Task.c: 38: void Task_1(void)
+[; ;Task.c: 39: {
 [e :U _Task_1 ]
 [f ]
-[; ;Task.c: 77: BUZZTT_Task();
-"77
-[e ( _BUZZTT_Task ..  ]
-[; ;Task.c: 79: }
-"79
+[; ;Task.c: 45: }
+"45
 [e :UE 158 ]
 }
-"86
+"52
 [v _Task_2 `(v ~T0 @X0 1 ef ]
-"87
+"53
 {
-[; ;Task.c: 86: void Task_2(void)
-[; ;Task.c: 87: {
+[; ;Task.c: 52: void Task_2(void)
+[; ;Task.c: 53: {
 [e :U _Task_2 ]
 [f ]
-[; ;Task.c: 89: }
-"89
+[; ;Task.c: 55: }
+"55
 [e :UE 159 ]
 }
-"96
+"62
 [v _Task_3 `(v ~T0 @X0 1 ef ]
-"97
+"63
 {
-[; ;Task.c: 96: void Task_3(void)
-[; ;Task.c: 97: {
+[; ;Task.c: 62: void Task_3(void)
+[; ;Task.c: 63: {
 [e :U _Task_3 ]
 [f ]
-[; ;Task.c: 111: }
-"111
+[; ;Task.c: 67: }
+"67
 [e :UE 160 ]
 }
-"119
+"75
 [v _Task_Process `(v ~T0 @X0 1 ef ]
-"120
+"76
 {
-[; ;Task.c: 119: void Task_Process(void)
-[; ;Task.c: 120: {
+[; ;Task.c: 75: void Task_Process(void)
+[; ;Task.c: 76: {
 [e :U _Task_Process ]
 [f ]
-"121
+"77
 [v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 121: unsigned char i;
-[; ;Task.c: 122: for(i = 0;i<TASK_MAX;i++)
-"122
+[; ;Task.c: 77: unsigned char i;
+[; ;Task.c: 78: for(i = 0;i<TASK_MAX;i++)
+"78
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1947 4 `i 162  ]
+[e $ < -> _i `i -> . `E1952 4 `i 162  ]
 [e $U 163  ]
-"123
+"79
 [e :U 162 ]
-[; ;Task.c: 123: {
+[; ;Task.c: 79: {
 {
-[; ;Task.c: 124: if(TaskCompany[i].Run == 1)
-"124
+[; ;Task.c: 80: if(TaskCompany[i].Run == 1)
+"80
 [e $ ! == -> . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 `i -> 1 `i 165  ]
-[; ;Task.c: 125: {
-"125
+[; ;Task.c: 81: {
+"81
 {
-[; ;Task.c: 126: TaskCompany[i].Run = 0;
-"126
+[; ;Task.c: 82: TaskCompany[i].Run = 0;
+"82
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 0 `i `uc ]
-[; ;Task.c: 127: TaskCompany[i].TaskHook();
-"127
+[; ;Task.c: 83: TaskCompany[i].TaskHook();
+"83
 [e ( *U . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 3 ..  ]
-"128
+"84
 }
 [e :U 165 ]
-"129
+"85
 }
-"122
+"78
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1947 4 `i 162  ]
+[e $ < -> _i `i -> . `E1952 4 `i 162  ]
 [e :U 163 ]
-"129
+"85
 }
-[; ;Task.c: 128: }
-[; ;Task.c: 129: }
-[; ;Task.c: 130: }
-"130
+[; ;Task.c: 84: }
+[; ;Task.c: 85: }
+[; ;Task.c: 86: }
+"86
 [e :UE 161 ]
 }
-"136
+"92
 [v _Task_Count `(v ~T0 @X0 1 ef ]
-"137
+"93
 {
-[; ;Task.c: 136: void Task_Count(void)
-[; ;Task.c: 137: {
+[; ;Task.c: 92: void Task_Count(void)
+[; ;Task.c: 93: {
 [e :U _Task_Count ]
 [f ]
-"138
+"94
 [v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 138: uint8_t i;
-[; ;Task.c: 139: for(i = 0;i<TASK_MAX;i++)
-"139
+[; ;Task.c: 94: uint8_t i;
+[; ;Task.c: 95: for(i = 0;i<TASK_MAX;i++)
+"95
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1947 4 `i 167  ]
+[e $ < -> _i `i -> . `E1952 4 `i 167  ]
 [e $U 168  ]
-"140
+"96
 [e :U 167 ]
-[; ;Task.c: 140: {
+[; ;Task.c: 96: {
 {
-[; ;Task.c: 141: if(TaskCompany[i].Timer)
-"141
+[; ;Task.c: 97: if(TaskCompany[i].Timer)
+"97
 [e $ ! != . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 170  ]
-[; ;Task.c: 142: {
-"142
+[; ;Task.c: 98: {
+"98
 {
-[; ;Task.c: 143: TaskCompany[i].Timer--;
-"143
+[; ;Task.c: 99: TaskCompany[i].Timer--;
+"99
 [e -- . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 1 `i `ui ]
-[; ;Task.c: 144: if(TaskCompany[i].Timer <= 0)
-"144
+[; ;Task.c: 100: if(TaskCompany[i].Timer <= 0)
+"100
 [e $ ! <= . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 171  ]
-[; ;Task.c: 145: {
-"145
+[; ;Task.c: 101: {
+"101
 {
-[; ;Task.c: 146: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
-"146
+[; ;Task.c: 102: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+"102
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 2 ]
-[; ;Task.c: 147: TaskCompany[i].Run = 1;
-"147
+[; ;Task.c: 103: TaskCompany[i].Run = 1;
+"103
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 1 `i `uc ]
-"148
+"104
 }
 [e :U 171 ]
-"149
+"105
 }
 [e :U 170 ]
-"150
+"106
 }
-"139
+"95
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1947 4 `i 167  ]
+[e $ < -> _i `i -> . `E1952 4 `i 167  ]
 [e :U 168 ]
-"150
+"106
 }
-[; ;Task.c: 148: }
-[; ;Task.c: 149: }
-[; ;Task.c: 150: }
-[; ;Task.c: 151: }
-"151
+[; ;Task.c: 104: }
+[; ;Task.c: 105: }
+[; ;Task.c: 106: }
+[; ;Task.c: 107: }
+"107
 [e :UE 166 ]
 }

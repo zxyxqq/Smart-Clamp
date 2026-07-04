@@ -458,15 +458,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
-"17 buzztt.h
-[v _Key_Task `(v ~T0 @X0 0 ef ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"65
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"56
 [v _SYS `S156 ~T0 @X0 0 e ]
-"12 RC.h
-[v _RC_Control `(v ~T0 @X0 0 ef1`uc ]
+"15 buzztt.h
+[v _Hummer_Task `(v ~T0 @X0 0 ef ]
+"17
+[v _Key_Task `(v ~T0 @X0 0 ef ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
 [; ;gcc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3097,27 +3097,33 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_3(void);
 [; ;task.h: 34: void Task_Count(void);
 [; ;task.h: 35: void Task_Process(void);
-[; ;adc.h: 27: typedef enum {
-[; ;adc.h: 28: STATE_NORMAL = 0,
-[; ;adc.h: 29: STATE_UNDER_VOLTAGE,
-[; ;adc.h: 30: STATE_OVER_VOLTAGE
-[; ;adc.h: 31: } Battery_State;
-[; ;adc.h: 44: void Get_Vbattery_Data(void);
-[; ;adc.h: 45: void Get_Cbattery_Data(void);
-[; ;adc.h: 46: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
-[; ;adc.h: 47: void ADC_INITIAL(void);
-[; ;adc.h: 48: void ADC_Task(void);
-[; ;adc.h: 49: void Relay_Release_Detect(void);
-[; ;adc.h: 50: void Relay_sticking_Dected(void);
-[; ;adc.h: 52: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 28: typedef enum {
+[; ;adc.h: 29: STATE_NORMAL = 0,
+[; ;adc.h: 30: STATE_UNDER_VOLTAGE,
+[; ;adc.h: 31: STATE_OVER_VOLTAGE
+[; ;adc.h: 32: } Battery_State;
+[; ;adc.h: 45: void Get_Vbattery_Data(void);
+[; ;adc.h: 46: void Get_Cbattery_Data(void);
+[; ;adc.h: 47: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
+[; ;adc.h: 48: void ADC_INITIAL(void);
+[; ;adc.h: 49: void ADC_Task(void);
+[; ;adc.h: 50: void Relay_Release_Detect(void);
+[; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
 [; ;delay.h: 9: void DelayS(unsigned char Time);
 [; ;Timer.h: 6: void Timer0_Init(void);
 [; ;Timer.h: 7: void Timer0_Task(void);
-[; ;ready.h: 14: void Ready_Init(void);
-[; ;ready.h: 15: void Ready_Control(uint8_t num);
-[; ;ready.h: 16: void READY_Task(void);
+[; ;ready.h: 18: typedef enum {
+[; ;ready.h: 19: ST_PRE_ON,
+[; ;ready.h: 20: ST_OFF,
+[; ;ready.h: 21: ST_FINAL_ON,
+[; ;ready.h: 22: ST_DETECT
+[; ;ready.h: 23: } TaskState_t;
+[; ;ready.h: 28: void Ready_Init(void);
+[; ;ready.h: 29: void Ready_Control(uint8_t num);
+[; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
 [; ;Int.h: 12: void HT_Detect(void);
 [; ;Int.h: 13: void LB_Open(void);
@@ -3133,20 +3139,19 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 24: uint8_t HT_Value;
 [; ;app.h: 26: uint8_t LB_Value;
 [; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 32: uint8_t Relay_Release;
-[; ;app.h: 34: uint8_t KEY_Value;
-[; ;app.h: 36: uint8_t Vadc_Value;
-[; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 42: uint8_t READY_Value;
-[; ;app.h: 44: uint8_t STANDBY_Value;
-[; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
-[; ;app.h: 50: uint16_t Vbattery_Adc;
-[; ;app.h: 52: uint16_t Cbattery_Adc;
-[; ;app.h: 54: uint8_t Long_Time_Change;
-[; ;app.h: 56: uint8_t Delay_2s_Flag ;
-[; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 63: }sys;
-[; ;app.h: 65: extern sys SYS;
+[; ;app.h: 30: uint8_t Relay_Release;
+[; ;app.h: 32: uint8_t KEY_Value;
+[; ;app.h: 34: uint8_t Vadc_Value;
+[; ;app.h: 36: uint8_t Cadc_Value;
+[; ;app.h: 38: uint8_t READY_Value;
+[; ;app.h: 40: uint8_t STANDBY_Value;
+[; ;app.h: 44: uint16_t Vbattery_Adc;
+[; ;app.h: 46: uint16_t Cbattery_Adc;
+[; ;app.h: 48: uint8_t Long_Time_Change;
+[; ;app.h: 50: uint8_t Delay_2s_Flag ;
+[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 54: }sys;
+[; ;app.h: 56: extern sys SYS;
 [; ;buzztt.h: 10: void BUZZTT_Init(void);
 [; ;buzztt.h: 11: void KEY_Init(void);
 [; ;buzztt.h: 12: void Hummer_Init(void);
@@ -3226,141 +3231,161 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.c: 61: {
 [e :U _BUZZHH_Control ]
 [f ]
-[; ;BUZZTT.c: 68: Key_Task();
+[; ;BUZZTT.c: 63: if(SYS.HT_Value || SYS.LB_Value || SYS.RC_Value)
+"63
+[e $ ! || || != -> . _SYS 1 `i -> -> -> 0 `i `uc `i != -> . _SYS 2 `i -> -> -> 0 `i `uc `i != -> . _SYS 3 `i -> -> -> 0 `i `uc `i 161  ]
+[; ;BUZZTT.c: 64: {
+"64
+{
+[; ;BUZZTT.c: 65: Hummer_Task();
+"65
+[e ( _Hummer_Task ..  ]
+"66
+}
+[; ;BUZZTT.c: 66: }
+[e $U 162  ]
+"67
+[e :U 161 ]
+[; ;BUZZTT.c: 67: else
+[; ;BUZZTT.c: 68: {
 "68
+{
+[; ;BUZZTT.c: 69: Key_Task();
+"69
 [e ( _Key_Task ..  ]
-[; ;BUZZTT.c: 70: }
 "70
+}
+[e :U 162 ]
+[; ;BUZZTT.c: 70: }
+[; ;BUZZTT.c: 71: }
+"71
 [e :UE 160 ]
 }
-"71
+"72
 [v _KEY_Press `uc ~T0 @X0 1 s ]
 [i _KEY_Press
 -> -> 0 `i `uc
 ]
-[; ;BUZZTT.c: 71: static uint8_t KEY_Press = 0;
-"79
-[v _Key_Detect `(v ~T0 @X0 1 ef ]
+[; ;BUZZTT.c: 72: static uint8_t KEY_Press = 0;
 "80
+[v _Key_Detect `(v ~T0 @X0 1 ef ]
+"81
 {
-[; ;BUZZTT.c: 79: void Key_Detect(void)
-[; ;BUZZTT.c: 80: {
+[; ;BUZZTT.c: 80: void Key_Detect(void)
+[; ;BUZZTT.c: 81: {
 [e :U _Key_Detect ]
 [f ]
-"81
-[v F1972 `uc ~T0 @X0 1 s press_cnt ]
-[i F1972
--> -> 0 `i `uc
-]
 "82
-[v F1973 `ui ~T0 @X0 1 s long_cnt ]
-[i F1973
--> -> 0 `i `ui
+[v F1977 `uc ~T0 @X0 1 s press_cnt ]
+[i F1977
+-> -> 0 `i `uc
 ]
 "83
-[v F1974 `uc ~T0 @X0 1 s long_trig ]
-[i F1974
+[v F1978 `ui ~T0 @X0 1 s long_cnt ]
+[i F1978
+-> -> 0 `i `ui
+]
+"84
+[v F1979 `uc ~T0 @X0 1 s long_trig ]
+[i F1979
 -> -> 0 `i `uc
 ]
-[; ;BUZZTT.c: 81: static uint8_t press_cnt = 0;
-[; ;BUZZTT.c: 82: static uint16_t long_cnt = 0;
-[; ;BUZZTT.c: 83: static uint8_t long_trig = 0;
-[; ;BUZZTT.c: 85: if(PC1 == 0)
-"85
-[e $ ! == -> _PC1 `i -> 0 `i 162  ]
-[; ;BUZZTT.c: 86: {
+[; ;BUZZTT.c: 82: static uint8_t press_cnt = 0;
+[; ;BUZZTT.c: 83: static uint16_t long_cnt = 0;
+[; ;BUZZTT.c: 84: static uint8_t long_trig = 0;
+[; ;BUZZTT.c: 86: if(PC1 == 0)
 "86
+[e $ ! == -> _PC1 `i -> 0 `i 164  ]
+[; ;BUZZTT.c: 87: {
+"87
 {
-[; ;BUZZTT.c: 88: if(press_cnt <4)
-"88
-[e $ ! < -> F1972 `i -> 4 `i 163  ]
-[; ;BUZZTT.c: 89: {
+[; ;BUZZTT.c: 89: if(press_cnt <4)
 "89
-{
-[; ;BUZZTT.c: 90: press_cnt ++;
+[e $ ! < -> F1977 `i -> 4 `i 165  ]
+[; ;BUZZTT.c: 90: {
 "90
-[e ++ F1972 -> -> 1 `i `uc ]
+{
+[; ;BUZZTT.c: 91: press_cnt ++;
 "91
-}
-[; ;BUZZTT.c: 91: }
-[e $U 164  ]
+[e ++ F1977 -> -> 1 `i `uc ]
 "92
-[e :U 163 ]
-[; ;BUZZTT.c: 92: else
-[; ;BUZZTT.c: 93: {
+}
+[; ;BUZZTT.c: 92: }
+[e $U 166  ]
 "93
-{
-[; ;BUZZTT.c: 94: KEY_Press = 1;
-"94
-[e = _KEY_Press -> -> 1 `i `uc ]
-"95
-}
-[e :U 164 ]
-[; ;BUZZTT.c: 95: }
-[; ;BUZZTT.c: 98: if(KEY_Press && long_trig == 0 && long_cnt<300)
-"98
-[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i == -> F1974 `i -> 0 `i < F1973 -> -> 300 `i `ui 165  ]
-[; ;BUZZTT.c: 99: {
-"99
-{
-[; ;BUZZTT.c: 100: long_cnt++;
-"100
-[e ++ F1973 -> -> 1 `i `ui ]
-"101
-}
 [e :U 165 ]
-[; ;BUZZTT.c: 101: }
-[; ;BUZZTT.c: 105: if(KEY_Press && long_cnt >= 300 && long_trig == 0)
-"105
-[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i >= F1973 -> -> 300 `i `ui == -> F1974 `i -> 0 `i 166  ]
-[; ;BUZZTT.c: 106: {
-"106
+[; ;BUZZTT.c: 93: else
+[; ;BUZZTT.c: 94: {
+"94
 {
-[; ;BUZZTT.c: 108: SYS.Long_Time_Change = 0;
-"108
-[e = . _SYS 13 -> -> 0 `i `uc ]
-[; ;BUZZTT.c: 109: SYS.KEY_Value = 1;
-"109
-[e = . _SYS 5 -> -> 1 `i `uc ]
-[; ;BUZZTT.c: 111: long_trig = 1;
-"111
-[e = F1974 -> -> 1 `i `uc ]
-[; ;BUZZTT.c: 112: RC_Control(0);
-"112
-[e ( _RC_Control (1 -> -> 0 `i `uc ]
-"113
+[; ;BUZZTT.c: 95: KEY_Press = 1;
+"95
+[e = _KEY_Press -> -> 1 `i `uc ]
+"96
 }
 [e :U 166 ]
+[; ;BUZZTT.c: 96: }
+[; ;BUZZTT.c: 99: if(KEY_Press && long_trig == 0 && long_cnt<300)
+"99
+[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i == -> F1979 `i -> 0 `i < F1978 -> -> 300 `i `ui 167  ]
+[; ;BUZZTT.c: 100: {
+"100
+{
+[; ;BUZZTT.c: 101: long_cnt++;
+"101
+[e ++ F1978 -> -> 1 `i `ui ]
+"102
+}
+[e :U 167 ]
+[; ;BUZZTT.c: 102: }
+[; ;BUZZTT.c: 106: if(KEY_Press && long_cnt >= 300 && long_trig == 0)
+"106
+[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i >= F1978 -> -> 300 `i `ui == -> F1979 `i -> 0 `i 168  ]
+[; ;BUZZTT.c: 107: {
+"107
+{
+[; ;BUZZTT.c: 109: SYS.Long_Time_Change = 0;
+"109
+[e = . _SYS 12 -> -> 0 `i `uc ]
+[; ;BUZZTT.c: 110: SYS.KEY_Value = 1;
+"110
+[e = . _SYS 5 -> -> 1 `i `uc ]
+[; ;BUZZTT.c: 112: long_trig = 1;
+"112
+[e = F1979 -> -> 1 `i `uc ]
+"113
+}
+[e :U 168 ]
 "115
 }
 [; ;BUZZTT.c: 113: }
 [; ;BUZZTT.c: 115: }
-[e $U 167  ]
+[e $U 169  ]
 "116
-[e :U 162 ]
+[e :U 164 ]
 [; ;BUZZTT.c: 116: else
 [; ;BUZZTT.c: 117: {
 "117
 {
 [; ;BUZZTT.c: 119: press_cnt = 0;
 "119
-[e = F1972 -> -> 0 `i `uc ]
+[e = F1977 -> -> 0 `i `uc ]
 [; ;BUZZTT.c: 120: KEY_Press = 0;
 "120
 [e = _KEY_Press -> -> 0 `i `uc ]
 [; ;BUZZTT.c: 121: long_cnt = 0;
 "121
-[e = F1973 -> -> 0 `i `ui ]
+[e = F1978 -> -> 0 `i `ui ]
 [; ;BUZZTT.c: 122: long_trig = 0;
 "122
-[e = F1974 -> -> 0 `i `uc ]
+[e = F1979 -> -> 0 `i `uc ]
 "123
 }
-[e :U 167 ]
+[e :U 169 ]
 [; ;BUZZTT.c: 123: }
 [; ;BUZZTT.c: 124: }
 "124
-[e :UE 161 ]
+[e :UE 163 ]
 }
 "132
 [v _Key_Task `(v ~T0 @X0 1 ef ]
@@ -3378,7 +3403,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e ( _Key_Detect ..  ]
 [; ;BUZZTT.c: 136: }
 "136
-[e :UE 168 ]
+[e :UE 170 ]
 }
 "144
 [v _Hummer_Task `(v ~T0 @X0 1 ef ]
@@ -3396,7 +3421,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e = _PC1 -> -> 0 `i `b ]
 [; ;BUZZTT.c: 148: }
 "148
-[e :UE 169 ]
+[e :UE 171 ]
 }
 "156
 [v _BUZZTT_Task `(v ~T0 @X0 1 ef ]
@@ -3411,5 +3436,5 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e ( _BUZZHH_Control ..  ]
 [; ;BUZZTT.c: 159: }
 "159
-[e :UE 170 ]
+[e :UE 172 ]
 }

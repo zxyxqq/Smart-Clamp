@@ -1931,14 +1931,14 @@ void Task_3(void);
 void Task_Count(void);
 void Task_Process(void);
 
-# 27 "adc.h"
+# 28 "adc.h"
 typedef enum {
 STATE_NORMAL = 0,
 STATE_UNDER_VOLTAGE,
 STATE_OVER_VOLTAGE
 } Battery_State;
 
-# 44
+# 45
 void Get_Vbattery_Data(void);
 void Get_Cbattery_Data(void);
 unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
@@ -1998,8 +1998,6 @@ uint8_t LB_Value;
 
 uint8_t RC_Value;
 
-
-
 uint8_t Relay_Release;
 
 uint8_t KEY_Value;
@@ -2008,15 +2006,11 @@ uint8_t Vadc_Value;
 
 uint8_t Cadc_Value;
 
-
-
 uint8_t READY_Value;
 
 uint8_t STANDBY_Value;
 
 
-
-uint8_t Short_Ready_Time_Flag;
 
 uint16_t Vbattery_Adc;
 
@@ -2028,14 +2022,21 @@ uint8_t Delay_2s_Flag ;
 
 uint8_t Cadc_Ready_Flag ;
 
-
-
-
 }sys;
 
 extern sys SYS;
 
-# 14 "Ready.h"
+# 18 "Ready.h"
+typedef enum {
+ST_PRE_ON,
+ST_OFF,
+ST_FINAL_ON,
+ST_DETECT
+} TaskState_t;
+
+
+
+
 void Ready_Init(void);
 void Ready_Control(uint8_t num);
 void READY_Task(void);
@@ -2060,24 +2061,55 @@ WPUB |= 0B00001000;
 void Ready_Control(uint8_t num)
 {
 PC0 = (num == 1) ? 1 : 0;
+PB3 = (num == 1) ? 1 : 0;
 }
 
-# 49
-void READY_Task(void)
-{
+# 53
+void READY_Task(void) {
+static TaskState_t state = ST_PRE_ON;
+static uint16_t counter = 0;
 
-if(SYS.Standby_Work_State)
-{
-SYS.READY_Value = 1;
-
-# 63
-}
-else
-{
-SYS.READY_Value = 0;
-
+if (!SYS.Standby_Work_State) {
+state = ST_PRE_ON;
+counter = 0;
+Ready_Control(0);
+return;
 }
 
-Ready_Control(SYS.READY_Value);
+counter++;
 
+switch (state) {
+case ST_PRE_ON:
+Ready_Control(1);
+if (counter >= 600) {
+counter = 0;
+state = ST_OFF;
 }
+break;
+
+case ST_OFF:
+Ready_Control(0);
+if (counter >= 2) {
+counter = 0;
+state = ST_FINAL_ON;
+}
+break;
+
+case ST_FINAL_ON:
+Ready_Control(1);
+if (counter >= 400) {
+counter = 0;
+state = ST_DETECT;
+}
+break;
+
+case ST_DETECT:
+
+Get_Cbattery_Data();
+SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
+state = ST_PRE_ON;
+counter = 400;
+break;
+}
+}
+

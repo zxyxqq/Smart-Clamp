@@ -27,29 +27,6 @@ void Timer0_Task(void)
     {
         Long_Ready_Time++;//
         
-        if(SYS.READY_Value == 1)//在继电器打开的时候每隔2s检查一次电压
-        {
-			SYS.Delay_2s_Flag = 1;
-            
-			if(SYS.Delay_2s_Flag == 1)
-            {
-				if(Ready_Delay_Time<4)
-				{
-					Ready_Delay_Time++;
-				}
-				else
-				{
-					Ready_Delay_Time = 0;
-					SYS.Delay_2s_Flag = 0;
-					SYS.Cadc_Ready_Flag = 1;
-				}
-            }
-        }
-        else
-        {
-			SYS.Delay_2s_Flag = 0;
-        }
-        
         if(Long_Ready_Time>=80)//80*500 = 40000 = 40s,跳转到待机状态
         {
 			Long_Ready_Time = 0;

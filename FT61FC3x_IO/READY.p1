@@ -458,11 +458,21 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
+"54 READY.c
+[c E1959 0 1 2 3 .. ]
+[n E1959 . ST_PRE_ON ST_OFF ST_FINAL_ON ST_DETECT  ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"65
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"56
 [v _SYS `S156 ~T0 @X0 0 e ]
+"46 adc.h
+[v _Get_Cbattery_Data `(v ~T0 @X0 0 ef ]
+"94 READY.c
+[c E1874 0 1 2 .. ]
+[n E1874 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
+"53 adc.h
+[v _Get_Cbattery_Stand_State `(E1874 ~T0 @X0 0 ef1`ui ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
 [; ;gcc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3093,19 +3103,19 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_3(void);
 [; ;task.h: 34: void Task_Count(void);
 [; ;task.h: 35: void Task_Process(void);
-[; ;adc.h: 27: typedef enum {
-[; ;adc.h: 28: STATE_NORMAL = 0,
-[; ;adc.h: 29: STATE_UNDER_VOLTAGE,
-[; ;adc.h: 30: STATE_OVER_VOLTAGE
-[; ;adc.h: 31: } Battery_State;
-[; ;adc.h: 44: void Get_Vbattery_Data(void);
-[; ;adc.h: 45: void Get_Cbattery_Data(void);
-[; ;adc.h: 46: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
-[; ;adc.h: 47: void ADC_INITIAL(void);
-[; ;adc.h: 48: void ADC_Task(void);
-[; ;adc.h: 49: void Relay_Release_Detect(void);
-[; ;adc.h: 50: void Relay_sticking_Dected(void);
-[; ;adc.h: 52: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 28: typedef enum {
+[; ;adc.h: 29: STATE_NORMAL = 0,
+[; ;adc.h: 30: STATE_UNDER_VOLTAGE,
+[; ;adc.h: 31: STATE_OVER_VOLTAGE
+[; ;adc.h: 32: } Battery_State;
+[; ;adc.h: 45: void Get_Vbattery_Data(void);
+[; ;adc.h: 46: void Get_Cbattery_Data(void);
+[; ;adc.h: 47: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
+[; ;adc.h: 48: void ADC_INITIAL(void);
+[; ;adc.h: 49: void ADC_Task(void);
+[; ;adc.h: 50: void Relay_Release_Detect(void);
+[; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
 [; ;delay.h: 9: void DelayS(unsigned char Time);
@@ -3134,23 +3144,28 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 24: uint8_t HT_Value;
 [; ;app.h: 26: uint8_t LB_Value;
 [; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 32: uint8_t Relay_Release;
-[; ;app.h: 34: uint8_t KEY_Value;
-[; ;app.h: 36: uint8_t Vadc_Value;
-[; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 42: uint8_t READY_Value;
-[; ;app.h: 44: uint8_t STANDBY_Value;
-[; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
-[; ;app.h: 50: uint16_t Vbattery_Adc;
-[; ;app.h: 52: uint16_t Cbattery_Adc;
-[; ;app.h: 54: uint8_t Long_Time_Change;
-[; ;app.h: 56: uint8_t Delay_2s_Flag ;
-[; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 63: }sys;
-[; ;app.h: 65: extern sys SYS;
-[; ;Ready.h: 14: void Ready_Init(void);
-[; ;Ready.h: 15: void Ready_Control(uint8_t num);
-[; ;Ready.h: 16: void READY_Task(void);
+[; ;app.h: 30: uint8_t Relay_Release;
+[; ;app.h: 32: uint8_t KEY_Value;
+[; ;app.h: 34: uint8_t Vadc_Value;
+[; ;app.h: 36: uint8_t Cadc_Value;
+[; ;app.h: 38: uint8_t READY_Value;
+[; ;app.h: 40: uint8_t STANDBY_Value;
+[; ;app.h: 44: uint16_t Vbattery_Adc;
+[; ;app.h: 46: uint16_t Cbattery_Adc;
+[; ;app.h: 48: uint8_t Long_Time_Change;
+[; ;app.h: 50: uint8_t Delay_2s_Flag ;
+[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 54: }sys;
+[; ;app.h: 56: extern sys SYS;
+[; ;Ready.h: 18: typedef enum {
+[; ;Ready.h: 19: ST_PRE_ON,
+[; ;Ready.h: 20: ST_OFF,
+[; ;Ready.h: 21: ST_FINAL_ON,
+[; ;Ready.h: 22: ST_DETECT
+[; ;Ready.h: 23: } TaskState_t;
+[; ;Ready.h: 28: void Ready_Init(void);
+[; ;Ready.h: 29: void Ready_Control(uint8_t num);
+[; ;Ready.h: 30: void READY_Task(void);
 "17 READY.c
 [v _Ready_Init `(v ~T0 @X0 1 ef ]
 "18
@@ -3195,48 +3210,159 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;READY.c: 40: PC0 = (num == 1) ? 1 : 0;
 "40
 [e = _PC0 -> ? == -> _num `i -> 1 `i : -> 1 `i -> 0 `i `b ]
-[; ;READY.c: 41: }
+[; ;READY.c: 41: PB3 = (num == 1) ? 1 : 0;
 "41
+[e = _PB3 -> ? == -> _num `i -> 1 `i : -> 1 `i -> 0 `i `b ]
+[; ;READY.c: 42: }
+"42
 [e :UE 158 ]
 }
-"49
+"53
 [v _READY_Task `(v ~T0 @X0 1 ef ]
-"50
 {
-[; ;READY.c: 49: void READY_Task(void)
-[; ;READY.c: 50: {
+[; ;READY.c: 53: void READY_Task(void) {
 [e :U _READY_Task ]
 [f ]
-[; ;READY.c: 52: if(SYS.Standby_Work_State)
-"52
-[e $ ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 160  ]
-[; ;READY.c: 53: {
-"53
-{
-[; ;READY.c: 54: SYS.READY_Value = 1;
 "54
-[e = . _SYS 8 -> -> 1 `i `uc ]
-"63
-}
-[; ;READY.c: 63: }
-[e $U 161  ]
-"64
-[e :U 160 ]
-[; ;READY.c: 64: else
-[; ;READY.c: 65: {
-"65
+[v F1974 `E1959 ~T0 @X0 1 s state ]
+[i F1974
+. `E1959 0
+]
+"55
+[v F1975 `ui ~T0 @X0 1 s counter ]
+[i F1975
+-> -> 0 `i `ui
+]
+[; ;READY.c: 54: static TaskState_t state = ST_PRE_ON;
+[; ;READY.c: 55: static uint16_t counter = 0;
+[; ;READY.c: 57: if (!SYS.Standby_Work_State) {
+"57
+[e $ ! ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 160  ]
 {
-[; ;READY.c: 66: SYS.READY_Value = 0;
-"66
-[e = . _SYS 8 -> -> 0 `i `uc ]
-"68
+[; ;READY.c: 58: state = ST_PRE_ON;
+"58
+[e = F1974 . `E1959 0 ]
+[; ;READY.c: 59: counter = 0;
+"59
+[e = F1975 -> -> 0 `i `ui ]
+[; ;READY.c: 60: Ready_Control(0);
+"60
+[e ( _Ready_Control (1 -> -> 0 `i `uc ]
+[; ;READY.c: 61: return;
+"61
+[e $UE 159  ]
+"62
 }
-[e :U 161 ]
-[; ;READY.c: 68: }
-[; ;READY.c: 70: Ready_Control(SYS.READY_Value);
+[e :U 160 ]
+[; ;READY.c: 62: }
+[; ;READY.c: 64: counter++;
+"64
+[e ++ F1975 -> -> 1 `i `ui ]
+[; ;READY.c: 66: switch (state) {
+"66
+[e $U 162  ]
+{
+[; ;READY.c: 67: case ST_PRE_ON:
+"67
+[e :U 163 ]
+[; ;READY.c: 68: Ready_Control(1);
+"68
+[e ( _Ready_Control (1 -> -> 1 `i `uc ]
+[; ;READY.c: 69: if (counter >= 600) {
+"69
+[e $ ! >= F1975 -> -> 600 `i `ui 164  ]
+{
+[; ;READY.c: 70: counter = 0;
 "70
-[e ( _Ready_Control (1 . _SYS 8 ]
-[; ;READY.c: 72: }
+[e = F1975 -> -> 0 `i `ui ]
+[; ;READY.c: 71: state = ST_OFF;
+"71
+[e = F1974 . `E1959 1 ]
 "72
+}
+[e :U 164 ]
+[; ;READY.c: 72: }
+[; ;READY.c: 73: break;
+"73
+[e $U 161  ]
+[; ;READY.c: 75: case ST_OFF:
+"75
+[e :U 165 ]
+[; ;READY.c: 76: Ready_Control(0);
+"76
+[e ( _Ready_Control (1 -> -> 0 `i `uc ]
+[; ;READY.c: 77: if (counter >= 2) {
+"77
+[e $ ! >= F1975 -> -> 2 `i `ui 166  ]
+{
+[; ;READY.c: 78: counter = 0;
+"78
+[e = F1975 -> -> 0 `i `ui ]
+[; ;READY.c: 79: state = ST_FINAL_ON;
+"79
+[e = F1974 . `E1959 2 ]
+"80
+}
+[e :U 166 ]
+[; ;READY.c: 80: }
+[; ;READY.c: 81: break;
+"81
+[e $U 161  ]
+[; ;READY.c: 83: case ST_FINAL_ON:
+"83
+[e :U 167 ]
+[; ;READY.c: 84: Ready_Control(1);
+"84
+[e ( _Ready_Control (1 -> -> 1 `i `uc ]
+[; ;READY.c: 85: if (counter >= 400) {
+"85
+[e $ ! >= F1975 -> -> 400 `i `ui 168  ]
+{
+[; ;READY.c: 86: counter = 0;
+"86
+[e = F1975 -> -> 0 `i `ui ]
+[; ;READY.c: 87: state = ST_DETECT;
+"87
+[e = F1974 . `E1959 3 ]
+"88
+}
+[e :U 168 ]
+[; ;READY.c: 88: }
+[; ;READY.c: 89: break;
+"89
+[e $U 161  ]
+[; ;READY.c: 91: case ST_DETECT:
+"91
+[e :U 169 ]
+[; ;READY.c: 93: Get_Cbattery_Data();
+"93
+[e ( _Get_Cbattery_Data ..  ]
+[; ;READY.c: 94: SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
+"94
+[e = . _SYS 7 -> ( _Get_Cbattery_Stand_State (1 . _SYS 11 `uc ]
+[; ;READY.c: 95: state = ST_PRE_ON;
+"95
+[e = F1974 . `E1959 0 ]
+[; ;READY.c: 96: counter = 400;
+"96
+[e = F1975 -> -> 400 `i `ui ]
+[; ;READY.c: 97: break;
+"97
+[e $U 161  ]
+"98
+}
+[; ;READY.c: 98: }
+[e $U 161  ]
+"66
+[e :U 162 ]
+[e [\ F1974 , $ . `E1959 0 163
+ , $ . `E1959 1 165
+ , $ . `E1959 2 167
+ , $ . `E1959 3 169
+ 161 ]
+"98
+[e :U 161 ]
+[; ;READY.c: 99: }
+"99
 [e :UE 159 ]
 }

@@ -459,9 +459,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Short_Ready_Time_Flag Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"65
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"56
 [v _SYS `S156 ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3091,27 +3091,33 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_3(void);
 [; ;task.h: 34: void Task_Count(void);
 [; ;task.h: 35: void Task_Process(void);
-[; ;adc.h: 27: typedef enum {
-[; ;adc.h: 28: STATE_NORMAL = 0,
-[; ;adc.h: 29: STATE_UNDER_VOLTAGE,
-[; ;adc.h: 30: STATE_OVER_VOLTAGE
-[; ;adc.h: 31: } Battery_State;
-[; ;adc.h: 44: void Get_Vbattery_Data(void);
-[; ;adc.h: 45: void Get_Cbattery_Data(void);
-[; ;adc.h: 46: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
-[; ;adc.h: 47: void ADC_INITIAL(void);
-[; ;adc.h: 48: void ADC_Task(void);
-[; ;adc.h: 49: void Relay_Release_Detect(void);
-[; ;adc.h: 50: void Relay_sticking_Dected(void);
-[; ;adc.h: 52: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 28: typedef enum {
+[; ;adc.h: 29: STATE_NORMAL = 0,
+[; ;adc.h: 30: STATE_UNDER_VOLTAGE,
+[; ;adc.h: 31: STATE_OVER_VOLTAGE
+[; ;adc.h: 32: } Battery_State;
+[; ;adc.h: 45: void Get_Vbattery_Data(void);
+[; ;adc.h: 46: void Get_Cbattery_Data(void);
+[; ;adc.h: 47: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
+[; ;adc.h: 48: void ADC_INITIAL(void);
+[; ;adc.h: 49: void ADC_Task(void);
+[; ;adc.h: 50: void Relay_Release_Detect(void);
+[; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
 [; ;delay.h: 9: void DelayS(unsigned char Time);
 [; ;Timer.h: 6: void Timer0_Init(void);
 [; ;Timer.h: 7: void Timer0_Task(void);
-[; ;ready.h: 14: void Ready_Init(void);
-[; ;ready.h: 15: void Ready_Control(uint8_t num);
-[; ;ready.h: 16: void READY_Task(void);
+[; ;ready.h: 18: typedef enum {
+[; ;ready.h: 19: ST_PRE_ON,
+[; ;ready.h: 20: ST_OFF,
+[; ;ready.h: 21: ST_FINAL_ON,
+[; ;ready.h: 22: ST_DETECT
+[; ;ready.h: 23: } TaskState_t;
+[; ;ready.h: 28: void Ready_Init(void);
+[; ;ready.h: 29: void Ready_Control(uint8_t num);
+[; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
 [; ;Int.h: 12: void HT_Detect(void);
 [; ;Int.h: 13: void LB_Open(void);
@@ -3135,20 +3141,19 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 24: uint8_t HT_Value;
 [; ;app.h: 26: uint8_t LB_Value;
 [; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 32: uint8_t Relay_Release;
-[; ;app.h: 34: uint8_t KEY_Value;
-[; ;app.h: 36: uint8_t Vadc_Value;
-[; ;app.h: 38: uint8_t Cadc_Value;
-[; ;app.h: 42: uint8_t READY_Value;
-[; ;app.h: 44: uint8_t STANDBY_Value;
-[; ;app.h: 48: uint8_t Short_Ready_Time_Flag;
-[; ;app.h: 50: uint16_t Vbattery_Adc;
-[; ;app.h: 52: uint16_t Cbattery_Adc;
-[; ;app.h: 54: uint8_t Long_Time_Change;
-[; ;app.h: 56: uint8_t Delay_2s_Flag ;
-[; ;app.h: 58: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 63: }sys;
-[; ;app.h: 65: extern sys SYS;
+[; ;app.h: 30: uint8_t Relay_Release;
+[; ;app.h: 32: uint8_t KEY_Value;
+[; ;app.h: 34: uint8_t Vadc_Value;
+[; ;app.h: 36: uint8_t Cadc_Value;
+[; ;app.h: 38: uint8_t READY_Value;
+[; ;app.h: 40: uint8_t STANDBY_Value;
+[; ;app.h: 44: uint16_t Vbattery_Adc;
+[; ;app.h: 46: uint16_t Cbattery_Adc;
+[; ;app.h: 48: uint8_t Long_Time_Change;
+[; ;app.h: 50: uint8_t Delay_2s_Flag ;
+[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 54: }sys;
+[; ;app.h: 56: extern sys SYS;
 [; ;POWER.h: 8: void POWER_INITIAL(void);
 [; ;POWER.h: 9: void SYS_Initial(void);
 "9 Power.c
@@ -3225,28 +3230,28 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Power.c: 48: SYS.LB_Value = 0;
 "48
 [e = . _SYS 2 -> -> 0 `i `uc ]
-[; ;Power.c: 52: SYS.Relay_Release = 0;
-"52
+[; ;Power.c: 50: SYS.Relay_Release = 0;
+"50
 [e = . _SYS 4 -> -> 0 `i `uc ]
-[; ;Power.c: 54: SYS.RC_Value = 0;
-"54
+[; ;Power.c: 52: SYS.RC_Value = 0;
+"52
 [e = . _SYS 3 -> -> 0 `i `uc ]
-[; ;Power.c: 56: SYS.KEY_Value = 0;
-"56
+[; ;Power.c: 54: SYS.KEY_Value = 0;
+"54
 [e = . _SYS 5 -> -> 0 `i `uc ]
-[; ;Power.c: 58: SYS.Vadc_Value = 0;
-"58
+[; ;Power.c: 56: SYS.Vadc_Value = 0;
+"56
 [e = . _SYS 6 -> -> 0 `i `uc ]
-[; ;Power.c: 60: SYS.Cadc_Value = 0;
-"60
+[; ;Power.c: 58: SYS.Cadc_Value = 0;
+"58
 [e = . _SYS 7 -> -> 0 `i `uc ]
-[; ;Power.c: 64: SYS.READY_Value = 0;
-"64
+[; ;Power.c: 62: SYS.READY_Value = 0;
+"62
 [e = . _SYS 8 -> -> 0 `i `uc ]
-[; ;Power.c: 66: SYS.STANDBY_Value = 0;
-"66
+[; ;Power.c: 64: SYS.STANDBY_Value = 0;
+"64
 [e = . _SYS 9 -> -> 0 `i `uc ]
-[; ;Power.c: 68: }
-"68
+[; ;Power.c: 66: }
+"66
 [e :UE 158 ]
 }

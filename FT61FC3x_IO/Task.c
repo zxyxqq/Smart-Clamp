@@ -7,7 +7,7 @@ static TaskComps TaskCompany[] =
 	{ 0,1,5,Task_0 },
 	{ 0,2,10,Task_1 },
 	{ 0,3,20,Task_2 },
-	{ 0,4,4000,Task_3 },
+	{ 0,4000,4000,Task_3 },
 };
 
 /**************************************************************************************************
@@ -17,50 +17,16 @@ static TaskComps TaskCompany[] =
 **************************************************************************************************/
 void Task_0(void)
 {
-//	BUZZTT_Task();
 //    ADC_Task();
 //	  Int_Task();
 //    RC_Task();
-//    READY_Task();
+
+
+    READY_Task();
 
 
 
-/*测试,RC输出正常*/
-//RC_Detect();
-//RC_Control(0);
 
-/*输出1/0正常*/
-/*
-HT亮(低电平),LB亮(高电平),可以检测到HT低电平
-HT不亮(高电平),LB不亮(低电平),检测budaoHT高电平
-
-*/
-//LB_Open();//LB亮，HT不亮
-//LB_Close();//
-
-//HT_Detect();
-
-/*可以先断开R12，检测输入时LB是否还亮,依旧亮*/
-
-//	PC1 = 1;
-
-/*ready正常*/
-//Ready_Control(1);
-
-/*蜂鸣器引脚正常，但是按键输入检测有待改善*/
-
-//	 SYS.Cadc_Ready_Flag = PC1;
-//     if(SYS.Cadc_Ready_Flag == 1)
-//     {
-//		LB_Open();
-//        LB_Close();
-//     }
-//     else
-//     {
-//		LB_Close();
-//     }
-//	SYS.LB_Value = 0;
-//	SYS.RC_Value = 0;
 }
 
 
@@ -74,7 +40,7 @@ void Task_1(void)
 //HT_Detect();
 
 
-BUZZTT_Task();
+//BUZZTT_Task();
 
 }
 
@@ -95,18 +61,8 @@ void Task_2(void)
 **************************************************************************************************/
 void Task_3(void)
 {	
-//if(a)
-//{
-//LB_Open();
-//}
-//else
-//{
-//LB_Close();
-//}
-//a = ~a;
+
 //	Timer0_Task();
-//	SYS.LB_Value = 1;
-//SYS.LB_Value = ~SYS.LB_Value;
 
 }
 

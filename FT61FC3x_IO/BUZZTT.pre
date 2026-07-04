@@ -1931,14 +1931,14 @@ void Task_3(void);
 void Task_Count(void);
 void Task_Process(void);
 
-# 27 "adc.h"
+# 28 "adc.h"
 typedef enum {
 STATE_NORMAL = 0,
 STATE_UNDER_VOLTAGE,
 STATE_OVER_VOLTAGE
 } Battery_State;
 
-# 44
+# 45
 void Get_Vbattery_Data(void);
 void Get_Cbattery_Data(void);
 unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
@@ -1960,7 +1960,17 @@ void DelayS(unsigned char Time);
 void Timer0_Init(void);
 void Timer0_Task(void);
 
-# 14 "ready.h"
+# 18 "ready.h"
+typedef enum {
+ST_PRE_ON,
+ST_OFF,
+ST_FINAL_ON,
+ST_DETECT
+} TaskState_t;
+
+
+
+
 void Ready_Init(void);
 void Ready_Control(uint8_t num);
 void READY_Task(void);
@@ -1993,8 +2003,6 @@ uint8_t LB_Value;
 
 uint8_t RC_Value;
 
-
-
 uint8_t Relay_Release;
 
 uint8_t KEY_Value;
@@ -2003,15 +2011,11 @@ uint8_t Vadc_Value;
 
 uint8_t Cadc_Value;
 
-
-
 uint8_t READY_Value;
 
 uint8_t STANDBY_Value;
 
 
-
-uint8_t Short_Ready_Time_Flag;
 
 uint16_t Vbattery_Adc;
 
@@ -2022,9 +2026,6 @@ uint8_t Long_Time_Change;
 uint8_t Delay_2s_Flag ;
 
 uint8_t Cadc_Ready_Flag ;
-
-
-
 
 }sys;
 
@@ -2071,13 +2072,18 @@ WPUC &= ~0B00000010;
 void BUZZHH_Control(void)
 {
 
-# 68
+if(SYS.HT_Value || SYS.LB_Value || SYS.RC_Value)
+{
+Hummer_Task();
+}
+else
+{
 Key_Task();
-
+}
 }
 static uint8_t KEY_Press = 0;
 
-# 79
+# 80
 void Key_Detect(void)
 {
 static uint8_t press_cnt = 0;
@@ -2111,7 +2117,6 @@ SYS.Long_Time_Change = 0;
 SYS.KEY_Value = 1;
 
 long_trig = 1;
-RC_Control(0);
 }
 
 }

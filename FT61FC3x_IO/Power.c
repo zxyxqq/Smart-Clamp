@@ -47,8 +47,6 @@ void SYS_Initial(void)
 
 	SYS.LB_Value = 0;		//LB报警标志位(待机状态下:输入端电压有问题时)
 
-//	SYS.Relay_sticking = 0;	//继电器粘连标志位(工作)
-
 	SYS.Relay_Release = 0;	//夹子松脱标志位(工作)
 
 	SYS.RC_Value = 0;		//RC报警标志位(待机：反充，反接，电瓶低电压；工作：继电器粘连)

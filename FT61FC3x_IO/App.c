@@ -16,7 +16,7 @@ void Initial(void)
     Timer0_Init();
 
 //	ADC_INITIAL();
-//	Ready_Init();
+	Ready_Init();
 //    Int_Initial();
 //    RC_INITIAL();
 

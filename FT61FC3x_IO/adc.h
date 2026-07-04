@@ -18,8 +18,9 @@
 #define Cadc_7V_ACTIVE   1111  // 欠压触发值 (Under Voltage Active)
 #define Cadc_7V_RECOVER  1111  // 欠压恢复值 (Under Voltage Recover)
 
-#define	Cadc_1V_High	 836  //1V的电压范围上限
-#define	Cadc_1V_Low	 	 801  //1V的电压范围下限
+#define	Cadc_1V_High	 900  //1V的电压范围上限
+
+
 
 /*变量声明*/
 
