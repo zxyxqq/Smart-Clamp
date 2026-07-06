@@ -466,13 +466,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"56
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"54
 [v _SYS `S156 ~T0 @X0 0 e ]
-"146 ADC.c
-[c E1951 0 1 2 .. ]
-[n E1951 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
+"137 ADC.c
+[c E1948 0 1 2 .. ]
+[n E1948 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
 [; ;gcc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3119,14 +3119,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ready.h: 29: void Ready_Control(uint8_t num);
 [; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
-[; ;Int.h: 12: void HT_Detect(void);
-[; ;Int.h: 13: void LB_Open(void);
-[; ;Int.h: 14: void Int_Task(void);
-[; ;Int.h: 15: void LB_Close(void);
-[; ;RC.h: 10: void RC_INITIAL(void);
-[; ;RC.h: 11: void RC_Detect(void);
-[; ;RC.h: 12: void RC_Control(uint8_t value);
-[; ;RC.h: 13: void RC_Task(void);
+[; ;Int.h: 12: void Read_Int(void);
+[; ;Int.h: 13: void Int_Task(void);
 [; ;BUZZTT.h: 10: void BUZZTT_Init(void);
 [; ;BUZZTT.h: 11: void KEY_Init(void);
 [; ;BUZZTT.h: 12: void Hummer_Init(void);
@@ -3135,25 +3129,29 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 15: void Hummer_Task(void);
 [; ;BUZZTT.h: 16: void BUZZTT_Task(void);
 [; ;BUZZTT.h: 17: void Key_Task(void);
+[; ;LB.h: 6: void LB_Init(void);
+[; ;LB.h: 7: void STNADBY_Open(void);
+[; ;LB.h: 8: void LB_Open(void);
+[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 10: void LB_ST_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
-[; ;app.h: 24: uint8_t HT_Value;
-[; ;app.h: 26: uint8_t LB_Value;
-[; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 30: uint8_t Relay_Release;
-[; ;app.h: 32: uint8_t KEY_Value;
-[; ;app.h: 34: uint8_t Vadc_Value;
-[; ;app.h: 36: uint8_t Cadc_Value;
-[; ;app.h: 38: uint8_t READY_Value;
-[; ;app.h: 40: uint8_t STANDBY_Value;
-[; ;app.h: 44: uint16_t Vbattery_Adc;
-[; ;app.h: 46: uint16_t Cbattery_Adc;
-[; ;app.h: 48: uint8_t Long_Time_Change;
-[; ;app.h: 50: uint8_t Delay_2s_Flag ;
-[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 54: }sys;
-[; ;app.h: 56: extern sys SYS;
+[; ;app.h: 24: uint8_t LB_Value;
+[; ;app.h: 26: uint8_t INT_Value;
+[; ;app.h: 28: uint8_t Relay_Release;
+[; ;app.h: 30: uint8_t KEY_Value;
+[; ;app.h: 32: uint8_t Vadc_Value;
+[; ;app.h: 34: uint8_t Cadc_Value;
+[; ;app.h: 36: uint8_t READY_Value;
+[; ;app.h: 38: uint8_t STANDBY_Value;
+[; ;app.h: 42: uint16_t Vbattery_Adc;
+[; ;app.h: 44: uint16_t Cbattery_Adc;
+[; ;app.h: 46: uint8_t Long_Time_Change;
+[; ;app.h: 48: uint8_t Delay_2s_Flag ;
+[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 52: }sys;
+[; ;app.h: 54: extern sys SYS;
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
 [; ;adc.h: 30: STATE_UNDER_VOLTAGE,
@@ -3175,446 +3173,428 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 54: {
 [e :U _ADC_INITIAL ]
 [f ]
-[; ;ADC.c: 55: PORTA |= 0B00000000;
+[; ;ADC.c: 55: TRISA |= 0B00000001;
 "55
-[e =| _PORTA -> -> 0 `i `uc ]
-[; ;ADC.c: 56: TRISA |= 0B00010011;
-"56
-[e =| _TRISA -> -> 19 `i `uc ]
-[; ;ADC.c: 58: ANSEL0 = 0B00000011;
-"58
-[e = _ANSEL0 -> -> 3 `i `uc ]
-[; ;ADC.c: 60: ADCON1 = 0B11100101;
-"60
+[e =| _TRISA -> -> 1 `i `uc ]
+[; ;ADC.c: 57: TRISB |= 0B00000001;
+"57
+[e =| _TRISB -> -> 1 `i `uc ]
+[; ;ADC.c: 59: ANSEL0 = 0B01000001;
+"59
+[e = _ANSEL0 -> -> 65 `i `uc ]
+[; ;ADC.c: 61: ADCON1 = 0B11100101;
+"61
 [e = _ADCON1 -> -> 229 `i `uc ]
-[; ;ADC.c: 62: ADCON0 = 0B00000000;
-"62
+[; ;ADC.c: 63: ADCON0 = 0B00000000;
+"63
 [e = _ADCON0 -> -> 0 `i `uc ]
-[; ;ADC.c: 64: DelayUs(450);
-"64
+[; ;ADC.c: 65: DelayUs(450);
+"65
 [e ( _DelayUs (1 -> -> 450 `i `uc ]
-[; ;ADC.c: 66: ADCON2 = 0B11000000;
-"66
+[; ;ADC.c: 67: ADCON2 = 0B11000000;
+"67
 [e = _ADCON2 -> -> 192 `i `uc ]
-[; ;ADC.c: 68: ADCON3 = 0B00000000;
-"68
+[; ;ADC.c: 69: ADCON3 = 0B00000000;
+"69
 [e = _ADCON3 -> -> 0 `i `uc ]
-[; ;ADC.c: 72: ADCMPH = 0B00000000;
-"72
+[; ;ADC.c: 73: ADCMPH = 0B00000000;
+"73
 [e = _ADCMPH -> -> 0 `i `uc ]
-[; ;ADC.c: 74: ADON=1;
-"74
+[; ;ADC.c: 75: ADON=1;
+"75
 [e = _ADON -> -> 1 `i `b ]
-[; ;ADC.c: 76: DelayMs(1);
-"76
-[e ( _DelayMs (1 -> -> 1 `i `uc ]
-[; ;ADC.c: 77: }
+[; ;ADC.c: 77: DelayMs(1);
 "77
+[e ( _DelayMs (1 -> -> 1 `i `uc ]
+[; ;ADC.c: 78: }
+"78
 [e :UE 157 ]
 }
-"85
+"86
 [v _GET_ADC_DATA `(ui ~T0 @X0 1 ef1`uc ]
-"86
-{
-[; ;ADC.c: 85: unsigned int GET_ADC_DATA (unsigned char adcChannel)
-[; ;ADC.c: 86: {
-[e :U _GET_ADC_DATA ]
-"85
-[v _adcChannel `uc ~T0 @X0 1 r1 ]
-"86
-[f ]
 "87
-[v _ADCON0Buff `uc ~T0 @X0 1 a ]
-[; ;ADC.c: 87: unsigned char ADCON0Buff;
-[; ;ADC.c: 88: ADCON0Buff = ADCON0&0B00000111;
+{
+[; ;ADC.c: 86: unsigned int GET_ADC_DATA (unsigned char adcChannel)
+[; ;ADC.c: 87: {
+[e :U _GET_ADC_DATA ]
+"86
+[v _adcChannel `uc ~T0 @X0 1 r1 ]
+"87
+[f ]
 "88
-[e = _ADCON0Buff -> & -> _ADCON0 `i -> 7 `i `uc ]
-[; ;ADC.c: 89: adcChannel<<=3;
+[v _ADCON0Buff `uc ~T0 @X0 1 a ]
+[; ;ADC.c: 88: unsigned char ADCON0Buff;
+[; ;ADC.c: 89: ADCON0Buff = ADCON0&0B00000111;
 "89
-[e =<< _adcChannel -> 3 `i ]
-[; ;ADC.c: 90: ADCON0Buff |= adcChannel;
+[e = _ADCON0Buff -> & -> _ADCON0 `i -> 7 `i `uc ]
+[; ;ADC.c: 90: adcChannel<<=3;
 "90
-[e =| _ADCON0Buff _adcChannel ]
-[; ;ADC.c: 91: ADCON0 = ADCON0Buff;
+[e =<< _adcChannel -> 3 `i ]
+[; ;ADC.c: 91: ADCON0Buff |= adcChannel;
 "91
-[e = _ADCON0 _ADCON0Buff ]
-[; ;ADC.c: 92: DelayUs(10);
+[e =| _ADCON0Buff _adcChannel ]
+[; ;ADC.c: 92: ADCON0 = ADCON0Buff;
 "92
+[e = _ADCON0 _ADCON0Buff ]
+[; ;ADC.c: 93: DelayUs(10);
+"93
 [e ( _DelayUs (1 -> -> 10 `i `uc ]
-[; ;ADC.c: 97: ADCON0 = ADCON0|0x02;
-"97
+[; ;ADC.c: 98: ADCON0 = ADCON0|0x02;
+"98
 [e = _ADCON0 -> | -> _ADCON0 `i -> 2 `i `uc ]
-[; ;ADC.c: 99: __nop();
-"99
-[e ( ___nop ..  ]
 [; ;ADC.c: 100: __nop();
 "100
 [e ( ___nop ..  ]
-[; ;ADC.c: 101: while(ADCON0&0x02);
+[; ;ADC.c: 101: __nop();
 "101
+[e ( ___nop ..  ]
+[; ;ADC.c: 102: while(ADCON0&0x02);
+"102
 [e $U 159  ]
 [e :U 160 ]
 [e :U 159 ]
 [e $ != & -> _ADCON0 `i -> 2 `i -> 0 `i 160  ]
 [e :U 161 ]
-[; ;ADC.c: 105: return(unsigned int)(ADRESH<<8|ADRESL);
-"105
+[; ;ADC.c: 106: return(unsigned int)(ADRESH<<8|ADRESL);
+"106
 [e ) -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
 [e $UE 158  ]
-[; ;ADC.c: 106: }
-"106
+[; ;ADC.c: 107: }
+"107
 [e :UE 158 ]
 }
-"113
-[v _Get_Vbattery_Data `(v ~T0 @X0 1 ef ]
 "114
+[v _Get_Vbattery_Data `(v ~T0 @X0 1 ef ]
+"115
 {
-[; ;ADC.c: 113: void Get_Vbattery_Data(void)
-[; ;ADC.c: 114: {
+[; ;ADC.c: 114: void Get_Vbattery_Data(void)
+[; ;ADC.c: 115: {
 [e :U _Get_Vbattery_Data ]
 [f ]
-[; ;ADC.c: 115: SYS.Vbattery_Adc = GET_ADC_DATA(0);
-"115
-[e = . _SYS 10 ( _GET_ADC_DATA (1 -> -> 0 `i `uc ]
-[; ;ADC.c: 116: }
+[; ;ADC.c: 116: SYS.Vbattery_Adc = GET_ADC_DATA(0);
 "116
+[e = . _SYS 9 ( _GET_ADC_DATA (1 -> -> 0 `i `uc ]
+[; ;ADC.c: 117: }
+"117
 [e :UE 162 ]
 }
-"123
-[v _Get_Cbattery_Data `(v ~T0 @X0 1 ef ]
 "124
+[v _Get_Cbattery_Data `(v ~T0 @X0 1 ef ]
+"125
 {
-[; ;ADC.c: 123: void Get_Cbattery_Data(void)
-[; ;ADC.c: 124: {
+[; ;ADC.c: 124: void Get_Cbattery_Data(void)
+[; ;ADC.c: 125: {
 [e :U _Get_Cbattery_Data ]
 [f ]
-[; ;ADC.c: 125: SYS.Cbattery_Adc = GET_ADC_DATA(1);
-"125
-[e = . _SYS 11 ( _GET_ADC_DATA (1 -> -> 1 `i `uc ]
-[; ;ADC.c: 126: }
+[; ;ADC.c: 126: SYS.Cbattery_Adc = GET_ADC_DATA(6);
 "126
+[e = . _SYS 10 ( _GET_ADC_DATA (1 -> -> 6 `i `uc ]
+[; ;ADC.c: 127: }
+"127
 [e :UE 163 ]
 }
-"133
-[v _Get_INT_Data `(v ~T0 @X0 1 ef ]
-"134
-{
-[; ;ADC.c: 133: void Get_INT_Data(void)
-[; ;ADC.c: 134: {
-[e :U _Get_INT_Data ]
-[f ]
-[; ;ADC.c: 135: SYS.Cbattery_Adc = GET_ADC_DATA(6);
-"135
-[e = . _SYS 11 ( _GET_ADC_DATA (1 -> -> 6 `i `uc ]
-[; ;ADC.c: 136: }
 "136
-[e :UE 164 ]
-}
-"145
-[v _Get_Vbattery_Stand_State `(E1951 ~T0 @X0 1 ef1`ui ]
-"146
+[v _Get_Vbattery_Stand_State `(E1948 ~T0 @X0 1 ef1`ui ]
+"137
 {
-[; ;ADC.c: 145: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value)
-[; ;ADC.c: 146: {
+[; ;ADC.c: 136: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value)
+[; ;ADC.c: 137: {
 [e :U _Get_Vbattery_Stand_State ]
-"145
+"136
 [v _adc_value `ui ~T0 @X0 1 r1 ]
-"146
+"137
 [f ]
-"147
-[v F1982 `E1951 ~T0 @X0 1 s current_state ]
-[i F1982
-. `E1951 0
+"138
+[v F1977 `E1948 ~T0 @X0 1 s current_state ]
+[i F1977
+. `E1948 0
 ]
-[; ;ADC.c: 147: static Battery_State current_state = STATE_NORMAL;
-[; ;ADC.c: 149: switch(current_state)
-"149
-[e $U 167  ]
-[; ;ADC.c: 150: {
-"150
-{
-[; ;ADC.c: 151: case STATE_NORMAL:
-"151
-[e :U 168 ]
-[; ;ADC.c: 152: if(adc_value<1861)
-"152
-[e $ ! < _adc_value -> -> 1861 `i `ui 169  ]
-[; ;ADC.c: 153: {
-"153
-{
-[; ;ADC.c: 154: current_state = STATE_UNDER_VOLTAGE;
-"154
-[e = F1982 . `E1951 1 ]
-"155
-}
-[; ;ADC.c: 155: }
-[e $U 170  ]
-"156
-[e :U 169 ]
-[; ;ADC.c: 156: else if(adc_value>2438)
-[e $ ! > _adc_value -> -> 2438 `i `ui 171  ]
-[; ;ADC.c: 157: {
-"157
-{
-[; ;ADC.c: 158: current_state = STATE_OVER_VOLTAGE;
-"158
-[e = F1982 . `E1951 2 ]
-"159
-}
-[e :U 171 ]
-"160
-[e :U 170 ]
-[; ;ADC.c: 159: }
-[; ;ADC.c: 160: break;
+[; ;ADC.c: 138: static Battery_State current_state = STATE_NORMAL;
+[; ;ADC.c: 140: switch(current_state)
+"140
 [e $U 166  ]
-[; ;ADC.c: 162: case STATE_UNDER_VOLTAGE:
-"162
+[; ;ADC.c: 141: {
+"141
+{
+[; ;ADC.c: 142: case STATE_NORMAL:
+"142
+[e :U 167 ]
+[; ;ADC.c: 143: if(adc_value<1861)
+"143
+[e $ ! < _adc_value -> -> 1861 `i `ui 168  ]
+[; ;ADC.c: 144: {
+"144
+{
+[; ;ADC.c: 145: current_state = STATE_UNDER_VOLTAGE;
+"145
+[e = F1977 . `E1948 1 ]
+"146
+}
+[; ;ADC.c: 146: }
+[e $U 169  ]
+"147
+[e :U 168 ]
+[; ;ADC.c: 147: else if(adc_value>2438)
+[e $ ! > _adc_value -> -> 2438 `i `ui 170  ]
+[; ;ADC.c: 148: {
+"148
+{
+[; ;ADC.c: 149: current_state = STATE_OVER_VOLTAGE;
+"149
+[e = F1977 . `E1948 2 ]
+"150
+}
+[e :U 170 ]
+"151
+[e :U 169 ]
+[; ;ADC.c: 150: }
+[; ;ADC.c: 151: break;
+[e $U 165  ]
+[; ;ADC.c: 153: case STATE_UNDER_VOLTAGE:
+"153
+[e :U 171 ]
+[; ;ADC.c: 155: if (adc_value >= 1961)
+"155
+[e $ ! >= _adc_value -> -> 1961 `i `ui 172  ]
+[; ;ADC.c: 156: {
+"156
+{
+[; ;ADC.c: 157: current_state = STATE_NORMAL;
+"157
+[e = F1977 . `E1948 0 ]
+"158
+}
 [e :U 172 ]
-[; ;ADC.c: 164: if (adc_value >= 1961)
+[; ;ADC.c: 158: }
+[; ;ADC.c: 160: break;
+"160
+[e $U 165  ]
+[; ;ADC.c: 162: case STATE_OVER_VOLTAGE:
+"162
+[e :U 173 ]
+[; ;ADC.c: 164: if (adc_value <= 2338)
 "164
-[e $ ! >= _adc_value -> -> 1961 `i `ui 173  ]
+[e $ ! <= _adc_value -> -> 2338 `i `ui 174  ]
 [; ;ADC.c: 165: {
 "165
 {
 [; ;ADC.c: 166: current_state = STATE_NORMAL;
 "166
-[e = F1982 . `E1951 0 ]
+[e = F1977 . `E1948 0 ]
 "167
 }
-[e :U 173 ]
+[e :U 174 ]
 [; ;ADC.c: 167: }
 [; ;ADC.c: 169: break;
 "169
-[e $U 166  ]
-[; ;ADC.c: 171: case STATE_OVER_VOLTAGE:
-"171
-[e :U 174 ]
-[; ;ADC.c: 173: if (adc_value <= 2338)
-"173
-[e $ ! <= _adc_value -> -> 2338 `i `ui 175  ]
-[; ;ADC.c: 174: {
-"174
-{
-[; ;ADC.c: 175: current_state = STATE_NORMAL;
-"175
-[e = F1982 . `E1951 0 ]
-"176
+[e $U 165  ]
+"170
 }
-[e :U 175 ]
-[; ;ADC.c: 176: }
-[; ;ADC.c: 178: break;
-"178
-[e $U 166  ]
-"179
-}
-[; ;ADC.c: 179: }
-[e $U 166  ]
-"149
-[e :U 167 ]
-[e [\ F1982 , $ . `E1951 0 168
- , $ . `E1951 1 172
- , $ . `E1951 2 174
- 166 ]
-"179
+[; ;ADC.c: 170: }
+[e $U 165  ]
+"140
 [e :U 166 ]
-[; ;ADC.c: 180: return current_state;
+[e [\ F1977 , $ . `E1948 0 167
+ , $ . `E1948 1 171
+ , $ . `E1948 2 173
+ 165 ]
+"170
+[e :U 165 ]
+[; ;ADC.c: 171: return current_state;
+"171
+[e ) F1977 ]
+[e $UE 164  ]
+[; ;ADC.c: 172: }
+"172
+[e :UE 164 ]
+}
 "180
-[e ) F1982 ]
-[e $UE 165  ]
-[; ;ADC.c: 181: }
+[v _Get_Cbattery_Stand_State `(E1948 ~T0 @X0 1 ef1`ui ]
 "181
-[e :UE 165 ]
-}
-"189
-[v _Get_Cbattery_Stand_State `(E1951 ~T0 @X0 1 ef1`ui ]
-"190
 {
-[; ;ADC.c: 189: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value)
-[; ;ADC.c: 190: {
+[; ;ADC.c: 180: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value)
+[; ;ADC.c: 181: {
 [e :U _Get_Cbattery_Stand_State ]
-"189
+"180
 [v _adc_value `ui ~T0 @X0 1 r1 ]
-"190
+"181
 [f ]
-"191
-[v F1984 `E1951 ~T0 @X0 1 s current_state ]
-[i F1984
-. `E1951 0
+"182
+[v F1979 `E1948 ~T0 @X0 1 s current_state ]
+[i F1979
+. `E1948 0
 ]
-[; ;ADC.c: 191: static Battery_State current_state = STATE_NORMAL;
-[; ;ADC.c: 193: switch(current_state)
-"193
-[e $U 178  ]
-[; ;ADC.c: 194: {
-"194
+[; ;ADC.c: 182: static Battery_State current_state = STATE_NORMAL;
+[; ;ADC.c: 184: switch(current_state)
+"184
+[e $U 177  ]
+[; ;ADC.c: 185: {
+"185
 {
-[; ;ADC.c: 195: case STATE_NORMAL:
-"195
-[e :U 179 ]
-[; ;ADC.c: 196: if(adc_value<1111)
-"196
-[e $ ! < _adc_value -> -> 1111 `i `ui 180  ]
-[; ;ADC.c: 197: {
-"197
+[; ;ADC.c: 186: case STATE_NORMAL:
+"186
+[e :U 178 ]
+[; ;ADC.c: 187: if(adc_value<1111)
+"187
+[e $ ! < _adc_value -> -> 1111 `i `ui 179  ]
+[; ;ADC.c: 188: {
+"188
 {
-[; ;ADC.c: 198: current_state = STATE_UNDER_VOLTAGE;
-"198
-[e = F1984 . `E1951 1 ]
-"199
+[; ;ADC.c: 189: current_state = STATE_UNDER_VOLTAGE;
+"189
+[e = F1979 . `E1948 1 ]
+"190
 }
+[e :U 179 ]
+[; ;ADC.c: 190: }
+[; ;ADC.c: 191: break;
+"191
+[e $U 176  ]
+[; ;ADC.c: 193: case STATE_UNDER_VOLTAGE:
+"193
 [e :U 180 ]
-[; ;ADC.c: 199: }
+[; ;ADC.c: 195: if (adc_value >= 1111)
+"195
+[e $ ! >= _adc_value -> -> 1111 `i `ui 181  ]
+[; ;ADC.c: 196: {
+"196
+{
+[; ;ADC.c: 197: current_state = STATE_NORMAL;
+"197
+[e = F1979 . `E1948 0 ]
+"198
+}
+[e :U 181 ]
+[; ;ADC.c: 198: }
 [; ;ADC.c: 200: break;
 "200
-[e $U 177  ]
-[; ;ADC.c: 202: case STATE_UNDER_VOLTAGE:
-"202
-[e :U 181 ]
-[; ;ADC.c: 204: if (adc_value >= 1111)
-"204
-[e $ ! >= _adc_value -> -> 1111 `i `ui 182  ]
-[; ;ADC.c: 205: {
-"205
-{
-[; ;ADC.c: 206: current_state = STATE_NORMAL;
-"206
-[e = F1984 . `E1951 0 ]
-"207
+[e $U 176  ]
+"201
 }
-[e :U 182 ]
-[; ;ADC.c: 207: }
-[; ;ADC.c: 209: break;
-"209
-[e $U 177  ]
-"210
-}
-[; ;ADC.c: 210: }
-[e $U 177  ]
-"193
-[e :U 178 ]
-[e [\ F1984 , $ . `E1951 0 179
- , $ . `E1951 1 181
- 177 ]
-"210
+[; ;ADC.c: 201: }
+[e $U 176  ]
+"184
 [e :U 177 ]
-[; ;ADC.c: 211: return current_state;
-"211
-[e ) F1984 ]
-[e $UE 176  ]
-[; ;ADC.c: 212: }
-"212
-[e :UE 176 ]
+[e [\ F1979 , $ . `E1948 0 178
+ , $ . `E1948 1 180
+ 176 ]
+"201
+[e :U 176 ]
+[; ;ADC.c: 202: return current_state;
+"202
+[e ) F1979 ]
+[e $UE 175  ]
+[; ;ADC.c: 203: }
+"203
+[e :UE 175 ]
 }
-"219
+"210
 [v _Relay_Release_Detect `(v ~T0 @X0 1 ef ]
-"220
+"211
 {
-[; ;ADC.c: 219: void Relay_Release_Detect(void)
-[; ;ADC.c: 220: {
+[; ;ADC.c: 210: void Relay_Release_Detect(void)
+[; ;ADC.c: 211: {
 [e :U _Relay_Release_Detect ]
 [f ]
-[; ;ADC.c: 223: if(SYS.Cadc_Value<900)
-"223
-[e $ ! < -> . _SYS 7 `i -> 900 `i 184  ]
-[; ;ADC.c: 224: {
-"224
+[; ;ADC.c: 214: if(SYS.Cadc_Value<900)
+"214
+[e $ ! < -> . _SYS 6 `i -> 900 `i 183  ]
+[; ;ADC.c: 215: {
+"215
 {
-[; ;ADC.c: 225: SYS.Relay_Release = 1;
-"225
-[e = . _SYS 4 -> -> 1 `i `uc ]
-[; ;ADC.c: 226: SYS.Long_Time_Change = 0;
-"226
-[e = . _SYS 12 -> -> 0 `i `uc ]
-"227
+[; ;ADC.c: 216: SYS.Relay_Release = 1;
+"216
+[e = . _SYS 3 -> -> 1 `i `uc ]
+[; ;ADC.c: 217: SYS.Long_Time_Change = 0;
+"217
+[e = . _SYS 11 -> -> 0 `i `uc ]
+"218
 }
-[; ;ADC.c: 227: }
-[e $U 185  ]
-"228
+[; ;ADC.c: 218: }
+[e $U 184  ]
+"219
+[e :U 183 ]
+[; ;ADC.c: 219: else
+[; ;ADC.c: 220: {
+"220
+{
+[; ;ADC.c: 221: SYS.Relay_Release = 0;
+"221
+[e = . _SYS 3 -> -> 0 `i `uc ]
+"222
+}
 [e :U 184 ]
-[; ;ADC.c: 228: else
-[; ;ADC.c: 229: {
-"229
-{
-[; ;ADC.c: 230: SYS.Relay_Release = 0;
-"230
-[e = . _SYS 4 -> -> 0 `i `uc ]
-"231
+[; ;ADC.c: 222: }
+[; ;ADC.c: 225: }
+"225
+[e :UE 182 ]
 }
-[e :U 185 ]
-[; ;ADC.c: 231: }
-[; ;ADC.c: 234: }
-"234
-[e :UE 183 ]
-}
-"242
+"233
 [v _ADC_Task `(v ~T0 @X0 1 ef ]
-"243
+"234
 {
-[; ;ADC.c: 242: void ADC_Task(void)
-[; ;ADC.c: 243: {
+[; ;ADC.c: 233: void ADC_Task(void)
+[; ;ADC.c: 234: {
 [e :U _ADC_Task ]
 [f ]
-[; ;ADC.c: 245: Get_Vbattery_Data();
-"245
+[; ;ADC.c: 236: Get_Vbattery_Data();
+"236
 [e ( _Get_Vbattery_Data ..  ]
-[; ;ADC.c: 246: Get_INT_Data();
-"246
-[e ( _Get_INT_Data ..  ]
-[; ;ADC.c: 249: Relay_Release_Detect();
-"249
+[; ;ADC.c: 239: Relay_Release_Detect();
+"239
 [e ( _Relay_Release_Detect ..  ]
-[; ;ADC.c: 252: if(SYS.Standby_Work_State == 0)
-"252
-[e $ ! == -> . _SYS 0 `i -> 0 `i 187  ]
-[; ;ADC.c: 253: {
-"253
+[; ;ADC.c: 242: if(SYS.Standby_Work_State == 0)
+"242
+[e $ ! == -> . _SYS 0 `i -> 0 `i 186  ]
+[; ;ADC.c: 243: {
+"243
 {
-[; ;ADC.c: 254: SYS.Vadc_Value = Get_Vbattery_Stand_State(SYS.Vbattery_Adc);
-"254
-[e = . _SYS 6 -> ( _Get_Vbattery_Stand_State (1 . _SYS 10 `uc ]
-[; ;ADC.c: 256: if(SYS.Vadc_Value == 0)
+[; ;ADC.c: 244: SYS.Vadc_Value = Get_Vbattery_Stand_State(SYS.Vbattery_Adc);
+"244
+[e = . _SYS 5 -> ( _Get_Vbattery_Stand_State (1 . _SYS 9 `uc ]
+[; ;ADC.c: 246: if(SYS.Vadc_Value == 0)
+"246
+[e $ ! == -> . _SYS 5 `i -> 0 `i 187  ]
+[; ;ADC.c: 247: {
+"247
+{
+[; ;ADC.c: 248: SYS.LB_Value = 0;
+"248
+[e = . _SYS 1 -> -> 0 `i `uc ]
+"249
+}
+[; ;ADC.c: 249: }
+[e $U 188  ]
+"250
+[e :U 187 ]
+[; ;ADC.c: 250: else
+[; ;ADC.c: 251: {
+"251
+{
+[; ;ADC.c: 252: SYS.LB_Value = 1;
+"252
+[e = . _SYS 1 -> -> 1 `i `uc ]
+"253
+}
+[e :U 188 ]
+"255
+}
+[; ;ADC.c: 253: }
+[; ;ADC.c: 255: }
+[e $U 189  ]
 "256
-[e $ ! == -> . _SYS 6 `i -> 0 `i 188  ]
+[e :U 186 ]
+[; ;ADC.c: 256: else if(SYS.Standby_Work_State)
+[e $ ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 190  ]
 [; ;ADC.c: 257: {
 "257
 {
-[; ;ADC.c: 258: SYS.LB_Value = 0;
-"258
-[e = . _SYS 2 -> -> 0 `i `uc ]
-"259
+"299
 }
-[; ;ADC.c: 259: }
-[e $U 189  ]
-"260
-[e :U 188 ]
-[; ;ADC.c: 260: else
-[; ;ADC.c: 261: {
-"261
-{
-[; ;ADC.c: 262: SYS.LB_Value = 1;
-"262
-[e = . _SYS 2 -> -> 1 `i `uc ]
-"263
-}
-[e :U 189 ]
-"265
-}
-[; ;ADC.c: 263: }
-[; ;ADC.c: 265: }
-[e $U 190  ]
-"266
-[e :U 187 ]
-[; ;ADC.c: 266: else if(SYS.Standby_Work_State)
-[e $ ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 191  ]
-[; ;ADC.c: 267: {
-"267
-{
-"309
-}
-[e :U 191 ]
-"310
 [e :U 190 ]
-[; ;ADC.c: 309: }
-[; ;ADC.c: 310: }
-[e :UE 186 ]
+"300
+[e :U 189 ]
+[; ;ADC.c: 299: }
+[; ;ADC.c: 300: }
+[e :UE 185 ]
 }

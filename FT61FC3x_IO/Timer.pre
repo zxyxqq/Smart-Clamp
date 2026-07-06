@@ -1975,16 +1975,8 @@ void READY_Task(void);
 
 # 11 "Int.h"
 void Int_Initial(void);
-void HT_Detect(void);
-void LB_Open(void);
+void Read_Int(void);
 void Int_Task(void);
-void LB_Close(void);
-
-# 10 "RC.h"
-void RC_INITIAL(void);
-void RC_Detect(void);
-void RC_Control(uint8_t value);
-void RC_Task(void);
 
 # 10 "BUZZTT.h"
 void BUZZTT_Init(void);
@@ -1996,6 +1988,13 @@ void Hummer_Task(void);
 void BUZZTT_Task(void);
 void Key_Task(void);
 
+# 6 "LB.h"
+void LB_Init(void);
+void STNADBY_Open(void);
+void LB_Open(void);
+void LB_STANDBY_Close(void);
+void LB_ST_Task(void);
+
 # 16 "app.h"
 void Initial(void);
 
@@ -2005,11 +2004,9 @@ typedef struct{
 
 uint8_t Standby_Work_State;
 
-uint8_t HT_Value;
-
 uint8_t LB_Value;
 
-uint8_t RC_Value;
+uint8_t INT_Value;
 
 uint8_t Relay_Release;
 

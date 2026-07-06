@@ -9,8 +9,8 @@
 #include "Timer.h"
 #include "ready.h"
 #include "Int.h"
-#include "RC.h"
 #include "BUZZTT.h"
+#include "LB.h"
 /*函数声明*/
 
 void Initial(void);
@@ -21,11 +21,9 @@ typedef struct{
 
 uint8_t Standby_Work_State;	//0:待机状态；1：工作状态
 
-uint8_t HT_Value;		//HT报警标志位;0:不报警;l:报警
-
 uint8_t LB_Value;		//LB报警标志位;0:不报警;l:报警
 
-uint8_t RC_Value;		//RC报警标志位;0:不报警;l:报警
+uint8_t INT_Value;		//LB报警标志位;0:不报警;l:报警
 
 uint8_t Relay_Release;	//夹子松脱标志位
 
@@ -37,7 +35,7 @@ uint8_t Cadc_Value;		//电瓶端低电压报警标志位
 
 uint8_t READY_Value;	//继电器开关标志位
 
-uint8_t STANDBY_Value;	//STANDBY就绪标志位,1:打开；2：关闭
+uint8_t STANDBY_Value;	//STANDBY就绪标志位,1:打开；0：关闭
 
 //uint8_t	Long_Ready_Time_Flag;//长READY时间计数标志位
 

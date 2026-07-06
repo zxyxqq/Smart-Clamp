@@ -43,13 +43,10 @@ void SYS_Initial(void)
 {
 	SYS.Standby_Work_State = 0;//待机状态
     
-	SYS.HT_Value = 0;		//HT报警标志位;0:不报警；1:报警.
 
 	SYS.LB_Value = 0;		//LB报警标志位(待机状态下:输入端电压有问题时)
 
 	SYS.Relay_Release = 0;	//夹子松脱标志位(工作)
-
-	SYS.RC_Value = 0;		//RC报警标志位(待机：反充，反接，电瓶低电压；工作：继电器粘连)
 
 	SYS.KEY_Value = 0;		//按键长按导通标志位(待机)
 

@@ -15,17 +15,10 @@ void Initial(void)
     SYS_Initial();
     Timer0_Init();
 
-//	ADC_INITIAL();
+	ADC_INITIAL();
 	Ready_Init();
-//    Int_Initial();
-//    RC_INITIAL();
-
+    Int_Initial();
 	BUZZTT_Init();//按键蜂鸣器模块初始化
-
-/**/
-
-//	LB_Close();
-//	RC_Control(0);
     
     T0IE = 1;				//开定时器/计数器0中断
     

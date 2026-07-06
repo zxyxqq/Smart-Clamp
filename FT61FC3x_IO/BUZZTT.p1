@@ -459,9 +459,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"56
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"54
 [v _SYS `S156 ~T0 @X0 0 e ]
 "15 buzztt.h
 [v _Hummer_Task `(v ~T0 @X0 0 ef ]
@@ -3126,33 +3126,31 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ready.h: 29: void Ready_Control(uint8_t num);
 [; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
-[; ;Int.h: 12: void HT_Detect(void);
-[; ;Int.h: 13: void LB_Open(void);
-[; ;Int.h: 14: void Int_Task(void);
-[; ;Int.h: 15: void LB_Close(void);
-[; ;RC.h: 10: void RC_INITIAL(void);
-[; ;RC.h: 11: void RC_Detect(void);
-[; ;RC.h: 12: void RC_Control(uint8_t value);
-[; ;RC.h: 13: void RC_Task(void);
+[; ;Int.h: 12: void Read_Int(void);
+[; ;Int.h: 13: void Int_Task(void);
+[; ;LB.h: 6: void LB_Init(void);
+[; ;LB.h: 7: void STNADBY_Open(void);
+[; ;LB.h: 8: void LB_Open(void);
+[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 10: void LB_ST_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
-[; ;app.h: 24: uint8_t HT_Value;
-[; ;app.h: 26: uint8_t LB_Value;
-[; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 30: uint8_t Relay_Release;
-[; ;app.h: 32: uint8_t KEY_Value;
-[; ;app.h: 34: uint8_t Vadc_Value;
-[; ;app.h: 36: uint8_t Cadc_Value;
-[; ;app.h: 38: uint8_t READY_Value;
-[; ;app.h: 40: uint8_t STANDBY_Value;
-[; ;app.h: 44: uint16_t Vbattery_Adc;
-[; ;app.h: 46: uint16_t Cbattery_Adc;
-[; ;app.h: 48: uint8_t Long_Time_Change;
-[; ;app.h: 50: uint8_t Delay_2s_Flag ;
-[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 54: }sys;
-[; ;app.h: 56: extern sys SYS;
+[; ;app.h: 24: uint8_t LB_Value;
+[; ;app.h: 26: uint8_t INT_Value;
+[; ;app.h: 28: uint8_t Relay_Release;
+[; ;app.h: 30: uint8_t KEY_Value;
+[; ;app.h: 32: uint8_t Vadc_Value;
+[; ;app.h: 34: uint8_t Cadc_Value;
+[; ;app.h: 36: uint8_t READY_Value;
+[; ;app.h: 38: uint8_t STANDBY_Value;
+[; ;app.h: 42: uint16_t Vbattery_Adc;
+[; ;app.h: 44: uint16_t Cbattery_Adc;
+[; ;app.h: 46: uint8_t Long_Time_Change;
+[; ;app.h: 48: uint8_t Delay_2s_Flag ;
+[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 52: }sys;
+[; ;app.h: 54: extern sys SYS;
 [; ;buzztt.h: 10: void BUZZTT_Init(void);
 [; ;buzztt.h: 11: void KEY_Init(void);
 [; ;buzztt.h: 12: void Hummer_Init(void);
@@ -3232,9 +3230,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.c: 61: {
 [e :U _BUZZHH_Control ]
 [f ]
-[; ;BUZZTT.c: 62: if(SYS.HT_Value || SYS.LB_Value || SYS.RC_Value)
+[; ;BUZZTT.c: 62: if(SYS.LB_Value)
 "62
-[e $ ! || || != -> . _SYS 1 `i -> -> -> 0 `i `uc `i != -> . _SYS 2 `i -> -> -> 0 `i `uc `i != -> . _SYS 3 `i -> -> -> 0 `i `uc `i 161  ]
+[e $ ! != -> . _SYS 1 `i -> -> -> 0 `i `uc `i 161  ]
 [; ;BUZZTT.c: 63: {
 "63
 {
@@ -3277,18 +3275,18 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :U _Key_Detect ]
 [f ]
 "81
-[v F1978 `uc ~T0 @X0 1 s press_cnt ]
-[i F1978
+[v F1975 `uc ~T0 @X0 1 s press_cnt ]
+[i F1975
 -> -> 0 `i `uc
 ]
 "82
-[v F1979 `ui ~T0 @X0 1 s long_cnt ]
-[i F1979
+[v F1976 `ui ~T0 @X0 1 s long_cnt ]
+[i F1976
 -> -> 0 `i `ui
 ]
 "83
-[v F1980 `uc ~T0 @X0 1 s long_trig ]
-[i F1980
+[v F1977 `uc ~T0 @X0 1 s long_trig ]
+[i F1977
 -> -> 0 `i `uc
 ]
 [; ;BUZZTT.c: 81: static uint8_t press_cnt = 0;
@@ -3302,13 +3300,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;BUZZTT.c: 88: if(press_cnt <4)
 "88
-[e $ ! < -> F1978 `i -> 4 `i 165  ]
+[e $ ! < -> F1975 `i -> 4 `i 165  ]
 [; ;BUZZTT.c: 89: {
 "89
 {
 [; ;BUZZTT.c: 90: press_cnt ++;
 "90
-[e ++ F1978 -> -> 1 `i `uc ]
+[e ++ F1975 -> -> 1 `i `uc ]
 "91
 }
 [; ;BUZZTT.c: 91: }
@@ -3328,32 +3326,32 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.c: 95: }
 [; ;BUZZTT.c: 98: if(KEY_Press && long_trig == 0 && long_cnt<300)
 "98
-[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i == -> F1980 `i -> 0 `i < F1979 -> -> 300 `i `ui 167  ]
+[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i == -> F1977 `i -> 0 `i < F1976 -> -> 300 `i `ui 167  ]
 [; ;BUZZTT.c: 99: {
 "99
 {
 [; ;BUZZTT.c: 100: long_cnt++;
 "100
-[e ++ F1979 -> -> 1 `i `ui ]
+[e ++ F1976 -> -> 1 `i `ui ]
 "101
 }
 [e :U 167 ]
 [; ;BUZZTT.c: 101: }
 [; ;BUZZTT.c: 105: if(KEY_Press && long_cnt >= 300 && long_trig == 0)
 "105
-[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i >= F1979 -> -> 300 `i `ui == -> F1980 `i -> 0 `i 168  ]
+[e $ ! && && != -> _KEY_Press `i -> -> -> 0 `i `uc `i >= F1976 -> -> 300 `i `ui == -> F1977 `i -> 0 `i 168  ]
 [; ;BUZZTT.c: 106: {
 "106
 {
 [; ;BUZZTT.c: 108: SYS.Long_Time_Change = 0;
 "108
-[e = . _SYS 12 -> -> 0 `i `uc ]
+[e = . _SYS 11 -> -> 0 `i `uc ]
 [; ;BUZZTT.c: 109: SYS.KEY_Value = 1;
 "109
-[e = . _SYS 5 -> -> 1 `i `uc ]
+[e = . _SYS 4 -> -> 1 `i `uc ]
 [; ;BUZZTT.c: 111: long_trig = 1;
 "111
-[e = F1980 -> -> 1 `i `uc ]
+[e = F1977 -> -> 1 `i `uc ]
 "112
 }
 [e :U 168 ]
@@ -3370,16 +3368,16 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;BUZZTT.c: 118: press_cnt = 0;
 "118
-[e = F1978 -> -> 0 `i `uc ]
+[e = F1975 -> -> 0 `i `uc ]
 [; ;BUZZTT.c: 119: KEY_Press = 0;
 "119
 [e = _KEY_Press -> -> 0 `i `uc ]
 [; ;BUZZTT.c: 120: long_cnt = 0;
 "120
-[e = F1979 -> -> 0 `i `ui ]
+[e = F1976 -> -> 0 `i `ui ]
 [; ;BUZZTT.c: 121: long_trig = 0;
 "121
-[e = F1980 -> -> 0 `i `uc ]
+[e = F1977 -> -> 0 `i `uc ]
 "122
 }
 [e :U 169 ]

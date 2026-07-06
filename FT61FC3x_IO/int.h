@@ -9,10 +9,9 @@
 /*º¯ÊýÉùÃ÷*/
 
 void Int_Initial(void);
-void HT_Detect(void);
-void LB_Open(void);
+void Read_Int(void);
 void Int_Task(void);
-void LB_Close(void);
+
 
 
 #endif

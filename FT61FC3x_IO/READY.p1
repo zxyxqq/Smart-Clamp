@@ -458,17 +458,17 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
-"54 READY.c
-[c E1960 0 1 2 3 .. ]
-[n E1960 . ST_PRE_ON ST_OFF ST_FINAL_ON ST_DETECT  ]
+"53 READY.c
+[c E1957 0 1 2 3 .. ]
+[n E1957 . ST_PRE_ON ST_OFF ST_FINAL_ON ST_DETECT  ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"56
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"54
 [v _SYS `S156 ~T0 @X0 0 e ]
 "47 adc.h
 [v _GET_ADC_DATA `(ui ~T0 @X0 0 ef1`uc ]
-"95 READY.c
+"94 READY.c
 [c E1875 0 1 2 .. ]
 [n E1875 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
 "53 adc.h
@@ -3123,14 +3123,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Timer.h: 6: void Timer0_Init(void);
 [; ;Timer.h: 7: void Timer0_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
-[; ;Int.h: 12: void HT_Detect(void);
-[; ;Int.h: 13: void LB_Open(void);
-[; ;Int.h: 14: void Int_Task(void);
-[; ;Int.h: 15: void LB_Close(void);
-[; ;RC.h: 10: void RC_INITIAL(void);
-[; ;RC.h: 11: void RC_Detect(void);
-[; ;RC.h: 12: void RC_Control(uint8_t value);
-[; ;RC.h: 13: void RC_Task(void);
+[; ;Int.h: 12: void Read_Int(void);
+[; ;Int.h: 13: void Int_Task(void);
 [; ;BUZZTT.h: 10: void BUZZTT_Init(void);
 [; ;BUZZTT.h: 11: void KEY_Init(void);
 [; ;BUZZTT.h: 12: void Hummer_Init(void);
@@ -3139,25 +3133,29 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 15: void Hummer_Task(void);
 [; ;BUZZTT.h: 16: void BUZZTT_Task(void);
 [; ;BUZZTT.h: 17: void Key_Task(void);
+[; ;LB.h: 6: void LB_Init(void);
+[; ;LB.h: 7: void STNADBY_Open(void);
+[; ;LB.h: 8: void LB_Open(void);
+[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 10: void LB_ST_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
-[; ;app.h: 24: uint8_t HT_Value;
-[; ;app.h: 26: uint8_t LB_Value;
-[; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 30: uint8_t Relay_Release;
-[; ;app.h: 32: uint8_t KEY_Value;
-[; ;app.h: 34: uint8_t Vadc_Value;
-[; ;app.h: 36: uint8_t Cadc_Value;
-[; ;app.h: 38: uint8_t READY_Value;
-[; ;app.h: 40: uint8_t STANDBY_Value;
-[; ;app.h: 44: uint16_t Vbattery_Adc;
-[; ;app.h: 46: uint16_t Cbattery_Adc;
-[; ;app.h: 48: uint8_t Long_Time_Change;
-[; ;app.h: 50: uint8_t Delay_2s_Flag ;
-[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 54: }sys;
-[; ;app.h: 56: extern sys SYS;
+[; ;app.h: 24: uint8_t LB_Value;
+[; ;app.h: 26: uint8_t INT_Value;
+[; ;app.h: 28: uint8_t Relay_Release;
+[; ;app.h: 30: uint8_t KEY_Value;
+[; ;app.h: 32: uint8_t Vadc_Value;
+[; ;app.h: 34: uint8_t Cadc_Value;
+[; ;app.h: 36: uint8_t READY_Value;
+[; ;app.h: 38: uint8_t STANDBY_Value;
+[; ;app.h: 42: uint16_t Vbattery_Adc;
+[; ;app.h: 44: uint16_t Cbattery_Adc;
+[; ;app.h: 46: uint8_t Long_Time_Change;
+[; ;app.h: 48: uint8_t Delay_2s_Flag ;
+[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 52: }sys;
+[; ;app.h: 54: extern sys SYS;
 [; ;Ready.h: 18: typedef enum {
 [; ;Ready.h: 19: ST_PRE_ON,
 [; ;Ready.h: 20: ST_OFF,
@@ -3208,162 +3206,159 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _num `uc ~T0 @X0 1 r1 ]
 "39
 [f ]
-[; ;READY.c: 40: PC0 = (num == 1) ? 1 : 0;
+[; ;READY.c: 40: PB3 = (num == 1) ? 1 : 0;
 "40
-[e = _PC0 -> ? == -> _num `i -> 1 `i : -> 1 `i -> 0 `i `b ]
-[; ;READY.c: 41: PB3 = (num == 1) ? 1 : 0;
-"41
 [e = _PB3 -> ? == -> _num `i -> 1 `i : -> 1 `i -> 0 `i `b ]
-[; ;READY.c: 42: }
-"42
+[; ;READY.c: 41: }
+"41
 [e :UE 158 ]
 }
-"53
+"52
 [v _READY_Task `(v ~T0 @X0 1 ef ]
 {
-[; ;READY.c: 53: void READY_Task(void) {
+[; ;READY.c: 52: void READY_Task(void) {
 [e :U _READY_Task ]
 [f ]
-"54
-[v F1975 `E1960 ~T0 @X0 1 s state ]
-[i F1975
-. `E1960 0
+"53
+[v F1972 `E1957 ~T0 @X0 1 s state ]
+[i F1972
+. `E1957 0
 ]
-"55
-[v F1976 `ui ~T0 @X0 1 s counter ]
-[i F1976
+"54
+[v F1973 `ui ~T0 @X0 1 s counter ]
+[i F1973
 -> -> 0 `i `ui
 ]
-[; ;READY.c: 54: static TaskState_t state = ST_PRE_ON;
-[; ;READY.c: 55: static uint16_t counter = 0;
-[; ;READY.c: 57: if (!SYS.Standby_Work_State) {
-"57
+[; ;READY.c: 53: static TaskState_t state = ST_PRE_ON;
+[; ;READY.c: 54: static uint16_t counter = 0;
+[; ;READY.c: 56: if (!SYS.Standby_Work_State) {
+"56
 [e $ ! ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 160  ]
 {
-[; ;READY.c: 58: state = ST_PRE_ON;
+[; ;READY.c: 57: state = ST_PRE_ON;
+"57
+[e = F1972 . `E1957 0 ]
+[; ;READY.c: 58: counter = 0;
 "58
-[e = F1975 . `E1960 0 ]
-[; ;READY.c: 59: counter = 0;
+[e = F1973 -> -> 0 `i `ui ]
+[; ;READY.c: 59: Ready_Control(0);
 "59
-[e = F1976 -> -> 0 `i `ui ]
-[; ;READY.c: 60: Ready_Control(0);
-"60
 [e ( _Ready_Control (1 -> -> 0 `i `uc ]
-[; ;READY.c: 61: return;
-"61
+[; ;READY.c: 60: return;
+"60
 [e $UE 159  ]
-"62
+"61
 }
 [e :U 160 ]
-[; ;READY.c: 62: }
-[; ;READY.c: 64: counter++;
-"64
-[e ++ F1976 -> -> 1 `i `ui ]
-[; ;READY.c: 66: switch (state) {
-"66
+[; ;READY.c: 61: }
+[; ;READY.c: 63: counter++;
+"63
+[e ++ F1973 -> -> 1 `i `ui ]
+[; ;READY.c: 65: switch (state) {
+"65
 [e $U 162  ]
 {
-[; ;READY.c: 67: case ST_PRE_ON:
-"67
+[; ;READY.c: 66: case ST_PRE_ON:
+"66
 [e :U 163 ]
-[; ;READY.c: 68: Ready_Control(1);
-"68
+[; ;READY.c: 67: Ready_Control(1);
+"67
 [e ( _Ready_Control (1 -> -> 1 `i `uc ]
-[; ;READY.c: 69: if (counter >= 600) {
-"69
-[e $ ! >= F1976 -> -> 600 `i `ui 164  ]
+[; ;READY.c: 68: if (counter >= 600) {
+"68
+[e $ ! >= F1973 -> -> 600 `i `ui 164  ]
 {
-[; ;READY.c: 70: counter = 0;
+[; ;READY.c: 69: counter = 0;
+"69
+[e = F1973 -> -> 0 `i `ui ]
+[; ;READY.c: 70: state = ST_OFF;
 "70
-[e = F1976 -> -> 0 `i `ui ]
-[; ;READY.c: 71: state = ST_OFF;
+[e = F1972 . `E1957 1 ]
 "71
-[e = F1975 . `E1960 1 ]
-"72
 }
 [e :U 164 ]
-[; ;READY.c: 72: }
-[; ;READY.c: 73: break;
-"73
+[; ;READY.c: 71: }
+[; ;READY.c: 72: break;
+"72
 [e $U 161  ]
-[; ;READY.c: 75: case ST_OFF:
-"75
+[; ;READY.c: 74: case ST_OFF:
+"74
 [e :U 165 ]
-[; ;READY.c: 76: Ready_Control(0);
-"76
+[; ;READY.c: 75: Ready_Control(0);
+"75
 [e ( _Ready_Control (1 -> -> 0 `i `uc ]
-[; ;READY.c: 77: if (counter >= 2) {
-"77
-[e $ ! >= F1976 -> -> 2 `i `ui 166  ]
+[; ;READY.c: 76: if (counter >= 2) {
+"76
+[e $ ! >= F1973 -> -> 2 `i `ui 166  ]
 {
-[; ;READY.c: 78: counter = 0;
+[; ;READY.c: 77: counter = 0;
+"77
+[e = F1973 -> -> 0 `i `ui ]
+[; ;READY.c: 78: state = ST_FINAL_ON;
 "78
-[e = F1976 -> -> 0 `i `ui ]
-[; ;READY.c: 79: state = ST_FINAL_ON;
+[e = F1972 . `E1957 2 ]
 "79
-[e = F1975 . `E1960 2 ]
-"80
 }
 [e :U 166 ]
-[; ;READY.c: 80: }
-[; ;READY.c: 81: break;
-"81
+[; ;READY.c: 79: }
+[; ;READY.c: 80: break;
+"80
 [e $U 161  ]
-[; ;READY.c: 83: case ST_FINAL_ON:
-"83
+[; ;READY.c: 82: case ST_FINAL_ON:
+"82
 [e :U 167 ]
-[; ;READY.c: 84: Ready_Control(1);
-"84
+[; ;READY.c: 83: Ready_Control(1);
+"83
 [e ( _Ready_Control (1 -> -> 1 `i `uc ]
-[; ;READY.c: 85: if (counter >= 400) {
-"85
-[e $ ! >= F1976 -> -> 400 `i `ui 168  ]
+[; ;READY.c: 84: if (counter >= 400) {
+"84
+[e $ ! >= F1973 -> -> 400 `i `ui 168  ]
 {
-[; ;READY.c: 86: counter = 0;
+[; ;READY.c: 85: counter = 0;
+"85
+[e = F1973 -> -> 0 `i `ui ]
+[; ;READY.c: 86: state = ST_DETECT;
 "86
-[e = F1976 -> -> 0 `i `ui ]
-[; ;READY.c: 87: state = ST_DETECT;
+[e = F1972 . `E1957 3 ]
 "87
-[e = F1975 . `E1960 3 ]
-"88
 }
 [e :U 168 ]
-[; ;READY.c: 88: }
-[; ;READY.c: 89: break;
-"89
+[; ;READY.c: 87: }
+[; ;READY.c: 88: break;
+"88
 [e $U 161  ]
-[; ;READY.c: 91: case ST_DETECT:
-"91
+[; ;READY.c: 90: case ST_DETECT:
+"90
 [e :U 169 ]
-[; ;READY.c: 94: SYS.Vbattery_Adc = GET_ADC_DATA(0);
+[; ;READY.c: 93: SYS.Vbattery_Adc = GET_ADC_DATA(0);
+"93
+[e = . _SYS 9 ( _GET_ADC_DATA (1 -> -> 0 `i `uc ]
+[; ;READY.c: 94: SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
 "94
-[e = . _SYS 10 ( _GET_ADC_DATA (1 -> -> 0 `i `uc ]
-[; ;READY.c: 95: SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
+[e = . _SYS 6 -> ( _Get_Cbattery_Stand_State (1 . _SYS 10 `uc ]
+[; ;READY.c: 95: state = ST_PRE_ON;
 "95
-[e = . _SYS 7 -> ( _Get_Cbattery_Stand_State (1 . _SYS 11 `uc ]
-[; ;READY.c: 96: state = ST_PRE_ON;
+[e = F1972 . `E1957 0 ]
+[; ;READY.c: 96: counter = 400;
 "96
-[e = F1975 . `E1960 0 ]
-[; ;READY.c: 97: counter = 400;
+[e = F1973 -> -> 400 `i `ui ]
+[; ;READY.c: 97: break;
 "97
-[e = F1976 -> -> 400 `i `ui ]
-[; ;READY.c: 98: break;
+[e $U 161  ]
 "98
-[e $U 161  ]
-"99
 }
-[; ;READY.c: 99: }
+[; ;READY.c: 98: }
 [e $U 161  ]
-"66
+"65
 [e :U 162 ]
-[e [\ F1975 , $ . `E1960 0 163
- , $ . `E1960 1 165
- , $ . `E1960 2 167
- , $ . `E1960 3 169
+[e [\ F1972 , $ . `E1957 0 163
+ , $ . `E1957 1 165
+ , $ . `E1957 2 167
+ , $ . `E1957 3 169
  161 ]
-"99
+"98
 [e :U 161 ]
-[; ;READY.c: 100: }
-"100
+[; ;READY.c: 99: }
+"99
 [e :UE 159 ]
 }

@@ -37,7 +37,6 @@ void Ready_Init(void)
  --------------------------------------------------*/
 void Ready_Control(uint8_t num)
 {
-	PC0 = (num == Ready_Open) ? 1 : 0;
     PB3 = (num == Ready_Open) ? 1 : 0;
 }
 

@@ -1,5 +1,5 @@
 
-# 1 "RC.c"
+# 1 "LB.C"
 
 # 26 "C:\Program Files (x86)\CCompiler\Compiler\data\include\fmd.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -1979,10 +1979,8 @@ void READY_Task(void);
 
 # 11 "Int.h"
 void Int_Initial(void);
-void HT_Detect(void);
-void LB_Open(void);
+void Read_Int(void);
 void Int_Task(void);
-void LB_Close(void);
 
 # 10 "BUZZTT.h"
 void BUZZTT_Init(void);
@@ -1994,7 +1992,7 @@ void Hummer_Task(void);
 void BUZZTT_Task(void);
 void Key_Task(void);
 
-# 16 "APP.H"
+# 16 "app.h"
 void Initial(void);
 
 
@@ -2003,11 +2001,9 @@ typedef struct{
 
 uint8_t Standby_Work_State;
 
-uint8_t HT_Value;
-
 uint8_t LB_Value;
 
-uint8_t RC_Value;
+uint8_t INT_Value;
 
 uint8_t Relay_Release;
 
@@ -2037,45 +2033,50 @@ uint8_t Cadc_Ready_Flag ;
 
 extern sys SYS;
 
-# 10 "RC.h"
-void RC_INITIAL(void);
-void RC_Detect(void);
-void RC_Control(uint8_t value);
-void RC_Task(void);
+# 6 "LB.h"
+void LB_Init(void);
+void STNADBY_Open(void);
+void LB_Open(void);
+void LB_STANDBY_Close(void);
+void LB_ST_Task(void);
 
-# 15 "RC.c"
-void RC_INITIAL(void)
-{
-PORTB |= 0B00000000;
-TRISB |= 0B00100000;
-
-}
-
-# 28
-void RC_Detect(void)
+# 10 "LB.C"
+void LB_Init(void)
 {
 TRISB |= 0B00100000;
-
-WPDB = 0B00100000;
-
-SYS.RC_Value = PB5;
 }
 
-# 43
-void RC_Control(uint8_t value)
+void STNADBY_Open(void)
+{
+if(SYS.STANDBY_Value)
 {
 TRISB &= ~0B00100000;
-
-
-
-PB5 = (value == 1) ? 1 : 0;
+PB5 = 1;
+}
 }
 
-
-void RC_Task(void)
+void LB_Open(void)
 {
-RC_Detect();
+if(SYS.LB_Value)
+{
+TRISB &= ~0B00100000;
+PB5 = 0;
+}
+}
 
+void LB_STANDBY_Close(void)
+{
+if(SYS.STANDBY_Value == 0 && SYS.LB_Value == 0)
+{
+TRISB |= 0B00100000;
+}
 
 }
 
+void LB_ST_Task(void)
+{
+STNADBY_Open();
+LB_Open();
+LB_STANDBY_Close();
+
+}

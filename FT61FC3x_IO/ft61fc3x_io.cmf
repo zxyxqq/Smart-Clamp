@@ -11,25 +11,25 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
+$C:\Users\gcsja805\AppData\Local\Temp\soek.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 D D 2 2
 $ft61fc3x_io.obj
 cinit CODE 0 F F 30 2
-text1 CODE 0 240 240 33 2
-text3 CODE 0 282 282 1 2
-text4 CODE 0 1EF 1EF 51 2
-text5 CODE 0 4D 4D 129 2
-text6 CODE 0 283 283 1 2
-text26 CODE 0 176 176 79 2
-maintext CODE 0 27B 27B 7 2
+text1 CODE 0 2D2 2D2 34 2
+text3 CODE 0 323 323 1 2
+text4 CODE 0 286 286 4C 2
+text5 CODE 0 4D 4D 1C0 2
+text6 CODE 0 306 306 E 2
+text39 CODE 0 20D 20D 79 2
+maintext CODE 0 31C 31C 7 2
 cstackCOMMON COMMON 1 70 70 9 1
-cstackBANK0 BANK0 1 51 51 8 1
+cstackBANK0 BANK0 1 52 52 8 1
 intentry CODE 0 4 4 9 2
-bssBANK0 BANK0 1 20 20 19 1
-dataBANK0 BANK0 1 39 39 18 1
+bssBANK0 BANK0 1 20 20 1A 1
+dataBANK0 BANK0 1 3A 3A 18 1
 functab ENTRY 0 3F 3F E 2
-clrtext CODE 0 273 273 8 2
+clrtext CODE 0 314 314 8 2
 bssCOMMON COMMON 1 79 79 1 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -37,20 +37,20 @@ bssCOMMON COMMON 1 79 79 1 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 59-6F 1
+RAM 5A-6F 1
 RAM A0-EF 1
 RAM 120-16F 1
-BANK0 59-6F 1
+BANK0 5A-6F 1
 BANK1 A0-EF 1
 BANK2 120-16F 1
 CONST 2-3 2
-CONST 284-BFF 2
+CONST 324-BFF 2
 ENTRY 2-3 2
-ENTRY 284-BFF 2
+ENTRY 324-BFF 2
 IDLOC 2000-2003 2
 STACK A0-EF 1
 CODE 2-3 2
-CODE 284-BFF 2
+CODE 324-BFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -59,9 +59,9 @@ COMMON 7A-7D 1
 CONFIG 2007-2007 2
 EEDATA 2100-217F 2
 STRCODE 2-3 2
-STRCODE 284-BFF 2
+STRCODE 324-BFF 2
 STRING 2-3 2
-STRING 284-BFF 2
+STRING 324-BFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -76,299 +76,379 @@ STRING 284-BFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $ft61fc3x_io.obj
-F cinit CODE >159:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-F cinit CODE >162:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+F cinit CODE >191:C:\Users\gcsja805\AppData\Local\Temp\soek.
+F cinit CODE >194:C:\Users\gcsja805\AppData\Local\Temp\soek.
 F cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-10 cinit CODE >207:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-11 cinit CODE >209:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+10 cinit CODE >245:C:\Users\gcsja805\AppData\Local\Temp\soek.
+11 cinit CODE >247:C:\Users\gcsja805\AppData\Local\Temp\soek.
 12 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-13 cinit CODE >211:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-14 cinit CODE >213:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+13 cinit CODE >249:C:\Users\gcsja805\AppData\Local\Temp\soek.
+14 cinit CODE >251:C:\Users\gcsja805\AppData\Local\Temp\soek.
 15 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-16 cinit CODE >215:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-17 cinit CODE >217:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+16 cinit CODE >253:C:\Users\gcsja805\AppData\Local\Temp\soek.
+17 cinit CODE >255:C:\Users\gcsja805\AppData\Local\Temp\soek.
 18 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-19 cinit CODE >219:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-1A cinit CODE >221:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+19 cinit CODE >257:C:\Users\gcsja805\AppData\Local\Temp\soek.
+1A cinit CODE >259:C:\Users\gcsja805\AppData\Local\Temp\soek.
 1B cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-1C cinit CODE >223:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-1D cinit CODE >225:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+1C cinit CODE >261:C:\Users\gcsja805\AppData\Local\Temp\soek.
+1D cinit CODE >263:C:\Users\gcsja805\AppData\Local\Temp\soek.
 1E cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-1F cinit CODE >227:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-20 cinit CODE >229:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+1F cinit CODE >265:C:\Users\gcsja805\AppData\Local\Temp\soek.
+20 cinit CODE >267:C:\Users\gcsja805\AppData\Local\Temp\soek.
 21 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-22 cinit CODE >231:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-23 cinit CODE >233:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+22 cinit CODE >269:C:\Users\gcsja805\AppData\Local\Temp\soek.
+23 cinit CODE >271:C:\Users\gcsja805\AppData\Local\Temp\soek.
 24 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-25 cinit CODE >235:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-26 cinit CODE >237:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+25 cinit CODE >273:C:\Users\gcsja805\AppData\Local\Temp\soek.
+26 cinit CODE >275:C:\Users\gcsja805\AppData\Local\Temp\soek.
 27 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-28 cinit CODE >239:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-29 cinit CODE >241:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+28 cinit CODE >277:C:\Users\gcsja805\AppData\Local\Temp\soek.
+29 cinit CODE >279:C:\Users\gcsja805\AppData\Local\Temp\soek.
 2A cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-2B cinit CODE >243:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-2C cinit CODE >245:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+2B cinit CODE >281:C:\Users\gcsja805\AppData\Local\Temp\soek.
+2C cinit CODE >283:C:\Users\gcsja805\AppData\Local\Temp\soek.
 2D cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-2E cinit CODE >247:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+2E cinit CODE >285:C:\Users\gcsja805\AppData\Local\Temp\soek.
 2F cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-30 cinit CODE >249:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+30 cinit CODE >287:C:\Users\gcsja805\AppData\Local\Temp\soek.
 31 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-32 cinit CODE >251:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+32 cinit CODE >289:C:\Users\gcsja805\AppData\Local\Temp\soek.
 33 cinit CODE >5:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-34 cinit CODE >253:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-35 cinit CODE >273:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-36 cinit CODE >272:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-37 cinit CODE >274:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-38 cinit CODE >275:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-39 cinit CODE >276:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3B cinit CODE >279:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3C cinit CODE >285:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3C cinit CODE >287:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3D cinit CODE >288:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3F functab ENTRY >3499:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3F functab ENTRY >3501:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3F functab ENTRY >3502:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-3F functab ENTRY >3503:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-40 functab ENTRY >3504:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-41 functab ENTRY >3505:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-42 functab ENTRY >3506:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-43 functab ENTRY >3507:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-44 functab ENTRY >3509:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-44 functab ENTRY >3510:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-45 functab ENTRY >3513:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-45 functab ENTRY >3514:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-47 functab ENTRY >3517:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-47 functab ENTRY >3518:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-49 functab ENTRY >3521:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-49 functab ENTRY >3522:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-4B functab ENTRY >3525:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-4B functab ENTRY >3526:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+34 cinit CODE >291:C:\Users\gcsja805\AppData\Local\Temp\soek.
+35 cinit CODE >311:C:\Users\gcsja805\AppData\Local\Temp\soek.
+36 cinit CODE >310:C:\Users\gcsja805\AppData\Local\Temp\soek.
+37 cinit CODE >312:C:\Users\gcsja805\AppData\Local\Temp\soek.
+38 cinit CODE >313:C:\Users\gcsja805\AppData\Local\Temp\soek.
+39 cinit CODE >314:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3B cinit CODE >317:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3C cinit CODE >323:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3C cinit CODE >325:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3D cinit CODE >326:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3F functab ENTRY >4755:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3F functab ENTRY >4757:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3F functab ENTRY >4758:C:\Users\gcsja805\AppData\Local\Temp\soek.
+3F functab ENTRY >4759:C:\Users\gcsja805\AppData\Local\Temp\soek.
+40 functab ENTRY >4760:C:\Users\gcsja805\AppData\Local\Temp\soek.
+41 functab ENTRY >4761:C:\Users\gcsja805\AppData\Local\Temp\soek.
+42 functab ENTRY >4762:C:\Users\gcsja805\AppData\Local\Temp\soek.
+43 functab ENTRY >4763:C:\Users\gcsja805\AppData\Local\Temp\soek.
+44 functab ENTRY >4765:C:\Users\gcsja805\AppData\Local\Temp\soek.
+44 functab ENTRY >4766:C:\Users\gcsja805\AppData\Local\Temp\soek.
+45 functab ENTRY >4769:C:\Users\gcsja805\AppData\Local\Temp\soek.
+45 functab ENTRY >4770:C:\Users\gcsja805\AppData\Local\Temp\soek.
+47 functab ENTRY >4773:C:\Users\gcsja805\AppData\Local\Temp\soek.
+47 functab ENTRY >4774:C:\Users\gcsja805\AppData\Local\Temp\soek.
+49 functab ENTRY >4777:C:\Users\gcsja805\AppData\Local\Temp\soek.
+49 functab ENTRY >4778:C:\Users\gcsja805\AppData\Local\Temp\soek.
+4B functab ENTRY >4781:C:\Users\gcsja805\AppData\Local\Temp\soek.
+4B functab ENTRY >4782:C:\Users\gcsja805\AppData\Local\Temp\soek.
 4 intentry CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-176 text26 CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-176 text26 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-179 text26 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-17A text26 CODE >29:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-17E text26 CODE >34:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-17F text26 CODE >36:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-18F text26 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-19E text26 CODE >39:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-19F text26 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-1A0 text26 CODE >39:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-1AF text26 CODE >41:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-1C9 text26 CODE >42:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-1D3 text26 CODE >34:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-1D8 text26 CODE >47:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-1E1 text26 CODE >4:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1E2 text26 CODE >6:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1E3 text26 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1E3 text26 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1E4 text26 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1E5 text26 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1E6 text26 CODE >45:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1E8 text26 CODE >46:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1EA text26 CODE >47:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1ED text26 CODE >50:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-1EE text26 CODE >51:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-283 text6 CODE >62:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-283 text6 CODE >67:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+20D text39 CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+20D text39 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+210 text39 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+211 text39 CODE >29:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+215 text39 CODE >34:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+216 text39 CODE >36:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+226 text39 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+235 text39 CODE >39:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+236 text39 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+237 text39 CODE >39:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+246 text39 CODE >41:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+260 text39 CODE >42:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+26A text39 CODE >34:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+26F text39 CODE >47:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+278 text39 CODE >4:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+279 text39 CODE >6:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+27A text39 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+27A text39 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+27B text39 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+27C text39 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+27D text39 CODE >45:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+27F text39 CODE >46:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+281 text39 CODE >47:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+284 text39 CODE >50:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+285 text39 CODE >51:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+306 text6 CODE >56:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+306 text6 CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+307 text6 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+307 text6 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+309 text6 CODE >30:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+30A text6 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+30B text6 CODE >30:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+30E text6 CODE >32:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+30F text6 CODE >33:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+312 text6 CODE >41:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+313 text6 CODE >44:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
 4D text5 CODE >18:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-4D text5 CODE >25:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-4E text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-4E text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-51 text5 CODE >14:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-53 text5 CODE >15:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-55 text5 CODE >16:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-57 text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-59 text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-5A text5 CODE >30:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-5B text5 CODE >32:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-5C text5 CODE >33:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-5D text5 CODE >22:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-5E text5 CODE >25:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-63 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-64 text5 CODE >29:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-67 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-6C text5 CODE >25:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-6E text5 CODE >9:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-6E text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-71 text5 CODE >12:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-73 text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-74 text5 CODE >15:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-76 text5 CODE >16:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-79 text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-7B text5 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-7E text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-80 text5 CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-83 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-84 text5 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-87 text5 CODE >29:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-8A text5 CODE >31:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-8B text5 CODE >32:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-8E text5 CODE >33:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-91 text5 CODE >35:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-92 text5 CODE >17:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-92 text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-93 text5 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-95 text5 CODE >22:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-97 text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-99 text5 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-9A text5 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-9D text5 CODE >30:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-9E text5 CODE >42:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-9E text5 CODE >44:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A0 text5 CODE >46:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A1 text5 CODE >48:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A2 text5 CODE >50:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A3 text5 CODE >52:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A4 text5 CODE >54:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A5 text5 CODE >56:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A6 text5 CODE >58:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A7 text5 CODE >62:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A8 text5 CODE >64:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-A9 text5 CODE >66:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
-AA text5 CODE >9:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
-AA text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
-AD text5 CODE >12:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
-AE text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
-B1 text5 CODE >14:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
-B2 text5 CODE >53:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-B2 text5 CODE >57:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-B5 text5 CODE >60:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-B6 text5 CODE >58:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-B7 text5 CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-B9 text5 CODE >60:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-BA text5 CODE >64:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-BD text5 CODE >66:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-BE text5 CODE >68:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-C1 text5 CODE >69:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-C8 text5 CODE >70:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-CA text5 CODE >71:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-CD text5 CODE >76:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-D0 text5 CODE >77:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-D7 text5 CODE >79:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-D8 text5 CODE >78:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-D9 text5 CODE >84:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-DC text5 CODE >85:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-E3 text5 CODE >87:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-E5 text5 CODE >94:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-EC text5 CODE >95:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-F2 text5 CODE >97:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-F3 text5 CODE >96:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-F4 text5 CODE >97:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-F7 text5 CODE >98:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-F8 text5 CODE >66:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-106 text5 CODE >100:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-107 text5 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-108 text5 CODE >40:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-111 text5 CODE >41:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-11A text5 CODE >42:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-11B text5 CODE >85:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-11C text5 CODE >88:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-122 text5 CODE >89:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-127 text5 CODE >90:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-128 text5 CODE >91:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-12B text5 CODE >92:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-12E text5 CODE >97:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-132 text5 CODE >99:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-133 text5 CODE >100:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-134 text5 CODE >101:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-138 text5 CODE >105:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-140 text5 CODE >106:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-141 text5 CODE >8:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-143 text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-148 text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-149 text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
-14D text5 CODE >21:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-14D text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-14F text5 CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-151 text5 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-153 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-154 text5 CODE >189:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-154 text5 CODE >193:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-155 text5 CODE >196:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-15C text5 CODE >198:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-15F text5 CODE >204:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-166 text5 CODE >206:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-168 text5 CODE >193:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-170 text5 CODE >211:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-171 text5 CODE >212:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-1EF text4 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-1EF text4 CODE >43:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-1F0 text4 CODE >155:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1F0 text4 CODE >157:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1F1 text4 CODE >60:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1F1 text4 CODE >62:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1F9 text4 CODE >64:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1FA text4 CODE >68:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1FB text4 CODE >143:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1FB text4 CODE >145:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1FC text4 CODE >146:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1FE text4 CODE >147:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1FF text4 CODE >47:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-1FF text4 CODE >49:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-200 text4 CODE >50:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-202 text4 CODE >52:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-203 text4 CODE >53:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-204 text4 CODE >131:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-204 text4 CODE >133:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-206 text4 CODE >134:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-207 text4 CODE >34:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-207 text4 CODE >36:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-208 text4 CODE >37:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-20A text4 CODE >39:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-20B text4 CODE >40:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-20C text4 CODE >79:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-20C text4 CODE >85:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-20F text4 CODE >88:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-213 text4 CODE >90:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-214 text4 CODE >91:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-215 text4 CODE >92:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-215 text4 CODE >94:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-217 text4 CODE >98:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-224 text4 CODE >100:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-227 text4 CODE >105:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-234 text4 CODE >108:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-235 text4 CODE >109:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-237 text4 CODE >111:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-23A text4 CODE >118:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-23B text4 CODE >119:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-23C text4 CODE >120:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-23E text4 CODE >121:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-23F text4 CODE >123:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
-282 text3 CODE >52:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-282 text3 CODE >55:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-240 text1 CODE >75:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-240 text1 CODE >78:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-241 text1 CODE >80:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-24B text1 CODE >82:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-252 text1 CODE >83:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-253 text1 CODE >82:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-255 text1 CODE >83:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-25F text1 CODE >78:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-265 text1 CODE >4:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-266 text1 CODE >6:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-267 text1 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-267 text1 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-268 text1 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-269 text1 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-26A text1 CODE >45:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-26C text1 CODE >46:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-26E text1 CODE >47:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-271 text1 CODE >50:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-272 text1 CODE >51:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-27B maintext CODE >54:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-27B maintext CODE >56:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-27E maintext CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
-273 clrtext CODE >259:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-273 clrtext CODE >260:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-274 clrtext CODE >261:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-274 clrtext CODE >262:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-275 clrtext CODE >263:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-276 clrtext CODE >264:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-277 clrtext CODE >265:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-278 clrtext CODE >266:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-279 clrtext CODE >267:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
-27A clrtext CODE >268:C:\Users\gcsja805\AppData\Local\Temp\sl0o.
+4D text5 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+4F text5 CODE >21:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+51 text5 CODE >22:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+53 text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+54 text5 CODE >233:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+54 text5 CODE >236:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+56 text5 CODE >239:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+58 text5 CODE >242:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+5B text5 CODE >244:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+62 text5 CODE >246:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+65 text5 CODE >248:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+66 text5 CODE >249:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+67 text5 CODE >250:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+67 text5 CODE >252:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+69 text5 CODE >300:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+6A text5 CODE >114:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+6A text5 CODE >116:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+70 text5 CODE >117:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+71 text5 CODE >136:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+71 text5 CODE >140:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+72 text5 CODE >143:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+79 text5 CODE >145:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+7B text5 CODE >146:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+7C text5 CODE >147:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+83 text5 CODE >149:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+86 text5 CODE >155:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+8D text5 CODE >157:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+8F text5 CODE >164:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+97 text5 CODE >140:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+A2 text5 CODE >171:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+A3 text5 CODE >172:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+A4 text5 CODE >210:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+A4 text5 CODE >216:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+A6 text5 CODE >217:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+A7 text5 CODE >225:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+A8 text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+A8 text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+AB text5 CODE >14:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+AD text5 CODE >15:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+AF text5 CODE >16:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+B1 text5 CODE >18:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+B3 text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+B5 text5 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+B7 text5 CODE >21:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+B8 text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+B9 text5 CODE >25:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+BA text5 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
+BB text5 CODE >22:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+BD text5 CODE >25:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+C2 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+C3 text5 CODE >29:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+C6 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+CB text5 CODE >25:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+CD text5 CODE >53:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+CD text5 CODE >55:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+CF text5 CODE >57:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+D0 text5 CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+D4 text5 CODE >61:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+D6 text5 CODE >63:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+D7 text5 CODE >65:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+DA text5 CODE >67:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+DD text5 CODE >69:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+DF text5 CODE >73:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+E0 text5 CODE >75:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+E2 text5 CODE >77:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+E4 text5 CODE >52:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+E4 text5 CODE >56:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+E7 text5 CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+E8 text5 CODE >57:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+E9 text5 CODE >58:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+EB text5 CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+EC text5 CODE >63:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+EF text5 CODE >65:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+F0 text5 CODE >67:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+F3 text5 CODE >68:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+FA text5 CODE >69:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+FC text5 CODE >70:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+FF text5 CODE >75:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+102 text5 CODE >76:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+109 text5 CODE >78:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+10A text5 CODE >77:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+10B text5 CODE >83:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+10E text5 CODE >84:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+115 text5 CODE >86:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+117 text5 CODE >93:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+11E text5 CODE >94:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+124 text5 CODE >96:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+125 text5 CODE >95:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+126 text5 CODE >96:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+129 text5 CODE >97:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+12A text5 CODE >65:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+138 text5 CODE >99:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+139 text5 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+13A text5 CODE >40:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+143 text5 CODE >41:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+144 text5 CODE >86:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+145 text5 CODE >89:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+14B text5 CODE >90:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+150 text5 CODE >91:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+151 text5 CODE >92:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+154 text5 CODE >93:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+157 text5 CODE >98:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+15B text5 CODE >100:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+15C text5 CODE >101:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+15D text5 CODE >102:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+161 text5 CODE >106:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+169 text5 CODE >107:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+16A text5 CODE >8:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+16C text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+171 text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+172 text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Delay.c
+176 text5 CODE >16:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+176 text5 CODE >18:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+17A text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+17B text5 CODE >9:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+17B text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+17E text5 CODE >12:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+180 text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+181 text5 CODE >15:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+183 text5 CODE >16:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+186 text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+188 text5 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+18B text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+18D text5 CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+190 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+191 text5 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+194 text5 CODE >29:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+197 text5 CODE >31:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+198 text5 CODE >32:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+19B text5 CODE >33:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+19E text5 CODE >35:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+19F text5 CODE >17:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+19F text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+1A0 text5 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+1A2 text5 CODE >22:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+1A4 text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+1A6 text5 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+1A7 text5 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+1AA text5 CODE >30:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+1AB text5 CODE >42:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1AB text5 CODE >44:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1AD text5 CODE >47:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1AE text5 CODE >49:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1AF text5 CODE >51:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1B0 text5 CODE >53:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1B1 text5 CODE >55:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1B2 text5 CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1B3 text5 CODE >61:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1B4 text5 CODE >63:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
+1B5 text5 CODE >9:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+1B5 text5 CODE >11:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+1B8 text5 CODE >12:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+1B9 text5 CODE >13:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+1BC text5 CODE >14:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
+1BD text5 CODE >41:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+1BD text5 CODE >43:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+1BE text5 CODE >21:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+1BE text5 CODE >23:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+1C0 text5 CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+1C2 text5 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+1C4 text5 CODE >27:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+1C5 text5 CODE >31:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+1C5 text5 CODE >33:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+1CC text5 CODE >34:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\INT.c
+1CD text5 CODE >42:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1CD text5 CODE >44:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1CF text5 CODE >45:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1D1 text5 CODE >46:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1D2 text5 CODE >15:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1D2 text5 CODE >17:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1D5 text5 CODE >19:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1D7 text5 CODE >20:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1D9 text5 CODE >22:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1DA text5 CODE >24:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1DA text5 CODE >26:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1DD text5 CODE >28:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1DF text5 CODE >29:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1E1 text5 CODE >31:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1E2 text5 CODE >33:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1E2 text5 CODE >35:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1E8 text5 CODE >37:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1EA text5 CODE >40:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\LB.C
+1EB text5 CODE >180:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+1EB text5 CODE >184:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+1EC text5 CODE >187:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+1F3 text5 CODE >189:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+1F6 text5 CODE >195:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+1FD text5 CODE >197:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+1FF text5 CODE >184:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+207 text5 CODE >202:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+208 text5 CODE >203:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+286 text4 CODE >35:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+286 text4 CODE >38:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+287 text4 CODE >155:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+287 text4 CODE >157:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+288 text4 CODE >60:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+288 text4 CODE >62:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+28B text4 CODE >64:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+28C text4 CODE >68:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+28D text4 CODE >143:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+28D text4 CODE >145:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+28E text4 CODE >146:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+290 text4 CODE >147:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+291 text4 CODE >47:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+291 text4 CODE >49:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+292 text4 CODE >50:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+294 text4 CODE >52:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+295 text4 CODE >53:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+296 text4 CODE >131:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+296 text4 CODE >133:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+298 text4 CODE >134:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+299 text4 CODE >34:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+299 text4 CODE >36:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+29A text4 CODE >37:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+29C text4 CODE >39:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+29D text4 CODE >40:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+29E text4 CODE >79:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+29E text4 CODE >85:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2A1 text4 CODE >88:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2A5 text4 CODE >90:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2A6 text4 CODE >91:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2A7 text4 CODE >92:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2A7 text4 CODE >94:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2A9 text4 CODE >98:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2B6 text4 CODE >100:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2B9 text4 CODE >105:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2C6 text4 CODE >108:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2C7 text4 CODE >109:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2C9 text4 CODE >111:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2CC text4 CODE >118:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2CD text4 CODE >119:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2CE text4 CODE >120:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2D0 text4 CODE >121:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+2D1 text4 CODE >123:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+323 text3 CODE >47:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+323 text3 CODE >50:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2D2 text1 CODE >69:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2D2 text1 CODE >72:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2D3 text1 CODE >74:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2DD text1 CODE >76:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2E4 text1 CODE >77:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2E5 text1 CODE >76:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2E7 text1 CODE >77:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2F1 text1 CODE >72:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+2F8 text1 CODE >4:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+2F9 text1 CODE >6:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+2FA text1 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+2FA text1 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+2FB text1 CODE >43:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+2FC text1 CODE >44:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+2FD text1 CODE >45:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+2FF text1 CODE >46:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+301 text1 CODE >47:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+304 text1 CODE >50:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+305 text1 CODE >51:C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
+31C maintext CODE >54:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+31C maintext CODE >56:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+31F maintext CODE >59:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+314 clrtext CODE >297:C:\Users\gcsja805\AppData\Local\Temp\soek.
+314 clrtext CODE >298:C:\Users\gcsja805\AppData\Local\Temp\soek.
+315 clrtext CODE >299:C:\Users\gcsja805\AppData\Local\Temp\soek.
+315 clrtext CODE >300:C:\Users\gcsja805\AppData\Local\Temp\soek.
+316 clrtext CODE >301:C:\Users\gcsja805\AppData\Local\Temp\soek.
+317 clrtext CODE >302:C:\Users\gcsja805\AppData\Local\Temp\soek.
+318 clrtext CODE >303:C:\Users\gcsja805\AppData\Local\Temp\soek.
+319 clrtext CODE >304:C:\Users\gcsja805\AppData\Local\Temp\soek.
+31A clrtext CODE >305:C:\Users\gcsja805\AppData\Local\Temp\soek.
+31B clrtext CODE >306:C:\Users\gcsja805\AppData\Local\Temp\soek.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -383,22 +463,26 @@ F8 text5 CODE >66:E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READ
 %SYMTAB
 __size_of_Ready_Control 0 0 ABS 0 - ft61fc3x_io.obj
 ___latbits 1 0 ABS 0 - ft61fc3x_io.obj
-__end_of_KEY_Init 418 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_KEY_Init 53C 0 CODE 0 text4 ft61fc3x_io.obj
 __size_of_DelayMs 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_DelayUs 0 0 ABS 0 - ft61fc3x_io.obj
 __LdataBANK0 0 0 ABS 0 dataBANK0 -
-__Hspace_0 284 0 ABS 0 - -
+__size_of_Read_Int 0 0 ABS 0 - ft61fc3x_io.obj
+__Hspace_0 324 0 ABS 0 - -
 __Hspace_1 7A 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
-_POWER_INITIAL DC 0 CODE 0 text5 ft61fc3x_io.obj
-_GET_ADC_DATA 236 0 CODE 0 text5 ft61fc3x_io.obj
+__size_of_Get_Vbattery_Stand_State 0 0 ABS 0 - ft61fc3x_io.obj
+_POWER_INITIAL 2F6 0 CODE 0 text5 ft61fc3x_io.obj
+_GET_ADC_DATA 288 0 CODE 0 text5 ft61fc3x_io.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
-__end_of_Get_Cbattery_Stand_State 2E4 0 CODE 0 text5 ft61fc3x_io.obj
-PL2 2E4 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_Get_Cbattery_Stand_State 412 0 CODE 0 text5 ft61fc3x_io.obj
+PL2 412 0 CODE 0 text5 ft61fc3x_io.obj
 ISR@i 78 0 COMMON 1 cstackCOMMON ft61fc3x_io.obj
 __Hstrings 0 0 ABS 0 strings -
+_LB_STANDBY_Close 3C4 0 CODE 0 text5 ft61fc3x_io.obj
+_ADON 898 0 ABS 0 - ft61fc3x_io.obj
 _T0IE 5D 0 ABS 0 - ft61fc3x_io.obj
 _T0IF 5A 0 ABS 0 - ft61fc3x_io.obj
 _TMR0 1 0 ABS 0 - ft61fc3x_io.obj
@@ -408,91 +492,117 @@ _WPDC 8D 0 ABS 0 - ft61fc3x_io.obj
 _WPUA 95 0 ABS 0 - ft61fc3x_io.obj
 _WPUB 10D 0 ABS 0 - ft61fc3x_io.obj
 _WPUC 93 0 ABS 0 - ft61fc3x_io.obj
-___sp 0 0 STACK 2 stack C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-_main 4F6 0 CODE 0 maintext ft61fc3x_io.obj
+___sp 0 0 STACK 2 stack C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+_main 638 0 CODE 0 maintext ft61fc3x_io.obj
 btemp 7E 0 ABS 0 - ft61fc3x_io.obj
-start 1A 0 CODE 0 init C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-_TaskCompany 39 0 BANK0 1 dataBANK0 ft61fc3x_io.obj
+start 1A 0 CODE 0 init C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+_LB_ST_Task 39A 0 CODE 0 text5 ft61fc3x_io.obj
+_TaskCompany 3A 0 BANK0 1 dataBANK0 ft61fc3x_io.obj
 __pfunctab 7E 0 ENTRY 0 functab ft61fc3x_io.obj
 __size_of_main 0 0 ABS 0 - ft61fc3x_io.obj
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
-Key_Detect@press_cnt 37 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
-Key_Detect@long_trig 36 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
-__end_of_Ready_Control 236 0 CODE 0 text5 ft61fc3x_io.obj
-Ready_Control@num 51 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+Key_Detect@press_cnt 38 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
+Key_Detect@long_trig 37 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
+__end_of_Ready_Control 288 0 CODE 0 text5 ft61fc3x_io.obj
+__size_of_LB_Open 0 0 ABS 0 - ft61fc3x_io.obj
+Ready_Control@num 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
-DelayUs@Time 51 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+DelayUs@Time 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
 __Hpowerup 0 0 CODE 0 powerup -
 i1___bmul@multiplier 71 0 COMMON 1 cstackCOMMON ft61fc3x_io.obj
-__end_of_Task_0 9C 0 CODE 0 text5 ft61fc3x_io.obj
-__end_of_Task_1 3E0 0 CODE 0 text4 ft61fc3x_io.obj
-__end_of_Task_2 506 0 CODE 0 text3 ft61fc3x_io.obj
-__end_of_Task_3 508 0 CODE 0 text6 ft61fc3x_io.obj
+__end_of_Int_Initial 2F6 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_Task_0 A8 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_Task_1 50E 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_Task_2 648 0 CODE 0 text3 ft61fc3x_io.obj
+__end_of_Task_3 60E 0 CODE 0 text6 ft61fc3x_io.obj
+__size_of_ADC_Task 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_GET_ADC_DATA 0 0 ABS 0 - ft61fc3x_io.obj
-intlevel0 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-intlevel1 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-intlevel2 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-intlevel3 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-intlevel4 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-intlevel5 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
+_Read_Int 38A 0 CODE 0 text5 ft61fc3x_io.obj
+intlevel0 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+intlevel1 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+intlevel2 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+intlevel3 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+intlevel4 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+intlevel5 7E 0 ENTRY 0 functab C:\Users\gcsja805\AppData\Local\Temp\soek.obj
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
-_Initial 9C 0 CODE 0 text5 ft61fc3x_io.obj
-___bmul@multiplicand 51 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+_Initial 150 0 CODE 0 text5 ft61fc3x_io.obj
+___bmul@multiplicand 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+Get_Vbattery_Stand_State@current_state 36 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
 wtemp0 7E 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Timer0_Init 0 0 ABS 0 - ft61fc3x_io.obj
+__size_of_Timer0_Task 0 0 ABS 0 - ft61fc3x_io.obj
 __Hfunctab 9A 0 ENTRY 0 functab -
+__end_of_Read_Int 39A 0 CODE 0 text5 ft61fc3x_io.obj
 __size_of_Hummer_Init 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Hummer_Task 0 0 ABS 0 - ft61fc3x_io.obj
 _KEY_Press 79 0 COMMON 1 bssCOMMON ft61fc3x_io.obj
 __Hclrtext 0 0 ABS 0 clrtext -
-__end_of_GET_ADC_DATA 282 0 CODE 0 text5 ft61fc3x_io.obj
-__end_of_DelayMs DC 0 CODE 0 text5 ft61fc3x_io.obj
-__end_of_DelayUs 29A 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_GET_ADC_DATA 2D4 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_DelayMs 19A 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_DelayUs 2EC 0 CODE 0 text5 ft61fc3x_io.obj
+_ADCMPH 187 0 ABS 0 - ft61fc3x_io.obj
 _ADCON0 113 0 ABS 0 - ft61fc3x_io.obj
+_ADCON1 114 0 ABS 0 - ft61fc3x_io.obj
+_ADCON2 115 0 ABS 0 - ft61fc3x_io.obj
+_ADCON3 186 0 ABS 0 - ft61fc3x_io.obj
 _ADRESH 112 0 ABS 0 - ft61fc3x_io.obj
 _ADRESL 111 0 ABS 0 - ft61fc3x_io.obj
+__end_of_Get_Vbattery_Stand_State 148 0 CODE 0 text5 ft61fc3x_io.obj
+_ANSEL0 11E 0 ABS 0 - ft61fc3x_io.obj
+__end_of_LB_ST_Task 3A4 0 CODE 0 text5 ft61fc3x_io.obj
 __Hpa_nodes0 0 0 ABS 0 pa_nodes0 -
-__end_of___bmul 4E6 0 CODE 0 text1 ft61fc3x_io.obj
+__end_of___bmul 60C 0 CODE 0 text1 ft61fc3x_io.obj
 __size_of_POWER_INITIAL 0 0 ABS 0 - ft61fc3x_io.obj
+__end_of_Get_Vbattery_Data E2 0 CODE 0 text5 ft61fc3x_io.obj
 __size_of_BUZZHH_Control 0 0 ABS 0 - ft61fc3x_io.obj
-?_GET_ADC_DATA 53 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+?_GET_ADC_DATA 54 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+__end_of_LB_STANDBY_Close 3D6 0 CODE 0 text5 ft61fc3x_io.obj
 __Lmaintext 0 0 ABS 0 maintext -
-___bmul@multiplier 53 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+_ADC_Task A8 0 CODE 0 text5 ft61fc3x_io.obj
+___bmul@multiplier 54 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
 __size_of_SYS_Initial 0 0 ABS 0 - ft61fc3x_io.obj
+__size_of_LB_STANDBY_Close 0 0 ABS 0 - ft61fc3x_io.obj
 _INTCON B 0 ABS 0 - ft61fc3x_io.obj
+__end_of_ADC_Task D4 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_LB_Open 3C4 0 CODE 0 text5 ft61fc3x_io.obj
 __size_ofi1___bmul 0 0 ABS 0 - ft61fc3x_io.obj
 __Lpa_nodes0 0 0 ABS 0 pa_nodes0 -
-_BUZZTT_Init 29A 0 CODE 0 text5 ft61fc3x_io.obj
-_BUZZTT_Task 3E0 0 CODE 0 text4 ft61fc3x_io.obj
-__end_of_POWER_INITIAL 124 0 CODE 0 text5 ft61fc3x_io.obj
+_ADC_INITIAL 19A 0 CODE 0 text5 ft61fc3x_io.obj
+_BUZZTT_Init 37C 0 CODE 0 text5 ft61fc3x_io.obj
+_BUZZTT_Task 50E 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_POWER_INITIAL 33E 0 CODE 0 text5 ft61fc3x_io.obj
 start_initialization 1E 0 CODE 0 cinit ft61fc3x_io.obj
 _OPTION 81 0 ABS 0 - ft61fc3x_io.obj
 _OSCCON 8F 0 ABS 0 - ft61fc3x_io.obj
 i1___bmul@multiplicand 70 0 COMMON 1 cstackCOMMON ft61fc3x_io.obj
-__end_ofPL2 2EC 0 CODE 0 text5 ft61fc3x_io.obj
-clear_ram0 4E6 0 CODE 0 clrtext ft61fc3x_io.obj
-__pcstackBANK0 51 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
-_READY_Task 164 0 CODE 0 text5 ft61fc3x_io.obj
+__end_ofPL2 41A 0 CODE 0 text5 ft61fc3x_io.obj
+clear_ram0 628 0 CODE 0 clrtext ft61fc3x_io.obj
+__pcstackBANK0 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+_READY_Task 1C8 0 CODE 0 text5 ft61fc3x_io.obj
 _Task_0 9A 0 CODE 0 text5 ft61fc3x_io.obj
-_Task_1 3DE 0 CODE 0 text4 ft61fc3x_io.obj
-_Task_2 504 0 CODE 0 text3 ft61fc3x_io.obj
-_Task_3 506 0 CODE 0 text6 ft61fc3x_io.obj
-_Ready_Init 124 0 CODE 0 text5 ft61fc3x_io.obj
+_Task_1 50C 0 CODE 0 text4 ft61fc3x_io.obj
+_Task_2 646 0 CODE 0 text3 ft61fc3x_io.obj
+_Task_3 60C 0 CODE 0 text6 ft61fc3x_io.obj
+_Ready_Init 33E 0 CODE 0 text5 ft61fc3x_io.obj
+Get_Vbattery_Stand_State@adc_value 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+__size_of_Int_Initial 0 0 ABS 0 - ft61fc3x_io.obj
 i1___bmul@product 72 0 COMMON 1 cstackCOMMON ft61fc3x_io.obj
-___int_sp 0 0 STACK 2 stack C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-i1___bmul 3C2 0 CODE 0 text26 ft61fc3x_io.obj
+___int_sp 0 0 STACK 2 stack C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+i1___bmul 4F0 0 CODE 0 text39 ft61fc3x_io.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
 __Hbank3 0 0 BANK3 1 bank3 -
 __Hcinit 7E 0 CODE 0 cinit -
+_Get_Vbattery_Data D4 0 CODE 0 text5 ft61fc3x_io.obj
 __Hidloc 0 0 IDLOC 0 idloc -
 __Hstack 0 0 STACK 2 stack -
 __Hmaintext 0 0 ABS 0 maintext -
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 0 0 CONFIG 0 config -
-__end_ofi1___bmul 3DE 0 CODE 0 text26 ft61fc3x_io.obj
-_Key_Detect 418 0 CODE 0 text4 ft61fc3x_io.obj
+__end_ofi1___bmul 50C 0 CODE 0 text39 ft61fc3x_io.obj
+_Key_Detect 53C 0 CODE 0 text4 ft61fc3x_io.obj
+__size_of_Relay_Release_Detect 0 0 ABS 0 - ft61fc3x_io.obj
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
@@ -517,129 +627,159 @@ __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
-___bmul 4CA 0 CODE 0 text1 ft61fc3x_io.obj
+___bmul 5F0 0 CODE 0 text1 ft61fc3x_io.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __size_of_Task_0 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Task_1 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Task_2 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Task_3 0 0 ABS 0 - ft61fc3x_io.obj
-_Timer0_Init 154 0 CODE 0 text5 ft61fc3x_io.obj
+_Timer0_Init 36A 0 CODE 0 text5 ft61fc3x_io.obj
+_Timer0_Task 60E 0 CODE 0 text6 ft61fc3x_io.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__end_of_Relay_Release_Detect 150 0 CODE 0 text5 ft61fc3x_io.obj
 _GIE 5F 0 ABS 0 - ft61fc3x_io.obj
-_ISR 2EC 0 CODE 0 text26 ft61fc3x_io.obj
+_ISR 41A 0 CODE 0 text39 ft61fc3x_io.obj
+_PA1 29 0 ABS 0 - ft61fc3x_io.obj
 _PB3 33 0 ABS 0 - ft61fc3x_io.obj
-_PC0 38 0 ABS 0 - ft61fc3x_io.obj
+_PB5 35 0 ABS 0 - ft61fc3x_io.obj
 _PC1 39 0 ABS 0 - ft61fc3x_io.obj
 _SYS 20 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
-__S0 284 0 ABS 0 - -
+__S0 324 0 ABS 0 - -
 __S1 7A 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-DelayMs@a 54 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
-DelayMs@b 55 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
-DelayUs@a 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
-_Hummer_Init 3FE 0 CODE 0 text4 ft61fc3x_io.obj
-_Hummer_Task 3F6 0 CODE 0 text4 ft61fc3x_io.obj
-__end_of_READY_Task 20E 0 CODE 0 text5 ft61fc3x_io.obj
+DelayMs@a 55 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+DelayMs@b 56 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+DelayUs@a 53 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+_Hummer_Init 522 0 CODE 0 text4 ft61fc3x_io.obj
+_Hummer_Task 51A 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_READY_Task 272 0 CODE 0 text5 ft61fc3x_io.obj
+__size_of_LB_ST_Task 0 0 ABS 0 - ft61fc3x_io.obj
 saved_w 7E 0 ABS 0 - ft61fc3x_io.obj
-__end_of_Ready_Init 13C 0 CODE 0 text5 ft61fc3x_io.obj
-Key_Detect@long_cnt 31 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
-__end_of_ISR 3C2 0 CODE 0 text26 ft61fc3x_io.obj
-_DelayMs BA 0 CODE 0 text5 ft61fc3x_io.obj
-_DelayUs 282 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_Ready_Init 356 0 CODE 0 text5 ft61fc3x_io.obj
+Key_Detect@long_cnt 30 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
+Timer0_Task@Long_Ready_Time 34 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
+__end_of_ISR 4F0 0 CODE 0 text39 ft61fc3x_io.obj
+_DelayMs 176 0 CODE 0 text5 ft61fc3x_io.obj
+_DelayUs 2D4 0 CODE 0 text5 ft61fc3x_io.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-__end_of_Key_Detect 480 0 CODE 0 text4 ft61fc3x_io.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+__end_of_Key_Detect 5A4 0 CODE 0 text4 ft61fc3x_io.obj
 __fptable 7E 0 ENTRY 0 functab ft61fc3x_io.obj
-__pdataBANK0 39 0 BANK0 1 dataBANK0 ft61fc3x_io.obj
+__pdataBANK0 3A 0 BANK0 1 dataBANK0 ft61fc3x_io.obj
 __size_of___bmul 0 0 ABS 0 - ft61fc3x_io.obj
-_SYS_Initial 13C 0 CODE 0 text5 ft61fc3x_io.obj
+_SYS_Initial 356 0 CODE 0 text5 ft61fc3x_io.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
+__size_of_Int_Task 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Initial 0 0 ABS 0 - ft61fc3x_io.obj
 __end_of__fptable 9A 0 ENTRY 0 functab ft61fc3x_io.obj
-GET_ADC_DATA@ADCON0Buff 57 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
-__ptext10 418 0 CODE 0 text4 ft61fc3x_io.obj
-__ptext11 40E 0 CODE 0 text4 ft61fc3x_io.obj
-__ptext12 3F6 0 CODE 0 text4 ft61fc3x_io.obj
-__ptext13 3FE 0 CODE 0 text4 ft61fc3x_io.obj
-__ptext14 164 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext15 20E 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext16 2A8 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext17 236 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext18 9C 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext19 154 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext20 13C 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext21 124 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext22 DC 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext23 BA 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext24 282 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext25 29A 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext26 2EC 0 CODE 0 text26 ft61fc3x_io.obj
-__ptext27 3C2 0 CODE 0 text26 ft61fc3x_io.obj
-__pmaintext 4F6 0 CODE 0 maintext ft61fc3x_io.obj
-_Get_Cbattery_Stand_State 2A8 0 CODE 0 text5 ft61fc3x_io.obj
+GET_ADC_DATA@ADCON0Buff 58 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+__ptext10 52C 0 CODE 0 text4 ft61fc3x_io.obj
+__ptext11 53C 0 CODE 0 text4 ft61fc3x_io.obj
+__ptext12 532 0 CODE 0 text4 ft61fc3x_io.obj
+__ptext13 51A 0 CODE 0 text4 ft61fc3x_io.obj
+__ptext14 522 0 CODE 0 text4 ft61fc3x_io.obj
+__ptext15 1C8 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext16 272 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext17 3D6 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext18 39A 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext19 3A4 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext20 3C4 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext21 3B4 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext22 37A 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext23 38A 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext24 A8 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext25 148 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext26 E2 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext27 D4 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext28 288 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext29 150 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext30 36A 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext31 356 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext32 33E 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext33 2F6 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext34 2EC 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext35 37C 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext36 19A 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext37 176 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext38 2D4 0 CODE 0 text5 ft61fc3x_io.obj
+__ptext39 41A 0 CODE 0 text39 ft61fc3x_io.obj
+__ptext40 4F0 0 CODE 0 text39 ft61fc3x_io.obj
+__pmaintext 638 0 CODE 0 maintext ft61fc3x_io.obj
+_Get_Cbattery_Stand_State 3D6 0 CODE 0 text5 ft61fc3x_io.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 0 config -
-_BUZZHH_Control 3E2 0 CODE 0 text4 ft61fc3x_io.obj
-stackhi 0 0 ABS 0 - C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-stacklo 0 0 ABS 0 - C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
-READY_Task@state 38 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
-DelayMs@Time 53 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
-__end_of_BUZZTT_Init 2A8 0 CODE 0 text5 ft61fc3x_io.obj
-__end_of_BUZZTT_Task 3E2 0 CODE 0 text4 ft61fc3x_io.obj
+_LB_Open 3B4 0 CODE 0 text5 ft61fc3x_io.obj
+_BUZZHH_Control 510 0 CODE 0 text4 ft61fc3x_io.obj
+stackhi 0 0 ABS 0 - C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+stacklo 0 0 ABS 0 - C:\Users\gcsja805\AppData\Local\Temp\soek.obj
+READY_Task@state 39 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
+__end_of_ADC_INITIAL 1C8 0 CODE 0 text5 ft61fc3x_io.obj
+DelayMs@Time 54 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+__end_of_BUZZTT_Init 38A 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_BUZZTT_Task 510 0 CODE 0 text4 ft61fc3x_io.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
+_Int_Task 37A 0 CODE 0 text5 ft61fc3x_io.obj
 __pbssCOMMON 79 0 COMMON 1 bssCOMMON ft61fc3x_io.obj
-READY_Task@counter 33 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
+READY_Task@counter 32 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
-Task_Process@i 58 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+Task_Process@i 59 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+_Int_Initial 2EC 0 CODE 0 text5 ft61fc3x_io.obj
 __Lend_init 1A 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 end_of_initialization 78 0 CODE 0 cinit ft61fc3x_io.obj
+__end_of_Int_Task 37C 0 CODE 0 text5 ft61fc3x_io.obj
 __Hintentry 1A 0 CODE 0 intentry -
 fptable 7E 0 ENTRY 0 functab ft61fc3x_io.obj
 fptotal 8 0 ABS 0 - ft61fc3x_io.obj
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 4 0 CODE 0 reset_vec -
+_STNADBY_Open 3A4 0 CODE 0 text5 ft61fc3x_io.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __size_of_Key_Task 0 0 ABS 0 - ft61fc3x_io.obj
-_Task_Process 480 0 CODE 0 text1 ft61fc3x_io.obj
-__ptext1 480 0 CODE 0 text1 ft61fc3x_io.obj
-__ptext2 4CA 0 CODE 0 text1 ft61fc3x_io.obj
-__ptext3 504 0 CODE 0 text3 ft61fc3x_io.obj
-__ptext4 3DE 0 CODE 0 text4 ft61fc3x_io.obj
+_Task_Process 5A4 0 CODE 0 text1 ft61fc3x_io.obj
+__ptext1 5A4 0 CODE 0 text1 ft61fc3x_io.obj
+__ptext2 5F0 0 CODE 0 text1 ft61fc3x_io.obj
+__ptext3 646 0 CODE 0 text3 ft61fc3x_io.obj
+__ptext4 50C 0 CODE 0 text4 ft61fc3x_io.obj
 __ptext5 9A 0 CODE 0 text5 ft61fc3x_io.obj
-__ptext6 506 0 CODE 0 text6 ft61fc3x_io.obj
-__ptext7 3E0 0 CODE 0 text4 ft61fc3x_io.obj
-__ptext8 3E2 0 CODE 0 text4 ft61fc3x_io.obj
-__ptext9 408 0 CODE 0 text4 ft61fc3x_io.obj
-__end_of_Initial BA 0 CODE 0 text5 ft61fc3x_io.obj
-__end_of_BUZZHH_Control 3F6 0 CODE 0 text4 ft61fc3x_io.obj
+__ptext6 60C 0 CODE 0 text6 ft61fc3x_io.obj
+__ptext7 60E 0 CODE 0 text6 ft61fc3x_io.obj
+__ptext8 50E 0 CODE 0 text4 ft61fc3x_io.obj
+__ptext9 510 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_Initial 176 0 CODE 0 text5 ft61fc3x_io.obj
+_Get_Vbattery_Stand_State E2 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_BUZZHH_Control 51A 0 CODE 0 text4 ft61fc3x_io.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-_Ready_Control 20E 0 CODE 0 text5 ft61fc3x_io.obj
+_Ready_Control 272 0 CODE 0 text5 ft61fc3x_io.obj
 __size_of_READY_Task 0 0 ABS 0 - ft61fc3x_io.obj
 __Lreset_vec 0 0 CODE 0 reset_vec -
 __size_of_Ready_Init 0 0 ABS 0 - ft61fc3x_io.obj
 __end_of__initialization 78 0 CODE 0 cinit ft61fc3x_io.obj
-GET_ADC_DATA@adcChannel 56 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+GET_ADC_DATA@adcChannel 57 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
 __Lfunctab 7E 0 ENTRY 0 functab -
 __size_of_KEY_Init 0 0 ABS 0 - ft61fc3x_io.obj
 __pidataBANK0 0 0 CODE 0 idataBANK0 ft61fc3x_io.obj
+__size_of_STNADBY_Open 0 0 ABS 0 - ft61fc3x_io.obj
 __Lclrtext 0 0 ABS 0 clrtext -
 __size_of_Get_Cbattery_Stand_State 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Task_Process 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_Key_Detect 0 0 ABS 0 - ft61fc3x_io.obj
-__end_of_Timer0_Init 164 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_Timer0_Init 37A 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_Timer0_Task 628 0 CODE 0 text6 ft61fc3x_io.obj
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON ft61fc3x_io.obj
-_Key_Task 408 0 CODE 0 text4 ft61fc3x_io.obj
-__end_of_Hummer_Init 408 0 CODE 0 text4 ft61fc3x_io.obj
-__end_of_Hummer_Task 3FE 0 CODE 0 text4 ft61fc3x_io.obj
+_Key_Task 52C 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_Hummer_Init 52C 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_Hummer_Task 522 0 CODE 0 text4 ft61fc3x_io.obj
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 504 0 CODE 0 maintext ft61fc3x_io.obj
-__end_of_Key_Task 40E 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_main 646 0 CODE 0 maintext ft61fc3x_io.obj
+_Relay_Release_Detect 148 0 CODE 0 text5 ft61fc3x_io.obj
+__end_of_Key_Task 532 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_STNADBY_Open 3B4 0 CODE 0 text5 ft61fc3x_io.obj
 _PORTA 5 0 ABS 0 - ft61fc3x_io.obj
 _PORTB 6 0 ABS 0 - ft61fc3x_io.obj
 _PORTC 7 0 ABS 0 - ft61fc3x_io.obj
@@ -649,20 +789,22 @@ _TRISC 87 0 ABS 0 - ft61fc3x_io.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry ft61fc3x_io.obj
-__end_of_Task_Process 4CA 0 CODE 0 text1 ft61fc3x_io.obj
+__end_of_Task_Process 5F0 0 CODE 0 text1 ft61fc3x_io.obj
 __pintentry 8 0 CODE 0 intentry ft61fc3x_io.obj
 __size_of_ISR 0 0 ABS 0 - ft61fc3x_io.obj
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
 __initialization 1E 0 CODE 0 cinit ft61fc3x_io.obj
-___bmul@product 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+___bmul@product 53 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+__size_of_ADC_INITIAL 0 0 ABS 0 - ft61fc3x_io.obj
 __pbssBANK0 20 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
 __size_of_BUZZTT_Init 0 0 ABS 0 - ft61fc3x_io.obj
 __size_of_BUZZTT_Task 0 0 ABS 0 - ft61fc3x_io.obj
 Get_Cbattery_Stand_State@current_state 35 0 BANK0 1 bssBANK0 ft61fc3x_io.obj
-_KEY_Init 40E 0 CODE 0 text4 ft61fc3x_io.obj
-__end_of_SYS_Initial 154 0 CODE 0 text5 ft61fc3x_io.obj
-Get_Cbattery_Stand_State@adc_value 51 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
+_KEY_Init 532 0 CODE 0 text4 ft61fc3x_io.obj
+__end_of_SYS_Initial 36A 0 CODE 0 text5 ft61fc3x_io.obj
+Get_Cbattery_Stand_State@adc_value 52 0 BANK0 1 cstackBANK0 ft61fc3x_io.obj
 fpbase 88 0 ENTRY 0 functab ft61fc3x_io.obj
+__size_of_Get_Vbattery_Data 0 0 ABS 0 - ft61fc3x_io.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -688,9 +830,9 @@ fpbase 88 0 ENTRY 0 functab ft61fc3x_io.obj
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text5 0 4D 9A 237 2
+text5 0 4D 9A 2D7 2
 cstackCOMMON 1 70 70 A 1
 intentry 0 4 8 3B 2
 reset_vec 0 0 0 2 2
-bssBANK0 1 20 20 39 1
+bssBANK0 1 20 20 3A 1
 functab 0 3F 7E E 2

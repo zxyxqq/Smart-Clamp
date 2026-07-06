@@ -1,1 +1,1 @@
- Main.d  Main.p1:  Main.c POWER.h BUZZTT.h ready.h task.h Int.h APP.H Main.h stdint.h Timer.h adc.h RC.h delay.h app.h
+ Main.d  Main.p1:  Main.c POWER.h BUZZTT.h ready.h task.h Int.h LB.h Main.h stdint.h Timer.h adc.h delay.h app.h

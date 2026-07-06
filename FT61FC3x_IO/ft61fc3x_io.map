@@ -4,7 +4,7 @@ Linker command line:
 
 --edf=C:\Program Files (x86)\CCompiler\Compiler\data\dat\en_msgs.txt -cs \
   -h+ft61fc3x_io.sym --cmf=ft61fc3x_io.cmf -z -QFT61FC3X \
-  -oC:\Users\gcsja805\AppData\Local\Temp\sl0o.2 -Mft61fc3x_io.map -E1 \
+  -oC:\Users\gcsja805\AppData\Local\Temp\soek.2 -Mft61fc3x_io.map -E1 \
   -ver=XC8 -ASTACK=0A0h-0efh -pstack=STACK -ACODE=00h-07FFh,0800h-0BFFh \
   -ASTRCODE=00h-0BFFh -ASTRING=00h-0FFhx12 -ACONST=00h-0FFhx12 \
   -AENTRY=00h-0FFhx12 -ACOMMON=070h-07Fh -ABANK0=020h-06Fh \
@@ -16,7 +16,7 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-07Fh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
-  -DENTRY=2 -k C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj \
+  -DENTRY=2 -k C:\Users\gcsja805\AppData\Local\Temp\soek.obj \
   ft61fc3x_io.obj 
 
 Object code version is 3.11
@@ -26,24 +26,24 @@ Machine type is FT61FC3X
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\gcsja805\AppData\Local\Temp\sl0o.obj
+C:\Users\gcsja805\AppData\Local\Temp\soek.obj
                 end_init                              D        D        2        8       0
                 reset_vec                             0        0        2        0       0
 ft61fc3x_io.obj cinit                                 F        F       30        8       0
                 functab                              3F       3F        E       7E       0
                 intentry                              4        4        9        8       0
-                text26                              176      176       79       9A       0
-                text6                               283      283        1       9A       0
-                text5                                4D       4D      129       9A       0
-                text4                               1EF      1EF       51       9A       0
-                text3                               282      282        1       9A       0
-                text1                               240      240       33       9A       0
-                maintext                            27B      27B        7       9A       0
-                cstackBANK0                          51       51        8       20       1
+                text39                              20D      20D       79       9A       0
+                text6                               306      306        E       9A       0
+                text5                                4D       4D      1C0       9A       0
+                text4                               286      286       4C       9A       0
+                text3                               323      323        1       9A       0
+                text1                               2D2      2D2       34       9A       0
+                maintext                            31C      31C        7       9A       0
+                cstackBANK0                          52       52        8       20       1
                 cstackCOMMON                         70       70        9       70       1
-                clrtext                             273      273        8       9A       0
-                dataBANK0                            39       39       18       20       1
-                bssBANK0                             20       20       19       20       1
+                clrtext                             314      314        8       9A       0
+                dataBANK0                            3A       3A       18       20       1
+                bssBANK0                             20       20       1A       20       1
                 bssCOMMON                            79       79        1       70       1
 
 TOTAL           Name                               Link     Load   Length     Space
@@ -54,14 +54,14 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cinit                                 F        F       30         0
                 intentry                              4        4        9         0
                 reset_vec                             0        0        2         0
-                text26                              176      176       79         0
-                text6                               283      283        1         0
-                text5                                4D       4D      129         0
-                text4                               1EF      1EF       51         0
-                text3                               282      282        1         0
-                text1                               240      240       33         0
-                maintext                            27B      27B        7         0
-                clrtext                             273      273        8         0
+                text39                              20D      20D       79         0
+                text6                               306      306        E         0
+                text5                                4D       4D      1C0         0
+                text4                               286      286       4C         0
+                text3                               323      323        1         0
+                text1                               2D2      2D2       34         0
+                maintext                            31C      31C        7         0
+                clrtext                             314      314        8         0
 
         CLASS   STRCODE        
 
@@ -77,9 +77,9 @@ TOTAL           Name                               Link     Load   Length     Sp
                 bssCOMMON                            79       79        1         1
 
         CLASS   BANK0          
-                cstackBANK0                          51       51        8         1
-                dataBANK0                            39       39       18         1
-                bssBANK0                             20       20       19         1
+                cstackBANK0                          52       52        8         1
+                dataBANK0                            3A       3A       18         1
+                bssBANK0                             20       20       1A         1
 
         CLASS   BANK1          
 
@@ -112,29 +112,29 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000002  000002         0       0  CODE        2
                 intentry                       000004  00003B  00003F         8       0  CODE        2
-                bssBANK0                       000020  000039  000059        20       1  BANK0       1
+                bssBANK0                       000020  00003A  00005A        20       1  BANK0       1
                 cstackCOMMON                   000070  00000A  00007A        70       1  COMMON      1
                 functab                        00003F  00000E  00004D        7E       0  ENTRY       2
-                text5                          00004D  000237  000284        9A       0  CODE        2
+                text5                          00004D  0002D7  000324        9A       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            059-06F            17           1
+        BANK0            05A-06F            16           1
         BANK1            0A0-0EF            50           1
         BANK2            120-16F            50           1
         CODE             002-003             2           2
-                         284-BFF           57C
+                         324-BFF           4DC
         COMMON           07A-07D             4           1
         CONFIG           2007-2007             1           2
         CONST            002-003             2           2
-                         284-BFF           100
+                         324-BFF           100
         EEDATA           2100-217F            80           2
         ENTRY            002-003             2           2
-                         284-BFF           100
+                         324-BFF           100
         IDLOC            2000-2003             4           2
-        RAM              059-06F            17           1
+        RAM              05A-06F            16           1
                          0A0-0EF            50
                          120-16F            50
         SFR0             000-01F            20           1
@@ -143,78 +143,101 @@ UNUSED ADDRESS RANGES
         SFR3             180-1EF            70           1
         STACK            0A0-0EF            50           1
         STRCODE          002-003             2           2
-                         284-BFF           97C
+                         324-BFF           8DC
         STRING           002-003             2           2
-                         284-BFF           100
+                         324-BFF           100
 
                                   Symbol Table
 
-?_GET_ADC_DATA                         cstackBANK0  053
-DelayMs@Time                           cstackBANK0  053
-DelayMs@a                              cstackBANK0  054
-DelayMs@b                              cstackBANK0  055
-DelayUs@Time                           cstackBANK0  051
-DelayUs@a                              cstackBANK0  052
-GET_ADC_DATA@ADCON0Buff                cstackBANK0  057
-GET_ADC_DATA@adcChannel                cstackBANK0  056
-Get_Cbattery_Stand_State@adc_value     cstackBANK0  051
+?_GET_ADC_DATA                         cstackBANK0  054
+DelayMs@Time                           cstackBANK0  054
+DelayMs@a                              cstackBANK0  055
+DelayMs@b                              cstackBANK0  056
+DelayUs@Time                           cstackBANK0  052
+DelayUs@a                              cstackBANK0  053
+GET_ADC_DATA@ADCON0Buff                cstackBANK0  058
+GET_ADC_DATA@adcChannel                cstackBANK0  057
+Get_Cbattery_Stand_State@adc_value     cstackBANK0  052
 Get_Cbattery_Stand_State@current_state bssBANK0     035
+Get_Vbattery_Stand_State@adc_value     cstackBANK0  052
+Get_Vbattery_Stand_State@current_state bssBANK0     036
 ISR@i                                  cstackCOMMON 078
-Key_Detect@long_cnt                    bssBANK0     031
-Key_Detect@long_trig                   bssBANK0     036
-Key_Detect@press_cnt                   bssBANK0     037
-PL2                                    text5        172
-READY_Task@counter                     bssBANK0     033
-READY_Task@state                       bssBANK0     038
-Ready_Control@num                      cstackBANK0  051
-Task_Process@i                         cstackBANK0  058
+Key_Detect@long_cnt                    bssBANK0     030
+Key_Detect@long_trig                   bssBANK0     037
+Key_Detect@press_cnt                   bssBANK0     038
+PL2                                    text5        209
+READY_Task@counter                     bssBANK0     032
+READY_Task@state                       bssBANK0     039
+Ready_Control@num                      cstackBANK0  052
+Task_Process@i                         cstackBANK0  059
+Timer0_Task@Long_Ready_Time            bssBANK0     034
+_ADCMPH                                (abs)        187
 _ADCON0                                (abs)        113
+_ADCON1                                (abs)        114
+_ADCON2                                (abs)        115
+_ADCON3                                (abs)        186
+_ADC_INITIAL                           text5        0CD
+_ADC_Task                              text5        054
+_ADON                                  (abs)        898
 _ADRESH                                (abs)        112
 _ADRESL                                (abs)        111
-_BUZZHH_Control                        text4        1F1
-_BUZZTT_Init                           text5        14D
-_BUZZTT_Task                           text4        1F0
-_DelayMs                               text5        05D
-_DelayUs                               text5        141
-_GET_ADC_DATA                          text5        11B
+_ANSEL0                                (abs)        11E
+_BUZZHH_Control                        text4        288
+_BUZZTT_Init                           text5        1BE
+_BUZZTT_Task                           text4        287
+_DelayMs                               text5        0BB
+_DelayUs                               text5        16A
+_GET_ADC_DATA                          text5        144
 _GIE                                   (abs)        05F
-_Get_Cbattery_Stand_State              text5        154
-_Hummer_Init                           text4        1FF
-_Hummer_Task                           text4        1FB
+_Get_Cbattery_Stand_State              text5        1EB
+_Get_Vbattery_Data                     text5        06A
+_Get_Vbattery_Stand_State              text5        071
+_Hummer_Init                           text4        291
+_Hummer_Task                           text4        28D
 _INTCON                                (abs)        00B
-_ISR                                   text26       176
-_Initial                               text5        04E
-_KEY_Init                              text4        207
+_ISR                                   text39       20D
+_Initial                               text5        0A8
+_Int_Initial                           text5        176
+_Int_Task                              text5        1BD
+_KEY_Init                              text4        299
 _KEY_Press                             bssCOMMON    079
-_Key_Detect                            text4        20C
-_Key_Task                              text4        204
+_Key_Detect                            text4        29E
+_Key_Task                              text4        296
+_LB_Open                               text5        1DA
+_LB_STANDBY_Close                      text5        1E2
+_LB_ST_Task                            text5        1CD
 _OPTION                                (abs)        081
 _OSCCON                                (abs)        08F
+_PA1                                   (abs)        029
 _PB3                                   (abs)        033
-_PC0                                   (abs)        038
+_PB5                                   (abs)        035
 _PC1                                   (abs)        039
 _PORTA                                 (abs)        005
 _PORTB                                 (abs)        006
 _PORTC                                 (abs)        007
-_POWER_INITIAL                         text5        06E
-_READY_Task                            text5        0B2
-_Ready_Control                         text5        107
-_Ready_Init                            text5        092
+_POWER_INITIAL                         text5        17B
+_READY_Task                            text5        0E4
+_Read_Int                              text5        1C5
+_Ready_Control                         text5        139
+_Ready_Init                            text5        19F
+_Relay_Release_Detect                  text5        0A4
+_STNADBY_Open                          text5        1D2
 _SYS                                   bssBANK0     020
-_SYS_Initial                           text5        09E
+_SYS_Initial                           text5        1AB
 _T0IE                                  (abs)        05D
 _T0IF                                  (abs)        05A
 _TMR0                                  (abs)        001
 _TRISA                                 (abs)        085
 _TRISB                                 (abs)        086
 _TRISC                                 (abs)        087
-_TaskCompany                           dataBANK0    039
+_TaskCompany                           dataBANK0    03A
 _Task_0                                text5        04D
-_Task_1                                text4        1EF
-_Task_2                                text3        282
-_Task_3                                text6        283
-_Task_Process                          text1        240
-_Timer0_Init                           text5        0AA
+_Task_1                                text4        286
+_Task_2                                text3        323
+_Task_3                                text6        306
+_Task_Process                          text1        2D2
+_Timer0_Init                           text5        1B5
+_Timer0_Task                           text6        307
 _WPDA                                  (abs)        089
 _WPDB                                  (abs)        10E
 _WPDC                                  (abs)        08D
@@ -252,7 +275,7 @@ __Hsfr0                                sfr0         000
 __Hsfr1                                sfr1         000
 __Hsfr2                                sfr2         000
 __Hsfr3                                sfr3         000
-__Hspace_0                             (abs)        284
+__Hspace_0                             (abs)        324
 __Hspace_1                             (abs)        07A
 __Hspace_2                             (abs)        000
 __Hspace_3                             (abs)        000
@@ -297,86 +320,114 @@ __Lspace_3                             (abs)        000
 __Lstack                               stack        000
 __Lstrings                             strings      000
 __Ltext                                text         000
-__S0                                   (abs)        284
+__S0                                   (abs)        324
 __S1                                   (abs)        07A
 __S2                                   (abs)        000
 __S3                                   (abs)        000
-___bmul                                text1        265
-___bmul@multiplicand                   cstackBANK0  051
-___bmul@multiplier                     cstackBANK0  053
-___bmul@product                        cstackBANK0  052
+___bmul                                text1        2F8
+___bmul@multiplicand                   cstackBANK0  052
+___bmul@multiplier                     cstackBANK0  054
+___bmul@product                        cstackBANK0  053
 ___int_sp                              stack        000
 ___latbits                             (abs)        001
 ___sp                                  stack        000
-__end_ofPL2                            text5        176
-__end_of_BUZZHH_Control                text4        1FB
-__end_of_BUZZTT_Init                   text5        154
-__end_of_BUZZTT_Task                   text4        1F1
-__end_of_DelayMs                       text5        06E
-__end_of_DelayUs                       text5        14D
-__end_of_GET_ADC_DATA                  text5        141
-__end_of_Get_Cbattery_Stand_State      text5        172
-__end_of_Hummer_Init                   text4        204
-__end_of_Hummer_Task                   text4        1FF
-__end_of_ISR                           text26       1E1
-__end_of_Initial                       text5        05D
-__end_of_KEY_Init                      text4        20C
-__end_of_Key_Detect                    text4        240
-__end_of_Key_Task                      text4        207
-__end_of_POWER_INITIAL                 text5        092
-__end_of_READY_Task                    text5        107
-__end_of_Ready_Control                 text5        11B
-__end_of_Ready_Init                    text5        09E
-__end_of_SYS_Initial                   text5        0AA
-__end_of_Task_0                        text5        04E
-__end_of_Task_1                        text4        1F0
-__end_of_Task_2                        text3        283
-__end_of_Task_3                        text6        284
-__end_of_Task_Process                  text1        265
-__end_of_Timer0_Init                   text5        0B2
-__end_of___bmul                        text1        273
+__end_ofPL2                            text5        20D
+__end_of_ADC_INITIAL                   text5        0E4
+__end_of_ADC_Task                      text5        06A
+__end_of_BUZZHH_Control                text4        28D
+__end_of_BUZZTT_Init                   text5        1C5
+__end_of_BUZZTT_Task                   text4        288
+__end_of_DelayMs                       text5        0CD
+__end_of_DelayUs                       text5        176
+__end_of_GET_ADC_DATA                  text5        16A
+__end_of_Get_Cbattery_Stand_State      text5        209
+__end_of_Get_Vbattery_Data             text5        071
+__end_of_Get_Vbattery_Stand_State      text5        0A4
+__end_of_Hummer_Init                   text4        296
+__end_of_Hummer_Task                   text4        291
+__end_of_ISR                           text39       278
+__end_of_Initial                       text5        0BB
+__end_of_Int_Initial                   text5        17B
+__end_of_Int_Task                      text5        1BE
+__end_of_KEY_Init                      text4        29E
+__end_of_Key_Detect                    text4        2D2
+__end_of_Key_Task                      text4        299
+__end_of_LB_Open                       text5        1E2
+__end_of_LB_STANDBY_Close              text5        1EB
+__end_of_LB_ST_Task                    text5        1D2
+__end_of_POWER_INITIAL                 text5        19F
+__end_of_READY_Task                    text5        139
+__end_of_Read_Int                      text5        1CD
+__end_of_Ready_Control                 text5        144
+__end_of_Ready_Init                    text5        1AB
+__end_of_Relay_Release_Detect          text5        0A8
+__end_of_STNADBY_Open                  text5        1DA
+__end_of_SYS_Initial                   text5        1B5
+__end_of_Task_0                        text5        054
+__end_of_Task_1                        text4        287
+__end_of_Task_2                        text3        324
+__end_of_Task_3                        text6        307
+__end_of_Task_Process                  text1        2F8
+__end_of_Timer0_Init                   text5        1BD
+__end_of_Timer0_Task                   text6        314
+__end_of___bmul                        text1        306
 __end_of__fptable                      functab      04D
 __end_of__initialization               cinit        03C
-__end_of_main                          maintext     282
-__end_ofi1___bmul                      text26       1EF
+__end_of_main                          maintext     323
+__end_ofi1___bmul                      text39       286
 __fptable                              functab      03F
 __initialization                       cinit        00F
 __pbssBANK0                            bssBANK0     020
 __pbssCOMMON                           bssCOMMON    079
-__pcstackBANK0                         cstackBANK0  051
+__pcstackBANK0                         cstackBANK0  052
 __pcstackCOMMON                        cstackCOMMON 070
-__pdataBANK0                           dataBANK0    039
+__pdataBANK0                           dataBANK0    03A
 __pfunctab                             functab      03F
 __pidataBANK0                          idataBANK0   000
 __pintentry                            intentry     004
-__pmaintext                            maintext     27B
-__ptext1                               text1        240
-__ptext10                              text4        20C
-__ptext11                              text4        207
-__ptext12                              text4        1FB
-__ptext13                              text4        1FF
-__ptext14                              text5        0B2
-__ptext15                              text5        107
-__ptext16                              text5        154
-__ptext17                              text5        11B
-__ptext18                              text5        04E
-__ptext19                              text5        0AA
-__ptext2                               text1        265
-__ptext20                              text5        09E
-__ptext21                              text5        092
-__ptext22                              text5        06E
-__ptext23                              text5        05D
-__ptext24                              text5        141
-__ptext25                              text5        14D
-__ptext26                              text26       176
-__ptext27                              text26       1E1
-__ptext3                               text3        282
-__ptext4                               text4        1EF
+__pmaintext                            maintext     31C
+__ptext1                               text1        2D2
+__ptext10                              text4        296
+__ptext11                              text4        29E
+__ptext12                              text4        299
+__ptext13                              text4        28D
+__ptext14                              text4        291
+__ptext15                              text5        0E4
+__ptext16                              text5        139
+__ptext17                              text5        1EB
+__ptext18                              text5        1CD
+__ptext19                              text5        1D2
+__ptext2                               text1        2F8
+__ptext20                              text5        1E2
+__ptext21                              text5        1DA
+__ptext22                              text5        1BD
+__ptext23                              text5        1C5
+__ptext24                              text5        054
+__ptext25                              text5        0A4
+__ptext26                              text5        071
+__ptext27                              text5        06A
+__ptext28                              text5        144
+__ptext29                              text5        0A8
+__ptext3                               text3        323
+__ptext30                              text5        1B5
+__ptext31                              text5        1AB
+__ptext32                              text5        19F
+__ptext33                              text5        17B
+__ptext34                              text5        176
+__ptext35                              text5        1BE
+__ptext36                              text5        0CD
+__ptext37                              text5        0BB
+__ptext38                              text5        16A
+__ptext39                              text39       20D
+__ptext4                               text4        286
+__ptext40                              text39       278
 __ptext5                               text5        04D
-__ptext6                               text6        283
-__ptext7                               text4        1F0
-__ptext8                               text4        1F1
-__ptext9                               text4        204
+__ptext6                               text6        306
+__ptext7                               text6        307
+__ptext8                               text4        287
+__ptext9                               text4        288
+__size_of_ADC_INITIAL                  (abs)        000
+__size_of_ADC_Task                     (abs)        000
 __size_of_BUZZHH_Control               (abs)        000
 __size_of_BUZZTT_Init                  (abs)        000
 __size_of_BUZZTT_Task                  (abs)        000
@@ -384,17 +435,27 @@ __size_of_DelayMs                      (abs)        000
 __size_of_DelayUs                      (abs)        000
 __size_of_GET_ADC_DATA                 (abs)        000
 __size_of_Get_Cbattery_Stand_State     (abs)        000
+__size_of_Get_Vbattery_Data            (abs)        000
+__size_of_Get_Vbattery_Stand_State     (abs)        000
 __size_of_Hummer_Init                  (abs)        000
 __size_of_Hummer_Task                  (abs)        000
 __size_of_ISR                          (abs)        000
 __size_of_Initial                      (abs)        000
+__size_of_Int_Initial                  (abs)        000
+__size_of_Int_Task                     (abs)        000
 __size_of_KEY_Init                     (abs)        000
 __size_of_Key_Detect                   (abs)        000
 __size_of_Key_Task                     (abs)        000
+__size_of_LB_Open                      (abs)        000
+__size_of_LB_STANDBY_Close             (abs)        000
+__size_of_LB_ST_Task                   (abs)        000
 __size_of_POWER_INITIAL                (abs)        000
 __size_of_READY_Task                   (abs)        000
+__size_of_Read_Int                     (abs)        000
 __size_of_Ready_Control                (abs)        000
 __size_of_Ready_Init                   (abs)        000
+__size_of_Relay_Release_Detect         (abs)        000
+__size_of_STNADBY_Open                 (abs)        000
 __size_of_SYS_Initial                  (abs)        000
 __size_of_Task_0                       (abs)        000
 __size_of_Task_1                       (abs)        000
@@ -402,18 +463,19 @@ __size_of_Task_2                       (abs)        000
 __size_of_Task_3                       (abs)        000
 __size_of_Task_Process                 (abs)        000
 __size_of_Timer0_Init                  (abs)        000
+__size_of_Timer0_Task                  (abs)        000
 __size_of___bmul                       (abs)        000
 __size_of__fptable                     (abs)        000
 __size_of_main                         (abs)        000
 __size_ofi1___bmul                     (abs)        000
-_main                                  maintext     27B
+_main                                  maintext     31C
 btemp                                  (abs)        07E
-clear_ram0                             clrtext      273
+clear_ram0                             clrtext      314
 end_of_initialization                  cinit        03C
 fpbase                                 functab      044
 fptable                                functab      03F
 fptotal                                (abs)        008
-i1___bmul                              text26       1E1
+i1___bmul                              text39       278
 i1___bmul@multiplicand                 cstackCOMMON 070
 i1___bmul@multiplier                   cstackCOMMON 071
 i1___bmul@product                      cstackCOMMON 072
@@ -467,7 +529,7 @@ Total ram usage:        0 bytes
 
  *************** function _Task_Process *****************
  Defined at:
-		line 75 in file "Task.c"
+		line 69 in file "Task.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -534,7 +596,7 @@ Total ram usage:        3 bytes
 
  *************** function _Task_2 *****************
  Defined at:
-		line 52 in file "Task.c"
+		line 47 in file "Task.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -564,7 +626,7 @@ Total ram usage:        0 bytes
 
  *************** function _Task_1 *****************
  Defined at:
-		line 38 in file "Task.c"
+		line 35 in file "Task.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -614,8 +676,11 @@ Total ram usage:        0 bytes
       Totals:         0       0       0       0
 Total ram usage:        0 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    5
+ Hardware stack levels required when called:    6
  This function calls:
+		_ADC_Task
+		_Int_Task
+		_LB_ST_Task
 		_READY_Task
  This function is called by:
 		_Task_Process
@@ -624,7 +689,7 @@ Total ram usage:        0 bytes
 
  *************** function _Task_3 *****************
  Defined at:
-		line 62 in file "Task.c"
+		line 56 in file "Task.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -632,7 +697,37 @@ Total ram usage:        0 bytes
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
+		wreg, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_Timer0_Task
+ This function is called by:
+		_Task_Process
+ This function uses a non-reentrant model
+
+
+ *************** function _Timer0_Task *****************
+ Defined at:
+		line 20 in file "Timer.c"
+ Parameters:    Size  Location     Type
 		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0
  Tracked objects:
 		On entry : 
 		On exit  : 
@@ -648,7 +743,7 @@ Total ram usage:        0 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_Task_Process
+		_Task_3
  This function uses a non-reentrant model
 
 
@@ -866,7 +961,7 @@ Total ram usage:        0 bytes
 
  *************** function _READY_Task *****************
  Defined at:
-		line 53 in file "READY.c"
+		line 52 in file "READY.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -928,7 +1023,7 @@ Total ram usage:        1 bytes
 
  *************** function _Get_Cbattery_Stand_State *****************
  Defined at:
-		line 189 in file "ADC.c"
+		line 180 in file "ADC.c"
  Parameters:    Size  Location     Type
   adc_value       2    0[BANK0 ] unsigned int 
  Auto vars:     Size  Location     Type
@@ -956,9 +1051,313 @@ Total ram usage:        2 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _LB_ST_Task *****************
+ Defined at:
+		line 42 in file "LB.C"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_LB_Open
+		_LB_STANDBY_Close
+		_STNADBY_Open
+ This function is called by:
+		_Task_0
+ This function uses a non-reentrant model
+
+
+ *************** function _STNADBY_Open *****************
+ Defined at:
+		line 15 in file "LB.C"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_LB_ST_Task
+ This function uses a non-reentrant model
+
+
+ *************** function _LB_STANDBY_Close *****************
+ Defined at:
+		line 33 in file "LB.C"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_LB_ST_Task
+ This function uses a non-reentrant model
+
+
+ *************** function _LB_Open *****************
+ Defined at:
+		line 24 in file "LB.C"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_LB_ST_Task
+ This function uses a non-reentrant model
+
+
+ *************** function _Int_Task *****************
+ Defined at:
+		line 41 in file "INT.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_Read_Int
+ This function is called by:
+		_Task_0
+ This function uses a non-reentrant model
+
+
+ *************** function _Read_Int *****************
+ Defined at:
+		line 31 in file "INT.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_Int_Task
+ This function uses a non-reentrant model
+
+
+ *************** function _ADC_Task *****************
+ Defined at:
+		line 233 in file "ADC.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		_Get_Vbattery_Data
+		_Get_Vbattery_Stand_State
+		_Relay_Release_Detect
+ This function is called by:
+		_Task_0
+ This function uses a non-reentrant model
+
+
+ *************** function _Relay_Release_Detect *****************
+ Defined at:
+		line 210 in file "ADC.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_ADC_Task
+ This function uses a non-reentrant model
+
+
+ *************** function _Get_Vbattery_Stand_State *****************
+ Defined at:
+		line 136 in file "ADC.c"
+ Parameters:    Size  Location     Type
+  adc_value       2    0[BANK0 ] unsigned int 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      enum E1948
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       2       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       2       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_ADC_Task
+ This function uses a non-reentrant model
+
+
+ *************** function _Get_Vbattery_Data *****************
+ Defined at:
+		line 114 in file "ADC.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_GET_ADC_DATA
+ This function is called by:
+		_ADC_Task
+ This function uses a non-reentrant model
+
+
  *************** function _GET_ADC_DATA *****************
  Defined at:
-		line 85 in file "ADC.c"
+		line 86 in file "ADC.c"
  Parameters:    Size  Location     Type
   adcChannel      1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -984,6 +1383,7 @@ Total ram usage:        5 bytes
 		_DelayUs
  This function is called by:
 		_READY_Task
+		_Get_Vbattery_Data
  This function uses a non-reentrant model
 
 
@@ -1009,10 +1409,12 @@ Total ram usage:        5 bytes
       Totals:         0       0       0       0
 Total ram usage:        0 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    4
+ Hardware stack levels required when called:    5
  This function calls:
+		_ADC_INITIAL
 		_BUZZTT_Init
 		_DelayMs
+		_Int_Initial
 		_POWER_INITIAL
 		_Ready_Init
 		_SYS_Initial
@@ -1142,6 +1544,97 @@ Total ram usage:        0 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _Int_Initial *****************
+ Defined at:
+		line 16 in file "INT.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_Initial
+ This function uses a non-reentrant model
+
+
+ *************** function _BUZZTT_Init *****************
+ Defined at:
+		line 21 in file "BUZZTT.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
+		_Initial
+ This function uses a non-reentrant model
+
+
+ *************** function _ADC_INITIAL *****************
+ Defined at:
+		line 53 in file "ADC.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1   BANK2
+      Params:         0       0       0       0
+      Locals:         0       0       0       0
+      Temps:          0       0       0       0
+      Totals:         0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_DelayMs
+		_DelayUs
+ This function is called by:
+		_Initial
+ This function uses a non-reentrant model
+
+
  *************** function _DelayMs *****************
  Defined at:
 		line 22 in file "Delay.c"
@@ -1170,6 +1663,7 @@ Total ram usage:        3 bytes
  This function calls:
 		_DelayUs
  This function is called by:
+		_ADC_INITIAL
 		_Initial
  This function uses a non-reentrant model
 
@@ -1201,38 +1695,9 @@ Total ram usage:        2 bytes
  This function calls:
 		Nothing
  This function is called by:
+		_ADC_INITIAL
 		_GET_ADC_DATA
 		_DelayMs
- This function uses a non-reentrant model
-
-
- *************** function _BUZZTT_Init *****************
- Defined at:
-		line 21 in file "BUZZTT.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0   BANK1   BANK2
-      Params:         0       0       0       0
-      Locals:         0       0       0       0
-      Temps:          0       0       0       0
-      Totals:         0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    2
- This function calls:
-		Nothing
- This function is called by:
-		_Initial
  This function uses a non-reentrant model
 
 
@@ -1302,77 +1767,98 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 BUZZTT.c
-		_BUZZHH_Control		CODE           	01F1	0000	11
-		_Key_Task      		CODE           	0204	0000	4
-		_Hummer_Task   		CODE           	01FB	0000	5
-		_Hummer_Init   		CODE           	01FF	0000	6
-		_Key_Detect    		CODE           	020C	0000	53
-		_BUZZTT_Task   		CODE           	01F0	0000	2
-		_BUZZTT_Init   		CODE           	014D	0000	8
-		_KEY_Init      		CODE           	0207	0000	6
+		_BUZZHH_Control		CODE           	0288	0000	6
+		_Key_Task      		CODE           	0296	0000	4
+		_Hummer_Task   		CODE           	028D	0000	5
+		_Hummer_Init   		CODE           	0291	0000	6
+		_Key_Detect    		CODE           	029E	0000	53
+		_BUZZTT_Task   		CODE           	0287	0000	2
+		_BUZZTT_Init   		CODE           	01BE	0000	8
+		_KEY_Init      		CODE           	0299	0000	6
 
-BUZZTT.c estimated size: 95
+BUZZTT.c estimated size: 90
 
 Timer.c
-		_Timer0_Init   		CODE           	00AA	0000	9
+		_Timer0_Task   		CODE           	0307	0000	14
+		_Timer0_Init   		CODE           	01B5	0000	9
 
-Timer.c estimated size: 9
+Timer.c estimated size: 23
 
 Delay.c
-		_DelayUs       		CODE           	0141	0000	13
-		_DelayMs       		CODE           	005D	0000	18
+		_DelayUs       		CODE           	016A	0000	13
+		_DelayMs       		CODE           	00BB	0000	19
 
-Delay.c estimated size: 31
+Delay.c estimated size: 32
 
 C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
-		___bmul        		CODE           	0265	0000	15
+		___bmul        		CODE           	02F8	0000	15
 
 C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c estimated size: 15
 
 READY.c
-		_Ready_Init    		CODE           	0092	0000	13
-		_Ready_Control 		CODE           	0107	0000	21
-		_READY_Task    		CODE           	00B2	0000	86
+		_Ready_Init    		CODE           	019F	0000	13
+		_Ready_Control 		CODE           	0139	0000	12
+		_READY_Task    		CODE           	00E4	0000	86
 
-READY.c estimated size: 120
+READY.c estimated size: 111
 
 Main.c
-		_ISR           		CODE           	0176	0000	108
-		_main          		CODE           	027B	0000	8
+		_ISR           		CODE           	020D	0000	108
+		_main          		CODE           	031C	0000	8
 
 Main.c estimated size: 116
 
 shared
 		__initialization		CODE           	000F	0000	46
 		__fptable      		ENTRY          	003F	0000	15
-		i1___bmul      		CODE           	01E1	0000	15
-		PL2            		CODE           	0172	0000	5
+		i1___bmul      		CODE           	0278	0000	15
+		PL2            		CODE           	0209	0000	5
 
 shared estimated size: 81
 
 ADC.c
-		_GET_ADC_DATA  		CODE           	011B	0000	39
-		_Get_Cbattery_Stand_State		CODE           	0154	0000	31
+		_Get_Vbattery_Stand_State		CODE           	0071	0000	52
+		_ADC_Task      		CODE           	0054	0000	23
+		_Get_Vbattery_Data		CODE           	006A	0000	8
+		_Relay_Release_Detect		CODE           	00A4	0000	5
+		_GET_ADC_DATA  		CODE           	0144	0000	39
+		_Get_Cbattery_Stand_State		CODE           	01EB	0000	31
+		_ADC_INITIAL   		CODE           	00CD	0000	24
 
-ADC.c estimated size: 70
+ADC.c estimated size: 182
+
+LB.C
+		_LB_STANDBY_Close		CODE           	01E2	0000	10
+		_STNADBY_Open  		CODE           	01D2	0000	9
+		_LB_ST_Task    		CODE           	01CD	0000	6
+		_LB_Open       		CODE           	01DA	0000	9
+
+LB.C estimated size: 34
+
+INT.c
+		_Read_Int      		CODE           	01C5	0000	9
+		_Int_Initial   		CODE           	0176	0000	6
+		_Int_Task      		CODE           	01BD	0000	2
+
+INT.c estimated size: 17
 
 App.c
-		_Initial       		CODE           	004E	0000	16
+		_Initial       		CODE           	00A8	0000	20
 
-App.c estimated size: 16
+App.c estimated size: 20
 
 Power.c
-		_SYS_Initial   		CODE           	009E	0000	13
-		_POWER_INITIAL 		CODE           	006E	0000	37
+		_SYS_Initial   		CODE           	01AB	0000	11
+		_POWER_INITIAL 		CODE           	017B	0000	37
 
-Power.c estimated size: 50
+Power.c estimated size: 48
 
 Task.c
-		_Task_0        		CODE           	004D	0000	2
-		_Task_3        		CODE           	0283	0000	2
-		_Task_1        		CODE           	01EF	0000	2
-		_Task_Process  		CODE           	0240	0000	38
-		_Task_2        		CODE           	0282	0000	2
+		_Task_0        		CODE           	004D	0000	8
+		_Task_3        		CODE           	0306	0000	2
+		_Task_1        		CODE           	0286	0000	2
+		_Task_Process  		CODE           	02D2	0000	39
+		_Task_2        		CODE           	0323	0000	2
 
-Task.c estimated size: 46
+Task.c estimated size: 53
 

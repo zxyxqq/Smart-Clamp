@@ -1961,16 +1961,8 @@ void READY_Task(void);
 
 # 11 "Int.h"
 void Int_Initial(void);
-void HT_Detect(void);
-void LB_Open(void);
+void Read_Int(void);
 void Int_Task(void);
-void LB_Close(void);
-
-# 10 "RC.h"
-void RC_INITIAL(void);
-void RC_Detect(void);
-void RC_Control(uint8_t value);
-void RC_Task(void);
 
 # 10 "BUZZTT.h"
 void BUZZTT_Init(void);
@@ -1982,6 +1974,13 @@ void Hummer_Task(void);
 void BUZZTT_Task(void);
 void Key_Task(void);
 
+# 6 "LB.h"
+void LB_Init(void);
+void STNADBY_Open(void);
+void LB_Open(void);
+void LB_STANDBY_Close(void);
+void LB_ST_Task(void);
+
 # 16 "app.h"
 void Initial(void);
 
@@ -1991,11 +1990,9 @@ typedef struct{
 
 uint8_t Standby_Work_State;
 
-uint8_t HT_Value;
-
 uint8_t LB_Value;
 
-uint8_t RC_Value;
+uint8_t INT_Value;
 
 uint8_t Relay_Release;
 
@@ -2046,10 +2043,11 @@ Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 # 53 "ADC.c"
 void ADC_INITIAL(void)
 {
-PORTA |= 0B00000000;
-TRISA |= 0B00010011;
+TRISA |= 0B00000001;
 
-ANSEL0 = 0B00000011;
+TRISB |= 0B00000001;
+
+ANSEL0 = 0B01000001;
 
 ADCON1 = 0B11100101;
 
@@ -2070,7 +2068,7 @@ ADON=1;
 DelayMs(1);
 }
 
-# 85
+# 86
 unsigned int GET_ADC_DATA (unsigned char adcChannel)
 {
 unsigned char ADCON0Buff;
@@ -2094,25 +2092,19 @@ while(ADCON0&0x02);
 return(unsigned int)(ADRESH<<8|ADRESL);
 }
 
-# 113
+# 114
 void Get_Vbattery_Data(void)
 {
 SYS.Vbattery_Adc = GET_ADC_DATA(0);
 }
 
-# 123
+# 124
 void Get_Cbattery_Data(void)
-{
-SYS.Cbattery_Adc = GET_ADC_DATA(1);
-}
-
-# 133
-void Get_INT_Data(void)
 {
 SYS.Cbattery_Adc = GET_ADC_DATA(6);
 }
 
-# 145
+# 136
 Battery_State Get_Vbattery_Stand_State(uint16_t adc_value)
 {
 static Battery_State current_state = STATE_NORMAL;
@@ -2151,7 +2143,7 @@ break;
 return current_state;
 }
 
-# 189
+# 180
 Battery_State Get_Cbattery_Stand_State(uint16_t adc_value)
 {
 static Battery_State current_state = STATE_NORMAL;
@@ -2177,7 +2169,7 @@ break;
 return current_state;
 }
 
-# 219
+# 210
 void Relay_Release_Detect(void)
 {
 
@@ -2195,12 +2187,11 @@ SYS.Relay_Release = 0;
 
 }
 
-# 242
+# 233
 void ADC_Task(void)
 {
 
 Get_Vbattery_Data();
-Get_INT_Data();
 
 
 Relay_Release_Detect();
@@ -2223,6 +2214,6 @@ SYS.LB_Value = 1;
 else if(SYS.Standby_Work_State)
 {
 
-# 309
+# 299
 }
 }

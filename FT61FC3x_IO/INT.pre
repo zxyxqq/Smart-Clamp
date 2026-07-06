@@ -1977,12 +1977,6 @@ void Ready_Init(void);
 void Ready_Control(uint8_t num);
 void READY_Task(void);
 
-# 10 "RC.h"
-void RC_INITIAL(void);
-void RC_Detect(void);
-void RC_Control(uint8_t value);
-void RC_Task(void);
-
 # 10 "BUZZTT.h"
 void BUZZTT_Init(void);
 void KEY_Init(void);
@@ -1993,6 +1987,13 @@ void Hummer_Task(void);
 void BUZZTT_Task(void);
 void Key_Task(void);
 
+# 6 "LB.h"
+void LB_Init(void);
+void STNADBY_Open(void);
+void LB_Open(void);
+void LB_STANDBY_Close(void);
+void LB_ST_Task(void);
+
 # 16 "app.h"
 void Initial(void);
 
@@ -2002,11 +2003,9 @@ typedef struct{
 
 uint8_t Standby_Work_State;
 
-uint8_t HT_Value;
-
 uint8_t LB_Value;
 
-uint8_t RC_Value;
+uint8_t INT_Value;
 
 uint8_t Relay_Release;
 
@@ -2038,71 +2037,23 @@ extern sys SYS;
 
 # 11 "INT.h"
 void Int_Initial(void);
-void HT_Detect(void);
-void LB_Open(void);
+void Read_Int(void);
 void Int_Task(void);
-void LB_Close(void);
 
-# 17 "INT.c"
+# 16 "INT.c"
 void Int_Initial(void)
 {
-TRISB |= 0B00000001;
+TRISA |= 0B00010010;
 }
 
-# 28
-void HT_Detect(void)
+# 31
+void Read_Int(void)
 {
-TRISB |= 0B00000001;
-
-
-
-SYS.HT_Value = PB0;
-
-TRISB &= ~0B00000001;
-
+SYS.INT_Value = (PA1 == 1) ? 0 : 1;
 }
 
-# 46
-void LB_Open(void)
-{
-
-
-
-
-TRISB &= ~0B00000001;
-
-PB0 = 1;
-}
-
-void LB_Close(void)
-{
-
-
-
-
-TRISB &= ~0B00000001;
-
-PB0 = 0;
-}
-
-void INT_Control(uint8_t value)
-{
-TRISB &= ~0B00000001;
-
-PB0 = (value == 1) ? 1 : 0;
-}
-
-# 80
+# 41
 void Int_Task(void)
 {
-
-# 86
-if(SYS.LB_Value)
-{
-LB_Open();
-}
-
-HT_Detect();
-
-# 103
+Read_Int();
 }

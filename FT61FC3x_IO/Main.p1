@@ -3131,14 +3131,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ready.h: 29: void Ready_Control(uint8_t num);
 [; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
-[; ;Int.h: 12: void HT_Detect(void);
-[; ;Int.h: 13: void LB_Open(void);
-[; ;Int.h: 14: void Int_Task(void);
-[; ;Int.h: 15: void LB_Close(void);
-[; ;RC.h: 10: void RC_INITIAL(void);
-[; ;RC.h: 11: void RC_Detect(void);
-[; ;RC.h: 12: void RC_Control(uint8_t value);
-[; ;RC.h: 13: void RC_Task(void);
+[; ;Int.h: 12: void Read_Int(void);
+[; ;Int.h: 13: void Int_Task(void);
 [; ;BUZZTT.h: 10: void BUZZTT_Init(void);
 [; ;BUZZTT.h: 11: void KEY_Init(void);
 [; ;BUZZTT.h: 12: void Hummer_Init(void);
@@ -3147,29 +3141,33 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 15: void Hummer_Task(void);
 [; ;BUZZTT.h: 16: void BUZZTT_Task(void);
 [; ;BUZZTT.h: 17: void Key_Task(void);
+[; ;LB.h: 6: void LB_Init(void);
+[; ;LB.h: 7: void STNADBY_Open(void);
+[; ;LB.h: 8: void LB_Open(void);
+[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 10: void LB_ST_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
-[; ;app.h: 24: uint8_t HT_Value;
-[; ;app.h: 26: uint8_t LB_Value;
-[; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 30: uint8_t Relay_Release;
-[; ;app.h: 32: uint8_t KEY_Value;
-[; ;app.h: 34: uint8_t Vadc_Value;
-[; ;app.h: 36: uint8_t Cadc_Value;
-[; ;app.h: 38: uint8_t READY_Value;
-[; ;app.h: 40: uint8_t STANDBY_Value;
-[; ;app.h: 44: uint16_t Vbattery_Adc;
-[; ;app.h: 46: uint16_t Cbattery_Adc;
-[; ;app.h: 48: uint8_t Long_Time_Change;
-[; ;app.h: 50: uint8_t Delay_2s_Flag ;
-[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 54: }sys;
-[; ;app.h: 56: extern sys SYS;
+[; ;app.h: 24: uint8_t LB_Value;
+[; ;app.h: 26: uint8_t INT_Value;
+[; ;app.h: 28: uint8_t Relay_Release;
+[; ;app.h: 30: uint8_t KEY_Value;
+[; ;app.h: 32: uint8_t Vadc_Value;
+[; ;app.h: 34: uint8_t Cadc_Value;
+[; ;app.h: 36: uint8_t READY_Value;
+[; ;app.h: 38: uint8_t STANDBY_Value;
+[; ;app.h: 42: uint16_t Vbattery_Adc;
+[; ;app.h: 44: uint16_t Cbattery_Adc;
+[; ;app.h: 46: uint8_t Long_Time_Change;
+[; ;app.h: 48: uint8_t Delay_2s_Flag ;
+[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 52: }sys;
+[; ;app.h: 54: extern sys SYS;
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F1974 `(v ~T0 @X0 1 tf ]
+[v F1971 `(v ~T0 @X0 1 tf ]
 "24 Main.c
-[v _ISR `IF1974 ~T0 @X0 1 e ]
+[v _ISR `IF1971 ~T0 @X0 1 e ]
 "25
 {
 [; ;Main.c: 24: void interrupt ISR(void)

@@ -458,10 +458,10 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
-"20 APP.H
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"56
+"20 app.h
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
+"54
 [v _SYS `S156 ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3122,10 +3122,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ready.h: 29: void Ready_Control(uint8_t num);
 [; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
-[; ;Int.h: 12: void HT_Detect(void);
-[; ;Int.h: 13: void LB_Open(void);
-[; ;Int.h: 14: void Int_Task(void);
-[; ;Int.h: 15: void LB_Close(void);
+[; ;Int.h: 12: void Read_Int(void);
+[; ;Int.h: 13: void Int_Task(void);
 [; ;BUZZTT.h: 10: void BUZZTT_Init(void);
 [; ;BUZZTT.h: 11: void KEY_Init(void);
 [; ;BUZZTT.h: 12: void Hummer_Init(void);
@@ -3134,101 +3132,143 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 15: void Hummer_Task(void);
 [; ;BUZZTT.h: 16: void BUZZTT_Task(void);
 [; ;BUZZTT.h: 17: void Key_Task(void);
-[; ;APP.H: 16: void Initial(void);
-[; ;APP.H: 20: typedef struct{
-[; ;APP.H: 22: uint8_t Standby_Work_State;
-[; ;APP.H: 24: uint8_t HT_Value;
-[; ;APP.H: 26: uint8_t LB_Value;
-[; ;APP.H: 28: uint8_t RC_Value;
-[; ;APP.H: 30: uint8_t Relay_Release;
-[; ;APP.H: 32: uint8_t KEY_Value;
-[; ;APP.H: 34: uint8_t Vadc_Value;
-[; ;APP.H: 36: uint8_t Cadc_Value;
-[; ;APP.H: 38: uint8_t READY_Value;
-[; ;APP.H: 40: uint8_t STANDBY_Value;
-[; ;APP.H: 44: uint16_t Vbattery_Adc;
-[; ;APP.H: 46: uint16_t Cbattery_Adc;
-[; ;APP.H: 48: uint8_t Long_Time_Change;
-[; ;APP.H: 50: uint8_t Delay_2s_Flag ;
-[; ;APP.H: 52: uint8_t Cadc_Ready_Flag ;
-[; ;APP.H: 54: }sys;
-[; ;APP.H: 56: extern sys SYS;
-[; ;RC.h: 10: void RC_INITIAL(void);
-[; ;RC.h: 11: void RC_Detect(void);
-[; ;RC.h: 12: void RC_Control(uint8_t value);
-[; ;RC.h: 13: void RC_Task(void);
-"15 RC.c
-[v _RC_INITIAL `(v ~T0 @X0 1 ef ]
-"16
+[; ;app.h: 16: void Initial(void);
+[; ;app.h: 20: typedef struct{
+[; ;app.h: 22: uint8_t Standby_Work_State;
+[; ;app.h: 24: uint8_t LB_Value;
+[; ;app.h: 26: uint8_t INT_Value;
+[; ;app.h: 28: uint8_t Relay_Release;
+[; ;app.h: 30: uint8_t KEY_Value;
+[; ;app.h: 32: uint8_t Vadc_Value;
+[; ;app.h: 34: uint8_t Cadc_Value;
+[; ;app.h: 36: uint8_t READY_Value;
+[; ;app.h: 38: uint8_t STANDBY_Value;
+[; ;app.h: 42: uint16_t Vbattery_Adc;
+[; ;app.h: 44: uint16_t Cbattery_Adc;
+[; ;app.h: 46: uint8_t Long_Time_Change;
+[; ;app.h: 48: uint8_t Delay_2s_Flag ;
+[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 52: }sys;
+[; ;app.h: 54: extern sys SYS;
+[; ;LB.h: 6: void LB_Init(void);
+[; ;LB.h: 7: void STNADBY_Open(void);
+[; ;LB.h: 8: void LB_Open(void);
+[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 10: void LB_ST_Task(void);
+"10 LB.C
+[v _LB_Init `(v ~T0 @X0 1 ef ]
+"11
 {
-[; ;RC.c: 15: void RC_INITIAL(void)
-[; ;RC.c: 16: {
-[e :U _RC_INITIAL ]
+[; ;LB.C: 10: void LB_Init(void)
+[; ;LB.C: 11: {
+[e :U _LB_Init ]
 [f ]
-[; ;RC.c: 17: PORTB |= 0B00000000;
-"17
-[e =| _PORTB -> -> 0 `i `uc ]
-[; ;RC.c: 18: TRISB |= 0B00100000;
-"18
+[; ;LB.C: 12: TRISB |= 0B00100000;
+"12
 [e =| _TRISB -> -> 32 `i `uc ]
-[; ;RC.c: 20: }
-"20
+[; ;LB.C: 13: }
+"13
 [e :UE 157 ]
 }
-"28
-[v _RC_Detect `(v ~T0 @X0 1 ef ]
-"29
+"15
+[v _STNADBY_Open `(v ~T0 @X0 1 ef ]
+"16
 {
-[; ;RC.c: 28: void RC_Detect(void)
-[; ;RC.c: 29: {
-[e :U _RC_Detect ]
+[; ;LB.C: 15: void STNADBY_Open(void)
+[; ;LB.C: 16: {
+[e :U _STNADBY_Open ]
 [f ]
-[; ;RC.c: 30: TRISB |= 0B00100000;
-"30
-[e =| _TRISB -> -> 32 `i `uc ]
-[; ;RC.c: 32: WPDB = 0B00100000;
-"32
-[e = _WPDB -> -> 32 `i `uc ]
-[; ;RC.c: 34: SYS.RC_Value = PB5;
-"34
-[e = . _SYS 3 -> -> _PB5 `i `uc ]
-[; ;RC.c: 35: }
-"35
+[; ;LB.C: 17: if(SYS.STANDBY_Value)
+"17
+[e $ ! != -> . _SYS 8 `i -> -> -> 0 `i `uc `i 159  ]
+[; ;LB.C: 18: {
+"18
+{
+[; ;LB.C: 19: TRISB &= ~0B00100000;
+"19
+[e =& _TRISB -> ~ -> 32 `i `uc ]
+[; ;LB.C: 20: PB5 = 1;
+"20
+[e = _PB5 -> -> 1 `i `b ]
+"21
+}
+[e :U 159 ]
+[; ;LB.C: 21: }
+[; ;LB.C: 22: }
+"22
 [e :UE 158 ]
 }
-"43
-[v _RC_Control `(v ~T0 @X0 1 ef1`uc ]
-"44
+"24
+[v _LB_Open `(v ~T0 @X0 1 ef ]
+"25
 {
-[; ;RC.c: 43: void RC_Control(uint8_t value)
-[; ;RC.c: 44: {
-[e :U _RC_Control ]
-"43
-[v _value `uc ~T0 @X0 1 r1 ]
-"44
+[; ;LB.C: 24: void LB_Open(void)
+[; ;LB.C: 25: {
+[e :U _LB_Open ]
 [f ]
-[; ;RC.c: 45: TRISB &= ~0B00100000;
-"45
+[; ;LB.C: 26: if(SYS.LB_Value)
+"26
+[e $ ! != -> . _SYS 1 `i -> -> -> 0 `i `uc `i 161  ]
+[; ;LB.C: 27: {
+"27
+{
+[; ;LB.C: 28: TRISB &= ~0B00100000;
+"28
 [e =& _TRISB -> ~ -> 32 `i `uc ]
-[; ;RC.c: 49: PB5 = (value == 1) ? 1 : 0;
-"49
-[e = _PB5 -> ? == -> _value `i -> 1 `i : -> 1 `i -> 0 `i `b ]
-[; ;RC.c: 50: }
-"50
-[e :UE 159 ]
+[; ;LB.C: 29: PB5 = 0;
+"29
+[e = _PB5 -> -> 0 `i `b ]
+"30
 }
-"53
-[v _RC_Task `(v ~T0 @X0 1 ef ]
-"54
-{
-[; ;RC.c: 53: void RC_Task(void)
-[; ;RC.c: 54: {
-[e :U _RC_Task ]
-[f ]
-[; ;RC.c: 55: RC_Detect();
-"55
-[e ( _RC_Detect ..  ]
-[; ;RC.c: 58: }
-"58
+[e :U 161 ]
+[; ;LB.C: 30: }
+[; ;LB.C: 31: }
+"31
 [e :UE 160 ]
+}
+"33
+[v _LB_STANDBY_Close `(v ~T0 @X0 1 ef ]
+"34
+{
+[; ;LB.C: 33: void LB_STANDBY_Close(void)
+[; ;LB.C: 34: {
+[e :U _LB_STANDBY_Close ]
+[f ]
+[; ;LB.C: 35: if(SYS.STANDBY_Value == 0 && SYS.LB_Value == 0)
+"35
+[e $ ! && == -> . _SYS 8 `i -> 0 `i == -> . _SYS 1 `i -> 0 `i 163  ]
+[; ;LB.C: 36: {
+"36
+{
+[; ;LB.C: 37: TRISB |= 0B00100000;
+"37
+[e =| _TRISB -> -> 32 `i `uc ]
+"38
+}
+[e :U 163 ]
+[; ;LB.C: 38: }
+[; ;LB.C: 40: }
+"40
+[e :UE 162 ]
+}
+"42
+[v _LB_ST_Task `(v ~T0 @X0 1 ef ]
+"43
+{
+[; ;LB.C: 42: void LB_ST_Task(void)
+[; ;LB.C: 43: {
+[e :U _LB_ST_Task ]
+[f ]
+[; ;LB.C: 44: STNADBY_Open();
+"44
+[e ( _STNADBY_Open ..  ]
+[; ;LB.C: 45: LB_Open();
+"45
+[e ( _LB_Open ..  ]
+[; ;LB.C: 46: LB_STANDBY_Close();
+"46
+[e ( _LB_STANDBY_Close ..  ]
+[; ;LB.C: 48: }
+"48
+[e :UE 164 ]
 }

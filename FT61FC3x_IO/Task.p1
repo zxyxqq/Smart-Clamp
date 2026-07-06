@@ -459,11 +459,11 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [u S152 `S153 1 `S154 1 ]
 [n S152 . . . ]
 "5 Task.c
-[c E1952 0 1 2 3 4 .. ]
-[n E1952 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
-[v F1949 `(v ~T0 @X0 0 tf ]
+[c E1949 0 1 2 3 4 .. ]
+[n E1949 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
+[v F1946 `(v ~T0 @X0 0 tf ]
 "13 Task.h
-[s S156 `uc 1 `ui 1 `ui 1 `*F1949 1 ]
+[s S156 `uc 1 `ui 1 `ui 1 `*F1946 1 ]
 [n S156 . Run Timer IvtTime TaskHook ]
 "32
 [v _Task_0 `(v ~T0 @X0 0 ef ]
@@ -473,10 +473,18 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _Task_2 `(v ~T0 @X0 0 ef ]
 "35
 [v _Task_3 `(v ~T0 @X0 0 ef ]
+"49 adc.h
+[v _ADC_Task `(v ~T0 @X0 0 ef ]
+"13 Int.h
+[v _Int_Task `(v ~T0 @X0 0 ef ]
 "30 ready.h
 [v _READY_Task `(v ~T0 @X0 0 ef ]
+"10 LB.h
+[v _LB_ST_Task `(v ~T0 @X0 0 ef ]
 "16 BUZZTT.h
 [v _BUZZTT_Task `(v ~T0 @X0 0 ef ]
+"7 Timer.h
+[v _Timer0_Task `(v ~T0 @X0 0 ef ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -3115,14 +3123,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ready.h: 29: void Ready_Control(uint8_t num);
 [; ;ready.h: 30: void READY_Task(void);
 [; ;Int.h: 11: void Int_Initial(void);
-[; ;Int.h: 12: void HT_Detect(void);
-[; ;Int.h: 13: void LB_Open(void);
-[; ;Int.h: 14: void Int_Task(void);
-[; ;Int.h: 15: void LB_Close(void);
-[; ;RC.h: 10: void RC_INITIAL(void);
-[; ;RC.h: 11: void RC_Detect(void);
-[; ;RC.h: 12: void RC_Control(uint8_t value);
-[; ;RC.h: 13: void RC_Task(void);
+[; ;Int.h: 12: void Read_Int(void);
+[; ;Int.h: 13: void Int_Task(void);
 [; ;BUZZTT.h: 10: void BUZZTT_Init(void);
 [; ;BUZZTT.h: 11: void KEY_Init(void);
 [; ;BUZZTT.h: 12: void Hummer_Init(void);
@@ -3131,25 +3133,29 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 15: void Hummer_Task(void);
 [; ;BUZZTT.h: 16: void BUZZTT_Task(void);
 [; ;BUZZTT.h: 17: void Key_Task(void);
+[; ;LB.h: 6: void LB_Init(void);
+[; ;LB.h: 7: void STNADBY_Open(void);
+[; ;LB.h: 8: void LB_Open(void);
+[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 10: void LB_ST_Task(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
-[; ;app.h: 24: uint8_t HT_Value;
-[; ;app.h: 26: uint8_t LB_Value;
-[; ;app.h: 28: uint8_t RC_Value;
-[; ;app.h: 30: uint8_t Relay_Release;
-[; ;app.h: 32: uint8_t KEY_Value;
-[; ;app.h: 34: uint8_t Vadc_Value;
-[; ;app.h: 36: uint8_t Cadc_Value;
-[; ;app.h: 38: uint8_t READY_Value;
-[; ;app.h: 40: uint8_t STANDBY_Value;
-[; ;app.h: 44: uint16_t Vbattery_Adc;
-[; ;app.h: 46: uint16_t Cbattery_Adc;
-[; ;app.h: 48: uint8_t Long_Time_Change;
-[; ;app.h: 50: uint8_t Delay_2s_Flag ;
-[; ;app.h: 52: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 54: }sys;
-[; ;app.h: 56: extern sys SYS;
+[; ;app.h: 24: uint8_t LB_Value;
+[; ;app.h: 26: uint8_t INT_Value;
+[; ;app.h: 28: uint8_t Relay_Release;
+[; ;app.h: 30: uint8_t KEY_Value;
+[; ;app.h: 32: uint8_t Vadc_Value;
+[; ;app.h: 34: uint8_t Cadc_Value;
+[; ;app.h: 36: uint8_t READY_Value;
+[; ;app.h: 38: uint8_t STANDBY_Value;
+[; ;app.h: 42: uint16_t Vbattery_Adc;
+[; ;app.h: 44: uint16_t Cbattery_Adc;
+[; ;app.h: 46: uint8_t Long_Time_Change;
+[; ;app.h: 48: uint8_t Delay_2s_Flag ;
+[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 52: }sys;
+[; ;app.h: 54: extern sys SYS;
 [; ;Task.h: 12: typedef struct
 [; ;Task.h: 13: {
 [; ;Task.h: 14: uint8_t Run;
@@ -3172,7 +3178,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.h: 36: void Task_Count(void);
 [; ;Task.h: 37: void Task_Process(void);
 "5 Task.c
-[v _TaskCompany `S156 ~T0 @X0 . `E1952 4 e ]
+[v _TaskCompany `S156 ~T0 @X0 . `E1949 4 e ]
 [i _TaskCompany
 :U ..
 :U ..
@@ -3220,162 +3226,174 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 19: {
 [e :U _Task_0 ]
 [f ]
-[; ;Task.c: 25: READY_Task();
-"25
+[; ;Task.c: 20: ADC_Task();
+"20
+[e ( _ADC_Task ..  ]
+[; ;Task.c: 21: Int_Task();
+"21
+[e ( _Int_Task ..  ]
+[; ;Task.c: 22: READY_Task();
+"22
 [e ( _READY_Task ..  ]
-[; ;Task.c: 30: }
-"30
+[; ;Task.c: 23: LB_ST_Task();
+"23
+[e ( _LB_ST_Task ..  ]
+[; ;Task.c: 27: }
+"27
 [e :UE 157 ]
 }
-"38
+"35
 [v _Task_1 `(v ~T0 @X0 1 ef ]
-"39
+"36
 {
-[; ;Task.c: 38: void Task_1(void)
-[; ;Task.c: 39: {
+[; ;Task.c: 35: void Task_1(void)
+[; ;Task.c: 36: {
 [e :U _Task_1 ]
 [f ]
-[; ;Task.c: 43: BUZZTT_Task();
-"43
+[; ;Task.c: 38: BUZZTT_Task();
+"38
 [e ( _BUZZTT_Task ..  ]
-[; ;Task.c: 45: }
-"45
+[; ;Task.c: 40: }
+"40
 [e :UE 158 ]
 }
-"52
+"47
 [v _Task_2 `(v ~T0 @X0 1 ef ]
-"53
+"48
 {
-[; ;Task.c: 52: void Task_2(void)
-[; ;Task.c: 53: {
+[; ;Task.c: 47: void Task_2(void)
+[; ;Task.c: 48: {
 [e :U _Task_2 ]
 [f ]
-[; ;Task.c: 55: }
-"55
+[; ;Task.c: 50: }
+"50
 [e :UE 159 ]
 }
-"62
+"56
 [v _Task_3 `(v ~T0 @X0 1 ef ]
-"63
+"57
 {
-[; ;Task.c: 62: void Task_3(void)
-[; ;Task.c: 63: {
+[; ;Task.c: 56: void Task_3(void)
+[; ;Task.c: 57: {
 [e :U _Task_3 ]
 [f ]
-[; ;Task.c: 67: }
-"67
+[; ;Task.c: 59: Timer0_Task();
+"59
+[e ( _Timer0_Task ..  ]
+[; ;Task.c: 61: }
+"61
 [e :UE 160 ]
 }
-"75
+"69
 [v _Task_Process `(v ~T0 @X0 1 ef ]
-"76
+"70
 {
-[; ;Task.c: 75: void Task_Process(void)
-[; ;Task.c: 76: {
+[; ;Task.c: 69: void Task_Process(void)
+[; ;Task.c: 70: {
 [e :U _Task_Process ]
 [f ]
-"77
+"71
 [v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 77: unsigned char i;
-[; ;Task.c: 78: for(i = 0;i<TASK_MAX;i++)
-"78
+[; ;Task.c: 71: unsigned char i;
+[; ;Task.c: 72: for(i = 0;i<TASK_MAX;i++)
+"72
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1952 4 `i 162  ]
+[e $ < -> _i `i -> . `E1949 4 `i 162  ]
 [e $U 163  ]
-"79
+"73
 [e :U 162 ]
-[; ;Task.c: 79: {
+[; ;Task.c: 73: {
 {
-[; ;Task.c: 80: if(TaskCompany[i].Run == 1)
-"80
+[; ;Task.c: 74: if(TaskCompany[i].Run == 1)
+"74
 [e $ ! == -> . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 `i -> 1 `i 165  ]
-[; ;Task.c: 81: {
-"81
+[; ;Task.c: 75: {
+"75
 {
-[; ;Task.c: 82: TaskCompany[i].Run = 0;
-"82
+[; ;Task.c: 76: TaskCompany[i].Run = 0;
+"76
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 0 `i `uc ]
-[; ;Task.c: 83: TaskCompany[i].TaskHook();
-"83
+[; ;Task.c: 77: TaskCompany[i].TaskHook();
+"77
 [e ( *U . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 3 ..  ]
-"84
+"78
 }
 [e :U 165 ]
-"85
+"79
 }
-"78
+"72
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1952 4 `i 162  ]
+[e $ < -> _i `i -> . `E1949 4 `i 162  ]
 [e :U 163 ]
-"85
+"79
 }
-[; ;Task.c: 84: }
-[; ;Task.c: 85: }
-[; ;Task.c: 86: }
-"86
+[; ;Task.c: 78: }
+[; ;Task.c: 79: }
+[; ;Task.c: 80: }
+"80
 [e :UE 161 ]
 }
-"92
+"86
 [v _Task_Count `(v ~T0 @X0 1 ef ]
-"93
+"87
 {
-[; ;Task.c: 92: void Task_Count(void)
-[; ;Task.c: 93: {
+[; ;Task.c: 86: void Task_Count(void)
+[; ;Task.c: 87: {
 [e :U _Task_Count ]
 [f ]
-"94
+"88
 [v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 94: uint8_t i;
-[; ;Task.c: 95: for(i = 0;i<TASK_MAX;i++)
-"95
+[; ;Task.c: 88: uint8_t i;
+[; ;Task.c: 89: for(i = 0;i<TASK_MAX;i++)
+"89
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1952 4 `i 167  ]
+[e $ < -> _i `i -> . `E1949 4 `i 167  ]
 [e $U 168  ]
-"96
+"90
 [e :U 167 ]
-[; ;Task.c: 96: {
+[; ;Task.c: 90: {
 {
-[; ;Task.c: 97: if(TaskCompany[i].Timer)
-"97
+[; ;Task.c: 91: if(TaskCompany[i].Timer)
+"91
 [e $ ! != . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 170  ]
-[; ;Task.c: 98: {
-"98
+[; ;Task.c: 92: {
+"92
 {
-[; ;Task.c: 99: TaskCompany[i].Timer--;
-"99
+[; ;Task.c: 93: TaskCompany[i].Timer--;
+"93
 [e -- . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 1 `i `ui ]
-[; ;Task.c: 100: if(TaskCompany[i].Timer <= 0)
-"100
+[; ;Task.c: 94: if(TaskCompany[i].Timer <= 0)
+"94
 [e $ ! <= . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 171  ]
-[; ;Task.c: 101: {
-"101
+[; ;Task.c: 95: {
+"95
 {
-[; ;Task.c: 102: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
-"102
+[; ;Task.c: 96: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+"96
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 2 ]
-[; ;Task.c: 103: TaskCompany[i].Run = 1;
-"103
+[; ;Task.c: 97: TaskCompany[i].Run = 1;
+"97
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 1 `i `uc ]
-"104
+"98
 }
 [e :U 171 ]
-"105
+"99
 }
 [e :U 170 ]
-"106
+"100
 }
-"95
+"89
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1952 4 `i 167  ]
+[e $ < -> _i `i -> . `E1949 4 `i 167  ]
 [e :U 168 ]
-"106
+"100
 }
-[; ;Task.c: 104: }
-[; ;Task.c: 105: }
-[; ;Task.c: 106: }
-[; ;Task.c: 107: }
-"107
+[; ;Task.c: 98: }
+[; ;Task.c: 99: }
+[; ;Task.c: 100: }
+[; ;Task.c: 101: }
+"101
 [e :UE 166 ]
 }

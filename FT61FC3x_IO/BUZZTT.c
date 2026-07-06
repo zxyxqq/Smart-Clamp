@@ -59,7 +59,7 @@ void Hummer_Init(void)
  --------------------------------------------------*/	
 void BUZZHH_Control(void)
 {
-	if(SYS.HT_Value || SYS.LB_Value || SYS.RC_Value)//·äÃùÆ÷
+	if(SYS.LB_Value)//·äÃùÆ÷
     {
 		Hummer_Task();
     }

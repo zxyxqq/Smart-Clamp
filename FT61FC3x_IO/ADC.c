@@ -52,10 +52,11 @@
 
 void ADC_INITIAL(void)
 {
-	PORTA  |= 0B00000000;		
-	TRISA  |= 0B00010011;	//PA输入输出 0-输出 1-输入
-							//PA0-Vadc PA1-Cbat	
-    ANSEL0 = 0B00000011;    //模拟口设置，AN0,AN1为模拟管脚
+	TRISA  |= 0B00000001;	//PA输入输出 0-输出 1-输入
+							//PA0-Vadc
+	TRISB  |= 0B00000001;	//PA输入输出 0-输出 1-输入
+                            //PB0-Cbat	
+    ANSEL0 = 0B01000001;    //模拟口设置，AN0,AN6为模拟管脚
 
 	ADCON1 = 0B11100101; 	//右对齐，转换时钟許SYSCLK，负参考电压GND，正参考电压VDD
     
@@ -122,18 +123,8 @@ void  Get_Vbattery_Data(void)
  --------------------------------------------------*/
 void  Get_Cbattery_Data(void)
 {
-	SYS.Cbattery_Adc = GET_ADC_DATA(1);
-}
-/*-------------------------------------------------
- *  函数名: Get_INT_Data
- *	功能：  读取通道ADC值
- *  输入：  
- *  输出：  INT类型AD值(单次采样无滤波)
- --------------------------------------------------*/
-void  Get_INT_Data(void)
-{
 	SYS.Cbattery_Adc = GET_ADC_DATA(6);
-} 
+}
  
 /*-------------------------------------------------
  *  函数名: Get_Vbattery_State
@@ -243,7 +234,6 @@ void ADC_Task(void)
 {
 /*获取电压*/
 	Get_Vbattery_Data();
-    Get_INT_Data();
     
     /*松脱报警无论什么状态，只要松脱就不进入相应状态或者是退出当前状态*/
 	Relay_Release_Detect();
