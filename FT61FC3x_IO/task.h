@@ -26,6 +26,8 @@ typedef enum{
 	TASK_MAX                			//最大任务数   
 }Task_List;
 
+
+extern TaskComps TaskCompany[TASK_MAX];
 //函数声明
 void Task_0(void);
 void Task_1(void);

@@ -3085,12 +3085,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 25: TASK3,
 [; ;task.h: 26: TASK_MAX
 [; ;task.h: 27: }Task_List;
-[; ;task.h: 30: void Task_0(void);
-[; ;task.h: 31: void Task_1(void);
-[; ;task.h: 32: void Task_2(void);
-[; ;task.h: 33: void Task_3(void);
-[; ;task.h: 34: void Task_Count(void);
-[; ;task.h: 35: void Task_Process(void);
+[; ;task.h: 30: extern TaskComps TaskCompany[TASK_MAX];
+[; ;task.h: 32: void Task_0(void);
+[; ;task.h: 33: void Task_1(void);
+[; ;task.h: 34: void Task_2(void);
+[; ;task.h: 35: void Task_3(void);
+[; ;task.h: 36: void Task_Count(void);
+[; ;task.h: 37: void Task_Process(void);
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
 [; ;adc.h: 30: STATE_UNDER_VOLTAGE,

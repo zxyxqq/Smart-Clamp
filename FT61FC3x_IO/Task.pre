@@ -2034,6 +2034,8 @@ TASK_MAX
 }Task_List;
 
 
+extern TaskComps TaskCompany[TASK_MAX];
+
 void Task_0(void);
 void Task_1(void);
 void Task_2(void);
@@ -2042,7 +2044,7 @@ void Task_Count(void);
 void Task_Process(void);
 
 # 5 "Task.c"
-static TaskComps TaskCompany[] =
+TaskComps TaskCompany[TASK_MAX] =
 {
 { 0,1,5,Task_0 },
 { 0,2,10,Task_1 },
@@ -2054,7 +2056,12 @@ static TaskComps TaskCompany[] =
 void Task_0(void)
 {
 
-# 30
+# 25
+READY_Task();
+
+
+
+
 }
 
 # 38

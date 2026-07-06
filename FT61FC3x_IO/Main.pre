@@ -1924,6 +1924,8 @@ TASK_MAX
 }Task_List;
 
 
+extern TaskComps TaskCompany[TASK_MAX];
+
 void Task_0(void);
 void Task_1(void);
 void Task_2(void);
@@ -2049,11 +2051,25 @@ if(T0IE && T0IF)
 T0IF = 0;
 TMR0 += 6;
 
-Task_Count();
+
+
+uint8_t i;
+for(i = 0;i<TASK_MAX;i++)
+{
+if(TaskCompany[i].Timer)
+{
+TaskCompany[i].Timer--;
+if(TaskCompany[i].Timer <= 0)
+{
+TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+TaskCompany[i].Run = 1;
+}
+}
+}
 }
 }
 
-# 40
+# 54
 void main(void)
 {
 Initial();

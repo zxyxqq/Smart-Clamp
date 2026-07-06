@@ -2,7 +2,7 @@
 
 
 
-static TaskComps TaskCompany[] =
+TaskComps TaskCompany[TASK_MAX] =
 {
 	{ 0,1,5,Task_0 },
 	{ 0,2,10,Task_1 },
@@ -22,7 +22,7 @@ void Task_0(void)
 //    RC_Task();
 
 
-//    READY_Task();
+    READY_Task();
 
 
 
@@ -91,17 +91,17 @@ void Task_Process(void)
 **************************************************************************************************/
 void Task_Count(void)
 {
-	uint8_t i;
-    for(i = 0;i<TASK_MAX;i++)
-    {
-		if(TaskCompany[i].Timer)
-        {
-			TaskCompany[i].Timer--;
-			if(TaskCompany[i].Timer <= 0)
-            {
-				TaskCompany[i].Timer = TaskCompany[i].IvtTime;
-                TaskCompany[i].Run = TASK_RUN;
-            }
-        }
-    }
+uint8_t i;
+for(i = 0;i<TASK_MAX;i++)
+{
+if(TaskCompany[i].Timer)
+{
+TaskCompany[i].Timer--;
+if(TaskCompany[i].Timer <= 0)
+{
+TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+TaskCompany[i].Run = TASK_RUN;
+}
+}
+}
 }

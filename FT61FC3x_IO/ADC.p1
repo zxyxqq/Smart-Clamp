@@ -471,8 +471,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "56
 [v _SYS `S156 ~T0 @X0 0 e ]
 "146 ADC.c
-[c E1950 0 1 2 .. ]
-[n E1950 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
+[c E1951 0 1 2 .. ]
+[n E1951 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
 [; ;gcc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3097,12 +3097,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 25: TASK3,
 [; ;task.h: 26: TASK_MAX
 [; ;task.h: 27: }Task_List;
-[; ;task.h: 30: void Task_0(void);
-[; ;task.h: 31: void Task_1(void);
-[; ;task.h: 32: void Task_2(void);
-[; ;task.h: 33: void Task_3(void);
-[; ;task.h: 34: void Task_Count(void);
-[; ;task.h: 35: void Task_Process(void);
+[; ;task.h: 30: extern TaskComps TaskCompany[TASK_MAX];
+[; ;task.h: 32: void Task_0(void);
+[; ;task.h: 33: void Task_1(void);
+[; ;task.h: 34: void Task_2(void);
+[; ;task.h: 35: void Task_3(void);
+[; ;task.h: 36: void Task_Count(void);
+[; ;task.h: 37: void Task_Process(void);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
 [; ;delay.h: 9: void DelayS(unsigned char Time);
@@ -3310,7 +3311,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :UE 164 ]
 }
 "145
-[v _Get_Vbattery_Stand_State `(E1950 ~T0 @X0 1 ef1`ui ]
+[v _Get_Vbattery_Stand_State `(E1951 ~T0 @X0 1 ef1`ui ]
 "146
 {
 [; ;ADC.c: 145: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value)
@@ -3321,9 +3322,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "146
 [f ]
 "147
-[v F1981 `E1950 ~T0 @X0 1 s current_state ]
-[i F1981
-. `E1950 0
+[v F1982 `E1951 ~T0 @X0 1 s current_state ]
+[i F1982
+. `E1951 0
 ]
 [; ;ADC.c: 147: static Battery_State current_state = STATE_NORMAL;
 [; ;ADC.c: 149: switch(current_state)
@@ -3343,7 +3344,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 154: current_state = STATE_UNDER_VOLTAGE;
 "154
-[e = F1981 . `E1950 1 ]
+[e = F1982 . `E1951 1 ]
 "155
 }
 [; ;ADC.c: 155: }
@@ -3357,7 +3358,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 158: current_state = STATE_OVER_VOLTAGE;
 "158
-[e = F1981 . `E1950 2 ]
+[e = F1982 . `E1951 2 ]
 "159
 }
 [e :U 171 ]
@@ -3377,7 +3378,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 166: current_state = STATE_NORMAL;
 "166
-[e = F1981 . `E1950 0 ]
+[e = F1982 . `E1951 0 ]
 "167
 }
 [e :U 173 ]
@@ -3396,7 +3397,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 175: current_state = STATE_NORMAL;
 "175
-[e = F1981 . `E1950 0 ]
+[e = F1982 . `E1951 0 ]
 "176
 }
 [e :U 175 ]
@@ -3410,22 +3411,22 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e $U 166  ]
 "149
 [e :U 167 ]
-[e [\ F1981 , $ . `E1950 0 168
- , $ . `E1950 1 172
- , $ . `E1950 2 174
+[e [\ F1982 , $ . `E1951 0 168
+ , $ . `E1951 1 172
+ , $ . `E1951 2 174
  166 ]
 "179
 [e :U 166 ]
 [; ;ADC.c: 180: return current_state;
 "180
-[e ) F1981 ]
+[e ) F1982 ]
 [e $UE 165  ]
 [; ;ADC.c: 181: }
 "181
 [e :UE 165 ]
 }
 "189
-[v _Get_Cbattery_Stand_State `(E1950 ~T0 @X0 1 ef1`ui ]
+[v _Get_Cbattery_Stand_State `(E1951 ~T0 @X0 1 ef1`ui ]
 "190
 {
 [; ;ADC.c: 189: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value)
@@ -3436,9 +3437,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "190
 [f ]
 "191
-[v F1983 `E1950 ~T0 @X0 1 s current_state ]
-[i F1983
-. `E1950 0
+[v F1984 `E1951 ~T0 @X0 1 s current_state ]
+[i F1984
+. `E1951 0
 ]
 [; ;ADC.c: 191: static Battery_State current_state = STATE_NORMAL;
 [; ;ADC.c: 193: switch(current_state)
@@ -3458,7 +3459,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 198: current_state = STATE_UNDER_VOLTAGE;
 "198
-[e = F1983 . `E1950 1 ]
+[e = F1984 . `E1951 1 ]
 "199
 }
 [e :U 180 ]
@@ -3477,7 +3478,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 206: current_state = STATE_NORMAL;
 "206
-[e = F1983 . `E1950 0 ]
+[e = F1984 . `E1951 0 ]
 "207
 }
 [e :U 182 ]
@@ -3491,14 +3492,14 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e $U 177  ]
 "193
 [e :U 178 ]
-[e [\ F1983 , $ . `E1950 0 179
- , $ . `E1950 1 181
+[e [\ F1984 , $ . `E1951 0 179
+ , $ . `E1951 1 181
  177 ]
 "210
 [e :U 177 ]
 [; ;ADC.c: 211: return current_state;
 "211
-[e ) F1983 ]
+[e ) F1984 ]
 [e $UE 176  ]
 [; ;ADC.c: 212: }
 "212

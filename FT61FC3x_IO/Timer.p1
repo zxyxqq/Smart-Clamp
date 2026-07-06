@@ -3087,12 +3087,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 25: TASK3,
 [; ;task.h: 26: TASK_MAX
 [; ;task.h: 27: }Task_List;
-[; ;task.h: 30: void Task_0(void);
-[; ;task.h: 31: void Task_1(void);
-[; ;task.h: 32: void Task_2(void);
-[; ;task.h: 33: void Task_3(void);
-[; ;task.h: 34: void Task_Count(void);
-[; ;task.h: 35: void Task_Process(void);
+[; ;task.h: 30: extern TaskComps TaskCompany[TASK_MAX];
+[; ;task.h: 32: void Task_0(void);
+[; ;task.h: 33: void Task_1(void);
+[; ;task.h: 34: void Task_2(void);
+[; ;task.h: 35: void Task_3(void);
+[; ;task.h: 36: void Task_Count(void);
+[; ;task.h: 37: void Task_Process(void);
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
 [; ;adc.h: 30: STATE_UNDER_VOLTAGE,
@@ -3186,18 +3187,18 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :U _Timer0_Task ]
 [f ]
 "22
-[v F1973 `uc ~T0 @X0 1 s Long_Ready_Time ]
-[i F1973
--> -> 0 `i `uc
-]
-"23
-[v F1974 `uc ~T0 @X0 1 s Short_Ready_Time ]
+[v F1974 `uc ~T0 @X0 1 s Long_Ready_Time ]
 [i F1974
 -> -> 0 `i `uc
 ]
-"24
-[v F1975 `uc ~T0 @X0 1 s Ready_Delay_Time ]
+"23
+[v F1975 `uc ~T0 @X0 1 s Short_Ready_Time ]
 [i F1975
+-> -> 0 `i `uc
+]
+"24
+[v F1976 `uc ~T0 @X0 1 s Ready_Delay_Time ]
+[i F1976
 -> -> 0 `i `uc
 ]
 [; ;Timer.c: 22: static uint8_t Long_Ready_Time = 0;
@@ -3211,16 +3212,16 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 28: Long_Ready_Time++;
 "28
-[e ++ F1973 -> -> 1 `i `uc ]
+[e ++ F1974 -> -> 1 `i `uc ]
 [; ;Timer.c: 30: if(Long_Ready_Time>=80)
 "30
-[e $ ! >= -> F1973 `i -> 80 `i 160  ]
+[e $ ! >= -> F1974 `i -> 80 `i 160  ]
 [; ;Timer.c: 31: {
 "31
 {
 [; ;Timer.c: 32: Long_Ready_Time = 0;
 "32
-[e = F1973 -> -> 0 `i `uc ]
+[e = F1974 -> -> 0 `i `uc ]
 [; ;Timer.c: 33: SYS.Long_Time_Change = 1;
 "33
 [e = . _SYS 12 -> -> 1 `i `uc ]
@@ -3240,7 +3241,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;Timer.c: 41: Long_Ready_Time = 0;
 "41
-[e = F1973 -> -> 0 `i `uc ]
+[e = F1974 -> -> 0 `i `uc ]
 "42
 }
 [e :U 161 ]

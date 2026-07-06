@@ -1920,6 +1920,8 @@ TASK_MAX
 }Task_List;
 
 
+extern TaskComps TaskCompany[TASK_MAX];
+
 void Task_0(void);
 void Task_1(void);
 void Task_2(void);

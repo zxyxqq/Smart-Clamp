@@ -458,12 +458,19 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
-"34 task.h
-[v _Task_Count `(v ~T0 @X0 0 ef ]
+"34 Main.c
+[c E1855 0 1 2 3 4 .. ]
+[n E1855 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
+[v F1852 `(v ~T0 @X0 0 tf ]
+"13 task.h
+[s S155 `uc 1 `ui 1 `ui 1 `*F1852 1 ]
+[n S155 . Run Timer IvtTime TaskHook ]
+"30
+[v _TaskCompany `S155 ~T0 @X0 -> 0 `x e ]
 [p mainexit ]
 "16 app.h
 [v _Initial `(v ~T0 @X0 0 ef ]
-"35 task.h
+"37 task.h
 [v _Task_Process `(v ~T0 @X0 0 ef ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3089,12 +3096,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 25: TASK3,
 [; ;task.h: 26: TASK_MAX
 [; ;task.h: 27: }Task_List;
-[; ;task.h: 30: void Task_0(void);
-[; ;task.h: 31: void Task_1(void);
-[; ;task.h: 32: void Task_2(void);
-[; ;task.h: 33: void Task_3(void);
-[; ;task.h: 34: void Task_Count(void);
-[; ;task.h: 35: void Task_Process(void);
+[; ;task.h: 30: extern TaskComps TaskCompany[TASK_MAX];
+[; ;task.h: 32: void Task_0(void);
+[; ;task.h: 33: void Task_1(void);
+[; ;task.h: 34: void Task_2(void);
+[; ;task.h: 35: void Task_3(void);
+[; ;task.h: 36: void Task_Count(void);
+[; ;task.h: 37: void Task_Process(void);
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
 [; ;adc.h: 30: STATE_UNDER_VOLTAGE,
@@ -3159,9 +3167,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 54: }sys;
 [; ;app.h: 56: extern sys SYS;
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F1973 `(v ~T0 @X0 1 tf ]
+[v F1974 `(v ~T0 @X0 1 tf ]
 "24 Main.c
-[v _ISR `IF1973 ~T0 @X0 1 e ]
+[v _ISR `IF1974 ~T0 @X0 1 e ]
 "25
 {
 [; ;Main.c: 24: void interrupt ISR(void)
@@ -3180,46 +3188,94 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Main.c: 29: TMR0 += 6;
 "29
 [e =+ _TMR0 -> -> 6 `i `uc ]
-[; ;Main.c: 31: Task_Count();
-"31
-[e ( _Task_Count ..  ]
-"32
-}
-[e :U 158 ]
-[; ;Main.c: 32: }
-[; ;Main.c: 33: }
 "33
-[e :UE 157 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
+[v _i `uc ~T0 @X0 1 a ]
+[; ;Main.c: 33: uint8_t i;
+[; ;Main.c: 34: for(i = 0;i<TASK_MAX;i++)
+"34
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> . `E1855 4 `i 159  ]
+[e $U 160  ]
+"35
+[e :U 159 ]
+[; ;Main.c: 35: {
+{
+[; ;Main.c: 36: if(TaskCompany[i].Timer)
+"36
+[e $ ! != . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 162  ]
+[; ;Main.c: 37: {
+"37
+{
+[; ;Main.c: 38: TaskCompany[i].Timer--;
+"38
+[e -- . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 1 `i `ui ]
+[; ;Main.c: 39: if(TaskCompany[i].Timer <= 0)
+"39
+[e $ ! <= . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 163  ]
+[; ;Main.c: 40: {
 "40
-[v _main `(v ~T0 @X0 1 ef ]
+{
+[; ;Main.c: 41: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
 "41
-{
-[; ;Main.c: 40: void main(void)
-[; ;Main.c: 41: {
-[e :U _main ]
-[f ]
-[; ;Main.c: 42: Initial();
+[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 2 ]
+[; ;Main.c: 42: TaskCompany[i].Run = 1;
 "42
-[e ( _Initial ..  ]
-[; ;Main.c: 43: while(1)
+[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 1 `i `uc ]
 "43
-[e :U 161 ]
-[; ;Main.c: 44: {
+}
+[e :U 163 ]
 "44
-{
-[; ;Main.c: 45: Task_Process();
+}
+[e :U 162 ]
 "45
-[e ( _Task_Process ..  ]
+}
+"34
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> . `E1855 4 `i 159  ]
+[e :U 160 ]
+"45
+}
 "46
 }
-[e :U 160 ]
-"43
-[e $U 161  ]
-[e :U 162 ]
+[e :U 158 ]
+[; ;Main.c: 43: }
+[; ;Main.c: 44: }
+[; ;Main.c: 45: }
 [; ;Main.c: 46: }
 [; ;Main.c: 47: }
 "47
-[e :UE 159 ]
+[e :UE 157 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"54
+[v _main `(v ~T0 @X0 1 ef ]
+"55
+{
+[; ;Main.c: 54: void main(void)
+[; ;Main.c: 55: {
+[e :U _main ]
+[f ]
+[; ;Main.c: 56: Initial();
+"56
+[e ( _Initial ..  ]
+[; ;Main.c: 57: while(1)
+"57
+[e :U 166 ]
+[; ;Main.c: 58: {
+"58
+{
+[; ;Main.c: 59: Task_Process();
+"59
+[e ( _Task_Process ..  ]
+"60
+}
+[e :U 165 ]
+"57
+[e $U 166  ]
+[e :U 167 ]
+[; ;Main.c: 60: }
+[; ;Main.c: 61: }
+"61
+[e :UE 164 ]
 }

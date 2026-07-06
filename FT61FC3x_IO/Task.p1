@@ -458,23 +458,25 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S152 `S153 1 `S154 1 ]
 [n S152 . . . ]
+"5 Task.c
+[c E1952 0 1 2 3 4 .. ]
+[n E1952 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
 [v F1949 `(v ~T0 @X0 0 tf ]
 "13 Task.h
 [s S156 `uc 1 `ui 1 `ui 1 `*F1949 1 ]
 [n S156 . Run Timer IvtTime TaskHook ]
-"30
-[v _Task_0 `(v ~T0 @X0 0 ef ]
-"31
-[v _Task_1 `(v ~T0 @X0 0 ef ]
 "32
-[v _Task_2 `(v ~T0 @X0 0 ef ]
+[v _Task_0 `(v ~T0 @X0 0 ef ]
 "33
+[v _Task_1 `(v ~T0 @X0 0 ef ]
+"34
+[v _Task_2 `(v ~T0 @X0 0 ef ]
+"35
 [v _Task_3 `(v ~T0 @X0 0 ef ]
+"30 ready.h
+[v _READY_Task `(v ~T0 @X0 0 ef ]
 "16 BUZZTT.h
 [v _BUZZTT_Task `(v ~T0 @X0 0 ef ]
-"78 Task.c
-[c E1952 0 1 2 3 4 .. ]
-[n E1952 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -3162,14 +3164,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.h: 25: TASK3,
 [; ;Task.h: 26: TASK_MAX
 [; ;Task.h: 27: }Task_List;
-[; ;Task.h: 30: void Task_0(void);
-[; ;Task.h: 31: void Task_1(void);
-[; ;Task.h: 32: void Task_2(void);
-[; ;Task.h: 33: void Task_3(void);
-[; ;Task.h: 34: void Task_Count(void);
-[; ;Task.h: 35: void Task_Process(void);
+[; ;Task.h: 30: extern TaskComps TaskCompany[TASK_MAX];
+[; ;Task.h: 32: void Task_0(void);
+[; ;Task.h: 33: void Task_1(void);
+[; ;Task.h: 34: void Task_2(void);
+[; ;Task.h: 35: void Task_3(void);
+[; ;Task.h: 36: void Task_Count(void);
+[; ;Task.h: 37: void Task_Process(void);
 "5 Task.c
-[v _TaskCompany `S156 ~T0 @X0 -> 0 `x s ]
+[v _TaskCompany `S156 ~T0 @X0 . `E1952 4 e ]
 [i _TaskCompany
 :U ..
 :U ..
@@ -3202,7 +3205,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 ..
 ..
 ]
-[; ;Task.c: 5: static TaskComps TaskCompany[] =
+[; ;Task.c: 5: TaskComps TaskCompany[TASK_MAX] =
 [; ;Task.c: 6: {
 [; ;Task.c: 7: { 0,1,5,Task_0 },
 [; ;Task.c: 8: { 0,2,10,Task_1 },
@@ -3217,6 +3220,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 19: {
 [e :U _Task_0 ]
 [f ]
+[; ;Task.c: 25: READY_Task();
+"25
+[e ( _READY_Task ..  ]
 [; ;Task.c: 30: }
 "30
 [e :UE 157 ]

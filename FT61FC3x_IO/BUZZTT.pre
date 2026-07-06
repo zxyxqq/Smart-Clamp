@@ -1924,6 +1924,8 @@ TASK_MAX
 }Task_List;
 
 
+extern TaskComps TaskCompany[TASK_MAX];
+
 void Task_0(void);
 void Task_1(void);
 void Task_2(void);
@@ -2071,7 +2073,6 @@ WPUC &= ~0B00000010;
 # 60
 void BUZZHH_Control(void)
 {
-
 if(SYS.HT_Value || SYS.LB_Value || SYS.RC_Value)
 {
 Hummer_Task();
@@ -2083,7 +2084,7 @@ Key_Task();
 }
 static uint8_t KEY_Press = 0;
 
-# 80
+# 79
 void Key_Detect(void)
 {
 static uint8_t press_cnt = 0;
@@ -2130,21 +2131,21 @@ long_trig = 0;
 }
 }
 
-# 132
+# 131
 void Key_Task(void)
 {
 KEY_Init();
 Key_Detect();
 }
 
-# 144
+# 143
 void Hummer_Task(void)
 {
 Hummer_Init();
 PC1 = 0;
 }
 
-# 156
+# 155
 void BUZZTT_Task(void)
 {
 BUZZHH_Control();

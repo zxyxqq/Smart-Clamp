@@ -3,26 +3,34 @@
 [d edition pro ]
 [d chip FT61FC3X ]
 [d frameptr 6 ]
+"34 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+[e E1855 . `uc
+TASK0 0
+TASK1 1
+TASK2 2
+TASK3 3
+TASK_MAX 4
+]
 "54 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
-[e E1959 . `uc
+[e E1960 . `uc
 ST_PRE_ON 0
 ST_OFF 1
 ST_FINAL_ON 2
 ST_DETECT 3
 ]
 "95
-[e E1874 . `uc
+[e E1875 . `uc
 STATE_NORMAL 0
 STATE_UNDER_VOLTAGE 1
 STATE_OVER_VOLTAGE 2
 ]
 "146 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
-[e E1950 . `uc
+[e E1951 . `uc
 STATE_NORMAL 0
 STATE_UNDER_VOLTAGE 1
 STATE_OVER_VOLTAGE 2
 ]
-"78 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
+"5 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
 [e E1952 . `uc
 TASK0 0
 TASK1 1
@@ -37,9 +45,9 @@ TASK_MAX 4
 "133
 [v _Get_INT_Data Get_INT_Data `(v  1 e 1 0 ]
 "145
-[v _Get_Vbattery_Stand_State Get_Vbattery_Stand_State `(E1950  1 e 1 0 ]
+[v _Get_Vbattery_Stand_State Get_Vbattery_Stand_State `(E1951  1 e 1 0 ]
 "189
-[v _Get_Cbattery_Stand_State Get_Cbattery_Stand_State `(E1874  1 e 1 0 ]
+[v _Get_Cbattery_Stand_State Get_Cbattery_Stand_State `(E1875  1 e 1 0 ]
 "219
 [v _Relay_Release_Detect Relay_Release_Detect `(v  1 e 1 0 ]
 "11 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
@@ -52,13 +60,13 @@ TASK_MAX 4
 [v _Hummer_Init Hummer_Init `(v  1 e 1 0 ]
 "60
 [v _BUZZHH_Control BUZZHH_Control `(v  1 e 1 0 ]
-"80
+"79
 [v _Key_Detect Key_Detect `(v  1 e 1 0 ]
-"132
+"131
 [v _Key_Task Key_Task `(v  1 e 1 0 ]
-"144
+"143
 [v _Hummer_Task Hummer_Task `(v  1 e 1 0 ]
-"156
+"155
 [v _BUZZTT_Task BUZZTT_Task `(v  1 e 1 0 ]
 "62 C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
@@ -77,7 +85,7 @@ TASK_MAX 4
 [v _LB_Open LB_Open `(v  1 e 1 0 ]
 "24 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"40
+"54
 [v _main main `(v  1 e 1 0 ]
 "9 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Power.c
 [v _POWER_INITIAL POWER_INITIAL `(v  1 e 1 0 ]
@@ -89,6 +97,8 @@ TASK_MAX 4
 [v _Ready_Init Ready_Init `(v  1 e 1 0 ]
 "38
 [v _Ready_Control Ready_Control `(v  1 e 1 0 ]
+"53
+[v _READY_Task READY_Task `(v  1 e 1 0 ]
 "18 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
 [v _Task_0 Task_0 `(v  1 e 1 0 ]
 "38
@@ -99,14 +109,12 @@ TASK_MAX 4
 [v _Task_3 Task_3 `(v  1 e 1 0 ]
 "75
 [v _Task_Process Task_Process `(v  1 e 1 0 ]
-"92
-[v _Task_Count Task_Count `(v  1 e 1 0 ]
 "9 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Timer.c
 [v _Timer0_Init Timer0_Init `(v  1 e 1 0 ]
-[s S2526 . 17 `uc 1 Standby_Work_State 1 0 `uc 1 HT_Value 1 1 `uc 1 LB_Value 1 2 `uc 1 RC_Value 1 3 `uc 1 Relay_Release 1 4 `uc 1 KEY_Value 1 5 `uc 1 Vadc_Value 1 6 `uc 1 Cadc_Value 1 7 `uc 1 READY_Value 1 8 `uc 1 STANDBY_Value 1 9 `ui 1 Vbattery_Adc 2 10 `ui 1 Cbattery_Adc 2 12 `uc 1 Long_Time_Change 1 14 `uc 1 Delay_2s_Flag 1 15 `uc 1 Cadc_Ready_Flag 1 16 ]
+[s S2540 . 17 `uc 1 Standby_Work_State 1 0 `uc 1 HT_Value 1 1 `uc 1 LB_Value 1 2 `uc 1 RC_Value 1 3 `uc 1 Relay_Release 1 4 `uc 1 KEY_Value 1 5 `uc 1 Vadc_Value 1 6 `uc 1 Cadc_Value 1 7 `uc 1 READY_Value 1 8 `uc 1 STANDBY_Value 1 9 `ui 1 Vbattery_Adc 2 10 `ui 1 Cbattery_Adc 2 12 `uc 1 Long_Time_Change 1 14 `uc 1 Delay_2s_Flag 1 15 `uc 1 Cadc_Ready_Flag 1 16 ]
 "3 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
-[v _SYS SYS `S2526  1 e 17 0 ]
-"72 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+[v _SYS SYS `S2540  1 e 17 0 ]
+"71 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
 [v _KEY_Press KEY_Press `uc  1 s 1 KEY_Press ]
 "14 C:\Program Files (x86)\CCompiler\Compiler\data\include\FT61FC3X.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -114,8 +122,12 @@ TASK_MAX 4
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "129
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"143
+[v _PB3 PB3 `VEb  1 e 0 @51 ]
 "179
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"184
+[v _PC0 PC0 `VEb  1 e 0 @56 ]
 "185
 [v _PC1 PC1 `VEb  1 e 0 @57 ]
 "247
@@ -148,19 +160,25 @@ TASK_MAX 4
 [v _WPUB WPUB `VEuc  1 e 1 @269 ]
 "1175
 [v _WPDB WPDB `VEuc  1 e 1 @270 ]
-[s S9164 . 6 `uc 1 Run 1 0 `ui 1 Timer 2 1 `ui 1 IvtTime 2 3 `*.27(v 1 TaskHook 1 5 ]
+"1250
+[v _ADRESL ADRESL `VEuc  1 e 1 @273 ]
+"1255
+[v _ADRESH ADRESH `VEuc  1 e 1 @274 ]
+"1259
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @275 ]
+[s S701 . 6 `uc 1 Run 1 0 `ui 1 Timer 2 1 `ui 1 IvtTime 2 3 `*.27(v 1 TaskHook 1 5 ]
 "5 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-[v _TaskCompany TaskCompany `[4]S9164  1 s 24 TaskCompany ]
-"40 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
+[v _TaskCompany TaskCompany `[4]S701  1 e 24 0 ]
+"54 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"47
+"61
 } 0
 "75 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
 [v _Task_Process Task_Process `(v  1 e 1 0 ]
 {
 "77
-[v Task_Process@i i `uc  1 a 1 3 ]
+[v Task_Process@i i `uc  1 a 1 7 ]
 "86
 } 0
 "4 C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
@@ -196,46 +214,84 @@ TASK_MAX 4
 {
 "67
 } 0
-"156 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
+"155 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\BUZZTT.c
 [v _BUZZTT_Task BUZZTT_Task `(v  1 e 1 0 ]
 {
-"159
+"158
 } 0
 "60
 [v _BUZZHH_Control BUZZHH_Control `(v  1 e 1 0 ]
 {
-"71
+"70
 } 0
-"132
+"131
 [v _Key_Task Key_Task `(v  1 e 1 0 ]
 {
-"136
+"135
 } 0
-"80
+"79
 [v _Key_Detect Key_Detect `(v  1 e 1 0 ]
 {
-"82
+"81
 [v Key_Detect@press_cnt press_cnt `uc  1 s 1 press_cnt ]
-"83
+"82
 [v Key_Detect@long_cnt long_cnt `ui  1 s 2 long_cnt ]
-"84
+"83
 [v Key_Detect@long_trig long_trig `uc  1 s 1 long_trig ]
-"124
+"123
 } 0
 "34
 [v _KEY_Init KEY_Init `(v  1 e 1 0 ]
 {
 "40
 } 0
-"144
+"143
 [v _Hummer_Task Hummer_Task `(v  1 e 1 0 ]
 {
-"148
+"147
 } 0
 "47
 [v _Hummer_Init Hummer_Init `(v  1 e 1 0 ]
 {
 "53
+} 0
+"53 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\READY.c
+[v _READY_Task READY_Task `(v  1 e 1 0 ]
+{
+"54
+[v READY_Task@state state `E1960  1 s 1 state ]
+"55
+[v READY_Task@counter counter `ui  1 s 2 counter ]
+"100
+} 0
+"38
+[v _Ready_Control Ready_Control `(v  1 e 1 0 ]
+{
+[v Ready_Control@num num `uc  1 a 1 wreg ]
+[v Ready_Control@num num `uc  1 a 1 wreg ]
+"40
+[v Ready_Control@num num `uc  1 a 1 0 ]
+"42
+} 0
+"189 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\ADC.c
+[v _Get_Cbattery_Stand_State Get_Cbattery_Stand_State `(E1875  1 e 1 0 ]
+{
+[v Get_Cbattery_Stand_State@adc_value adc_value `ui  1 p 2 0 ]
+"191
+[v Get_Cbattery_Stand_State@current_state current_state `E1951  1 s 1 current_state ]
+"212
+} 0
+"85
+[v _GET_ADC_DATA GET_ADC_DATA `(ui  1 e 2 0 ]
+{
+[v GET_ADC_DATA@adcChannel adcChannel `uc  1 a 1 wreg ]
+"87
+[v GET_ADC_DATA@ADCON0Buff ADCON0Buff `uc  1 a 1 6 ]
+"85
+[v GET_ADC_DATA@adcChannel adcChannel `uc  1 a 1 wreg ]
+"88
+[v GET_ADC_DATA@adcChannel adcChannel `uc  1 a 1 5 ]
+"106
 } 0
 "11 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\App.c
 [v _Initial Initial `(v  1 e 1 0 ]
@@ -296,13 +352,8 @@ TASK_MAX 4
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
 "33
-} 0
-"92 E:\Users\gcsja805\Desktop\智能夹子\智能夹代码\FT61FC3x_IO\Task.c
-[v _Task_Count Task_Count `(v  1 e 1 0 ]
-{
-"94
-[v Task_Count@i i `uc  1 a 1 5 ]
-"107
+[v ISR@i i `uc  1 a 1 8 ]
+"47
 } 0
 "4 C:\Program Files (x86)\CCompiler\Compiler\data\sources\common\Umul8.c
 [v i1___bmul __bmul `(uc  1 e 1 0 ]

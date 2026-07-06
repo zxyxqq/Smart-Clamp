@@ -28,7 +28,21 @@ void interrupt ISR(void)
     	T0IF = 0;
 		TMR0 += 6;					  
         
-        Task_Count();
+//        Task_Count();
+
+		uint8_t i;
+		for(i = 0;i<TASK_MAX;i++)
+		{
+			if(TaskCompany[i].Timer)
+			{
+				TaskCompany[i].Timer--;
+				if(TaskCompany[i].Timer <= 0)
+				{
+					TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+					TaskCompany[i].Run = TASK_RUN;
+				}
+			}
+		}
 	} 
 } 
 /*-------------------------------------------------
