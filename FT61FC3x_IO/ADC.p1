@@ -468,7 +468,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "20 app.h
 [s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"54
+"52
 [v _SYS `S156 ~T0 @X0 0 e ]
 "137 ADC.c
 [c E1948 0 1 2 .. ]
@@ -3102,7 +3102,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_1(void);
 [; ;task.h: 34: void Task_2(void);
 [; ;task.h: 35: void Task_3(void);
-[; ;task.h: 36: void Task_Count(void);
 [; ;task.h: 37: void Task_Process(void);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
@@ -3134,6 +3133,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;LB.h: 8: void LB_Open(void);
 [; ;LB.h: 9: void LB_STANDBY_Close(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
+[; ;LB.h: 11: void Work_State_Change(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3145,13 +3145,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t Cadc_Value;
 [; ;app.h: 36: uint8_t READY_Value;
 [; ;app.h: 38: uint8_t STANDBY_Value;
-[; ;app.h: 42: uint16_t Vbattery_Adc;
-[; ;app.h: 44: uint16_t Cbattery_Adc;
-[; ;app.h: 46: uint8_t Long_Time_Change;
-[; ;app.h: 48: uint8_t Delay_2s_Flag ;
-[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 52: }sys;
-[; ;app.h: 54: extern sys SYS;
+[; ;app.h: 40: uint16_t Vbattery_Adc;
+[; ;app.h: 42: uint16_t Cbattery_Adc;
+[; ;app.h: 44: uint8_t Long_Time_Change;
+[; ;app.h: 46: uint8_t Delay_2s_Flag ;
+[; ;app.h: 48: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 50: }sys;
+[; ;app.h: 52: extern sys SYS;
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
 [; ;adc.h: 30: STATE_UNDER_VOLTAGE,
@@ -3164,6 +3164,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;adc.h: 49: void ADC_Task(void);
 [; ;adc.h: 50: void Relay_Release_Detect(void);
 [; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 [; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 "53 ADC.c
 [v _ADC_INITIAL `(v ~T0 @X0 1 ef ]
@@ -3305,8 +3306,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "137
 [f ]
 "138
-[v F1977 `E1948 ~T0 @X0 1 s current_state ]
-[i F1977
+[v F1978 `E1948 ~T0 @X0 1 s current_state ]
+[i F1978
 . `E1948 0
 ]
 [; ;ADC.c: 138: static Battery_State current_state = STATE_NORMAL;
@@ -3327,7 +3328,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 145: current_state = STATE_UNDER_VOLTAGE;
 "145
-[e = F1977 . `E1948 1 ]
+[e = F1978 . `E1948 1 ]
 "146
 }
 [; ;ADC.c: 146: }
@@ -3341,7 +3342,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 149: current_state = STATE_OVER_VOLTAGE;
 "149
-[e = F1977 . `E1948 2 ]
+[e = F1978 . `E1948 2 ]
 "150
 }
 [e :U 170 ]
@@ -3361,7 +3362,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 157: current_state = STATE_NORMAL;
 "157
-[e = F1977 . `E1948 0 ]
+[e = F1978 . `E1948 0 ]
 "158
 }
 [e :U 172 ]
@@ -3380,7 +3381,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 166: current_state = STATE_NORMAL;
 "166
-[e = F1977 . `E1948 0 ]
+[e = F1978 . `E1948 0 ]
 "167
 }
 [e :U 174 ]
@@ -3394,7 +3395,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e $U 165  ]
 "140
 [e :U 166 ]
-[e [\ F1977 , $ . `E1948 0 167
+[e [\ F1978 , $ . `E1948 0 167
  , $ . `E1948 1 171
  , $ . `E1948 2 173
  165 ]
@@ -3402,7 +3403,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :U 165 ]
 [; ;ADC.c: 171: return current_state;
 "171
-[e ) F1977 ]
+[e ) F1978 ]
 [e $UE 164  ]
 [; ;ADC.c: 172: }
 "172
@@ -3420,8 +3421,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "181
 [f ]
 "182
-[v F1979 `E1948 ~T0 @X0 1 s current_state ]
-[i F1979
+[v F1980 `E1948 ~T0 @X0 1 s current_state ]
+[i F1980
 . `E1948 0
 ]
 [; ;ADC.c: 182: static Battery_State current_state = STATE_NORMAL;
@@ -3442,7 +3443,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 189: current_state = STATE_UNDER_VOLTAGE;
 "189
-[e = F1979 . `E1948 1 ]
+[e = F1980 . `E1948 1 ]
 "190
 }
 [e :U 179 ]
@@ -3461,7 +3462,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 {
 [; ;ADC.c: 197: current_state = STATE_NORMAL;
 "197
-[e = F1979 . `E1948 0 ]
+[e = F1980 . `E1948 0 ]
 "198
 }
 [e :U 181 ]
@@ -3475,14 +3476,14 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e $U 176  ]
 "184
 [e :U 177 ]
-[e [\ F1979 , $ . `E1948 0 178
+[e [\ F1980 , $ . `E1948 0 178
  , $ . `E1948 1 180
  176 ]
 "201
 [e :U 176 ]
 [; ;ADC.c: 202: return current_state;
 "202
-[e ) F1979 ]
+[e ) F1980 ]
 [e $UE 175  ]
 [; ;ADC.c: 203: }
 "203
@@ -3496,9 +3497,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 211: {
 [e :U _Relay_Release_Detect ]
 [f ]
-[; ;ADC.c: 214: if(SYS.Cadc_Value<900)
+[; ;ADC.c: 214: if(SYS.Cbattery_Adc<900)
 "214
-[e $ ! < -> . _SYS 6 `i -> 900 `i 183  ]
+[e $ ! < . _SYS 10 -> -> 900 `i `ui 183  ]
 [; ;ADC.c: 215: {
 "215
 {

@@ -1920,7 +1920,7 @@ void ADC_INITIAL(void);
 void ADC_Task(void);
 void Relay_Release_Detect(void);
 void Relay_sticking_Dected(void);
-
+Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 
 # 5 "delay.h"
@@ -1970,6 +1970,7 @@ void STNADBY_Open(void);
 void LB_Open(void);
 void LB_STANDBY_Close(void);
 void LB_ST_Task(void);
+void Work_State_Change(void);
 
 # 16 "app.h"
 void Initial(void);
@@ -1995,8 +1996,6 @@ uint8_t Cadc_Value;
 uint8_t READY_Value;
 
 uint8_t STANDBY_Value;
-
-
 
 uint16_t Vbattery_Adc;
 
@@ -2037,7 +2036,7 @@ void Task_0(void);
 void Task_1(void);
 void Task_2(void);
 void Task_3(void);
-void Task_Count(void);
+
 void Task_Process(void);
 
 # 5 "Task.c"
@@ -2046,7 +2045,7 @@ TaskComps TaskCompany[TASK_MAX] =
 { 0,1,5,Task_0 },
 { 0,2,10,Task_1 },
 { 0,3,20,Task_2 },
-{ 0,4000,4000,Task_3 },
+{ 0,4,500,Task_3 },
 };
 
 # 18
@@ -2097,20 +2096,3 @@ TaskCompany[i].TaskHook();
 }
 }
 
-# 86
-void Task_Count(void)
-{
-uint8_t i;
-for(i = 0;i<TASK_MAX;i++)
-{
-if(TaskCompany[i].Timer)
-{
-TaskCompany[i].Timer--;
-if(TaskCompany[i].Timer <= 0)
-{
-TaskCompany[i].Timer = TaskCompany[i].IvtTime;
-TaskCompany[i].Run = 1;
-}
-}
-}
-}

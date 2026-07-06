@@ -28,7 +28,6 @@ void interrupt ISR(void)
     	T0IF = 0;
 		TMR0 += 6;					  
         
-//        Task_Count();
 
 		uint8_t i;
 		for(i = 0;i<TASK_MAX;i++)

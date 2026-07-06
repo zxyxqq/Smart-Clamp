@@ -3106,7 +3106,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_1(void);
 [; ;task.h: 34: void Task_2(void);
 [; ;task.h: 35: void Task_3(void);
-[; ;task.h: 36: void Task_Count(void);
 [; ;task.h: 37: void Task_Process(void);
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
@@ -3120,6 +3119,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;adc.h: 49: void ADC_Task(void);
 [; ;adc.h: 50: void Relay_Release_Detect(void);
 [; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 [; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
@@ -3151,6 +3151,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;LB.h: 8: void LB_Open(void);
 [; ;LB.h: 9: void LB_STANDBY_Close(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
+[; ;LB.h: 11: void Work_State_Change(void);
 [; ;APP.h: 16: void Initial(void);
 [; ;APP.h: 20: typedef struct{
 [; ;APP.h: 22: uint8_t Standby_Work_State;
@@ -3162,13 +3163,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;APP.h: 34: uint8_t Cadc_Value;
 [; ;APP.h: 36: uint8_t READY_Value;
 [; ;APP.h: 38: uint8_t STANDBY_Value;
-[; ;APP.h: 42: uint16_t Vbattery_Adc;
-[; ;APP.h: 44: uint16_t Cbattery_Adc;
-[; ;APP.h: 46: uint8_t Long_Time_Change;
-[; ;APP.h: 48: uint8_t Delay_2s_Flag ;
-[; ;APP.h: 50: uint8_t Cadc_Ready_Flag ;
-[; ;APP.h: 52: }sys;
-[; ;APP.h: 54: extern sys SYS;
+[; ;APP.h: 40: uint16_t Vbattery_Adc;
+[; ;APP.h: 42: uint16_t Cbattery_Adc;
+[; ;APP.h: 44: uint8_t Long_Time_Change;
+[; ;APP.h: 46: uint8_t Delay_2s_Flag ;
+[; ;APP.h: 48: uint8_t Cadc_Ready_Flag ;
+[; ;APP.h: 50: }sys;
+[; ;APP.h: 52: extern sys SYS;
 "3 App.c
 [v _SYS `S156 ~T0 @X0 1 e ]
 [; ;App.c: 3: sys SYS;

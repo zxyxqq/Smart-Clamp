@@ -7,11 +7,23 @@
 
 
 */
+/*-------------------------------------------------
+ *  函数名LB_Init
+ *	功能：  
+ *  输入：  无
+ *  输出：  无
+ --------------------------------------------------*/	
+
 void LB_Init(void)
 {
 	TRISB  |= 0B00100000;	//高阻输入都不亮
 }
-
+/*-------------------------------------------------
+ *  函数名STNADBY_Open
+ *	功能：  
+ *  输入：  无
+ *  输出：  无
+ --------------------------------------------------*/	
 void STNADBY_Open(void)
 {
 	if(SYS.STANDBY_Value)
@@ -20,7 +32,12 @@ void STNADBY_Open(void)
         PB5 = 1;
     }
 }
-
+/*-------------------------------------------------
+ *  函数名LB_Open
+ *	功能：  
+ *  输入：  无
+ *  输出：  无
+ --------------------------------------------------*/	
 void LB_Open(void)
 {
 	if(SYS.LB_Value)
@@ -29,14 +46,66 @@ void LB_Open(void)
         PB5 = 0;
     }
 }
-
+/*-------------------------------------------------
+ *  函数名LB_STANDBY_Close
+ *	功能：  
+ *  输入：  无
+ *  输出：  无
+ --------------------------------------------------*/	
 void LB_STANDBY_Close(void)
 {
-	if(SYS.STANDBY_Value == 0 && SYS.LB_Value == 0)
+	if(SYS.Standby_Work_State)
     {
 		TRISB  |= 0B00100000;	//高阻输入都不亮
     }
 	
+}
+
+/*-------------------------------------------------
+ *  函数名Work_State_Change
+ *	功能：  控制待机状态和工作状态的切换
+ *  输入：  无
+ *  输出：  无
+ --------------------------------------------------*/	
+void Work_State_Change(void)
+{
+	/*如何进入工作状态?
+		1.不报警的前提下按键导通或者是没有松脱
+        
+       
+       如何退出工作状态:
+       1.发生报警
+       2.发生夹子松脱.
+    */
+
+	if(!SYS.Standby_Work_State)//待机状态下
+    {
+		if(!SYS.INT_Value && !SYS.LB_Value)//不报警的前提下先STANDBY
+		{
+			SYS.STANDBY_Value = 1;
+		}
+        
+        if(SYS.STANDBY_Value && (!SYS.Relay_Release || SYS.KEY_Value))//连接或者是按键导通,进入工作状态
+		{
+			SYS.Standby_Work_State = 1;
+			SYS.READY_Value = 1;
+            SYS.STANDBY_Value = 0;
+		}
+
+    }
+	else//工作状态下
+	{
+		SYS.STANDBY_Value = 0;
+        
+        /*报警或者是松脱以及超时就会退出工作状态*/
+        if(SYS.INT_Value || SYS.LB_Value || SYS.Relay_Release || SYS.Long_Time_Change)
+        {
+			SYS.Standby_Work_State = 0;//进入待机状态       
+        }      
+	}
+    
+
+
 }
 
 void LB_ST_Task(void)
@@ -44,5 +113,5 @@ void LB_ST_Task(void)
 	STNADBY_Open();
     LB_Open();
     LB_STANDBY_Close();
-    
+    Work_State_Change();
 }

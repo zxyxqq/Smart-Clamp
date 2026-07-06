@@ -8,6 +8,7 @@ void STNADBY_Open(void);
 void LB_Open(void);
 void LB_STANDBY_Close(void);
 void LB_ST_Task(void);
+void Work_State_Change(void);
 
 /*º¯ÊýÉùÃ÷*/
 

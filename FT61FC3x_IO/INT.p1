@@ -461,7 +461,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "20 app.h
 [s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"54
+"52
 [v _SYS `S156 ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3092,7 +3092,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_1(void);
 [; ;task.h: 34: void Task_2(void);
 [; ;task.h: 35: void Task_3(void);
-[; ;task.h: 36: void Task_Count(void);
 [; ;task.h: 37: void Task_Process(void);
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
@@ -3106,6 +3105,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;adc.h: 49: void ADC_Task(void);
 [; ;adc.h: 50: void Relay_Release_Detect(void);
 [; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 [; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
@@ -3134,6 +3134,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;LB.h: 8: void LB_Open(void);
 [; ;LB.h: 9: void LB_STANDBY_Close(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
+[; ;LB.h: 11: void Work_State_Change(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3145,13 +3146,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t Cadc_Value;
 [; ;app.h: 36: uint8_t READY_Value;
 [; ;app.h: 38: uint8_t STANDBY_Value;
-[; ;app.h: 42: uint16_t Vbattery_Adc;
-[; ;app.h: 44: uint16_t Cbattery_Adc;
-[; ;app.h: 46: uint8_t Long_Time_Change;
-[; ;app.h: 48: uint8_t Delay_2s_Flag ;
-[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 52: }sys;
-[; ;app.h: 54: extern sys SYS;
+[; ;app.h: 40: uint16_t Vbattery_Adc;
+[; ;app.h: 42: uint16_t Cbattery_Adc;
+[; ;app.h: 44: uint8_t Long_Time_Change;
+[; ;app.h: 46: uint8_t Delay_2s_Flag ;
+[; ;app.h: 48: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 50: }sys;
+[; ;app.h: 52: extern sys SYS;
 [; ;INT.h: 11: void Int_Initial(void);
 [; ;INT.h: 12: void Read_Int(void);
 [; ;INT.h: 13: void Int_Task(void);

@@ -458,7 +458,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "1558
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
-"34 Main.c
+"33 Main.c
 [c E1855 0 1 2 3 4 .. ]
 [n E1855 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
 [v F1852 `(v ~T0 @X0 0 tf ]
@@ -3101,7 +3101,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_1(void);
 [; ;task.h: 34: void Task_2(void);
 [; ;task.h: 35: void Task_3(void);
-[; ;task.h: 36: void Task_Count(void);
 [; ;task.h: 37: void Task_Process(void);
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
@@ -3115,6 +3114,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;adc.h: 49: void ADC_Task(void);
 [; ;adc.h: 50: void Relay_Release_Detect(void);
 [; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 [; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
@@ -3146,6 +3146,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;LB.h: 8: void LB_Open(void);
 [; ;LB.h: 9: void LB_STANDBY_Close(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
+[; ;LB.h: 11: void Work_State_Change(void);
 [; ;app.h: 16: void Initial(void);
 [; ;app.h: 20: typedef struct{
 [; ;app.h: 22: uint8_t Standby_Work_State;
@@ -3157,17 +3158,17 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t Cadc_Value;
 [; ;app.h: 36: uint8_t READY_Value;
 [; ;app.h: 38: uint8_t STANDBY_Value;
-[; ;app.h: 42: uint16_t Vbattery_Adc;
-[; ;app.h: 44: uint16_t Cbattery_Adc;
-[; ;app.h: 46: uint8_t Long_Time_Change;
-[; ;app.h: 48: uint8_t Delay_2s_Flag ;
-[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 52: }sys;
-[; ;app.h: 54: extern sys SYS;
+[; ;app.h: 40: uint16_t Vbattery_Adc;
+[; ;app.h: 42: uint16_t Cbattery_Adc;
+[; ;app.h: 44: uint8_t Long_Time_Change;
+[; ;app.h: 46: uint8_t Delay_2s_Flag ;
+[; ;app.h: 48: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 50: }sys;
+[; ;app.h: 52: extern sys SYS;
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F1971 `(v ~T0 @X0 1 tf ]
+[v F1973 `(v ~T0 @X0 1 tf ]
 "24 Main.c
-[v _ISR `IF1971 ~T0 @X0 1 e ]
+[v _ISR `IF1973 ~T0 @X0 1 e ]
 "25
 {
 [; ;Main.c: 24: void interrupt ISR(void)
@@ -3186,94 +3187,94 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Main.c: 29: TMR0 += 6;
 "29
 [e =+ _TMR0 -> -> 6 `i `uc ]
-"33
+"32
 [v _i `uc ~T0 @X0 1 a ]
-[; ;Main.c: 33: uint8_t i;
-[; ;Main.c: 34: for(i = 0;i<TASK_MAX;i++)
-"34
+[; ;Main.c: 32: uint8_t i;
+[; ;Main.c: 33: for(i = 0;i<TASK_MAX;i++)
+"33
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> . `E1855 4 `i 159  ]
 [e $U 160  ]
-"35
+"34
 [e :U 159 ]
-[; ;Main.c: 35: {
+[; ;Main.c: 34: {
 {
-[; ;Main.c: 36: if(TaskCompany[i].Timer)
-"36
+[; ;Main.c: 35: if(TaskCompany[i].Timer)
+"35
 [e $ ! != . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 162  ]
-[; ;Main.c: 37: {
+[; ;Main.c: 36: {
+"36
+{
+[; ;Main.c: 37: TaskCompany[i].Timer--;
 "37
-{
-[; ;Main.c: 38: TaskCompany[i].Timer--;
-"38
 [e -- . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 1 `i `ui ]
-[; ;Main.c: 39: if(TaskCompany[i].Timer <= 0)
-"39
+[; ;Main.c: 38: if(TaskCompany[i].Timer <= 0)
+"38
 [e $ ! <= . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 -> -> 0 `i `ui 163  ]
-[; ;Main.c: 40: {
-"40
+[; ;Main.c: 39: {
+"39
 {
-[; ;Main.c: 41: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
-"41
+[; ;Main.c: 40: TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+"40
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 1 . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 2 ]
-[; ;Main.c: 42: TaskCompany[i].Run = 1;
-"42
+[; ;Main.c: 41: TaskCompany[i].Run = 1;
+"41
 [e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 1 `i `uc ]
-"43
+"42
 }
 [e :U 163 ]
-"44
+"43
 }
 [e :U 162 ]
-"45
+"44
 }
-"34
+"33
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> . `E1855 4 `i 159  ]
 [e :U 160 ]
+"44
+}
 "45
 }
-"46
-}
 [e :U 158 ]
+[; ;Main.c: 42: }
 [; ;Main.c: 43: }
 [; ;Main.c: 44: }
 [; ;Main.c: 45: }
 [; ;Main.c: 46: }
-[; ;Main.c: 47: }
-"47
+"46
 [e :UE 157 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"54
+"53
 [v _main `(v ~T0 @X0 1 ef ]
-"55
+"54
 {
-[; ;Main.c: 54: void main(void)
-[; ;Main.c: 55: {
+[; ;Main.c: 53: void main(void)
+[; ;Main.c: 54: {
 [e :U _main ]
 [f ]
-[; ;Main.c: 56: Initial();
-"56
+[; ;Main.c: 55: Initial();
+"55
 [e ( _Initial ..  ]
-[; ;Main.c: 57: while(1)
-"57
+[; ;Main.c: 56: while(1)
+"56
 [e :U 166 ]
-[; ;Main.c: 58: {
-"58
+[; ;Main.c: 57: {
+"57
 {
-[; ;Main.c: 59: Task_Process();
-"59
+[; ;Main.c: 58: Task_Process();
+"58
 [e ( _Task_Process ..  ]
-"60
+"59
 }
 [e :U 165 ]
-"57
+"56
 [e $U 166  ]
 [e :U 167 ]
+[; ;Main.c: 59: }
 [; ;Main.c: 60: }
-[; ;Main.c: 61: }
-"61
+"60
 [e :UE 164 ]
 }

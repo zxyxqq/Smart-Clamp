@@ -8,7 +8,7 @@
 
 /*继电器导通关断操作变量*/
 #define	Open_Time		 600	//5ms*600 = 3s
-#define	Close_Time		 2		//5ms*2   = 10ms
+#define	Close_Time		 200	//5ms*200 = 1s
 #define	Delay_Time		 400	//5ms*400 = 2s
 #define	CYCLIC_START_POINT	400//跳过当前的导通时间
 

@@ -1930,7 +1930,7 @@ void Task_0(void);
 void Task_1(void);
 void Task_2(void);
 void Task_3(void);
-void Task_Count(void);
+
 void Task_Process(void);
 
 # 28 "adc.h"
@@ -1948,7 +1948,7 @@ void ADC_INITIAL(void);
 void ADC_Task(void);
 void Relay_Release_Detect(void);
 void Relay_sticking_Dected(void);
-
+Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 
 # 5 "delay.h"
@@ -2017,8 +2017,6 @@ uint8_t READY_Value;
 
 uint8_t STANDBY_Value;
 
-
-
 uint16_t Vbattery_Adc;
 
 uint16_t Cbattery_Adc;
@@ -2039,13 +2037,15 @@ void STNADBY_Open(void);
 void LB_Open(void);
 void LB_STANDBY_Close(void);
 void LB_ST_Task(void);
+void Work_State_Change(void);
 
-# 10 "LB.C"
+# 17 "LB.C"
 void LB_Init(void)
 {
 TRISB |= 0B00100000;
 }
 
+# 27
 void STNADBY_Open(void)
 {
 if(SYS.STANDBY_Value)
@@ -2055,6 +2055,7 @@ PB5 = 1;
 }
 }
 
+# 41
 void LB_Open(void)
 {
 if(SYS.LB_Value)
@@ -2064,12 +2065,48 @@ PB5 = 0;
 }
 }
 
+# 55
 void LB_STANDBY_Close(void)
 {
-if(SYS.STANDBY_Value == 0 && SYS.LB_Value == 0)
+if(SYS.Standby_Work_State)
 {
 TRISB |= 0B00100000;
 }
+
+}
+
+# 70
+void Work_State_Change(void)
+{
+
+# 81
+if(!SYS.Standby_Work_State)
+{
+if(!SYS.INT_Value && !SYS.LB_Value)
+{
+SYS.STANDBY_Value = 1;
+}
+
+if(SYS.STANDBY_Value && (!SYS.Relay_Release || SYS.KEY_Value))
+{
+SYS.Standby_Work_State = 1;
+SYS.READY_Value = 1;
+SYS.STANDBY_Value = 0;
+}
+
+}
+else
+{
+SYS.STANDBY_Value = 0;
+
+
+if(SYS.INT_Value || SYS.LB_Value || SYS.Relay_Release || SYS.Long_Time_Change)
+{
+SYS.Standby_Work_State = 0;
+}
+}
+
+
 
 }
 
@@ -2078,5 +2115,5 @@ void LB_ST_Task(void)
 STNADBY_Open();
 LB_Open();
 LB_STANDBY_Close();
-
+Work_State_Change();
 }

@@ -1926,7 +1926,7 @@ void Task_0(void);
 void Task_1(void);
 void Task_2(void);
 void Task_3(void);
-void Task_Count(void);
+
 void Task_Process(void);
 
 # 28 "adc.h"
@@ -1944,7 +1944,7 @@ void ADC_INITIAL(void);
 void ADC_Task(void);
 void Relay_Release_Detect(void);
 void Relay_sticking_Dected(void);
-
+Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 
 # 5 "delay.h"
@@ -1994,6 +1994,7 @@ void STNADBY_Open(void);
 void LB_Open(void);
 void LB_STANDBY_Close(void);
 void LB_ST_Task(void);
+void Work_State_Change(void);
 
 # 16 "app.h"
 void Initial(void);
@@ -2019,8 +2020,6 @@ uint8_t Cadc_Value;
 uint8_t READY_Value;
 
 uint8_t STANDBY_Value;
-
-
 
 uint16_t Vbattery_Adc;
 
@@ -2061,7 +2060,7 @@ TRISC = 0B00000011;
 
 WPUA = 0B00000000;
 WPUB = 0B00000000;
-WPUC = 0B00000000;
+WPUC = 0B00000010;
 
 WPDA = 0B00000000;
 WPDB = 0B00000000;
@@ -2074,8 +2073,9 @@ void SYS_Initial(void)
 {
 SYS.Standby_Work_State = 0;
 
-
 SYS.LB_Value = 0;
+
+SYS.INT_Value = 0;
 
 SYS.Relay_Release = 0;
 
@@ -2085,11 +2085,19 @@ SYS.Vadc_Value = 0;
 
 SYS.Cadc_Value = 0;
 
-
-
 SYS.READY_Value = 0;
 
 SYS.STANDBY_Value = 0;
+
+SYS.Vbattery_Adc = 0;
+
+SYS.Cbattery_Adc = 0;
+
+SYS.Long_Time_Change = 0;
+
+SYS.Delay_2s_Flag = 0;
+
+SYS.Cadc_Ready_Flag = 0;
 
 }
 

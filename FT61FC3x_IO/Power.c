@@ -14,19 +14,19 @@ void POWER_INITIAL(void)
     
 	PORTA  = 0B00000000;	//PA1和PA4打线	
 	TRISA  = 0B00010011;	//PA输入输出 0-输出 1-输入
-							//PA0-Vadc PA1-Cbat	
+							//PA0-Vadc PA1-INT
                             
 	PORTB  = 0B00000000; 	//PB3和PC0打线
 	TRISB  = 0B00101001;	//PB输入输出 0-输出 1-输入  
-							//PB0-INT PB5-RC(1/0)	
+							//PB0-CBAT PB5-LB	
     
 	PORTC  = 0B00000000; 	
 	TRISC  = 0B00000011;	//PC输入输出 0-输出 1-输入  
-							//PC0-READY(0/1) PC1-BUZZ	    
+							//PC0-READY PC1-BUZZ	    
        
 	WPUA   = 0B00000000;    //PA端口上拉控制 1-开上拉 0-关上拉
     WPUB   = 0B00000000;    //PB端口上拉控制 1-开上拉 0-关上拉
-	WPUC   = 0B00000000;    //PC端口上拉控制 1-开上拉 0-关上拉
+	WPUC   = 0B00000010;    //PC端口上拉控制 1-开上拉 0-关上拉
     
 	WPDA   = 0B00000000;    //PA端口上拉控制 1-开下拉 0-关下拉
     WPDB   = 0B00000000;    //PB端口上拉控制 1-开下拉 0-关下拉 //READY-PB0
@@ -43,8 +43,9 @@ void SYS_Initial(void)
 {
 	SYS.Standby_Work_State = 0;//待机状态
     
-
 	SYS.LB_Value = 0;		//LB报警标志位(待机状态下:输入端电压有问题时)
+    
+    SYS.INT_Value = 0;		
 
 	SYS.Relay_Release = 0;	//夹子松脱标志位(工作)
 
@@ -53,12 +54,20 @@ void SYS_Initial(void)
 	SYS.Vadc_Value = 0;		//电池端高低压报警标志位
 
 	SYS.Cadc_Value = 0;		//电瓶端低电压报警标志位
-
-//	SYS.Hummer_Value = 0;	//蜂鸣器鸣叫标志位(待机)
     
     SYS.READY_Value = 0;	//继电器开关标志位
     
     SYS.STANDBY_Value = 0;	//STANDBY就绪标志位
+    
+	SYS.Vbattery_Adc = 0;	//电池端模拟电压
+
+	SYS.Cbattery_Adc = 0;	//电瓶端模拟电压
+
+	SYS.Long_Time_Change = 0;//电瓶长时间连接变更标志位,1：退出工作状态
+
+	SYS.Delay_2s_Flag = 0;//2S延迟用于检测电池端电压标志位
+
+	SYS.Cadc_Ready_Flag = 0;//在继电器打开2s后检测Cadc的电压
 
 }
 

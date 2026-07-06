@@ -7,7 +7,7 @@ TaskComps TaskCompany[TASK_MAX] =
 	{ 0,1,5,Task_0 },
 	{ 0,2,10,Task_1 },
 	{ 0,3,20,Task_2 },
-	{ 0,4000,4000,Task_3 },
+	{ 0,4,500,Task_3 },
 };
 
 /**************************************************************************************************
@@ -83,19 +83,19 @@ void Task_Process(void)
 * 参数：无
 * 描述：1ms调用一次.
 **************************************************************************************************/
-void Task_Count(void)
-{
-uint8_t i;
-for(i = 0;i<TASK_MAX;i++)
-{
-if(TaskCompany[i].Timer)
-{
-TaskCompany[i].Timer--;
-if(TaskCompany[i].Timer <= 0)
-{
-TaskCompany[i].Timer = TaskCompany[i].IvtTime;
-TaskCompany[i].Run = TASK_RUN;
-}
-}
-}
-}
+//void Task_Count(void)
+//{
+//uint8_t i;
+//for(i = 0;i<TASK_MAX;i++)
+//{
+//if(TaskCompany[i].Timer)
+//{
+//TaskCompany[i].Timer--;
+//if(TaskCompany[i].Timer <= 0)
+//{
+//TaskCompany[i].Timer = TaskCompany[i].IvtTime;
+//TaskCompany[i].Run = TASK_RUN;
+//}
+//}
+//}
+//}

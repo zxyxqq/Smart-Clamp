@@ -59,11 +59,11 @@ void Hummer_Init(void)
  --------------------------------------------------*/	
 void BUZZHH_Control(void)
 {
-	if(SYS.LB_Value)//蜂鸣器
+	if(SYS.LB_Value||SYS.INT_Value)//蜂鸣器
     {
 		Hummer_Task();
     }
-    else//按键
+    else if(SYS.STANDBY_Value)//按键(待机状态下)
     {
 		Key_Task();
     }

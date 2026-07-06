@@ -211,7 +211,7 @@ void Relay_Release_Detect(void)
 {
 //	if(SYS.Standby_Work_State == 0)//在待机状态下
 //    {
-		if(SYS.Cadc_Value<Cadc_1V_High)//Cbat<1.021V
+		if(SYS.Cbattery_Adc<Cadc_1V_High)//Cbat<1.021V
 		{
 			SYS.Relay_Release = 1;//松脱标志位
             SYS.Long_Time_Change = 0;//松脱之后导通超时重新计时

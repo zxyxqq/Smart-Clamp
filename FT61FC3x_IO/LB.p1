@@ -461,7 +461,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "20 app.h
 [s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"54
+"52
 [v _SYS `S156 ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3092,7 +3092,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 33: void Task_1(void);
 [; ;task.h: 34: void Task_2(void);
 [; ;task.h: 35: void Task_3(void);
-[; ;task.h: 36: void Task_Count(void);
 [; ;task.h: 37: void Task_Process(void);
 [; ;adc.h: 28: typedef enum {
 [; ;adc.h: 29: STATE_NORMAL = 0,
@@ -3106,6 +3105,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;adc.h: 49: void ADC_Task(void);
 [; ;adc.h: 50: void Relay_Release_Detect(void);
 [; ;adc.h: 51: void Relay_sticking_Dected(void);
+[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 [; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
@@ -3143,132 +3143,216 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 34: uint8_t Cadc_Value;
 [; ;app.h: 36: uint8_t READY_Value;
 [; ;app.h: 38: uint8_t STANDBY_Value;
-[; ;app.h: 42: uint16_t Vbattery_Adc;
-[; ;app.h: 44: uint16_t Cbattery_Adc;
-[; ;app.h: 46: uint8_t Long_Time_Change;
-[; ;app.h: 48: uint8_t Delay_2s_Flag ;
-[; ;app.h: 50: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 52: }sys;
-[; ;app.h: 54: extern sys SYS;
+[; ;app.h: 40: uint16_t Vbattery_Adc;
+[; ;app.h: 42: uint16_t Cbattery_Adc;
+[; ;app.h: 44: uint8_t Long_Time_Change;
+[; ;app.h: 46: uint8_t Delay_2s_Flag ;
+[; ;app.h: 48: uint8_t Cadc_Ready_Flag ;
+[; ;app.h: 50: }sys;
+[; ;app.h: 52: extern sys SYS;
 [; ;LB.h: 6: void LB_Init(void);
 [; ;LB.h: 7: void STNADBY_Open(void);
 [; ;LB.h: 8: void LB_Open(void);
 [; ;LB.h: 9: void LB_STANDBY_Close(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
-"10 LB.C
+[; ;LB.h: 11: void Work_State_Change(void);
+"17 LB.C
 [v _LB_Init `(v ~T0 @X0 1 ef ]
-"11
-{
-[; ;LB.C: 10: void LB_Init(void)
-[; ;LB.C: 11: {
-[e :U _LB_Init ]
-[f ]
-[; ;LB.C: 12: TRISB |= 0B00100000;
-"12
-[e =| _TRISB -> -> 32 `i `uc ]
-[; ;LB.C: 13: }
-"13
-[e :UE 157 ]
-}
-"15
-[v _STNADBY_Open `(v ~T0 @X0 1 ef ]
-"16
-{
-[; ;LB.C: 15: void STNADBY_Open(void)
-[; ;LB.C: 16: {
-[e :U _STNADBY_Open ]
-[f ]
-[; ;LB.C: 17: if(SYS.STANDBY_Value)
-"17
-[e $ ! != -> . _SYS 8 `i -> -> -> 0 `i `uc `i 159  ]
-[; ;LB.C: 18: {
 "18
 {
-[; ;LB.C: 19: TRISB &= ~0B00100000;
+[; ;LB.C: 17: void LB_Init(void)
+[; ;LB.C: 18: {
+[e :U _LB_Init ]
+[f ]
+[; ;LB.C: 19: TRISB |= 0B00100000;
 "19
-[e =& _TRISB -> ~ -> 32 `i `uc ]
-[; ;LB.C: 20: PB5 = 1;
+[e =| _TRISB -> -> 32 `i `uc ]
+[; ;LB.C: 20: }
 "20
+[e :UE 157 ]
+}
+"27
+[v _STNADBY_Open `(v ~T0 @X0 1 ef ]
+"28
+{
+[; ;LB.C: 27: void STNADBY_Open(void)
+[; ;LB.C: 28: {
+[e :U _STNADBY_Open ]
+[f ]
+[; ;LB.C: 29: if(SYS.STANDBY_Value)
+"29
+[e $ ! != -> . _SYS 8 `i -> -> -> 0 `i `uc `i 159  ]
+[; ;LB.C: 30: {
+"30
+{
+[; ;LB.C: 31: TRISB &= ~0B00100000;
+"31
+[e =& _TRISB -> ~ -> 32 `i `uc ]
+[; ;LB.C: 32: PB5 = 1;
+"32
 [e = _PB5 -> -> 1 `i `b ]
-"21
+"33
 }
 [e :U 159 ]
-[; ;LB.C: 21: }
-[; ;LB.C: 22: }
-"22
+[; ;LB.C: 33: }
+[; ;LB.C: 34: }
+"34
 [e :UE 158 ]
 }
-"24
+"41
 [v _LB_Open `(v ~T0 @X0 1 ef ]
-"25
+"42
 {
-[; ;LB.C: 24: void LB_Open(void)
-[; ;LB.C: 25: {
+[; ;LB.C: 41: void LB_Open(void)
+[; ;LB.C: 42: {
 [e :U _LB_Open ]
 [f ]
-[; ;LB.C: 26: if(SYS.LB_Value)
-"26
+[; ;LB.C: 43: if(SYS.LB_Value)
+"43
 [e $ ! != -> . _SYS 1 `i -> -> -> 0 `i `uc `i 161  ]
-[; ;LB.C: 27: {
-"27
+[; ;LB.C: 44: {
+"44
 {
-[; ;LB.C: 28: TRISB &= ~0B00100000;
-"28
+[; ;LB.C: 45: TRISB &= ~0B00100000;
+"45
 [e =& _TRISB -> ~ -> 32 `i `uc ]
-[; ;LB.C: 29: PB5 = 0;
-"29
+[; ;LB.C: 46: PB5 = 0;
+"46
 [e = _PB5 -> -> 0 `i `b ]
-"30
+"47
 }
 [e :U 161 ]
-[; ;LB.C: 30: }
-[; ;LB.C: 31: }
-"31
-[e :UE 160 ]
-}
-"33
-[v _LB_STANDBY_Close `(v ~T0 @X0 1 ef ]
-"34
-{
-[; ;LB.C: 33: void LB_STANDBY_Close(void)
-[; ;LB.C: 34: {
-[e :U _LB_STANDBY_Close ]
-[f ]
-[; ;LB.C: 35: if(SYS.STANDBY_Value == 0 && SYS.LB_Value == 0)
-"35
-[e $ ! && == -> . _SYS 8 `i -> 0 `i == -> . _SYS 1 `i -> 0 `i 163  ]
-[; ;LB.C: 36: {
-"36
-{
-[; ;LB.C: 37: TRISB |= 0B00100000;
-"37
-[e =| _TRISB -> -> 32 `i `uc ]
-"38
-}
-[e :U 163 ]
-[; ;LB.C: 38: }
-[; ;LB.C: 40: }
-"40
-[e :UE 162 ]
-}
-"42
-[v _LB_ST_Task `(v ~T0 @X0 1 ef ]
-"43
-{
-[; ;LB.C: 42: void LB_ST_Task(void)
-[; ;LB.C: 43: {
-[e :U _LB_ST_Task ]
-[f ]
-[; ;LB.C: 44: STNADBY_Open();
-"44
-[e ( _STNADBY_Open ..  ]
-[; ;LB.C: 45: LB_Open();
-"45
-[e ( _LB_Open ..  ]
-[; ;LB.C: 46: LB_STANDBY_Close();
-"46
-[e ( _LB_STANDBY_Close ..  ]
+[; ;LB.C: 47: }
 [; ;LB.C: 48: }
 "48
+[e :UE 160 ]
+}
+"55
+[v _LB_STANDBY_Close `(v ~T0 @X0 1 ef ]
+"56
+{
+[; ;LB.C: 55: void LB_STANDBY_Close(void)
+[; ;LB.C: 56: {
+[e :U _LB_STANDBY_Close ]
+[f ]
+[; ;LB.C: 57: if(SYS.Standby_Work_State)
+"57
+[e $ ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 163  ]
+[; ;LB.C: 58: {
+"58
+{
+[; ;LB.C: 59: TRISB |= 0B00100000;
+"59
+[e =| _TRISB -> -> 32 `i `uc ]
+"60
+}
+[e :U 163 ]
+[; ;LB.C: 60: }
+[; ;LB.C: 62: }
+"62
+[e :UE 162 ]
+}
+"70
+[v _Work_State_Change `(v ~T0 @X0 1 ef ]
+"71
+{
+[; ;LB.C: 70: void Work_State_Change(void)
+[; ;LB.C: 71: {
+[e :U _Work_State_Change ]
+[f ]
+[; ;LB.C: 81: if(!SYS.Standby_Work_State)
+"81
+[e $ ! ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 165  ]
+[; ;LB.C: 82: {
+"82
+{
+[; ;LB.C: 83: if(!SYS.INT_Value && !SYS.LB_Value)
+"83
+[e $ ! && ! != -> . _SYS 2 `i -> -> -> 0 `i `uc `i ! != -> . _SYS 1 `i -> -> -> 0 `i `uc `i 166  ]
+[; ;LB.C: 84: {
+"84
+{
+[; ;LB.C: 85: SYS.STANDBY_Value = 1;
+"85
+[e = . _SYS 8 -> -> 1 `i `uc ]
+"86
+}
+[e :U 166 ]
+[; ;LB.C: 86: }
+[; ;LB.C: 88: if(SYS.STANDBY_Value && (!SYS.Relay_Release || SYS.KEY_Value))
+"88
+[e $ ! && != -> . _SYS 8 `i -> -> -> 0 `i `uc `i || ! != -> . _SYS 3 `i -> -> -> 0 `i `uc `i != -> . _SYS 4 `i -> -> -> 0 `i `uc `i 167  ]
+[; ;LB.C: 89: {
+"89
+{
+[; ;LB.C: 90: SYS.Standby_Work_State = 1;
+"90
+[e = . _SYS 0 -> -> 1 `i `uc ]
+[; ;LB.C: 91: SYS.READY_Value = 1;
+"91
+[e = . _SYS 7 -> -> 1 `i `uc ]
+[; ;LB.C: 92: SYS.STANDBY_Value = 0;
+"92
+[e = . _SYS 8 -> -> 0 `i `uc ]
+"93
+}
+[e :U 167 ]
+"95
+}
+[; ;LB.C: 93: }
+[; ;LB.C: 95: }
+[e $U 168  ]
+"96
+[e :U 165 ]
+[; ;LB.C: 96: else
+[; ;LB.C: 97: {
+"97
+{
+[; ;LB.C: 98: SYS.STANDBY_Value = 0;
+"98
+[e = . _SYS 8 -> -> 0 `i `uc ]
+[; ;LB.C: 101: if(SYS.INT_Value || SYS.LB_Value || SYS.Relay_Release || SYS.Long_Time_Change)
+"101
+[e $ ! || || || != -> . _SYS 2 `i -> -> -> 0 `i `uc `i != -> . _SYS 1 `i -> -> -> 0 `i `uc `i != -> . _SYS 3 `i -> -> -> 0 `i `uc `i != -> . _SYS 11 `i -> -> -> 0 `i `uc `i 169  ]
+[; ;LB.C: 102: {
+"102
+{
+[; ;LB.C: 103: SYS.Standby_Work_State = 0;
+"103
+[e = . _SYS 0 -> -> 0 `i `uc ]
+"104
+}
+[e :U 169 ]
+"105
+}
+[e :U 168 ]
+[; ;LB.C: 104: }
+[; ;LB.C: 105: }
+[; ;LB.C: 109: }
+"109
 [e :UE 164 ]
+}
+"111
+[v _LB_ST_Task `(v ~T0 @X0 1 ef ]
+"112
+{
+[; ;LB.C: 111: void LB_ST_Task(void)
+[; ;LB.C: 112: {
+[e :U _LB_ST_Task ]
+[f ]
+[; ;LB.C: 113: STNADBY_Open();
+"113
+[e ( _STNADBY_Open ..  ]
+[; ;LB.C: 114: LB_Open();
+"114
+[e ( _LB_Open ..  ]
+[; ;LB.C: 115: LB_STANDBY_Close();
+"115
+[e ( _LB_STANDBY_Close ..  ]
+[; ;LB.C: 116: Work_State_Change();
+"116
+[e ( _Work_State_Change ..  ]
+[; ;LB.C: 117: }
+"117
+[e :UE 170 ]
 }

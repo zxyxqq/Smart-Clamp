@@ -49,7 +49,7 @@ void ADC_INITIAL(void);
 void ADC_Task(void);
 void Relay_Release_Detect(void);
 void Relay_sticking_Dected(void);
-
+Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
 Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 
 

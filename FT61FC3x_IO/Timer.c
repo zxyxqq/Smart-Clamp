@@ -36,8 +36,7 @@ void Timer0_Task(void)
     }
     else
     {
-//		SYS.Long_Time_Change = 0;//可以进入待机状态的标志位之一
-//		SYS.Long_Ready_Time_Flag = 0;//关闭长时间计时
+		SYS.Long_Time_Change = 0;//可以进入待机状态的标志位之一
 		Long_Ready_Time = 0;
     }
 
