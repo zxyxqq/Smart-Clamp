@@ -2054,19 +2054,17 @@ static TaskComps TaskCompany[] =
 void Task_0(void)
 {
 
-# 25
-READY_Task();
-
-
-
-
+# 30
 }
 
 # 38
 void Task_1(void)
 {
 
-# 45
+
+
+BUZZTT_Task();
+
 }
 
 # 52

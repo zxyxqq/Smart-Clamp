@@ -86,7 +86,7 @@ void Key_Detect(void)
 	if(PC1 == 0)//按键按下
 	{
 		// 1. 消抖
-		if(press_cnt <4)//执行4次
+		if(press_cnt <4)//执行4次,总计20ms
 		{
 			press_cnt  ++;
 		}

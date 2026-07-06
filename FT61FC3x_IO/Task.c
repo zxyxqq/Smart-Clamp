@@ -22,7 +22,7 @@ void Task_0(void)
 //    RC_Task();
 
 
-    READY_Task();
+//    READY_Task();
 
 
 
@@ -40,7 +40,7 @@ void Task_1(void)
 //HT_Detect();
 
 
-//BUZZTT_Task();
+	BUZZTT_Task();
 
 }
 

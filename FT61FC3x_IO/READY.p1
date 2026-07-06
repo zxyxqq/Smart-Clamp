@@ -466,9 +466,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [n S156 . Standby_Work_State HT_Value LB_Value RC_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
 "56
 [v _SYS `S156 ~T0 @X0 0 e ]
-"46 adc.h
-[v _Get_Cbattery_Data `(v ~T0 @X0 0 ef ]
-"94 READY.c
+"47 adc.h
+[v _GET_ADC_DATA `(ui ~T0 @X0 0 ef1`uc ]
+"95 READY.c
 [c E1874 0 1 2 .. ]
 [n E1874 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
 "53 adc.h
@@ -3334,24 +3334,24 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;READY.c: 91: case ST_DETECT:
 "91
 [e :U 169 ]
-[; ;READY.c: 93: Get_Cbattery_Data();
-"93
-[e ( _Get_Cbattery_Data ..  ]
-[; ;READY.c: 94: SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
+[; ;READY.c: 94: SYS.Vbattery_Adc = GET_ADC_DATA(0);
 "94
-[e = . _SYS 7 -> ( _Get_Cbattery_Stand_State (1 . _SYS 11 `uc ]
-[; ;READY.c: 95: state = ST_PRE_ON;
+[e = . _SYS 10 ( _GET_ADC_DATA (1 -> -> 0 `i `uc ]
+[; ;READY.c: 95: SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
 "95
-[e = F1974 . `E1959 0 ]
-[; ;READY.c: 96: counter = 400;
+[e = . _SYS 7 -> ( _Get_Cbattery_Stand_State (1 . _SYS 11 `uc ]
+[; ;READY.c: 96: state = ST_PRE_ON;
 "96
-[e = F1975 -> -> 400 `i `ui ]
-[; ;READY.c: 97: break;
+[e = F1974 . `E1959 0 ]
+[; ;READY.c: 97: counter = 400;
 "97
-[e $U 161  ]
+[e = F1975 -> -> 400 `i `ui ]
+[; ;READY.c: 98: break;
 "98
+[e $U 161  ]
+"99
 }
-[; ;READY.c: 98: }
+[; ;READY.c: 99: }
 [e $U 161  ]
 "66
 [e :U 162 ]
@@ -3360,9 +3360,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
  , $ . `E1959 2 167
  , $ . `E1959 3 169
  161 ]
-"98
-[e :U 161 ]
-[; ;READY.c: 99: }
 "99
+[e :U 161 ]
+[; ;READY.c: 100: }
+"100
 [e :UE 159 ]
 }

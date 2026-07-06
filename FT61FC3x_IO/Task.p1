@@ -470,8 +470,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _Task_2 `(v ~T0 @X0 0 ef ]
 "33
 [v _Task_3 `(v ~T0 @X0 0 ef ]
-"30 ready.h
-[v _READY_Task `(v ~T0 @X0 0 ef ]
+"16 BUZZTT.h
+[v _BUZZTT_Task `(v ~T0 @X0 0 ef ]
 "78 Task.c
 [c E1952 0 1 2 3 4 .. ]
 [n E1952 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
@@ -3217,9 +3217,6 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 19: {
 [e :U _Task_0 ]
 [f ]
-[; ;Task.c: 25: READY_Task();
-"25
-[e ( _READY_Task ..  ]
 [; ;Task.c: 30: }
 "30
 [e :UE 157 ]
@@ -3232,6 +3229,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 39: {
 [e :U _Task_1 ]
 [f ]
+[; ;Task.c: 43: BUZZTT_Task();
+"43
+[e ( _BUZZTT_Task ..  ]
 [; ;Task.c: 45: }
 "45
 [e :UE 158 ]

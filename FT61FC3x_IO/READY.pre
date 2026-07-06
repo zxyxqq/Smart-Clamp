@@ -2105,7 +2105,8 @@ break;
 
 case ST_DETECT:
 
-Get_Cbattery_Data();
+
+SYS.Vbattery_Adc = GET_ADC_DATA(0);
 SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
 state = ST_PRE_ON;
 counter = 400;

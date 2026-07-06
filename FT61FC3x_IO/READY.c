@@ -90,21 +90,14 @@ void READY_Task(void) {
 
         case ST_DETECT:
             // 只执行一次检测，然后跳回最开始（保留你的循环需求）
-            Get_Cbattery_Data();
+//            Get_Cbattery_Data();
+			SYS.Vbattery_Adc = GET_ADC_DATA(0);
             SYS.Cadc_Value = Get_Cbattery_Stand_State(SYS.Cbattery_Adc);
             state = ST_PRE_ON;      // 回到开头循环
             counter = CYCLIC_START_POINT; // 保持总导通3s
             break;
     }
 }
- 
- 
- 
- 
- 
- 
- 
- 
  
  
  
