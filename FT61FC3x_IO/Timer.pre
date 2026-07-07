@@ -1933,14 +1933,14 @@ void Task_3(void);
 
 void Task_Process(void);
 
-# 28 "adc.h"
+# 24 "adc.h"
 typedef enum {
 STATE_NORMAL = 0,
 STATE_UNDER_VOLTAGE,
 STATE_OVER_VOLTAGE
 } Battery_State;
 
-# 45
+# 41
 void Get_Vbattery_Data(void);
 void Get_Cbattery_Data(void);
 unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
@@ -1990,9 +1990,9 @@ void Key_Task(void);
 
 # 6 "LB.h"
 void LB_Init(void);
-void STNADBY_Open(void);
-void LB_Open(void);
-void LB_STANDBY_Close(void);
+void STNADBY_Control(void);
+void LB_Control(void);
+void LB_STANDBY_Close_Control(void);
 void LB_ST_Task(void);
 void Work_State_Change(void);
 
@@ -2027,10 +2027,6 @@ uint16_t Cbattery_Adc;
 
 uint8_t Long_Time_Change;
 
-uint8_t Delay_2s_Flag ;
-
-uint8_t Cadc_Ready_Flag ;
-
 }sys;
 
 extern sys SYS;
@@ -2050,15 +2046,13 @@ TMR0 = 6;
 # 20
 void Timer0_Task(void)
 {
-static uint8_t Long_Ready_Time = 0;
-static uint8_t Short_Ready_Time = 0;
-static uint8_t Ready_Delay_Time = 0;
+static uint16_t Long_Ready_Time = 0;
 
 if(SYS.Standby_Work_State == 1)
 {
 Long_Ready_Time++;
 
-if(Long_Ready_Time>=80)
+if(Long_Ready_Time>=4000)
 {
 Long_Ready_Time = 0;
 SYS.Long_Time_Change = 1;

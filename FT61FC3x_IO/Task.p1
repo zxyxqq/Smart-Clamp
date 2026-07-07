@@ -459,11 +459,11 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [u S152 `S153 1 `S154 1 ]
 [n S152 . . . ]
 "5 Task.c
-[c E1953 0 1 2 3 4 .. ]
-[n E1953 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
-[v F1950 `(v ~T0 @X0 0 tf ]
+[c E1951 0 1 2 3 4 .. ]
+[n E1951 . TASK0 TASK1 TASK2 TASK3 TASK_MAX  ]
+[v F1948 `(v ~T0 @X0 0 tf ]
 "13 Task.h
-[s S156 `uc 1 `ui 1 `ui 1 `*F1950 1 ]
+[s S156 `uc 1 `ui 1 `ui 1 `*F1948 1 ]
 [n S156 . Run Timer IvtTime TaskHook ]
 "32
 [v _Task_0 `(v ~T0 @X0 0 ef ]
@@ -473,7 +473,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v _Task_2 `(v ~T0 @X0 0 ef ]
 "35
 [v _Task_3 `(v ~T0 @X0 0 ef ]
-"49 adc.h
+"45 adc.h
 [v _ADC_Task `(v ~T0 @X0 0 ef ]
 "13 Int.h
 [v _Int_Task `(v ~T0 @X0 0 ef ]
@@ -3095,20 +3095,20 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;syscfg.h: 159: extern __bit __timeout;
 [; ;POWER.h: 8: void POWER_INITIAL(void);
 [; ;POWER.h: 9: void SYS_Initial(void);
-[; ;adc.h: 28: typedef enum {
-[; ;adc.h: 29: STATE_NORMAL = 0,
-[; ;adc.h: 30: STATE_UNDER_VOLTAGE,
-[; ;adc.h: 31: STATE_OVER_VOLTAGE
-[; ;adc.h: 32: } Battery_State;
-[; ;adc.h: 45: void Get_Vbattery_Data(void);
-[; ;adc.h: 46: void Get_Cbattery_Data(void);
-[; ;adc.h: 47: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
-[; ;adc.h: 48: void ADC_INITIAL(void);
-[; ;adc.h: 49: void ADC_Task(void);
-[; ;adc.h: 50: void Relay_Release_Detect(void);
-[; ;adc.h: 51: void Relay_sticking_Dected(void);
-[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
-[; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 24: typedef enum {
+[; ;adc.h: 25: STATE_NORMAL = 0,
+[; ;adc.h: 26: STATE_UNDER_VOLTAGE,
+[; ;adc.h: 27: STATE_OVER_VOLTAGE
+[; ;adc.h: 28: } Battery_State;
+[; ;adc.h: 41: void Get_Vbattery_Data(void);
+[; ;adc.h: 42: void Get_Cbattery_Data(void);
+[; ;adc.h: 43: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
+[; ;adc.h: 44: void ADC_INITIAL(void);
+[; ;adc.h: 45: void ADC_Task(void);
+[; ;adc.h: 46: void Relay_Release_Detect(void);
+[; ;adc.h: 47: void Relay_sticking_Dected(void);
+[; ;adc.h: 48: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 49: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
 [; ;delay.h: 9: void DelayS(unsigned char Time);
@@ -3135,9 +3135,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 16: void BUZZTT_Task(void);
 [; ;BUZZTT.h: 17: void Key_Task(void);
 [; ;LB.h: 6: void LB_Init(void);
-[; ;LB.h: 7: void STNADBY_Open(void);
-[; ;LB.h: 8: void LB_Open(void);
-[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 7: void STNADBY_Control(void);
+[; ;LB.h: 8: void LB_Control(void);
+[; ;LB.h: 9: void LB_STANDBY_Close_Control(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
 [; ;LB.h: 11: void Work_State_Change(void);
 [; ;app.h: 16: void Initial(void);
@@ -3154,10 +3154,8 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 40: uint16_t Vbattery_Adc;
 [; ;app.h: 42: uint16_t Cbattery_Adc;
 [; ;app.h: 44: uint8_t Long_Time_Change;
-[; ;app.h: 46: uint8_t Delay_2s_Flag ;
-[; ;app.h: 48: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 50: }sys;
-[; ;app.h: 52: extern sys SYS;
+[; ;app.h: 46: }sys;
+[; ;app.h: 48: extern sys SYS;
 [; ;Task.h: 12: typedef struct
 [; ;Task.h: 13: {
 [; ;Task.h: 14: uint8_t Run;
@@ -3179,7 +3177,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.h: 35: void Task_3(void);
 [; ;Task.h: 37: void Task_Process(void);
 "5 Task.c
-[v _TaskCompany `S156 ~T0 @X0 . `E1953 4 e ]
+[v _TaskCompany `S156 ~T0 @X0 . `E1951 4 e ]
 [i _TaskCompany
 :U ..
 :U ..
@@ -3254,84 +3252,84 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;Task.c: 38: BUZZTT_Task();
 "38
 [e ( _BUZZTT_Task ..  ]
-[; ;Task.c: 40: }
-"40
+[; ;Task.c: 39: Timer0_Task();
+"39
+[e ( _Timer0_Task ..  ]
+[; ;Task.c: 42: }
+"42
 [e :UE 158 ]
 }
-"47
+"49
 [v _Task_2 `(v ~T0 @X0 1 ef ]
-"48
+"50
 {
-[; ;Task.c: 47: void Task_2(void)
-[; ;Task.c: 48: {
+[; ;Task.c: 49: void Task_2(void)
+[; ;Task.c: 50: {
 [e :U _Task_2 ]
 [f ]
-[; ;Task.c: 50: }
-"50
+[; ;Task.c: 52: }
+"52
 [e :UE 159 ]
 }
-"56
+"58
 [v _Task_3 `(v ~T0 @X0 1 ef ]
-"57
+"59
 {
-[; ;Task.c: 56: void Task_3(void)
-[; ;Task.c: 57: {
+[; ;Task.c: 58: void Task_3(void)
+[; ;Task.c: 59: {
 [e :U _Task_3 ]
 [f ]
-[; ;Task.c: 59: Timer0_Task();
-"59
-[e ( _Timer0_Task ..  ]
-[; ;Task.c: 61: }
-"61
+[; ;Task.c: 62: }
+"62
 [e :UE 160 ]
 }
-"69
-[v _Task_Process `(v ~T0 @X0 1 ef ]
 "70
+[v _Task_Process `(v ~T0 @X0 1 ef ]
+"71
 {
-[; ;Task.c: 69: void Task_Process(void)
-[; ;Task.c: 70: {
+[; ;Task.c: 70: void Task_Process(void)
+[; ;Task.c: 71: {
 [e :U _Task_Process ]
 [f ]
-"71
-[v _i `uc ~T0 @X0 1 a ]
-[; ;Task.c: 71: unsigned char i;
-[; ;Task.c: 72: for(i = 0;i<TASK_MAX;i++)
 "72
+[v _i `uc ~T0 @X0 1 a ]
+[; ;Task.c: 72: unsigned char i;
+[; ;Task.c: 73: for(i = 0;i<TASK_MAX;i++)
+"73
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E1953 4 `i 162  ]
+[e $ < -> _i `i -> . `E1951 4 `i 162  ]
 [e $U 163  ]
-"73
-[e :U 162 ]
-[; ;Task.c: 73: {
-{
-[; ;Task.c: 74: if(TaskCompany[i].Run == 1)
 "74
-[e $ ! == -> . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 `i -> 1 `i 165  ]
-[; ;Task.c: 75: {
-"75
+[e :U 162 ]
+[; ;Task.c: 74: {
 {
-[; ;Task.c: 76: TaskCompany[i].Run = 0;
+[; ;Task.c: 75: if(TaskCompany[i].Run == 1)
+"75
+[e $ ! == -> . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 `i -> 1 `i 165  ]
+[; ;Task.c: 76: {
 "76
-[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 0 `i `uc ]
-[; ;Task.c: 77: TaskCompany[i].TaskHook();
+{
+[; ;Task.c: 77: TaskCompany[i].Run = 0;
 "77
-[e ( *U . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 3 ..  ]
+[e = . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 0 -> -> 0 `i `uc ]
+[; ;Task.c: 78: TaskCompany[i].TaskHook();
 "78
+[e ( *U . *U + &U _TaskCompany * -> _i `ux -> -> # *U &U _TaskCompany `ui `ux 3 ..  ]
+"79
 }
 [e :U 165 ]
-"79
+"80
 }
-"72
+"73
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E1953 4 `i 162  ]
+[e $ < -> _i `i -> . `E1951 4 `i 162  ]
 [e :U 163 ]
-"79
+"80
 }
-[; ;Task.c: 78: }
 [; ;Task.c: 79: }
 [; ;Task.c: 80: }
-"80
+[; ;Task.c: 81: }
+"81
 [e :UE 161 ]
 }

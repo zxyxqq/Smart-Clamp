@@ -466,13 +466,13 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"52
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 ]
+[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change ]
+"48
 [v _SYS `S156 ~T0 @X0 0 e ]
 "137 ADC.c
-[c E1948 0 1 2 .. ]
-[n E1948 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
+[c E1946 0 1 2 .. ]
+[n E1946 . STATE_NORMAL STATE_UNDER_VOLTAGE STATE_OVER_VOLTAGE  ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
 [; ;gcc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3129,9 +3129,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;BUZZTT.h: 16: void BUZZTT_Task(void);
 [; ;BUZZTT.h: 17: void Key_Task(void);
 [; ;LB.h: 6: void LB_Init(void);
-[; ;LB.h: 7: void STNADBY_Open(void);
-[; ;LB.h: 8: void LB_Open(void);
-[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 7: void STNADBY_Control(void);
+[; ;LB.h: 8: void LB_Control(void);
+[; ;LB.h: 9: void LB_STANDBY_Close_Control(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
 [; ;LB.h: 11: void Work_State_Change(void);
 [; ;app.h: 16: void Initial(void);
@@ -3148,24 +3148,22 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 40: uint16_t Vbattery_Adc;
 [; ;app.h: 42: uint16_t Cbattery_Adc;
 [; ;app.h: 44: uint8_t Long_Time_Change;
-[; ;app.h: 46: uint8_t Delay_2s_Flag ;
-[; ;app.h: 48: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 50: }sys;
-[; ;app.h: 52: extern sys SYS;
-[; ;adc.h: 28: typedef enum {
-[; ;adc.h: 29: STATE_NORMAL = 0,
-[; ;adc.h: 30: STATE_UNDER_VOLTAGE,
-[; ;adc.h: 31: STATE_OVER_VOLTAGE
-[; ;adc.h: 32: } Battery_State;
-[; ;adc.h: 45: void Get_Vbattery_Data(void);
-[; ;adc.h: 46: void Get_Cbattery_Data(void);
-[; ;adc.h: 47: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
-[; ;adc.h: 48: void ADC_INITIAL(void);
-[; ;adc.h: 49: void ADC_Task(void);
-[; ;adc.h: 50: void Relay_Release_Detect(void);
-[; ;adc.h: 51: void Relay_sticking_Dected(void);
-[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
-[; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
+[; ;app.h: 46: }sys;
+[; ;app.h: 48: extern sys SYS;
+[; ;adc.h: 24: typedef enum {
+[; ;adc.h: 25: STATE_NORMAL = 0,
+[; ;adc.h: 26: STATE_UNDER_VOLTAGE,
+[; ;adc.h: 27: STATE_OVER_VOLTAGE
+[; ;adc.h: 28: } Battery_State;
+[; ;adc.h: 41: void Get_Vbattery_Data(void);
+[; ;adc.h: 42: void Get_Cbattery_Data(void);
+[; ;adc.h: 43: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
+[; ;adc.h: 44: void ADC_INITIAL(void);
+[; ;adc.h: 45: void ADC_Task(void);
+[; ;adc.h: 46: void Relay_Release_Detect(void);
+[; ;adc.h: 47: void Relay_sticking_Dected(void);
+[; ;adc.h: 48: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 49: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 "53 ADC.c
 [v _ADC_INITIAL `(v ~T0 @X0 1 ef ]
 "54
@@ -3295,7 +3293,7 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :UE 163 ]
 }
 "136
-[v _Get_Vbattery_Stand_State `(E1948 ~T0 @X0 1 ef1`ui ]
+[v _Get_Vbattery_Stand_State `(E1946 ~T0 @X0 1 ef1`ui ]
 "137
 {
 [; ;ADC.c: 136: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value)
@@ -3306,9 +3304,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "137
 [f ]
 "138
-[v F1978 `E1948 ~T0 @X0 1 s current_state ]
-[i F1978
-. `E1948 0
+[v F1976 `E1946 ~T0 @X0 1 s current_state ]
+[i F1976
+. `E1946 0
 ]
 [; ;ADC.c: 138: static Battery_State current_state = STATE_NORMAL;
 [; ;ADC.c: 140: switch(current_state)
@@ -3320,29 +3318,29 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 142: case STATE_NORMAL:
 "142
 [e :U 167 ]
-[; ;ADC.c: 143: if(adc_value<1861)
+[; ;ADC.c: 143: if(adc_value<3030)
 "143
-[e $ ! < _adc_value -> -> 1861 `i `ui 168  ]
+[e $ ! < _adc_value -> -> 3030 `i `ui 168  ]
 [; ;ADC.c: 144: {
 "144
 {
 [; ;ADC.c: 145: current_state = STATE_UNDER_VOLTAGE;
 "145
-[e = F1978 . `E1948 1 ]
+[e = F1976 . `E1946 1 ]
 "146
 }
 [; ;ADC.c: 146: }
 [e $U 169  ]
 "147
 [e :U 168 ]
-[; ;ADC.c: 147: else if(adc_value>2438)
-[e $ ! > _adc_value -> -> 2438 `i `ui 170  ]
+[; ;ADC.c: 147: else if(adc_value>3633)
+[e $ ! > _adc_value -> -> 3633 `i `ui 170  ]
 [; ;ADC.c: 148: {
 "148
 {
 [; ;ADC.c: 149: current_state = STATE_OVER_VOLTAGE;
 "149
-[e = F1978 . `E1948 2 ]
+[e = F1976 . `E1946 2 ]
 "150
 }
 [e :U 170 ]
@@ -3354,15 +3352,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 153: case STATE_UNDER_VOLTAGE:
 "153
 [e :U 171 ]
-[; ;ADC.c: 155: if (adc_value >= 1961)
+[; ;ADC.c: 155: if (adc_value >= 3090)
 "155
-[e $ ! >= _adc_value -> -> 1961 `i `ui 172  ]
+[e $ ! >= _adc_value -> -> 3090 `i `ui 172  ]
 [; ;ADC.c: 156: {
 "156
 {
 [; ;ADC.c: 157: current_state = STATE_NORMAL;
 "157
-[e = F1978 . `E1948 0 ]
+[e = F1976 . `E1946 0 ]
 "158
 }
 [e :U 172 ]
@@ -3373,15 +3371,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 162: case STATE_OVER_VOLTAGE:
 "162
 [e :U 173 ]
-[; ;ADC.c: 164: if (adc_value <= 2338)
+[; ;ADC.c: 164: if (adc_value <= 3693)
 "164
-[e $ ! <= _adc_value -> -> 2338 `i `ui 174  ]
+[e $ ! <= _adc_value -> -> 3693 `i `ui 174  ]
 [; ;ADC.c: 165: {
 "165
 {
 [; ;ADC.c: 166: current_state = STATE_NORMAL;
 "166
-[e = F1978 . `E1948 0 ]
+[e = F1976 . `E1946 0 ]
 "167
 }
 [e :U 174 ]
@@ -3395,22 +3393,22 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e $U 165  ]
 "140
 [e :U 166 ]
-[e [\ F1978 , $ . `E1948 0 167
- , $ . `E1948 1 171
- , $ . `E1948 2 173
+[e [\ F1976 , $ . `E1946 0 167
+ , $ . `E1946 1 171
+ , $ . `E1946 2 173
  165 ]
 "170
 [e :U 165 ]
 [; ;ADC.c: 171: return current_state;
 "171
-[e ) F1978 ]
+[e ) F1976 ]
 [e $UE 164  ]
 [; ;ADC.c: 172: }
 "172
 [e :UE 164 ]
 }
 "180
-[v _Get_Cbattery_Stand_State `(E1948 ~T0 @X0 1 ef1`ui ]
+[v _Get_Cbattery_Stand_State `(E1946 ~T0 @X0 1 ef1`ui ]
 "181
 {
 [; ;ADC.c: 180: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value)
@@ -3421,9 +3419,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "181
 [f ]
 "182
-[v F1980 `E1948 ~T0 @X0 1 s current_state ]
-[i F1980
-. `E1948 0
+[v F1978 `E1946 ~T0 @X0 1 s current_state ]
+[i F1978
+. `E1946 0
 ]
 [; ;ADC.c: 182: static Battery_State current_state = STATE_NORMAL;
 [; ;ADC.c: 184: switch(current_state)
@@ -3435,15 +3433,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 186: case STATE_NORMAL:
 "186
 [e :U 178 ]
-[; ;ADC.c: 187: if(adc_value<1111)
+[; ;ADC.c: 187: if(adc_value<1823)
 "187
-[e $ ! < _adc_value -> -> 1111 `i `ui 179  ]
+[e $ ! < _adc_value -> -> 1823 `i `ui 179  ]
 [; ;ADC.c: 188: {
 "188
 {
 [; ;ADC.c: 189: current_state = STATE_UNDER_VOLTAGE;
 "189
-[e = F1980 . `E1948 1 ]
+[e = F1978 . `E1946 1 ]
 "190
 }
 [e :U 179 ]
@@ -3454,15 +3452,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 193: case STATE_UNDER_VOLTAGE:
 "193
 [e :U 180 ]
-[; ;ADC.c: 195: if (adc_value >= 1111)
+[; ;ADC.c: 195: if (adc_value >= 1883)
 "195
-[e $ ! >= _adc_value -> -> 1111 `i `ui 181  ]
+[e $ ! >= _adc_value -> -> 1883 `i `ui 181  ]
 [; ;ADC.c: 196: {
 "196
 {
 [; ;ADC.c: 197: current_state = STATE_NORMAL;
 "197
-[e = F1980 . `E1948 0 ]
+[e = F1978 . `E1946 0 ]
 "198
 }
 [e :U 181 ]
@@ -3476,14 +3474,14 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e $U 176  ]
 "184
 [e :U 177 ]
-[e [\ F1980 , $ . `E1948 0 178
- , $ . `E1948 1 180
+[e [\ F1978 , $ . `E1946 0 178
+ , $ . `E1946 1 180
  176 ]
 "201
 [e :U 176 ]
 [; ;ADC.c: 202: return current_state;
 "202
-[e ) F1980 ]
+[e ) F1978 ]
 [e $UE 175  ]
 [; ;ADC.c: 203: }
 "203
@@ -3497,9 +3495,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 211: {
 [e :U _Relay_Release_Detect ]
 [f ]
-[; ;ADC.c: 214: if(SYS.Cbattery_Adc<900)
+[; ;ADC.c: 214: if(SYS.Cbattery_Adc<836)
 "214
-[e $ ! < . _SYS 10 -> -> 900 `i `ui 183  ]
+[e $ ! < . _SYS 10 -> -> 836 `i `ui 183  ]
 [; ;ADC.c: 215: {
 "215
 {
@@ -3538,9 +3536,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 234: {
 [e :U _ADC_Task ]
 [f ]
-[; ;ADC.c: 236: Get_Vbattery_Data();
+[; ;ADC.c: 236: Get_Cbattery_Data();
 "236
-[e ( _Get_Vbattery_Data ..  ]
+[e ( _Get_Cbattery_Data ..  ]
 [; ;ADC.c: 239: Relay_Release_Detect();
 "239
 [e ( _Relay_Release_Detect ..  ]
@@ -3550,52 +3548,55 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;ADC.c: 243: {
 "243
 {
-[; ;ADC.c: 244: SYS.Vadc_Value = Get_Vbattery_Stand_State(SYS.Vbattery_Adc);
+[; ;ADC.c: 244: Get_Vbattery_Data();
 "244
+[e ( _Get_Vbattery_Data ..  ]
+[; ;ADC.c: 245: SYS.Vadc_Value = Get_Vbattery_Stand_State(SYS.Vbattery_Adc);
+"245
 [e = . _SYS 5 -> ( _Get_Vbattery_Stand_State (1 . _SYS 9 `uc ]
-[; ;ADC.c: 246: if(SYS.Vadc_Value == 0)
-"246
-[e $ ! == -> . _SYS 5 `i -> 0 `i 187  ]
-[; ;ADC.c: 247: {
+[; ;ADC.c: 247: if(SYS.Vadc_Value == 0)
 "247
-{
-[; ;ADC.c: 248: SYS.LB_Value = 0;
+[e $ ! == -> . _SYS 5 `i -> 0 `i 187  ]
+[; ;ADC.c: 248: {
 "248
-[e = . _SYS 1 -> -> 0 `i `uc ]
-"249
-}
-[; ;ADC.c: 249: }
-[e $U 188  ]
-"250
-[e :U 187 ]
-[; ;ADC.c: 250: else
-[; ;ADC.c: 251: {
-"251
 {
-[; ;ADC.c: 252: SYS.LB_Value = 1;
+[; ;ADC.c: 249: SYS.LB_Value = 0;
+"249
+[e = . _SYS 1 -> -> 0 `i `uc ]
+"250
+}
+[; ;ADC.c: 250: }
+[e $U 188  ]
+"251
+[e :U 187 ]
+[; ;ADC.c: 251: else
+[; ;ADC.c: 252: {
 "252
-[e = . _SYS 1 -> -> 1 `i `uc ]
+{
+[; ;ADC.c: 253: SYS.LB_Value = 1;
 "253
+[e = . _SYS 1 -> -> 1 `i `uc ]
+"254
 }
 [e :U 188 ]
-"255
-}
-[; ;ADC.c: 253: }
-[; ;ADC.c: 255: }
-[e $U 189  ]
 "256
-[e :U 186 ]
-[; ;ADC.c: 256: else if(SYS.Standby_Work_State)
-[e $ ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 190  ]
-[; ;ADC.c: 257: {
+}
+[; ;ADC.c: 254: }
+[; ;ADC.c: 256: }
+[e $U 189  ]
 "257
+[e :U 186 ]
+[; ;ADC.c: 257: else if(SYS.Standby_Work_State)
+[e $ ! != -> . _SYS 0 `i -> -> -> 0 `i `uc `i 190  ]
+[; ;ADC.c: 258: {
+"258
 {
-"299
+"301
 }
 [e :U 190 ]
-"300
+"302
 [e :U 189 ]
-[; ;ADC.c: 299: }
-[; ;ADC.c: 300: }
+[; ;ADC.c: 301: }
+[; ;ADC.c: 302: }
 [e :UE 185 ]
 }

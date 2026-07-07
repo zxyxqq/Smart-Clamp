@@ -19,15 +19,13 @@ void Timer0_Init(void)
 
 void Timer0_Task(void)
 {
-	static uint8_t Long_Ready_Time = 0;
-	static uint8_t Short_Ready_Time = 0;
-	static uint8_t Ready_Delay_Time = 0;
+	static uint16_t Long_Ready_Time = 0;
     
 	if(SYS.Standby_Work_State == 1)//工作状态下开始计时
     {
         Long_Ready_Time++;//
         
-        if(Long_Ready_Time>=80)//80*500 = 40000 = 40s,跳转到待机状态
+        if(Long_Ready_Time>=4000)//4000*10 = 40000ms = 40s,跳转到待机状态
         {
 			Long_Ready_Time = 0;
 			SYS.Long_Time_Change = 1;//表示退出工作状态,只有按键导通和松脱才能清零

@@ -43,10 +43,6 @@ uint16_t Cbattery_Adc;	//电瓶端模拟电压
 
 uint8_t	 Long_Time_Change;//电瓶长时间连接变更标志位,1：退出工作状态
 
-uint8_t	 Delay_2s_Flag ;//2S延迟用于检测电池端电压标志位
-
-uint8_t	 Cadc_Ready_Flag ;//在继电器打开2s后检测Cadc的电压
-
 }sys;
 
 extern sys SYS;

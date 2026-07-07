@@ -73,7 +73,7 @@ void READY_Task(void) {
 
         case ST_OFF:
             Ready_Control(0);
-            if (counter >= Close_Time) { // 1s到
+            if (counter >= Close_Time) { // 0.1s到
                 counter = 0;
                 state = ST_FINAL_ON;
             }
@@ -81,7 +81,7 @@ void READY_Task(void) {
 
         case ST_FINAL_ON:
             Ready_Control(1);
-            if (counter >= Delay_Time) { // 2s到
+            if (counter >= Delay_Time) { // 1s到
                 counter = 0;
                 state = ST_DETECT;
             }

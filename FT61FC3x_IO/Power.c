@@ -65,9 +65,6 @@ void SYS_Initial(void)
 
 	SYS.Long_Time_Change = 0;//电瓶长时间连接变更标志位,1：退出工作状态
 
-	SYS.Delay_2s_Flag = 0;//2S延迟用于检测电池端电压标志位
-
-	SYS.Cadc_Ready_Flag = 0;//在继电器打开2s后检测Cadc的电压
 
 }
 

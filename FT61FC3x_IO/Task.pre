@@ -1905,14 +1905,14 @@ extern __bit __timeout;
 void POWER_INITIAL(void);
 void SYS_Initial(void);
 
-# 28 "adc.h"
+# 24 "adc.h"
 typedef enum {
 STATE_NORMAL = 0,
 STATE_UNDER_VOLTAGE,
 STATE_OVER_VOLTAGE
 } Battery_State;
 
-# 45
+# 41
 void Get_Vbattery_Data(void);
 void Get_Cbattery_Data(void);
 unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
@@ -1966,9 +1966,9 @@ void Key_Task(void);
 
 # 6 "LB.h"
 void LB_Init(void);
-void STNADBY_Open(void);
-void LB_Open(void);
-void LB_STANDBY_Close(void);
+void STNADBY_Control(void);
+void LB_Control(void);
+void LB_STANDBY_Close_Control(void);
 void LB_ST_Task(void);
 void Work_State_Change(void);
 
@@ -2002,10 +2002,6 @@ uint16_t Vbattery_Adc;
 uint16_t Cbattery_Adc;
 
 uint8_t Long_Time_Change;
-
-uint8_t Delay_2s_Flag ;
-
-uint8_t Cadc_Ready_Flag ;
 
 }sys;
 
@@ -2065,24 +2061,25 @@ void Task_1(void)
 {
 
 BUZZTT_Task();
+Timer0_Task();
+
 
 }
 
-# 47
+# 49
 void Task_2(void)
 {
 
 }
 
-# 56
+# 58
 void Task_3(void)
 {
 
-Timer0_Task();
 
 }
 
-# 69
+# 70
 void Task_Process(void)
 {
 unsigned char i;

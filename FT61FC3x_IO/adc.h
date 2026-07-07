@@ -4,21 +4,17 @@
 #include "app.h"
 /*宏定义*/
 
-#define Vadc_Low_Value 1911
-#define Vadc_High_Value 2388
-
-#define Cadc_LOW_Value 3303
 
 // 定义四阈值
-#define Vadc_UV_ACTIVE   1861  // 欠压触发值 (Under Voltage Active)
-#define Vadc_UV_RECOVER  1961  // 欠压恢复值 (Under Voltage Recover)
-#define Vadc_OV_ACTIVE   2438  // 过压触发值 (Over Voltage Active)
-#define Vadc_OV_RECOVER  2338  // 过压恢复值 (Over Voltage Recover)
+#define Vadc_UV_ACTIVE   3030  // 欠压触发值 (Under Voltage Active),13.8V
+#define Vadc_UV_RECOVER  3090  // 欠压恢复值 (Under Voltage Recover)14.2v
+#define Vadc_OV_ACTIVE   3633  // 过压触发值 (Over Voltage Active)17.7v
+#define Vadc_OV_RECOVER  3693  // 过压恢复值 (Over Voltage Recover)17.3v
 
-#define Cadc_7V_ACTIVE   1111  // 欠压触发值 (Under Voltage Active)
-#define Cadc_7V_RECOVER  1111  // 欠压恢复值 (Under Voltage Recover)
+#define Cadc_7V_ACTIVE   1823  // 欠压触发值 (Under Voltage Active)6.8
+#define Cadc_7V_RECOVER  1883  // 欠压恢复值 (Under Voltage Recover)7.2
 
-#define	Cadc_1V_High	 900  //1V的电压范围上限
+#define	Cadc_1V_High	 836  //1.1V的电压范围上限
 
 
 

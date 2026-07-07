@@ -19,12 +19,12 @@ void LB_Init(void)
 	TRISB  |= 0B00100000;	//高阻输入都不亮
 }
 /*-------------------------------------------------
- *  函数名STNADBY_Open
- *	功能：  
+ *  函数名STNADBY_Control
+ *	功能：  打开STANDBY灯
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-void STNADBY_Open(void)
+void STNADBY_Control(void)
 {
 	if(SYS.STANDBY_Value)
     {
@@ -33,12 +33,12 @@ void STNADBY_Open(void)
     }
 }
 /*-------------------------------------------------
- *  函数名LB_Open
- *	功能：  
+ *  函数名LB_Control
+ *	功能：  打开LB灯
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-void LB_Open(void)
+void LB_Control(void)
 {
 	if(SYS.LB_Value)
     {
@@ -48,11 +48,11 @@ void LB_Open(void)
 }
 /*-------------------------------------------------
  *  函数名LB_STANDBY_Close
- *	功能：  
+ *	功能：  使LB,STANDBY灯熄灭
  *  输入：  无
  *  输出：  无
  --------------------------------------------------*/	
-void LB_STANDBY_Close(void)
+void LB_STANDBY_Close_Control(void)
 {
 	if(SYS.Standby_Work_State)
     {
@@ -90,13 +90,13 @@ void Work_State_Change(void)
 			SYS.Standby_Work_State = 1;
 			SYS.READY_Value = 1;
             SYS.STANDBY_Value = 0;
+            SYS.KEY_Value = 0;//工作状态下，按键失效
+
 		}
 
     }
-	else//工作状态下
+	else
 	{
-		SYS.STANDBY_Value = 0;
-        
         /*报警或者是松脱以及超时就会退出工作状态*/
         if(SYS.INT_Value || SYS.LB_Value || SYS.Relay_Release || SYS.Long_Time_Change)
         {
@@ -110,8 +110,8 @@ void Work_State_Change(void)
 
 void LB_ST_Task(void)
 {
-	STNADBY_Open();
-    LB_Open();
-    LB_STANDBY_Close();
+	STNADBY_Control();
+    LB_Control();
+    LB_STANDBY_Close_Control();
     Work_State_Change();
 }

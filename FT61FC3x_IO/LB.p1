@@ -459,9 +459,9 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [u S151 `S152 1 `S153 1 ]
 [n S151 . . . ]
 "20 app.h
-[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
-[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change Delay_2s_Flag Cadc_Ready_Flag ]
-"52
+[s S156 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 ]
+[n S156 . Standby_Work_State LB_Value INT_Value Relay_Release KEY_Value Vadc_Value Cadc_Value READY_Value STANDBY_Value Vbattery_Adc Cbattery_Adc Long_Time_Change ]
+"48
 [v _SYS `S156 ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -3093,20 +3093,20 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;task.h: 34: void Task_2(void);
 [; ;task.h: 35: void Task_3(void);
 [; ;task.h: 37: void Task_Process(void);
-[; ;adc.h: 28: typedef enum {
-[; ;adc.h: 29: STATE_NORMAL = 0,
-[; ;adc.h: 30: STATE_UNDER_VOLTAGE,
-[; ;adc.h: 31: STATE_OVER_VOLTAGE
-[; ;adc.h: 32: } Battery_State;
-[; ;adc.h: 45: void Get_Vbattery_Data(void);
-[; ;adc.h: 46: void Get_Cbattery_Data(void);
-[; ;adc.h: 47: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
-[; ;adc.h: 48: void ADC_INITIAL(void);
-[; ;adc.h: 49: void ADC_Task(void);
-[; ;adc.h: 50: void Relay_Release_Detect(void);
-[; ;adc.h: 51: void Relay_sticking_Dected(void);
-[; ;adc.h: 52: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
-[; ;adc.h: 53: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 24: typedef enum {
+[; ;adc.h: 25: STATE_NORMAL = 0,
+[; ;adc.h: 26: STATE_UNDER_VOLTAGE,
+[; ;adc.h: 27: STATE_OVER_VOLTAGE
+[; ;adc.h: 28: } Battery_State;
+[; ;adc.h: 41: void Get_Vbattery_Data(void);
+[; ;adc.h: 42: void Get_Cbattery_Data(void);
+[; ;adc.h: 43: unsigned int GET_ADC_DATA (unsigned char adcChannel) ;
+[; ;adc.h: 44: void ADC_INITIAL(void);
+[; ;adc.h: 45: void ADC_Task(void);
+[; ;adc.h: 46: void Relay_Release_Detect(void);
+[; ;adc.h: 47: void Relay_sticking_Dected(void);
+[; ;adc.h: 48: Battery_State Get_Vbattery_Stand_State(uint16_t adc_value);
+[; ;adc.h: 49: Battery_State Get_Cbattery_Stand_State(uint16_t adc_value);
 [; ;delay.h: 5: void DelayUs(unsigned char Time);
 [; ;delay.h: 7: void DelayMs(unsigned char Time);
 [; ;delay.h: 9: void DelayS(unsigned char Time);
@@ -3146,14 +3146,12 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;app.h: 40: uint16_t Vbattery_Adc;
 [; ;app.h: 42: uint16_t Cbattery_Adc;
 [; ;app.h: 44: uint8_t Long_Time_Change;
-[; ;app.h: 46: uint8_t Delay_2s_Flag ;
-[; ;app.h: 48: uint8_t Cadc_Ready_Flag ;
-[; ;app.h: 50: }sys;
-[; ;app.h: 52: extern sys SYS;
+[; ;app.h: 46: }sys;
+[; ;app.h: 48: extern sys SYS;
 [; ;LB.h: 6: void LB_Init(void);
-[; ;LB.h: 7: void STNADBY_Open(void);
-[; ;LB.h: 8: void LB_Open(void);
-[; ;LB.h: 9: void LB_STANDBY_Close(void);
+[; ;LB.h: 7: void STNADBY_Control(void);
+[; ;LB.h: 8: void LB_Control(void);
+[; ;LB.h: 9: void LB_STANDBY_Close_Control(void);
 [; ;LB.h: 10: void LB_ST_Task(void);
 [; ;LB.h: 11: void Work_State_Change(void);
 "17 LB.C
@@ -3172,12 +3170,12 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :UE 157 ]
 }
 "27
-[v _STNADBY_Open `(v ~T0 @X0 1 ef ]
+[v _STNADBY_Control `(v ~T0 @X0 1 ef ]
 "28
 {
-[; ;LB.C: 27: void STNADBY_Open(void)
+[; ;LB.C: 27: void STNADBY_Control(void)
 [; ;LB.C: 28: {
-[e :U _STNADBY_Open ]
+[e :U _STNADBY_Control ]
 [f ]
 [; ;LB.C: 29: if(SYS.STANDBY_Value)
 "29
@@ -3200,12 +3198,12 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :UE 158 ]
 }
 "41
-[v _LB_Open `(v ~T0 @X0 1 ef ]
+[v _LB_Control `(v ~T0 @X0 1 ef ]
 "42
 {
-[; ;LB.C: 41: void LB_Open(void)
+[; ;LB.C: 41: void LB_Control(void)
 [; ;LB.C: 42: {
-[e :U _LB_Open ]
+[e :U _LB_Control ]
 [f ]
 [; ;LB.C: 43: if(SYS.LB_Value)
 "43
@@ -3228,12 +3226,12 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [e :UE 160 ]
 }
 "55
-[v _LB_STANDBY_Close `(v ~T0 @X0 1 ef ]
+[v _LB_STANDBY_Close_Control `(v ~T0 @X0 1 ef ]
 "56
 {
-[; ;LB.C: 55: void LB_STANDBY_Close(void)
+[; ;LB.C: 55: void LB_STANDBY_Close_Control(void)
 [; ;LB.C: 56: {
-[e :U _LB_STANDBY_Close ]
+[e :U _LB_STANDBY_Close_Control ]
 [f ]
 [; ;LB.C: 57: if(SYS.Standby_Work_State)
 "57
@@ -3294,23 +3292,23 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;LB.C: 92: SYS.STANDBY_Value = 0;
 "92
 [e = . _SYS 8 -> -> 0 `i `uc ]
+[; ;LB.C: 93: SYS.KEY_Value = 0;
 "93
-}
-[e :U 167 ]
+[e = . _SYS 4 -> -> 0 `i `uc ]
 "95
 }
-[; ;LB.C: 93: }
-[; ;LB.C: 95: }
-[e $U 168  ]
-"96
-[e :U 165 ]
-[; ;LB.C: 96: else
-[; ;LB.C: 97: {
+[e :U 167 ]
 "97
-{
-[; ;LB.C: 98: SYS.STANDBY_Value = 0;
+}
+[; ;LB.C: 95: }
+[; ;LB.C: 97: }
+[e $U 168  ]
 "98
-[e = . _SYS 8 -> -> 0 `i `uc ]
+[e :U 165 ]
+[; ;LB.C: 98: else
+[; ;LB.C: 99: {
+"99
+{
 [; ;LB.C: 101: if(SYS.INT_Value || SYS.LB_Value || SYS.Relay_Release || SYS.Long_Time_Change)
 "101
 [e $ ! || || || != -> . _SYS 2 `i -> -> -> 0 `i `uc `i != -> . _SYS 1 `i -> -> -> 0 `i `uc `i != -> . _SYS 3 `i -> -> -> 0 `i `uc `i != -> . _SYS 11 `i -> -> -> 0 `i `uc `i 169  ]
@@ -3340,15 +3338,15 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;LB.C: 112: {
 [e :U _LB_ST_Task ]
 [f ]
-[; ;LB.C: 113: STNADBY_Open();
+[; ;LB.C: 113: STNADBY_Control();
 "113
-[e ( _STNADBY_Open ..  ]
-[; ;LB.C: 114: LB_Open();
+[e ( _STNADBY_Control ..  ]
+[; ;LB.C: 114: LB_Control();
 "114
-[e ( _LB_Open ..  ]
-[; ;LB.C: 115: LB_STANDBY_Close();
+[e ( _LB_Control ..  ]
+[; ;LB.C: 115: LB_STANDBY_Close_Control();
 "115
-[e ( _LB_STANDBY_Close ..  ]
+[e ( _LB_STANDBY_Close_Control ..  ]
 [; ;LB.C: 116: Work_State_Change();
 "116
 [e ( _Work_State_Change ..  ]

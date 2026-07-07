@@ -63,7 +63,7 @@ void BUZZHH_Control(void)
     {
 		Hummer_Task();
     }
-    else if(SYS.STANDBY_Value)//按键(待机状态下)
+    else if(SYS.STANDBY_Value)//按键(待机状态下且无报警)
     {
 		Key_Task();
     }
